@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "MyDate Class Usage", 
+  "value": [
+    "use strict;", 
+    "use warnings;", 
+    "use integer;", 
+    "use 5.018;", 
+    "require 'MyDate.pm';", 
+    "require 'MyDebug.pm';", 
+    "", 
+    "my $dte_current = new MyDate;", 
+    "", 
+    "say sprintf(\"%02d/%02d/%04d\", $dte_current->date,$dte_current->month,$dte_current->year + 1900);", 
+    "$dte_current->debug(\"She ever comes now-now.\");!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

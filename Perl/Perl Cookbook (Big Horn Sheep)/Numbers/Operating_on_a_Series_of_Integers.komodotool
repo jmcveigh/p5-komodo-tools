@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Operating on a Series of Integers", 
+  "value": [
+    "foreach ($X .. $Y) {", 
+    "\t# $_ is set to every integer from X to Y, inclusive", 
+    "}", 
+    "", 
+    "foreach $i ($X .. $Y) {", 
+    "\t# $i is set to every integer from X to Y, inclusive", 
+    "}", 
+    "", 
+    "foreach ($i = $X;$i <= $Y; $i += 7) {", 
+    "\t# $i is set to every integer from X to Y, inclusive, stepsize = 7", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

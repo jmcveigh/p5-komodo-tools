@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Comparing the Contents of Two Files", 
+  "value": [
+    "use File::Compare;", 
+    "", 
+    "if (compare($FILENAME_1, $FILENAME_2) == 0) {", 
+    "\t# they're equal", 
+    "}", 
+    "", 
+    "if (compare(*FH1, FH2) == 0) {", 
+    "\t# they're equal", 
+    "}", 
+    "", 
+    "if (compare($fh1, $fh2) == 0) {", 
+    "\t# they're equal", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Comparing Floating-Point Numbers", 
+  "value": [
+    "# equal(NUM1, NUM2, PRECISION) : returns true if NUM2 and NUM2 are", 
+    "# equal to PRECISION number of decimal places", 
+    "", 
+    "sub equal {", 
+    "\tmy ($A, $B, $dp) = @_;", 
+    "\treturn sprintf(\"%.${dp}g\", $A) eq sprintf(\"%${dp}g\", $B);", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

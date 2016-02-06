@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Print a List with Commas", 
+  "value": [
+    "sub commify_series {", 
+    "\t(@_ == 0) ? '' :", 
+    "\t(@_ == 1) ? $_[0] :", 
+    "\t(@_ == 2) ? join(\" and \", @_) :", 
+    "\t\t\t\tjoin(\", \", @_[0 ..  ($# - 1)], \"and $_[-1]\");", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

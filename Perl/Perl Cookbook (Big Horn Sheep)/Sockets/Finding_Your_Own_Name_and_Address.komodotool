@@ -1,0 +1,26 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Finding Your Own Name and Address", 
+  "value": [
+    "use Sys::Hostname;", 
+    "", 
+    "$hostname = hostname();", 
+    "", 
+    "# OR posix uname function :", 
+    "use POSIX qw(uname);", 
+    "($kernel, $hostname, $release, $version, $hardware) = uname();", 
+    "$hotname = (uname)[1];", 
+    "", 
+    "# Then turn it into an IP address and convert to its canonical name:", 
+    "", 
+    "use Socket;", 
+    "$address = gethostbyname($hostname) or die \"Couldn't resolv $hostname : $!\";", 
+    "$hostname = gethostbyaddr($address, AF_INET) or die \"Couldn't re-resolve $hostname : $!\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

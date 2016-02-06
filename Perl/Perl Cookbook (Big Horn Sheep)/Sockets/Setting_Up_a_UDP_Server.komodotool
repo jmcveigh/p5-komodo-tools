@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Setting Up a UDP Server", 
+  "value": [
+    "use IO::Socket;", 
+    "$server = IO::Socket::INET->new(LocalPort => $server_port, Proto => \"udp\") or die \"Couldn't be udp server on port $server_port : $@\\n\";", 
+    "", 
+    "# then, go into a loop receiving messages", 
+    "while ($him = $server->recv($datagram, $MAX_TO_READ, $flags)) {", 
+    "\t# do something", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

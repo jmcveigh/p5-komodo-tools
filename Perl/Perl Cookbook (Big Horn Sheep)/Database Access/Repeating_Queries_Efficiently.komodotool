@@ -1,0 +1,31 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Repeating Queries Efficiently", 
+  "value": [
+    "$sth = $dbh->prepare($SQL);", 
+    "# execute query ten times", 
+    "for ($i = 0; $i < 10; $i++) {", 
+    "\t$sth->execute();", 
+    "\twhile (@row = $sth->fetchrow_array) {", 
+    "\t\t# ...", 
+    "\t}", 
+    "}", 
+    "", 
+    "# w/ changing parameters", 
+    "", 
+    "$sth = $dbh->prepare('SELECT uid, login FROM People WHERE name = ?';", 
+    "# execute query ten times", 
+    "foreach $person (@name) {", 
+    "\t$sth->execute($person);", 
+    "\twhile (@row = $sth->fetchrow_array) {", 
+    "\t\t# ...", 
+    "\t}", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

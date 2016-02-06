@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Extracting sentences (double spaces required between each)", 
+  "value": [
+    "{ local $/ = \"\";", 
+    "\twhile (<>) {", 
+    "\t\ts/\\s/ /g;", 
+    "\t\ts/ {3,}/  /g;", 
+    "\t\tpush @sentences, m/(\\S.*?[!?.])(?= {2}|\\Z)/g;", 
+    "\t}", 
+    "", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

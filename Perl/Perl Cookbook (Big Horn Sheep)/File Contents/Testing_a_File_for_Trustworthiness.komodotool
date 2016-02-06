@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Testing a File for Trustworthiness", 
+  "value": [
+    "( $dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size, $atime, $mtime, $ctime, $blksize, $blocks ) = stat($filename) or die \"no $filename : $!\";", 
+    "$mode &= 07777; # discard file type info", 
+    "", 
+    "# OR ...", 
+    "use File::stat;", 
+    "$info = stat($filename) or die \"no $filename : $!\";", 
+    "if ($info->uid == 0) {", 
+    "\tprint \"Superuser owns $filename\\n\";", 
+    "}", 
+    "if ($info->atime > $info->mtime) {", 
+    "\tprint \"$filename has been read since it was written.\\n\";", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

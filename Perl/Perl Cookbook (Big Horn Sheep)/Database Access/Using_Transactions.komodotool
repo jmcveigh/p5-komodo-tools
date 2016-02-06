@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Using Transactions", 
+  "value": [
+    "$dbh->{AutoCommit} = 0; # enable transactions", 
+    "$dbh->{RaiseError} = 1; # die() if a query has problems", 
+    "", 
+    "eval {", 
+    "\t# do inserts, updates, deletes, queries here", 
+    "\t$dbh->commit();", 
+    "};", 
+    "", 
+    "if ($@) {", 
+    "\twarn \"Transaction abordted: $@\";", 
+    "\teval { $dbh->rollback() }; # in case rollback fails", 
+    "\t# do your application cleanup code here", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

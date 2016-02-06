@@ -1,0 +1,13 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "YYYY-MM-DD", 
+  "value": [
+    "m/\\b(\\d{4})-(\\d\\d)-(\\d\\d)\\b/ # YYYY in $1, MM in $2, DD in $3!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

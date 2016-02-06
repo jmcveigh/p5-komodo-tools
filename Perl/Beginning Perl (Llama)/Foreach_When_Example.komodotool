@@ -1,0 +1,32 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Foreach / When Example", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "my @items = @ARGV or die(\"Regrettably, no command line arguments were found.\");", 
+    "", 
+    "foreach(@items) {", 
+    "  print $_ . \" permissions :\\n\";", 
+    "  when(-r) {", 
+    "    print \"\\t$_ is readable\\n\";", 
+    "    continue;", 
+    "  }", 
+    "  when(-w) {", 
+    "    print \"\\t$_ is writable\\n\";", 
+    "    continue;", 
+    "  }", 
+    "  when(-x) {", 
+    "    print \"\\t$_ is executable\\n\";", 
+    "    continue;", 
+    "  }", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

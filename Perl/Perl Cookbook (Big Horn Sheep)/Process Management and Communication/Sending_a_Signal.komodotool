@@ -1,0 +1,16 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Sending a Signal", 
+  "value": [
+    "kill 9 => $pid;", 
+    "kill -1 => $pgrp;", 
+    "kill USR1 => $$;", 
+    "kill HUP => @pids;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

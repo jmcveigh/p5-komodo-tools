@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Speeding Module Loading with SelfLoader", 
+  "value": [
+    "require Exporter;", 
+    "require SelfLoader;", 
+    "", 
+    "@ISA = qw(Exporter SelfLoader);", 
+    "", 
+    "#", 
+    "# other initialization or declarations here", 
+    "#", 
+    "", 
+    "__DATA__", 
+    "sub abc { .... }", 
+    "sub def { .... }!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

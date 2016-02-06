@@ -1,0 +1,29 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Reading STDERR from a Program", 
+  "value": [
+    "# to capture a command's STDERR and STDOUT together", 
+    "$output = `cmd 2>&1`; # with backticks", 
+    "# or", 
+    "$pid = open(PH, \"cmd 2>&1 |\"); # with an open pipe", 
+    "while (<PH>) { } # plus a read", 
+    "", 
+    "# to capture a command's STDOUT and discard its STDERR", 
+    "$output = `cmd 2>/dev/null`; # with backticks", 
+    "# or", 
+    "$pid = open(PH, \"cmd 2>/dev/null |\"); # with an open pipe", 
+    "while (<PH>) { } # plus a read", 
+    "", 
+    "# to capture a command's STDERR and discard its STDOUT", 
+    "$output = `cmd 2>&1 1>/dev/null`; # with backticks", 
+    "# or", 
+    "$pid = open(PH, \"cmd 2>&1 1>/dev/null |\") # with an open pipe", 
+    "while (<PH>) { } # plus a read!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

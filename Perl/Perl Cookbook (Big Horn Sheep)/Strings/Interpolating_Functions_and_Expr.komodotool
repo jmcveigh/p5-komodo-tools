@@ -1,0 +1,15 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Interpolating Functions and Expressions Within Strings", 
+  "value": [
+    "$answer = $var1 . func() . $var2; # scalar only", 
+    "$answer = \"STRING @{[ LIST EXPR ]} MORE STRING\";", 
+    "$answer = \"STRING ${\\( SCALAR EXPR )} MORE STRING\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

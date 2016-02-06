@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Executing an SQL Command Using DBI", 
+  "value": [
+    "use DBI;", 
+    "", 
+    "$dbh = DBI->connect('dbi:driver:database', 'username', 'auth', { RaiseError => 1, AutoCommit => 1});", 
+    "$dbh->do($NON_SELECT_SQL_STATEMENT);", 
+    "$results = $dbh->selectall_arrayref($SELECT_SQL_STATEMENT);", 
+    "$sth = $dbh->prepare($SQL_SELECT_STATEMENT);", 
+    "$sth->execute();", 
+    "while( @row = $sth->fetchrow_array) {", 
+    "\t# ...", 
+    "}", 
+    "", 
+    "$dbh->disconnect();!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

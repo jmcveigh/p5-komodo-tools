@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Finding initial-caps words", 
+  "value": [
+    "@icwords = m{", 
+    "\t( \\b", 
+    "\t\t[\\p{ Upper-case Letter }\\p{ Tittle-case Letter }]", 
+    "\t\t\\p{ Lower-case Letter } *", 
+    "\t", 
+    "\t)", 
+    "}gx;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

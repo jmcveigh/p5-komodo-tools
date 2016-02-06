@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Approximate Matching", 
+  "value": [
+    "use String::Approx qw(match);", 
+    "", 
+    "if (amatch(\"PATTERN\", @list)) {", 
+    "\t# matched", 
+    "}", 
+    "", 
+    "@matches = amatch(\"PATTERN\", @list);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Replacing the Current Program with a Different One", 
+  "value": [
+    "exec(\"archive *.data\") or die \"Couldn't replace myself with archive: $!\\n\";", 
+    "", 
+    "# OR ..", 
+    "", 
+    "exec(\"archive\", \"accounting.data\") or die \"Couldn't replace myself with archive: $!\\n\";", 
+    "", 
+    "# OR ..", 
+    "exec(\"archive accounting.data\") or die \"Couldn't replace myself with archive: $!\\n\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

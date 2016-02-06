@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Traversing a Hash", 
+  "value": [
+    "while (($key, $value) = each(%HASH)) {", 
+    "\t# do something with $key and $value", 
+    "}", 
+    "", 
+    "# OR ...", 
+    "", 
+    "foreach $key (keys, %HASH) {", 
+    "    $value = $HASH{$key};", 
+    "    # do something with $key and $value", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

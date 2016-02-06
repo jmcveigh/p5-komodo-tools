@@ -1,0 +1,17 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Treating a File as an Array", 
+  "value": [
+    "use Tie::File;", 
+    "use Fcntl;", 
+    "", 
+    "tie @data, Tie::File, $FILENAME or die \"Can't tie to $filename : $!\";", 
+    "# use array operations on @data to work with the file!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

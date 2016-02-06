@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Open / Read Directory Example [1]", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "opendir DH, \".\";", 
+    "", 
+    "# stat 8:atime 9:mtime", 
+    "", 
+    "while((my $item = readdir DH)) {", 
+    "  print $item . \"\\t\" . (stat $item)[8] . \"\\t\" . (stat $item)[9] . \"\\n\";", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

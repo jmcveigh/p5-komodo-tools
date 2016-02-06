@@ -1,0 +1,33 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "My ls [1]", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "sub my_ls {", 
+    "  my $destdir = shift;", 
+    "  chdir($destdir);", 
+    "  my @contents = sort glob '*';", 
+    "  print \"@contents\\n\";", 
+    "}", 
+    "", 
+    "print \"Please, enter the name of a directory :\\n\";", 
+    "my $destdir = <STDIN>;", 
+    "chomp($destdir);", 
+    "if(!$destdir) {", 
+    "  my_ls($ENV{'HOME'});", 
+    "}", 
+    "elsif(-e $destdir) {", 
+    "  my_ls($destdir);", 
+    "} else {", 
+    "  print \"Regrettably, the directory input does not exist!\\n\";", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

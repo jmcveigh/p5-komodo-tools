@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Using Named Unicode Characters", 
+  "value": [
+    "use charnames ':full';", 
+    "print \"\\N{GREEK CAPITAL LETTER DELTA} is called delta.\\n\";", 
+    "use charnames ':short';", 
+    "print \"\\N{greek:Delta} is an upper-case delta.\\n\";", 
+    "", 
+    "use charnames qw(cyrillic greek);", 
+    "print \"\\N{Sigma} and \\N{sigma} are Greek sigmas.\\n\";", 
+    "print \"\\N{Be} and \\N{be} are Cyrillic bes.\\n\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

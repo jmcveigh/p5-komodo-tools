@@ -1,0 +1,30 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Schwartzian Sort [3]", 
+  "value": [
+    "use strict;", 
+    "use warnings;", 
+    "use integer;", 
+    "", 
+    "my @words = <STDIN>;", 
+    "", 
+    "sub ask_monkey_about {", 
+    "  my ($string) = @_;", 
+    "  $string =~ tr/A-Z/a-z/;", 
+    "  $string =~ tr/a-z//cd;", 
+    "  $string;", 
+    "}", 
+    "", 
+    "my @sorted_words = map $_->[0], sort { $a->[1] cmp $b->[1] } map [ $_, ask_monkey_about($_) ], @words;", 
+    "", 
+    "for my $word (@sorted_words) {", 
+    "  print $word;", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

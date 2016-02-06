@@ -1,0 +1,32 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Forking Servers", 
+  "value": [
+    "# Fork in the accept loop, us a $SIG{CHLD} handler to reap the children:", 
+    "use POSIX qw(:sys_wait_h);", 
+    "", 
+    "sub REAPER {", 
+    "\t1 until (-1 == waitpid(-1, WNOHANG));", 
+    "\t$SIG{CHLD} = \\&REAPER;", 
+    "}", 
+    "", 
+    "%SIG{CHLD} = \\&REAPER;", 
+    "", 
+    "while ($hisaddr = accept(CLIENT, SERVER)) {", 
+    "\tnext if $pid = fork; # parent", 
+    "\tdie \"fork: $!\" unless defined $pid; # failure", 
+    "\t# otherwise child", 
+    "\tclose(SERVER); # no use to child", 
+    "\t# ... do something", 
+    "\texit;", 
+    "} continue {", 
+    "\tclose(CLIENT); # no use to parent", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

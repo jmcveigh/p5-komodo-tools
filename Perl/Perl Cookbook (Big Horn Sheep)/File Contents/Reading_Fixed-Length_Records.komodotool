@@ -1,0 +1,21 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Reading Fixed-Length Records", 
+  "value": [
+    "# $RECORDSIZE is the length of a record, in bytes.", 
+    "# $TEMPLATE is the unpack template for the record", 
+    "# FILE is the file to read from", 
+    "# @FIELDS is an array, one element per field", 
+    "", 
+    "until ( eof(FILE) ) {", 
+    "\tread(FILE, $record, $RECORDSIZE) == $RECORDSIZE or die \"short read\";", 
+    "\t@FIELDS = unpack($TEMPLATE, $record);", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

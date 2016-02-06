@@ -1,0 +1,31 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Open / Read Directory Example [2]", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "use DateTime;", 
+    "", 
+    "#!/usr/bin/perl -w", 
+    "", 
+    "use strict;", 
+    "use integer;", 
+    "use 5.016;", 
+    "", 
+    "opendir DH, \".\";", 
+    "", 
+    "# stat 8:atime 9:mtime", 
+    "", 
+    "while((my $item = readdir DH)) {", 
+    "  my @times = map { DateTime->from_epoch('epoch' => $_) } (stat $item)[8,9];", 
+    "  print $item . \"\\t\" . $times[0]->year . \"-\" . $times[0]->mon . \"-\" . $times[0]->mday . \"\\t\" . $times[0]->year . \"-\" . $times[0]->mon . \"-\" . $times[0]->mday . \"\\n\";", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

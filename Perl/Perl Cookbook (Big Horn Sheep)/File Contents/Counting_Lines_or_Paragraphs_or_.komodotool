@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Counting Lines (or Paragraphs or Records) in a File", 
+  "value": [
+    "$count = `wc -l < $file`;", 
+    "die \"wc failed : $?\" if $?;", 
+    "chomp($count);", 
+    "", 
+    "# OR ...", 
+    "open(FILE, \"<\", $file) or die \"can't open $file : $!\";", 
+    "$count++ while <FILE>;", 
+    "# $count now holds the number of lines read", 
+    "", 
+    "# OR ...", 
+    "$count += tr/\\n/\\n/ while sysread(FILE, $_, 2 ** 20);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

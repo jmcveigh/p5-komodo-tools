@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Writing a Multihome Server", 
+  "value": [
+    "use Socket;", 
+    "", 
+    "socket(SERVER, PF_INET, SOCK_STREAM, getprotobyname('tcp));", 
+    "setsockopt(SERVER, SOL_SOCKET, SO_REUSEADDR, 1);", 
+    "bind(SERVER, sockaddr_in($server_port), INADDR_ANY) or die \"Binding: $1\\n\";", 
+    "", 
+    "# accept loop", 
+    "while (accept(CLIENT, SERVER)) {", 
+    "\t$my_socket_address = getsockname(CLIENT);", 
+    "\t($port, $myaddr) = sockaddr_in($my_socket_address);", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

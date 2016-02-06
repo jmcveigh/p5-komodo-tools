@@ -1,0 +1,33 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Reading a Particular Line in a File", 
+  "value": [
+    "# looking for line number $DESIRED_LINE_NUMBER", 
+    "$. = 0;", 
+    "do { $LINE = <HANDLE> } until $. == $DESIRED_LINE_NUMBER || eof;", 
+    "", 
+    "# OR ...", 
+    "@lines = <HANDLE>;", 
+    "$LINE = $lines[$DESIRED_LINE_NUMBER];", 
+    "", 
+    "# OR ...", 
+    "use Tie::File;", 
+    "use Fcntl;", 
+    "", 
+    "tie(@lines, Tie::File, $FILE, mode => O_RDWR) or die \"Cannot tie file $FILE : $!\\n\";", 
+    "$line > $lines[$sought - 1];", 
+    "", 
+    "# OR ...", 
+    "use DB_File;", 
+    "use Fcntl;", 
+    "$tie = tie(@lines, DB_File, $FILE, O_RDWR, 0666, $DB_RECNO) or die \"Cannot open file $FILE : $!\";", 
+    "# extract it", 
+    "$line = $lines[$sought- 1];!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

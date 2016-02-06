@@ -1,0 +1,28 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Canonical Path", 
+  "value": [
+    "use strict;", 
+    "use warnings;", 
+    "use integer;", 
+    "", 
+    "use File::Spec;", 
+    "use Cwd;", 
+    "", 
+    "print getcwd;", 
+    "opendir DH, getcwd;", 
+    "", 
+    "while((my $item = readdir(DH))) {", 
+    " my $canonpath = File::Spec->canonpath(getcwd . $item);", 
+    " print \"    $canonpath\\n\";", 
+    "}", 
+    "", 
+    "__END__!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,17 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Processing All Files in a Directory", 
+  "value": [
+    "opendir(DIR, $dirname) or die \"can't opendir $dirname : $!\";", 
+    "while (defined($file = readdir(DIR))) {", 
+    "\t# do something with \"$dirname/$file\"", 
+    "}", 
+    "closedir(DIR);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

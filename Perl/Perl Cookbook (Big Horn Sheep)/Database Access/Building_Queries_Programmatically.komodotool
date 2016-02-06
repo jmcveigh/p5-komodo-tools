@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Building Queries Programmatically", 
+  "value": [
+    "if ($year_min) { push @clauses, \"Year >= $year_min\" }", 
+    "if ($year_max) { push @clauses, \"Year <= $year_max\" }", 
+    "if ($bedrooms_min) { push @clauses, \"Beds >= $bedrooms_min\" }", 
+    "if ($bedrooms_max) { push @clauses, \"Beds <= $bedrooms_max\" }", 
+    "# ...", 
+    "$clause = join(\" AND \", @clauses);", 
+    "$sth = $dbh->prepare(\"SELECT beds, baths from Houses WHERE $clause\");!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

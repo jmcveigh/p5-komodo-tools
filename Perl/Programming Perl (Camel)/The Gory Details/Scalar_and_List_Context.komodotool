@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Scalar and List Context", 
+  "value": [
+    "$x = funkshun(); # scalar context", 
+    "$x[1] = funkshun(); # scalar context", 
+    "$x{\"ray\"} = funkshun(); # scalar context", 
+    "", 
+    "@x = funkshun(); # list context", 
+    "@x[1] = funkshun(); # list context", 
+    "@x{\"ray\"} = funkshun(); # list context", 
+    "%x = funkshun(); # list context", 
+    "($x, $y, $z) = funkshun(); # list context", 
+    "($x) = funkshun(); # list context", 
+    "", 
+    "my $x = funkshun(); # scalar context", 
+    "my @x = funkshun(); # list context", 
+    "my %x = funkshun(); # list context", 
+    "my ($x) = funkshun(); # list context!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Processing Every Word in a File", 
+  "value": [
+    "while (<>) {", 
+    "\tfor $chunk (split) {", 
+    "\t\t# do something with $chunk", 
+    "\t}", 
+    "}", 
+    "", 
+    "# or ..", 
+    "while (<>) {", 
+    "\twhile (/(\\w[\\w'-]*/g) {", 
+    "\t\t# do something with $1", 
+    "\t}", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

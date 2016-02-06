@@ -1,0 +1,21 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Line Contains RegEx", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "while(<>) {", 
+    "  chomp;", 
+    "  if (/(\\w+a)[^\\w\\.]/) {", 
+    "    print(\"\\$1 contains '$1'\\n\");", 
+    "  }", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

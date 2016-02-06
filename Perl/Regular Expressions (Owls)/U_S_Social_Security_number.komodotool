@@ -1,0 +1,13 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "U.S. Social Security number", 
+  "value": [
+    "/^\\d{3}-\\d{2}-\\d{4}$/!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

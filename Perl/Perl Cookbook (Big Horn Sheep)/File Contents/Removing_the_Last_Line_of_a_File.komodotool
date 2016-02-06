@@ -1,0 +1,16 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Removing the Last Line of a File", 
+  "value": [
+    "use Tie::File;", 
+    "", 
+    "tie @lines, Tie::File, $file or die \"can't update $file : $!\";", 
+    "delete $lines[-1];!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

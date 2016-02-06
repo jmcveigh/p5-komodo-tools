@@ -1,0 +1,21 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Converting Between Characters and Values", 
+  "value": [
+    "$num = ord($char);", 
+    "$char = chr($num);", 
+    "$char = sprintf(\"%c\", $num); # slower than chr($num)", 
+    "printf(\"Number %d is character %c\\n\", $num, $num);", 
+    "", 
+    "@bytes = unpack(\"C*\", $string);", 
+    "$string = pack(\"C*\", @bytes);", 
+    "$unistr = pack(\"U4\", 0x24b6, 0x24b7, 0x24b8, 0x24b9);", 
+    "@unichars = unpack(\"U*\" $unistr);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

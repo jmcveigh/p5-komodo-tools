@@ -1,0 +1,16 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Short Sleeps", 
+  "value": [
+    "select(undef, undef, undef, $time_to_sleep);", 
+    "", 
+    "use Time::HiRes qw(sleep);", 
+    "sleep($time_to_sleep);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

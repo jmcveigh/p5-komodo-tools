@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Sort List of Numbers", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "my @numbers = split /\\s/,<STDIN>;", 
+    "my @render = sort { $a <=> $b } @numbers;", 
+    "print \"@render\\n\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

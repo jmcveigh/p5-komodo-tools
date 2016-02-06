@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Upper and Lower Case", 
+  "value": [
+    "$big = uc($little); # \"bo peep\" -> \"BO PEEP\"", 
+    "$little = lc($big); # \"JOHN\" -> \"john\"", 
+    "$big = \"\\U$little\"; # \"bo peep\" -> \"BO PEEP\"", 
+    "$little = \"\\L$big\"; # \"JOHN\" -> \"john\"", 
+    "$big = \"\\u$little\"; # \"bo\" -> \"Bo\"", 
+    "$little = \"\\l$big\"; # \"BoPeep\" -> \"boPeep\"!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

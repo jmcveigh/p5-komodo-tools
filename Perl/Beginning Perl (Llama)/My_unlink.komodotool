@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "My unlink", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "my @items = @ARGV;", 
+    "foreach my $item (@items) {", 
+    "  unlink($item);", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,13 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Extracting columns setting from TERMCAP", 
+  "value": [
+    "$cols = ( ($ENV{TERMCAP} || \" \") =~ m/:co#(\\d+):/ ) ? $1 : 80;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

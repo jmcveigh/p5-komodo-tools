@@ -1,0 +1,28 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Creating Menus with Tk", 
+  "value": [
+    "use Tk;", 
+    "", 
+    "$main = MainWindow->new();", 
+    "", 
+    "# Create a horizontal space at the top of the window for the", 
+    "# menu to live in.", 
+    "$menubar = $main->Frame(-relief => \"raised\",-borderwidth => 2)->pack(-anchor => \"nw\",-fill => \"x\");", 
+    "", 
+    "# Create a button labeled \"File\" that brings up a menu", 
+    "$file_menu = $menubar->Menubutton(-text => \"File\", -underline => 1)->pack(-side => \"left\");", 
+    "", 
+    "# Create entries in the \"File\" menu", 
+    "$file_menu->command(-label => \"Print\",-command => \\&Print);", 
+    "", 
+    "# OR ...", 
+    "$file_menu = $menubar->Menubutton(-text => \"File\", -underline => 1, -menuitems => [[Button => \"Print\", -command => \\&Print ], [ Button => \"Save\", -command => \\&Save]])->pack(-side => \"left\");!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

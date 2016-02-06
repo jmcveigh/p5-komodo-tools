@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Treating Unicode Combined Characters as Single Characters", 
+  "value": [
+    "$string = \"fac\\x{0327}ade\"; # \"facade\"", 
+    "$string =~ /fa.ade/; # fails", 
+    "$string =~ /fa\\Xade/; # succeeds", 
+    "@chars = split(//, $string); # 7 letters in @chars", 
+    "@chars = $string =~ /(.)/g; # same thing", 
+    "@chars = $string =~ /(\\X)/g; # 6 \"letters\" in @chars", 
+    "", 
+    "!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

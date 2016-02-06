@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Schwartzian Sort [1]", 
+  "value": [
+    "use strict;", 
+    "use warnings;", 
+    "use integer;", 
+    "", 
+    "sub ask_monkey_about {", 
+    "  -s $_[0];", 
+    "}", 
+    "", 
+    "my @files = map $_->[0], sort { $a->[1] <=> $b->[1] Z} map [ $_, ask_monkey_about($_) ], glob '/bin/*';", 
+    "", 
+    "for my $file (@files) {", 
+    "  say $file;", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

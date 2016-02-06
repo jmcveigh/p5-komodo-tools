@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Clearing the Screen", 
+  "value": [
+    "use Term::Cap;", 
+    "", 
+    "$OSPEED = 9600;", 
+    "eval {", 
+    "\trequire POSIX;", 
+    "\tmy $termios = POSIX::Termios->new();", 
+    "\t$termios->getattr;", 
+    "\t$OSPEED = $termios->getospeed;", 
+    "};", 
+    "", 
+    "$terminal = Term::Cap->Tgetent({OSPEED => $OSPEED});", 
+    "$terminal->Tputs('cl', 1, STDOUT);", 
+    "", 
+    "# OR ...", 
+    "system(\"clear\");!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

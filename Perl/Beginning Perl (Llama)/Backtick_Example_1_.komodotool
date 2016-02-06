@@ -1,0 +1,21 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Backtick Example [1]", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "my @entries = `cd /;ls -l;`;", 
+    "", 
+    "foreach my $entry (@entries) {", 
+    "  chomp($entry);", 
+    "  print $entry . \"\\n\";", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

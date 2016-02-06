@@ -1,0 +1,13 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Hashes with Multiple Values per Key", 
+  "value": [
+    "# hint: store an array reference iin $hash{$key}, then put the values into the referenced array!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

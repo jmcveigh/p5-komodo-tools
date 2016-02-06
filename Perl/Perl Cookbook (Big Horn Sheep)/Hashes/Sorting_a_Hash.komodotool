@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Sorting a Hash", 
+  "value": [
+    "# %hash is the hash to sort", 
+    "@keys = sort { criterion() } (keys %hash);", 
+    "foreach $key (@keys) {", 
+    "\t$value = $hash{$key};", 
+    "\t# do something with $key, $value", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

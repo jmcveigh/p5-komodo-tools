@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Flushing the Output", 
+  "value": [
+    "$old_fh = select(OUTPUT_HANDLE);", 
+    "$| = 1;", 
+    "select($old_fh);", 
+    "", 
+    "# OR ...", 
+    "use IO::Handle;", 
+    "OUTPUT_HANDLE->autoflush(1);", 
+    "", 
+    "# OR ..", 
+    "use IO::Handle;", 
+    "$fh->autoflush(1);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

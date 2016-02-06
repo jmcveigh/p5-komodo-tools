@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Is Hit or Is Miss (RegEx) [2]", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "while(<>) {", 
+    "  chomp;", 
+    "  if (/(\\w+a)(\\s|$|\\&)/) {", 
+    "    print(\"Matched: |$`<$&>$'|\\n\");", 
+    "  } else {", 
+    "    print(\"No match: |$_|\\n\");", 
+    "  }", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

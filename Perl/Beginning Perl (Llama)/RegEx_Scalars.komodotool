@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "RegEx Scalars", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "my $what = \"fred|barney\";", 
+    "while(<>) {", 
+    "  my @list = /$what/g;", 
+    "  chomp;", 
+    "  if(($#list + 1) == 3) {", 
+    "    print($_ . \"\\n\");", 
+    "  }", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

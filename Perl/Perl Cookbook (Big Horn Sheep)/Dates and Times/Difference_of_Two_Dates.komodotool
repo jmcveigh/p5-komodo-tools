@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Difference of Two Dates", 
+  "value": [
+    "$seconds = $recent - $earlier;", 
+    "", 
+    "use Date::Calc qw(Delta_Days);", 
+    "$days = Delta_Days( $year1, $month1, $day1, $year2, $month2, $day2);", 
+    "", 
+    "use Date::Calc qw(Delta_DHMS);", 
+    "($days, $hours, $minutes, $seconds) = Delta_DHMS( $year1, $month1, $day1, $hour1, $minute1, $seconds1, $year2, $month2, $day2, $hour2, $minute2, $seconds2);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

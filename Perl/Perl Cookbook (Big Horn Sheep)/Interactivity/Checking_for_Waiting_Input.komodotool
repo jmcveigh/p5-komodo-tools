@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Checking for Waiting Input", 
+  "value": [
+    "use Term::ReadKey;", 
+    "", 
+    "ReadMode('cbreak');", 
+    "", 
+    "if (defined ($char = ReadKey(-1))) {", 
+    "\t# input was waiting and it was $char", 
+    "} else {", 
+    "\t# no input was waiting", 
+    "}", 
+    "", 
+    "ReadMode('normal'); # restore normal tty settings!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

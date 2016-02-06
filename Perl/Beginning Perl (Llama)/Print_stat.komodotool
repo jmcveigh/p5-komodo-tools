@@ -1,0 +1,31 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Print stat", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "use DateTime;", 
+    "use Time::Piece;", 
+    "", 
+    "my %file_mtime;", 
+    "", 
+    "if($#ARGV >= 0) {", 
+    "  foreach my $file (@ARGV) {", 
+    "    my ($dev,$ino,$mode,$nlink,$uid,$gid,$rdev,$size,$atime,$mtime,$ctime,$blksize,$blocks) = stat($file);", 
+    "    $file_mtime{$file} = $mtime;  ", 
+    "  }", 
+    "  ", 
+    "  my $mtime_max = (sort { $a <=> $b } (values %file_mtime))[-1] if(scalar keys %file_mtime) >= 0;", 
+    "  my $dt = DateTime->from_epoch(\"epoch\" => $mtime_max);", 
+    "  my $lt = localtime;", 
+    "  print $dt->month_abbr . \" \" . $dt->mday . \" \" . ($lt->year == $dt->year ?  sprintf(\"%02s\", $dt->hour) . \":\" . sprintf(\"%02s\", $dt->minute) : $dt->year) . \"\\n\";", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

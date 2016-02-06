@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Indenting Here Documents", 
+  "value": [
+    "# all in one", 
+    "($var = << HERE_TARGET) =~ s/^\\s+//gm;", 
+    "\tyour text", 
+    "\tgoes here", 
+    "HERE_TARGET", 
+    "", 
+    "# or with two steps", 
+    "$var = << HERE_TARGET;", 
+    "\tyour text", 
+    "\tgoes here", 
+    "HERE_TARGET", 
+    "$var =~ s/^\\s+//gm;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

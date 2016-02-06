@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Translation escapes", 
+  "value": [
+    "# \\u\t\t\tForce next character to titlecase", 
+    "# \\l\t\t\tForce next character to lowercase", 
+    "# \\U\t\t\tForce all following characters to uppercase, ends at \\E", 
+    "# \\L\t\t\tForce all following characters through \\E to lowercase; ends at \\E", 
+    "# \\F\t\t\tForce all following characters through \\E to foldcase; ends at \\E", 
+    "# \\Q\t\t\tBackslash all following nonalphanumeric characters; ends at \\E", 
+    "# \\E\t\t\tEnd \\U, \\L, \\F, or \\Q!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

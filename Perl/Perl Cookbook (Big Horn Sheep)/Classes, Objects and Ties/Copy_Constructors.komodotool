@@ -1,0 +1,21 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Copy Constructors", 
+  "value": [
+    "use Storable qw(dclone);", 
+    "use Carp;", 
+    "", 
+    "sub copy {", 
+    "\tmy $self = shift;", 
+    "\tcroak \"can't copy class $self\" unless ref $self;", 
+    "\tmy $copy = Storable::dclone($self);", 
+    "\treturn $copy;", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

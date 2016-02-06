@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Building and Installing a CPAN Module", 
+  "value": [
+    "% gunzip Some-Module-4.54.tar.gz", 
+    "% tar xf Some-Module-4.54.tar", 
+    "% cd Some-Module-4.54", 
+    "% perl Makefile.PL", 
+    "% make", 
+    "% make test", 
+    "% make install!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Passing by Named Parameter", 
+  "value": [
+    "thefunc(INCREMENT => \"20s\", START => \"+5m\", FINISH => \"+30m\");", 
+    "thefunc(START => \"+5m\", FINISH => \"+30m\");", 
+    "thefunc(FINISH => \"+30m\");", 
+    "thefunc(START => \"+5m\", INCREMENT => \"15s\");", 
+    "", 
+    "# OR ...", 
+    "sub thefunc {", 
+    "\tmy %args = (", 
+    "\t\tINCREMENT => '10s',", 
+    "\t\tFINISH => 0,", 
+    "\t\tSTART => 0,", 
+    "\t\t@_, # argument pair list goes here", 
+    "\t);", 
+    "\tif ($args{INCREMENT} = ~/m$/ ) { ... }", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

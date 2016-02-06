@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Matching Nested Patterns", 
+  "value": [
+    "my $np;", 
+    "$np = qw {", 
+    "\t\\(", 
+    "\t(?:", 
+    "\t\t\t(?> [^()]+ ) # non-capture group w/o backtracking", 
+    "\t\t|", 
+    "\t\t\t(??{ $np }) # group with matching parens", 
+    "\t)*", 
+    "\t\\)", 
+    "}x;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

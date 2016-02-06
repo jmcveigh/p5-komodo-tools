@@ -1,0 +1,21 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Treating a Unicode String as Octets", 
+  "value": [
+    "$ff = \"\\x{FB00}\"; # ff ligature", 
+    "$chars = length($ff); # length is one character", 
+    "", 
+    "{", 
+    "\tuse bytes; # force byte semantics", 
+    "\t$octets = length($ff);  # length is two octets", 
+    "}", 
+    "", 
+    "$chars = length($ff);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

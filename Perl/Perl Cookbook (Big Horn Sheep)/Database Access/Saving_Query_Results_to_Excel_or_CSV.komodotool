@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Saving Query Results to Excel or CSV", 
+  "value": [
+    "use DBIx::Dump;", 
+    "use DBO;", 
+    "", 
+    "# ... connect to your database as normal", 
+    "$sth = $dbh->prepare(\"SELECT ...\"); # your query here", 
+    "$sth->execute();", 
+    "$out = DBIx::Dump->new('format' => $FORMAT, # excel or csv", 
+    "    'output' => $FILENAME,", 
+    "    'sth' => $sth);", 
+    "$out->dump();!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

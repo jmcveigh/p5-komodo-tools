@@ -1,0 +1,17 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Renaming Files", 
+  "value": [
+    "foreach $file (@NAMES) {", 
+    "\tmy $newname = $file;", 
+    "\t# change $newname", 
+    "\trename ($file, $newname) or warn \"couldn't rename $file to $newname : $!\";", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,28 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Creating Temporary Files", 
+  "value": [
+    "use File::Temp qw(tempfile);", 
+    "$fh = tempfile(); # just the handle", 
+    "", 
+    "# OR ...", 
+    "use File::Temp qw(tempfile);", 
+    "$dir = tempdir( CLEANUP => 1 );", 
+    "", 
+    "# OR specify a directory ...", 
+    "use File::Temp qw(tempfile);", 
+    "($fh, $filename) = tempfile( DIR => $dir );", 
+    "", 
+    "# OR ...", 
+    "$template = \"myprogtempXXXXXXX\"; # trailing Xs are changed", 
+    "($fh, $filename) = tempfile( $template, DIR => $dir );", 
+    "($fh, $filename) = tempfile( $template, SUFFIX => \".data\" );", 
+    "!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,29 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Print Module::CoreList", 
+  "value": [
+    "use strict;", 
+    "use warnings;", 
+    "use integer;", 
+    "", 
+    "use Module::CoreList;", 
+    "", 
+    "my %modules = %{ $Module::CoreList::version{5.014} };", 
+    "", 
+    "while(my ($k,$v) = each(%modules)) {", 
+    "  undef ($v) unless ($v);", 
+    "  print \"$k\";", 
+    "  print \"\\t\";", 
+    "  print Module::CoreList->first_release_date($k);", 
+    "  print \"\\n\";", 
+    "}", 
+    "", 
+    "__END__!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

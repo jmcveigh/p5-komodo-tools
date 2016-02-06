@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Marging Hashes", 
+  "value": [
+    "%merged = (%A, %B);", 
+    "", 
+    "# OR ...", 
+    "%merged = ();", 
+    "while ( ($k, $v) = each(%A) ) {", 
+    "\t$merged{$k} = $v;", 
+    "}", 
+    "", 
+    "while ( ($k, $v) = each(%B) ) {", 
+    "\t$merged{$k} = $v;", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

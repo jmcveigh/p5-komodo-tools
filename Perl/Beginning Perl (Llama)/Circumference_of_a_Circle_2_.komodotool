@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Circumference of a Circle [2]", 
+  "value": [
+    "use strict;", 
+    "", 
+    "my $pi = 3.141592654;", 
+    "", 
+    "print \"Please enter the radius of the circle : \";", 
+    "my $r = <STDIN>;", 
+    "chomp $r;", 
+    "", 
+    "my $c = 2 * $pi * $r;", 
+    "", 
+    "print \"The circumference of a circle with a radius of ${r} is ${c}.\\n\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

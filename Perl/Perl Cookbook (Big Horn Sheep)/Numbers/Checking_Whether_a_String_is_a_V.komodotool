@@ -1,0 +1,26 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Checking Whether a String is a Valid Number", 
+  "value": [
+    "if ($string =~ /PATTERN/) {", 
+    "\t# is a number", 
+    "} else {", 
+    "\t# is not", 
+    "}", 
+    "", 
+    "# OR ...", 
+    "", 
+    "use Regexp::Common;", 
+    "if ($string =~ m{^$RE{num}{real}$}) {", 
+    "\t# is a number", 
+    "} else {", 
+    "\t# is not", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

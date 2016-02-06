@@ -1,0 +1,17 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "My rename", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "my ($src,$dest) = @ARGV or die \"Please, enter a source and destination file respectively for the purpose of renaming.\";", 
+    "rename $src,$dest if (-e $src);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

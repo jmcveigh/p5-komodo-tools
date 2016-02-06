@@ -1,0 +1,17 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Processing Multiple Elements of an Array", 
+  "value": [
+    "# remove $N elements from front of @ARRAY (shift $N)", 
+    "@FRONT = splice(@ARRAY, 0, $N);", 
+    "", 
+    "# remove $N elements from the end of the array (pop $N)", 
+    "@END = splice(@ARRAY, -$N);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

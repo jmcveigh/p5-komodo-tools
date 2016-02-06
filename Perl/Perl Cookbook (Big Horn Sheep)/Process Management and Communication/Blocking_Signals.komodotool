@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Blocking Signals", 
+  "value": [
+    "use POSIX qw(:signal_h);", 
+    "$sigset = POSIX::SigSet->new(SIGINT) # defined the signals to block", 
+    "$old_sigset = POSIX::SigSet->new; # where the old sigmask will be kept", 
+    "sigprocmask(SIG_BLOCK, $sigset, $old_sigset) or die \"Could not block SIGINT\\n\";", 
+    "# to unblock", 
+    "defined sigprocmask(SIG_UNBLOCK, $old_sigset) or die \"Could not unblock SIGINT\\n\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

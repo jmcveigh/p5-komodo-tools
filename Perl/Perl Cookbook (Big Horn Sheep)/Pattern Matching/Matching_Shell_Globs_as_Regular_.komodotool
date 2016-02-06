@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Matching Shell Globs as Regular Expressions", 
+  "value": [
+    "sub glob2pat {", 
+    "\tmy $globstr = shift;", 
+    "\tmy %patmap = (", 
+    "\t\t'*' => '.*',", 
+    "\t\t'?' => '.',", 
+    "\t\t'[' => '[',", 
+    "\t\t']' => '[',", 
+    "\t);", 
+    "\t$globstr =~ s{(.)} { $patmap{$1} || \"\\Q$1\" }ge;", 
+    "\treturn '^' . $globstr . '$';", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Working with Symbolic File Permissions Instead of Octal Values", 
+  "value": [
+    "use Stat::lsMode;", 
+    "", 
+    "$lsmode = file_mode($pathname);", 
+    "", 
+    "# OR ...", 
+    "use File::chmod;", 
+    "chmod(g=rw, o=-w\", @files); # group can read/write, others can't write", 
+    "chmod(\"-rwxr-xr--\", $files); # ls-style permissions!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

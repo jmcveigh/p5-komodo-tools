@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Adding Text to an Image", 
+  "value": [
+    "use GD;", 
+    "", 
+    "$image = GD::Image->new($FILENAME);", 
+    "$blue = $image->colorAllocate(0,0,255);", 
+    "$iomage->string(gdTinyFont, 10, 10, \"Copyright Me, 2037\", $blue);", 
+    "# write $image->png() to file!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

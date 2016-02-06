@@ -1,0 +1,13 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Exchanging Values Without Using Temporary Variables", 
+  "value": [
+    "($VAR1, $VAR2) = ($VAR2, $VAR1);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

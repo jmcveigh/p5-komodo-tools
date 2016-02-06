@@ -1,0 +1,15 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Using Random-Access I/O", 
+  "value": [
+    "$ADDRESS = $RECSIZE * $RECNO;", 
+    "seek(FH, $ADDRESS, 0) or die \"couldn't seek : $!\";", 
+    "read(FH, $BUFFER, $RECSIZE);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

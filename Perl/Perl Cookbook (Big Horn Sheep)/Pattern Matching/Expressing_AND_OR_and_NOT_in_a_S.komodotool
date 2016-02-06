@@ -1,0 +1,28 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Expressing AND, OR, and NOT in a Single Pattern", 
+  "value": [
+    "# true if either /ALPHA/ or /BETA/ matches, like /ALPHA/ || /BETA//", 
+    "/ALPHA|BETA/", 
+    "/(?:ALPHA)|(?:BETA)/ # works no matter what in both", 
+    "", 
+    "# true if both /ALPHA/ and /BETA/ match, but may overlap, meaning \"BETALPHA\" should be okay, like /ALPHA/ && /BETA/", 
+    "/^(?=.*ALPHA)BETA/s", 
+    "", 
+    "# true if both /ALPHA/ and /BETA/ match, but may not overlap, meaning that \"BETALPHA\" should fail", 
+    "/ALPHA.*BETA|BETA.*ALPHA/s", 
+    "", 
+    "# true if pattern /PAT/ does not match, like $var !~ /PAT/:", 
+    "/^(?(?!PAT))*$/s", 
+    "", 
+    "# true if pattern BAD does not match, but pattern GOOD does:", 
+    "/(?=^(?:(?!BAD).)*$)GOOD/s", 
+    "!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

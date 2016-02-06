@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Making Variables Private to a Function", 
+  "value": [
+    "sub somefunc {", 
+    "\tmy $variable; # $variable is invisible outside somefunc()", 
+    "\tmy ($another, @an_array, %a_hash); # declaring many variables at once", 
+    "\t", 
+    "\t# ...", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

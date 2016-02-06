@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Canonicalizing Strings with Unicode Combined Characters", 
+  "value": [
+    "use Unicode::Normalize;", 
+    "", 
+    "$s1 = \"fa\\x{E7}ade\";", 
+    "$s2 = \"fac\\x{0327}ade\";", 
+    "", 
+    "if (NFD($s1) wq NFD($s2)) { print \"Yup!\\n\" }!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

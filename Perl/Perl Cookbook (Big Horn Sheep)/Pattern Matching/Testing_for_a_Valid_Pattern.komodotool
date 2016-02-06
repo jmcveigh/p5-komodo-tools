@@ -1,0 +1,31 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Testing for a Valid Pattern", 
+  "value": [
+    "do {", 
+    "\tprint \"Pattern? \";", 
+    "\tchomp($pat = <>);", 
+    "\teval { \"\" =~ /$pat/ };", 
+    "\twarn \"INVALID PATTERN $@\" if $@;", 
+    "} while $@;", 
+    "", 
+    "# OR ..", 
+    "sub is_valid_pattern {", 
+    "\tmy $pat = shift;", 
+    "\teval { \"\" =~ /$pat/ };", 
+    "\treturn $@ ? 0 : 1;", 
+    "}", 
+    "", 
+    "# OR ..", 
+    "sub is valid pattern {", 
+    "\tmy $pat = shift;", 
+    "\treturn eval { \"\" =~ /$pat/; 1; } || 0;", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

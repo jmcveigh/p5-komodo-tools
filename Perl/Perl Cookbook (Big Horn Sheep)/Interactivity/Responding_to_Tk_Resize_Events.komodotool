@@ -1,0 +1,26 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Responding to Tk Resize Events", 
+  "value": [
+    "use Tk;", 
+    "", 
+    "$main = MainWindow->new();", 
+    "", 
+    "$main->bind('<Configure>' => sub {", 
+    "\t$xe = $main->XEvent;", 
+    "\t$main->maxsize($xe->w, $xe->h);", 
+    "\t$main->minsize($xe->w, $xe->h);", 
+    "});", 
+    "", 
+    "# OR ..", 
+    "", 
+    "$widget->pack( -fill => \"both\", -expand => 1);", 
+    "$widget->pack( -fill => \"x\", -expand => 1);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

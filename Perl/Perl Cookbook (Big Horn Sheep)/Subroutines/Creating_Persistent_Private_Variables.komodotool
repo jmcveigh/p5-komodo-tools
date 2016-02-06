@@ -1,0 +1,26 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Creating Persistent Private Variables", 
+  "value": [
+    "{", 
+    "\tmy $variable;", 
+    "\tsub mysub {", 
+    "\t\t# ... accessing $variable", 
+    "\t}", 
+    "}", 
+    "", 
+    "# OR ..", 
+    "INIT {", 
+    "\tmy $variable = 1; # initial value", 
+    "\tsub othersub {", 
+    "\t\t# ... accessing $variable", 
+    "\t}", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

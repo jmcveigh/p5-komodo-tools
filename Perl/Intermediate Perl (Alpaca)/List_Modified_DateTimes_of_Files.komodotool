@@ -1,0 +1,33 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "List Modified DateTimes of Files in Directory", 
+  "value": [
+    "use strict;", 
+    "use warnings;", 
+    "use integer;", 
+    "use autodie;", 
+    "", 
+    "use Time::Local;", 
+    "use IO::Scalar;", 
+    "use IO::File;", 
+    "use IO::Dir;", 
+    "", 
+    "for my $dirname (@ARGV) {", 
+    "\tsay $dirname;", 
+    "\tsay \"-\" * length($dirname);", 
+    "\tmy $dir_fh = IO::Dir->new($dirname);", 
+    "\twhile(defined(my $file = $dir_fh->read)) {", 
+    "\t\tif($file ne \".\" && $file ne \"..\") {", 
+    "\t\t\tmy $mtime = (stat $file)[9];", 
+    "\t\t\tsay \"$mtime: $file\";", 
+    "\t\t}", 
+    "\t}", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,26 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Business::ISBN Example", 
+  "value": [
+    "use strict;", 
+    "use warnings;", 
+    "use integer;", 
+    "", 
+    "use Business::ISBN;", 
+    "", 
+    "my $isbn13 = Business::ISBN->new('9781449393090');", 
+    "", 
+    "print $isbn13->group_code;", 
+    "print \"\\t\";", 
+    "print $isbn13->publisher_code;", 
+    "print \"\\n\";", 
+    "", 
+    "__END__!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Overloading Operators", 
+  "value": [
+    "use overload '<=>' => \\&threeway_compare;", 
+    "", 
+    "sub threeway_compare {", 
+    "\tmy ($s1, s2) = @_;", 
+    "\treturn uc($s1->{NAME}) cmp uc($s2->{NAME});", 
+    "}", 
+    "", 
+    "use overload '\"\"' => \\&stringify;", 
+    "", 
+    "sub stringify {", 
+    "\tmy $self = shift;", 
+    "\treturn sprintf \"%s (%05d)\", ucfirst(lc($self->{NAME})), $self->{IDNUM};", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

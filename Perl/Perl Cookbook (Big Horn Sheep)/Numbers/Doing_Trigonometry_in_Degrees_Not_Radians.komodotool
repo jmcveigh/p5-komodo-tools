@@ -1,0 +1,29 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Doing Trigonometry in Degrees, Not Radians", 
+  "value": [
+    "use constant PI => (4 * atan2 (1,1));", 
+    "", 
+    "sub deg2rad {", 
+    "\tmy $degrees = shift;", 
+    "\treturn ($degrees / 180.0) * PI;", 
+    "}", 
+    "", 
+    "sub rad2deg {", 
+    "\tmy $radians = shift;", 
+    "\treturn ($radians / PI) * 180.0;", 
+    "}", 
+    "", 
+    "# OR ...", 
+    "", 
+    "use Math::Trig;", 
+    "$radians = deg2rad($degrees);", 
+    "$degrees = rad2deg($radians);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

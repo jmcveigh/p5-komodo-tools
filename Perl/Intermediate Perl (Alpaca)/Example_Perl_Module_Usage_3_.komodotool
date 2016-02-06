@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Example Perl Module Usage [3]", 
+  "value": [
+    "use warnings;", 
+    "use strict;", 
+    "use integer;", 
+    "use Oogaboogoo qw(:all);", 
+    "", 
+    "my (undef,undef,undef,$date,$mon,$year,$wday,undef,undef,undef) = localtime;", 
+    "my ($day_name,$month_name,$current_year) = (Oogaboogoo::date_to_name($wday),Oogaboogoo::month_to_name($mon),$year + 1900);", 
+    "print \"Today is $day_name, $month_name $date, $current_year\\n\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

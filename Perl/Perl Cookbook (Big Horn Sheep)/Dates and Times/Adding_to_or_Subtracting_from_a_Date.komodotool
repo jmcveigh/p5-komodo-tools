@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Adding to or Subtracting from a Date", 
+  "value": [
+    "$when = $now + $difference;", 
+    "$then = $now - $difference;", 
+    "", 
+    "use Date::Calc qw(Add_Delta_Days);", 
+    "($y2, $m2, $d2) = Add_Delta_Days($y, $m, $d, $offset);", 
+    "", 
+    "use Date::Calc qw(Add_Delta_DHMS);", 
+    "($year2, $month2, $day2, $h2, $m2, $s2) = Add_Delta_DHMS( $year, $month, $day, $hour, $minute, $second, $days_offset, $hour_offset, $minute_offset, $second_offset);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

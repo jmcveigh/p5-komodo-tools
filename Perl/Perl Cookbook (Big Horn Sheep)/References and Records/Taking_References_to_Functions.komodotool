@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Taking References to Functions", 
+  "value": [
+    "# to get a code reference", 
+    "$cref = \\$func;", 
+    "$cref = sub { ... };", 
+    "", 
+    "# to call a code reference", 
+    "@returned = $cref->(@arguments);", 
+    "@returned = &$cref(@arguments);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

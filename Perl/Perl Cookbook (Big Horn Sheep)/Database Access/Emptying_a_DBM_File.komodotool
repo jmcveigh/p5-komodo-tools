@@ -1,0 +1,21 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Emptying a DBM File", 
+  "value": [
+    "use DB_File;", 
+    "", 
+    "tie (%HASH, \"DB_File\", $FILENAME) or die \"Can't open FILENAME: $!\\n\";", 
+    "%HASH = ();", 
+    "untie %HASH;", 
+    "", 
+    "# OR ...", 
+    "unlink $FILENAME or die \"Couldn't unlink $FILENAME to empty database: $!\\n\";", 
+    "tie(%HASH => \"DB_File\", $FILENAME) or die \"Couldn't create $FILENAME database: $!\\n\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,31 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Select Items from Array", 
+  "value": [
+    "use strict;", 
+    "", 
+    "my @names = qw(fred betty barney dino wilma pebbles bamm-bamm);", 
+    "my @selected_by_user;", 
+    "", 
+    "print \"@names\\n\";", 
+    "", 
+    "print \"Enter a series of numbers from 1 to \" . ($#names + 1) . \" : \\n\";", 
+    "", 
+    "while(<STDIN>) {", 
+    "  chomp;", 
+    "  if($_ > 0 && $_ <= $#names + 1) {", 
+    "    push @selected_by_user,$names[($_ - 1)];  ", 
+    "  } else {    ", 
+    "    print \"Invalid selection.\\n\";", 
+    "  }", 
+    "}", 
+    "", 
+    "print \"@selected_by_user\\n\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

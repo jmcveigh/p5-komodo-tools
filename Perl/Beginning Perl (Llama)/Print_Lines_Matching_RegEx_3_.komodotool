@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Print Lines Matching RegEx [3]", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "while(<>) {", 
+    "  if(/\\./) {", 
+    "    chomp;", 
+    "    print;", 
+    "    print \"\\n\";", 
+    "  }", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

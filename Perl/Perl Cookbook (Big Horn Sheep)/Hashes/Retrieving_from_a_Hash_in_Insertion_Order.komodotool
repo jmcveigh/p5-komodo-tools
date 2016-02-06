@@ -1,0 +1,16 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Retrieving from a Hash in Insertion Order", 
+  "value": [
+    "use Tie::IxHash;", 
+    "tie %HASH, \"Tie::IxHash\";", 
+    "# manipulate %HASH", 
+    "@keys = keys %HASH; # @keys is in insertion order!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,28 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Parsing Program Arguments", 
+  "value": [
+    "use Getopt::Std;", 
+    "", 
+    "# -v ARG, -D ARG, -o ARG, sets $opt_v, $opt_D, $opt_o", 
+    "getopt(\"vDo\");", 
+    "# -v ARG, -D ARG, -o ARG, sets $args{v}, $args{D}, $args{o}", 
+    "getopt(\"vDo\", \\%args);", 
+    "", 
+    "getopts(\"vDo:\"); # -v ARG, -D ARG, -o ARG, sets $opt_v, $opt_D, $opt_o", 
+    "getopts(\"vDo\", \\%args); # -v ARG, -D ARG, -o ARG, sets $args{v}, $args{D}, $args{o}", 
+    "", 
+    "# OR ...", 
+    "", 
+    "use Getopt::Long;", 
+    "GetOptions( \"verbose\" => \\$verbose, # --verbose", 
+    "\t\"Debug\" => \\$debug, # --Debug", 
+    "\t\"output=s\" => \\$output); # --output=string or --output string!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

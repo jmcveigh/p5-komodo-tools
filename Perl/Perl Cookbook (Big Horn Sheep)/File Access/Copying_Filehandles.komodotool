@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Copying Filehandles", 
+  "value": [
+    "*ALIAS = *ORIGINAL;", 
+    "", 
+    "open(OUTCOPY, \">&STDOUT\") or die \"Couldn't dup STDOUT : $!\";", 
+    "open(INCOPY, \"<&STDIN\") or die \"Couldn't dup STDIN : $!\";", 
+    "", 
+    "open(OUTALIAS, \">&=STDOUT\") or die \"Couldn't alias STDOUT : $!\";", 
+    "open(INALIAS, \"<&=STDIN\") or die \"Couldn't alias STDIN : $!\";", 
+    "open(BYNUMBER, \">&=5)) or die \"Couldn't alias file descriptor 5 : $!\";", 
+    "", 
+    "open(my $copy, \"<&\", $original) or die \"Couldn't alias original : $!\";", 
+    "open(my $copy, \"<&=\", $original) or die \"Couldn't alias original : $!\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

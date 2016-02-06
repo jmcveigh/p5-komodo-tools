@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Numeric Multiplication", 
+  "value": [
+    "use strict;", 
+    "", 
+    "print \"let i equal : \\n\";", 
+    "my $i = <STDIN>;", 
+    "chomp $i;", 
+    "", 
+    "print \"let j equal : \\n\";", 
+    "my $j = <STDIN>;", 
+    "chomp $j;", 
+    "", 
+    "my $k = $i * $j;", 
+    "print \"The product of ${i} and ${j} is ${k}.\\n\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

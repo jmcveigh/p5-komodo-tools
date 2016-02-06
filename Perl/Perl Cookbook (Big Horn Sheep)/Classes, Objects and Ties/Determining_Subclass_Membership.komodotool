@@ -1,0 +1,15 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Determining Subclass Membership", 
+  "value": [
+    "$obj->isa(\"HTTP::Message\"); # as object method", 
+    "HTTP::Response->isa(\"HTTP::Message\"); # as class method", 
+    "if($obj->can(\"method_name\")) { .... } # check method validity!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

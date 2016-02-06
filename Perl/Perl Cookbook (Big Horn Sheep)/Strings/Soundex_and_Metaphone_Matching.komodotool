@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Soundex and Metaphone Matching", 
+  "value": [
+    "use Text::Soundex;", 
+    "$CODE = soundex($STRING);", 
+    "@CODES = soundex(@LIST);", 
+    "", 
+    "use Text::Metaphone;", 
+    "$phoned_words = Metaphone('Schwern');!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

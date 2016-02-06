@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Storing a File Inside Your Program Text", 
+  "value": [
+    "while ( <DATA> ) {", 
+    "\t# process the line", 
+    "}", 
+    "", 
+    "__DATA__", 
+    "# your data goes here", 
+    "", 
+    "# OR ...", 
+    "", 
+    "while ( <main::DATA>) {", 
+    "\t# process the line", 
+    "}", 
+    "", 
+    "__END__", 
+    "# your data goes here!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

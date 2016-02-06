@@ -1,0 +1,21 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Taking Logarithms", 
+  "value": [
+    "$log_e = log(VALUE);", 
+    "", 
+    "use POSIX qw(log10);", 
+    "$log_10 = log10(VALUE);", 
+    "", 
+    "sub log_base {", 
+    "\tmy ($base, $value) = @_;", 
+    "\treturn log($value) / log($base);", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

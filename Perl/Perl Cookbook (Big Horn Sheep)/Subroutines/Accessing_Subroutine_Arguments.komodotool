@@ -1,0 +1,26 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Accessing Subroutine Arguments", 
+  "value": [
+    "sub hypotenuse {", 
+    "\treturn sqrt( ($_[0] ** 2) + ($_[1] ** 2) );", 
+    "}", 
+    "", 
+    "# OR ...", 
+    "", 
+    "sub hypotenuse {", 
+    "\tmy ($side1, $side2) = @_;", 
+    "\treturn sqrt( ($side1 ** ) + ($side2 **2) );", 
+    "}", 
+    "", 
+    "$diag = hyptenuse(3,4); # $diag is 5", 
+    "", 
+    "!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

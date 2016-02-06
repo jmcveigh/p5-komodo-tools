@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "High-Resolution Timers", 
+  "value": [
+    "use Time::HiRes qw(gettimeofday);", 
+    "$t0 = gettimeofday();", 
+    "## do your operation here", 
+    "$t1 = gettimeofday();", 
+    "$elapsed = $t1 - $t0", 
+    "# $elapsed is a floating point value, representing number", 
+    "# of seconds between $t0 and $t1!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Dotted quads (most IPv4 addresses)", 
+  "value": [
+    "# XXX: fails on legal IPs 127.1 and 2130706433", 
+    "m{", 
+    "\t^ ( \\d | [01]?\\d\\d | 2[0-4]\\d | 25[0-5] )", 
+    "\t\\. ( \\d | [01]?\\d\\d | 2[0-4]\\d | 25[0-5] )", 
+    "\t\\. ( \\d | [01]?\\d\\d | 2[0-4]\\d | 25[0-5] )", 
+    "\t\\. ( \\d | [01]?\\d\\d | 2[0-4]\\d | 25[0-5] )", 
+    "\t$", 
+    "}x!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

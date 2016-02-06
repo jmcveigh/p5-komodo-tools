@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Closing a Socket After Forking", 
+  "value": [
+    "shutdown(SOCKET, 0); # I/we have stopped reading data", 
+    "shutdown(SOCKET, 1); # I/we have stopped writing data", 
+    "shutdown(SOCKET, 2); # I/we have stopped using this socket", 
+    "", 
+    "# OR an IO::Socket object, you could also write:", 
+    "$socket->shutdown(0);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

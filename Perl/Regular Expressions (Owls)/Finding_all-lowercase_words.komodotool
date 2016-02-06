@@ -1,0 +1,13 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Finding all-lowercase words", 
+  "value": [
+    "@lowords = m(\\b\\p { Lower-case Letter }+\\b)/g;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

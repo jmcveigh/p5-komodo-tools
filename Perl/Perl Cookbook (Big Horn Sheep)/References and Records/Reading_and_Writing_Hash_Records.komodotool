@@ -1,0 +1,28 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Reading and Writing Hash Records to Text Files", 
+  "value": [
+    "# FieldName: Value;", 
+    "", 
+    "# write", 
+    "foreach $record (@Array_of_Records) {", 
+    "\tfor $key (sort keys %$record) {", 
+    "\t\tprint \"$key: $record->{$key}\\n\";", 
+    "\t}", 
+    "\tprint \"\\n\";", 
+    "}", 
+    "", 
+    "# read", 
+    "$/ = \"\"; #paragraph read mode", 
+    "while (<>) {", 
+    "\tmy @fields = split /^([^:]+):\\s*/m;", 
+    "\tpush(@Array_of_Records, { map /(.*)/ @fields });", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

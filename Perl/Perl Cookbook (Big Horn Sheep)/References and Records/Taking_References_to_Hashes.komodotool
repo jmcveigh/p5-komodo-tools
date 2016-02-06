@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Taking References to Hashes", 
+  "value": [
+    "# to get a hash reference", 
+    "$href = \\%hash;", 
+    "$anon_hash = { \"key1\" => \"value1\", \"key2\" => \"value2\", ... };", 
+    "$anon_hash_copy = { %hash };", 
+    "", 
+    "# to dereference a hash reference", 
+    "%hash = %$href;", 
+    "$value = $href->{$key};", 
+    "@slice = @$href{$key1, $key2, $key3}; # note: no arrow!", 
+    "@keys = keys %$href;", 
+    "", 
+    "# to check whether something is a hash reference", 
+    "if (ref($someref) ne \"HASH\") {", 
+    "\tdie \"Expected a hash reference, not $someref\\n\";", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

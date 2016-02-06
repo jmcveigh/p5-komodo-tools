@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Reading a String from a Binary File", 
+  "value": [
+    "binmode(FH);", 
+    "$old_rs = $/;", 
+    "$/ = \"\\0\";", 
+    "seek(FH, $addr, SEEK_SET) or die \"seek error : $!\";", 
+    "$string = <FH>;", 
+    "chomp $string;", 
+    "$/ = $old_rs;", 
+    "", 
+    "# ...", 
+    "", 
+    "{", 
+    "\tlocal $/ = \"\\0\";", 
+    "\t# ...", 
+    "\t# $/ is automatically restored", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

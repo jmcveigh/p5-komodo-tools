@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "North American telephone numbers", 
+  "value": [
+    "m/", 
+    "\t(?:", 
+    "\t\t1 \\s (?: \\d\\d\\d \\s)?", 
+    "\t\t|", 
+    "\t\t\\(\\d\\d\\d\\) \\s", 
+    "\t\t|", 
+    "\t\t(?: \\+\\d\\d?\\d? \\s)?", 
+    "\t\t\\d\\d\\d ([\\s\\-])", 
+    "\t)", 
+    "\t\\d\\d\\d (\\s|\\1)", 
+    "\t\\d\\d\\d\\d", 
+    "\t$", 
+    "/x!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

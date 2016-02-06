@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Managing Multiple Streams of Input", 
+  "value": [
+    "use IO::Multiplex;", 
+    "$mux = IO::Multiplex->new();", 
+    "$mux->add($FH1);", 
+    "$mux->add($FH2); # ... and so on for all the filehandles to manage", 
+    "$mux->set_callback_object(__PACKAGE__); # or an object", 
+    "$mux->Loop();", 
+    "", 
+    "sub mux_input {", 
+    "\tmy ($package, $mux, $fh, $input) = @_;", 
+    "\t", 
+    "\t# input is ref to the filehandle's input buffer", 
+    "\t# ...", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

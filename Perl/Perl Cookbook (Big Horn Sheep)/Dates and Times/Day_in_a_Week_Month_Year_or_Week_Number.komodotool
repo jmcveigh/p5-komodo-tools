@@ -1,0 +1,21 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Day in a Week / Month / Year or Week Number", 
+  "value": [
+    "($MONTHDAY, $WEEKDAY, $YEARDAY) = (localtime $DATE)[3,6,7];", 
+    "$WEEKNUM = int($YEARDAY / 7) + 1;", 
+    "", 
+    "use Date::Calc qw(Day_of_Week Week_Number Day_Of_Year);", 
+    "# you have $year, $month, and $day", 
+    "# $day is day of month, by definition", 
+    "$wday = Day_of_Week($year, $month, $day);", 
+    "$wnum = Week_Number($year, $month, $day);", 
+    "$dnum = Day_of_Year($year, $month, $day);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

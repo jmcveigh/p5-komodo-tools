@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Reverse Array", 
+  "value": [
+    "use strict;", 
+    "", 
+    "print \"Input list of strings, separated by enter-key : \\n\";", 
+    "my @lines = <STDIN>;", 
+    "my @rendered = reverse(sort(@lines));", 
+    "print \"List of strings in reverse order : \\n\";", 
+    "print @rendered;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

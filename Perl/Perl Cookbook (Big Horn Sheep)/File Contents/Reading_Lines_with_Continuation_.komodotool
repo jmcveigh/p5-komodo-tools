@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Reading Lines with Continuation Characters", 
+  "value": [
+    "# file with long lines split over two or more lines, with backslashes to indicate that a continuation line follows", 
+    "", 
+    "while (defined($line = <FH>)) {", 
+    "\tchomp $line;", 
+    "\tif ($line =~ s/\\\\$//) {", 
+    "\t\t$line .= <FH>;", 
+    "\t\tredo unless eof(FH);", 
+    "\t}", 
+    "\t", 
+    "\t# process full record in $line here", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

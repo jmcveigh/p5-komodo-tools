@@ -1,0 +1,26 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Storing Multiple Files in the DATA Area", 
+  "value": [
+    "use Inline::Files;", 
+    "", 
+    "while (<SETUP>) {", 
+    "\t# ...", 
+    "}", 
+    "", 
+    "while (<EXECUTION>) {", 
+    "\t# ...", 
+    "}", 
+    "", 
+    "__SETUP__", 
+    "everything for the SETUP filehandle goes here", 
+    "__EXECUTION__", 
+    "everything for the EXECUTION filehandle goes here!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

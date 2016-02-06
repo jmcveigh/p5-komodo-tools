@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Making and Using a DBM File", 
+  "value": [
+    "use DB_File;", 
+    "", 
+    "tie %HASH, \"DB_FILE\", $FILENAME or die \"Can't open $FILENAME: $!\\n\";", 
+    "$V = $HASH{$KEY};", 
+    "$HASH{$KEY} = $VALUE;", 
+    "if (exists $HASH{$KEY}) {", 
+    "\t# ...", 
+    "}", 
+    "delete $HASH{$KEY};", 
+    "untie %HASH;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,13 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Changing double vertical prim pairs to curly quotes", 
+  "value": [
+    "s/\"([^\"]*)\"/\\x{201C}\\x{201C}$1\\x{201D}\\x{201D}/g!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

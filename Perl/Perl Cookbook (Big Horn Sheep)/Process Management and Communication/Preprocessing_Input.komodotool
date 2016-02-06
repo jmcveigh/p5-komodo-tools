@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Preprocessing Input", 
+  "value": [
+    "@ARGV = map { /\\.(gz|Z)$/ ? \"gzip -dc $_ |\" : $_ } @ARGV;", 
+    "while (<>) {", 
+    "\t# ........", 
+    "}", 
+    "", 
+    "# To fetch URLs before processing them, use the GET program from LWP", 
+    "@ARGV = map { m#^\\w+://# ? \"GET $_ |\" : $_ } @ARGV;", 
+    "while (<>) {", 
+    "\t# ........", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

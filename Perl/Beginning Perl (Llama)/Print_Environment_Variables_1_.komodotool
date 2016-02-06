@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Print Environment Variables [1]", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "while(my ($k,$v) = each(%ENV)) {", 
+    "    undef($v) unless $v;", 
+    "    printf \"%28s  %50s\\n\", $k, ($v // \"<undefined value>\");", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

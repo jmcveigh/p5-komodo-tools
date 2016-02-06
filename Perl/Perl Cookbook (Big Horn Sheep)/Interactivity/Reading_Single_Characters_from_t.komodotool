@@ -1,0 +1,17 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Reading Single Characters from the Keyboard", 
+  "value": [
+    "use Term::ReadKey;", 
+    "", 
+    "ReadMode 'cbreak';", 
+    "$key = ReadKey(0);", 
+    "ReadMode 'normal';!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

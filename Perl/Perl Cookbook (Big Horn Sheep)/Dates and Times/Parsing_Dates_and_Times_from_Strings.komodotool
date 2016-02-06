@@ -1,0 +1,26 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Parsing Dates and Times from Strings", 
+  "value": [
+    "use Time::Local;", 
+    "# $date is \"2003-02-13\" (YYYY-MM-DD form).", 
+    "($yyyy, $mm, $dd) = ($date =~ /(\\d+)-(\\d+)-(\\d+)/);", 
+    "# calculate epoch seconds at midnight on that day in this timezone", 
+    "$epoch_seconds = timelocal(0, 0, 0, $dd, $mm - 1, $yyyy);", 
+    "", 
+    "use Date::Manip qw(ParseDate UnixDate);", 
+    "$date = ParseDate($STRING);", 
+    "", 
+    "if (!$date)) {", 
+    "\t# bad date", 
+    "} else {", 
+    "\t@VALUES = UnixDate($date, @FORMATS);", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

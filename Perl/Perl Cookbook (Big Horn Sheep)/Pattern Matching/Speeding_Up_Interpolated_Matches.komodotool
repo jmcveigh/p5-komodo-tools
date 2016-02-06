@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Speeding Up Interpolated Matches", 
+  "value": [
+    "while ($line = <>) {", 
+    "\tif ($line =~ /$pattern/o) {", 
+    "\t\t# do something", 
+    "\t}", 
+    "}", 
+    "", 
+    "# OR ..", 
+    "@pats = map { qw/$_/ } @strings;", 
+    "while ($line = <>) {", 
+    "\tfor $pat (@pats) {", 
+    "\t\tif ($line =~ /$pat/) {", 
+    "\t\t\t# do something", 
+    "\t\t}", 
+    "\t}", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

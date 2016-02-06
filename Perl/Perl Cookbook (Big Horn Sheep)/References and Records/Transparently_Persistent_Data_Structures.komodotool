@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Transparently Persistent Data Structures", 
+  "value": [
+    "use MLDBM qw(DB_File);", 
+    "use Fcntl;", 
+    "", 
+    "tie(%hash, \"MLDBM\", \"testfile.db\", O_CREAT | O_RDRW, 0666) or die \"can't open tie to testfile.db: $!\";", 
+    "", 
+    "# ... act on %hash", 
+    "untie %hash;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,21 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Now delta DateTime Argument", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "use DateTime;", 
+    "use Time::Piece;", 
+    "", 
+    "my %params = ( \"year\" => $ARGV[0], \"mon\" => $ARGV[1], \"mday\" => $ARGV[2] );", 
+    "my $t = localtime();", 
+    "my $d = DateTime::Duration->new(( years => abs($t->year - $params{'year'}), months => abs($t->mon - $params{'mon'}),days => abs($t->mday - $params{'mday'})));", 
+    "print $d->years() . \" years, \" . $d->months() . \" months, and \" . $d->days() . \" days.\\n\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

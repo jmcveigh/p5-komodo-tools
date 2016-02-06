@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Extended Regular Expressions Example [1]", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "while(<>) {", 
+    "  chomp;", 
+    "  if (/(?<WORD>\\w+a)[^\\w\\.]/) {", 
+    "    print(\"\\$+{WORD} contains '$+{WORD}' \");", 
+    "    print(\"\\n\");", 
+    "  }", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

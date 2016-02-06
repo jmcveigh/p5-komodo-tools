@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Matching Letters", 
+  "value": [
+    "if ($var =~ /^[A-Za-z]+$/) {", 
+    "\t# it is purely alphabetic", 
+    "}", 
+    "", 
+    "if ($var =~ /^\\p{Alphabetic}+$/) {", 
+    "\tprint \"var is purley alphabetic\\n\";", 
+    "}", 
+    "", 
+    "if ($var =~ /^[^\\W\\d_]+$/) {", 
+    "\tprint \"var is purely alphabetic\\n\";", 
+    "}", 
+    "", 
+    "if ($var =~ /^[[:alpha:]]+$/) {", 
+    "\tprint \"var is purely alphabetic\\n\";", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

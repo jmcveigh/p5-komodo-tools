@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Modifying a File in PLace with a Temporary File", 
+  "value": [
+    "open(OLD, \"<\", $old) or die \"Can't open $old : $!\";", 
+    "open(NEW, \">\", $new) or die \"Can't open $new : $!\";", 
+    "while (<OLD>) {", 
+    "\t# change $_, then ...", 
+    "\tprint NEW $_ or die \"can't write $new : $!\";", 
+    "}", 
+    "close(OLD) or die \"can't close $old : $!\";", 
+    "close(NEW) or die \"can't close $new : $!\";", 
+    "rename($old, \"$old.orig\") or die \"can't rename $old to $old.orig : $!\";", 
+    "rename($new, $old) or die \"can't rename $new to $old : $!\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

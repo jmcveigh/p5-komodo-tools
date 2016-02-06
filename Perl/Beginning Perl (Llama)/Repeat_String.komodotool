@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Repeat String", 
+  "value": [
+    "use strict;", 
+    "", 
+    "print \"let string equal : \\n\";", 
+    "my $str = <STDIN>;", 
+    "chomp $str;", 
+    "", 
+    "print \"let i equal : \\n\";", 
+    "my $i = <STDIN>;", 
+    "chomp $i;", 
+    "", 
+    "print \"OK : \\n\";", 
+    "print \"${str}\\n\" x $i;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Randomizing All Lines", 
+  "value": [
+    "use List::Util qw(shuffle);", 
+    "", 
+    "while (<INPUT>) {", 
+    "\tpush(@lines, $_);", 
+    "}", 
+    "", 
+    "@lines = shuffle(@lines);", 
+    "foreach (@reordered) {", 
+    "\tprint OUTPUT $_;", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

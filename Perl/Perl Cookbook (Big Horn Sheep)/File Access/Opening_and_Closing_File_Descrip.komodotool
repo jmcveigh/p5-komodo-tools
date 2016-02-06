@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Opening and Closing File Descriptors by Number", 
+  "value": [
+    "open(FH, \"<&=\", $FDNUM); # open FH to the descriptor itself", 
+    "open(FH, \"<&\", $FDNUM); # open FH to a copy of the descriptor", 
+    "", 
+    "# OR ..", 
+    "use IO::Handle;", 
+    "$fh = IO::Handle->new_from_fd($FDNUM, \"r\");!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

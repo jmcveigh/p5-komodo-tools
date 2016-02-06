@@ -1,0 +1,13 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Exclamations", 
+  "value": [
+    "m/\\boh\\s+my\\s+gh?o(d(dess(es)?|s?))|odness|sh\\b/i!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

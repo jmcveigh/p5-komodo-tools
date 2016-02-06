@@ -1,0 +1,21 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Writing Extensions in C with Inline::C", 
+  "value": [
+    "use Inline::C;", 
+    "$answer = somefunc(20, 4);", 
+    "print \"$ANSWER\\n\"; # prints 80", 
+    "__END__", 
+    "__C__", 
+    "double somefunc(int a,int b) {", 
+    "\tdouble answer = a * b;", 
+    "\treturn answer;", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

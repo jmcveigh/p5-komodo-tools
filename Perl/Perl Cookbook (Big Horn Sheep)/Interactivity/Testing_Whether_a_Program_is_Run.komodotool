@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Testing Whether a Program is Running Interactively", 
+  "value": [
+    "sub I_am_interactive {", 
+    "\treturn -t STDIN && -t STDOUT;", 
+    "}", 
+    "", 
+    "# OR ... (POSIX)", 
+    "use POSIX qw/getpgrp tcgetpgrp/;", 
+    "", 
+    "sub I_am_interactive {", 
+    "\tmy $tty;", 
+    "\topen($tty, \"<\", \"/dev/tty\") or die \"can't open /dev/tty: $!\";", 
+    "\tmy $tpgrp = tcgetpgrp(fileno($tty));", 
+    "\tmy $pgrp = getpgrp();", 
+    "\tclose $tty;", 
+    "\treturn ($tpgrp == $pgrp);", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

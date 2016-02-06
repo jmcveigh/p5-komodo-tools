@@ -1,0 +1,26 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Calculating More Trigonometric Functions", 
+  "value": [
+    "sub tan {", 
+    "\tmy $theta = shift;", 
+    "\treturn sin($theta) / cos($theta);", 
+    "}", 
+    "", 
+    "# OR ...", 
+    "", 
+    "use POSIX;", 
+    "$y = acos(3, 7);", 
+    "", 
+    "# OR ...", 
+    "", 
+    "use Math::Trig;", 
+    "$y = acos(3,7);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

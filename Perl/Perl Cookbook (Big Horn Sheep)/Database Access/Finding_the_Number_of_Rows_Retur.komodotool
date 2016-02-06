@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Finding the Number of Rows Returned by a Query", 
+  "value": [
+    "$rows = $dbh->do(\"DELETE FROM Conference WHERE Language = 'REBOL'\");", 
+    "if (!defined $rows) {", 
+    "\t# failed, but this is not needed if RaiseError is active", 
+    "} else {", 
+    "\tprint \"Deleted $rows rows\\n\";", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

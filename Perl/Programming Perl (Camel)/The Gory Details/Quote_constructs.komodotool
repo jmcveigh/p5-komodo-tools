@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Quote constructs", 
+  "value": [
+    "# ''\t\tq//\t\t\tLiteral string", 
+    "# \"\"\t\tqq//\t\tLiteral string\t\t\tInterpolates", 
+    "# ``\t\tqx//\t\tCommand execution\t\tInterpolates", 
+    "# ()\t\tqw//\t\tWord list", 
+    "# //\t\tm//\t\t\tPattern match\t\t\tInterpolates", 
+    "# s///\t\ts///\t\tPattern substitution\tInterpolates", 
+    "# tr///\t\ty///\t\tCharacter translation", 
+    "# \"\"\t\tqw//\t\tRegular Expression!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

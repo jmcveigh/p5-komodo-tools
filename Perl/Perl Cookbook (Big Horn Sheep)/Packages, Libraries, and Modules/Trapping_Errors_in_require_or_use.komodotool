@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Trapping Errors in require or use", 
+  "value": [
+    "BEGIN {", 
+    "\tunless (eval \"require $mod; 1\") {", 
+    "\t\twarn \"couldn't require $mod: $@\";", 
+    "\t}", 
+    "}", 
+    "", 
+    "# imports into current package", 
+    "BEGIN {", 
+    "\tunless (eval \"use $mod; 1\") {", 
+    "\t\twarn \"couldn't use $mod: $@\";", 
+    "\t}", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

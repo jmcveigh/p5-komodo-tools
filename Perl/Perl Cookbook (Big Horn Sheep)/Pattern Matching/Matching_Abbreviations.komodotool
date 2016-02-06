@@ -1,0 +1,28 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Matching Abbreviations", 
+  "value": [
+    "chomp($answer = <>);", 
+    "if (\"SEND\" =~ /^\\Q$answer/i) { print \"Action is send.\\n\"; }", 
+    "elsif (\"STOP\" =~ /^\\Q$answer/i) { print \"Action is stop.\\n\"; }", 
+    "elsif (\"ABORT\" =~ /^\\Q$answer/i) { print \"Action is abort.\\n\"; }", 
+    "elsif (\"LIST\" =~ /^\\Q$answer/i) { print \"Action is list.\\n\"; }", 
+    "elsif (\"EDIT\" =~ /^\\Q$answer/i) { print \"Action is edit.\\n\"; }", 
+    "", 
+    "# OR ..", 
+    "use Text::Abbrev;", 
+    "$href = abbrev qw(send abort list edit);", 
+    "for (print \"Action: \"; <>; print \"Action :\") {", 
+    "\tchomp;", 
+    "\tmy $action = $href->{lc($_)};", 
+    "\tprint \"Action is $action .\\n\";", 
+    "}", 
+    "!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

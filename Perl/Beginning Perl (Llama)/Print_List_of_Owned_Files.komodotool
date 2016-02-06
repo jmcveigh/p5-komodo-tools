@@ -1,0 +1,31 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Print List of Owned Files", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "sub powned {", 
+    "  my $file = shift;", 
+    "  ", 
+    "  if(-e $file) {", 
+    "    return(1) if(-r -w -o $file);", 
+    "    return(0);", 
+    "  } else {", 
+    "    return(0);", 
+    "  }", 
+    "}", 
+    "", 
+    "if($#ARGV >= 0) {", 
+    "  foreach my $file (@ARGV) {", 
+    "    print \"$file\\n\" if(powned $file);", 
+    "  }", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

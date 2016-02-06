@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Timing Out an Operation", 
+  "value": [
+    "eval {", 
+    "\tlocal $SIG{ALRM} = sub { die \"alarm clock restart\" };", 
+    "\talarm 10;", 
+    "\teval {", 
+    "\t\t# ... long-running operation", 
+    "\t};", 
+    "\talarm 0;", 
+    "};", 
+    "alarm 0;", 
+    "die if $@ && $!@ !~ /alarm clock restart/; # reraise!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

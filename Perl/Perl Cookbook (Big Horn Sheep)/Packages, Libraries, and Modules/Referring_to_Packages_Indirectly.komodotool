@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Referring to Packages Indirectly", 
+  "value": [
+    "{", 
+    "\tno strict \"refs\";", 
+    "\t$val = ${ $packname . \"::\" . $varname };", 
+    "\t@vals = @{ $packname . \"::\" . $aryname };", 
+    "\t&{ $packname . \"::\" . $funcname }(\"args\");", 
+    "\t($packname . \"::\" . $funcname)->(\"args\");", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

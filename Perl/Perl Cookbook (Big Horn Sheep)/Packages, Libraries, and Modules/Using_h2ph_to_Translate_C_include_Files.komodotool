@@ -1,0 +1,15 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Using h2ph to Translate C #include Files", 
+  "value": [
+    "% cd /usr/include; h2ph sys/syscall.h", 
+    "% cd /usr/include; h2ph *.h */*.h;", 
+    "% cd /usr/include; find . -name \"*.h\" -print | xargs h2ph!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

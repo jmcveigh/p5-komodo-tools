@@ -1,0 +1,21 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Editing Input", 
+  "value": [
+    "use Term::ReadLine;", 
+    "", 
+    "$term = Term::ReadLine->new(\"APP DESCRIPTION\");", 
+    "$OUT = $term->OUT || *STDOUT;", 
+    "", 
+    "$term->addhistory($fake_line);", 
+    "$line = $term->readline($prompt);", 
+    "", 
+    "print $OUT \"Any program output\\n\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

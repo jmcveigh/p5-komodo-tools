@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Dealing with Database Errors", 
+  "value": [
+    "$dbh = DBI->connect($DSN, $user, $password, { RaiseError => 1});", 
+    "", 
+    "eval {", 
+    "\t$dbh->do($SQL);", 
+    "\t$sth = $dbh->prepare($SQL2);", 
+    "\t$sth->execute();", 
+    "\twhile (@row = $sth->fetchrow_array) {", 
+    "\t\t# ...", 
+    "\t}", 
+    "};", 
+    "", 
+    "if($@) {", 
+    "\t# recover here using $DBI->lasth->errstr to get", 
+    "\t# the error message", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

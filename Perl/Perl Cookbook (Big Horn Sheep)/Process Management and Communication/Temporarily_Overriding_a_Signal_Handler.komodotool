@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Temporarily Overriding a Signal Handler", 
+  "value": [
+    "# the signal handler", 
+    "sub ding {", 
+    "\t$SIG{INT} = \\&ding;", 
+    "\twarn \"\\aEnter your name!\\n\";", 
+    "}", 
+    "", 
+    "# prompt for name, overriding SIGINT", 
+    "sub get_name {", 
+    "\tlocal $SIG{INT} = \\&ding;", 
+    "\tmy $name;", 
+    "\t", 
+    "\tprint \"Kindly Stranger, please enter your name: \";", 
+    "\tchomp($name = <> );", 
+    "\treturn $name;", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

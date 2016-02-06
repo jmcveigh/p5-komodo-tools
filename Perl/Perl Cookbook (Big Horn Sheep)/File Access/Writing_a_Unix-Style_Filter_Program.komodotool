@@ -1,0 +1,15 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Writing a Unix-Style Filter Program", 
+  "value": [
+    "while (<>) {", 
+    "\t# do something with the line", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

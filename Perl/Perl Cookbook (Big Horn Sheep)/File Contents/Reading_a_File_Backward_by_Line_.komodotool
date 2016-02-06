@@ -1,0 +1,31 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Reading a File Backward by Line or Paragraph", 
+  "value": [
+    "@lines = <FILE>;", 
+    "while ($line = pop @lines) {", 
+    "\t# do something with $line", 
+    "}", 
+    "", 
+    "# OR ...", 
+    "@lines = reverse <FILE>;", 
+    "foreach $line (@lines) {", 
+    "\t# do something with $line", 
+    "}", 
+    "", 
+    "# OR ...", 
+    "use Tie::File;", 
+    "tie(@lines, \"Tie::File\", $FILENAME, mode => 0) or die \"can't tie $FILENAME : $!\";", 
+    "$max_lines = $#lines;", 
+    "for ($i = max_lines; $i; $i--) {", 
+    "\t# do something with $lines[$i], eg line number them;", 
+    "\tprint \"%5d  %s\\n\", $i + 1, $lines[$i];", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

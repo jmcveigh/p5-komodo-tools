@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Expanding and Compressing Tabs", 
+  "value": [
+    "while ($string=~ s/t+/' ' x (length($&) * 8 - length($`) % 8)/e) {", 
+    "\t# spin in empty loop until substitution finally fails", 
+    "}", 
+    "", 
+    "use Text::Tabs;", 
+    "@expanded_lines = expand(@lines_with_tabs);", 
+    "@tabulated_lines = unexpand(@lines_without_tabs);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

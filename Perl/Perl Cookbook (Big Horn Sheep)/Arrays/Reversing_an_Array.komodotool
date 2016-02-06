@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Reversing an Array", 
+  "value": [
+    "@REVERSED = reverse @ARRAY;", 
+    "", 
+    "# OR ...", 
+    "foreach $element (reverse @ARRAY) {", 
+    "\t# do something with $element", 
+    "}", 
+    "", 
+    "# OR ...", 
+    "", 
+    "for ($i = $#ARRAY; $i >= 0; $i--) {", 
+    "\t# do something with $ARRAY[$i]", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

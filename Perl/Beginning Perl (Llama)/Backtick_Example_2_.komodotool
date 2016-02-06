@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Backtick Example [2]", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "my %delegation = (", 
+    "  \"go play\" => ['Sat','Sun'],", 
+    "  \"get to work\" => ['Mon','Tue','Wed','Thu','Fri'],", 
+    ");", 
+    "", 
+    "my $d = (split(/\\s/, `date`))[0];", 
+    "", 
+    "while (my ($k, $v) = each(%delegation)) {  ", 
+    "  print $k . \"\\n\" if(@{$v} ~~ /^$d$/);", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

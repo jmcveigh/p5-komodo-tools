@@ -1,0 +1,31 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Two Ways to Print Arrays", 
+  "value": [
+    "use strict;", 
+    "", 
+    "print \"Enter list of names : \\n\";", 
+    "my @names;", 
+    "", 
+    "while(<STDIN>) {", 
+    "  chomp;", 
+    "  push @names, $_;", 
+    "}", 
+    "", 
+    "my @rendered = sort @names;", 
+    "", 
+    "print \"Render 1 : \\n\";", 
+    "print \"@rendered\\n\";", 
+    "print \"Render 2 : \\n\";", 
+    "foreach my $name (@rendered) {", 
+    "  print \"$name\\n\";", 
+    "}", 
+    "!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

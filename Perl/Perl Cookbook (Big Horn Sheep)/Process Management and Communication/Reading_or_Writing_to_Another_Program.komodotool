@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Reading or Writing to Another Program", 
+  "value": [
+    "# Use open with a pipe symbol at the beginning or end.  To read from a program, put the pipe symbol at the end :", 
+    "$pid = open $readme, \"-|\", \"program\", \"arguments\" or die \"Couldn't fork: $!\\n\";", 
+    "while (<$readme>) {", 
+    "\t# ...", 
+    "}", 
+    "close $readme;", 
+    "", 
+    "# To write to the program, put the pipe at the beginning:", 
+    "$pid = open $writeme, \"|-\", \"program\", \"arguments\" or die \"Couldn't fork: $!\\n\";", 
+    "print $writeme \"data\\n\";", 
+    "close $writeme;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

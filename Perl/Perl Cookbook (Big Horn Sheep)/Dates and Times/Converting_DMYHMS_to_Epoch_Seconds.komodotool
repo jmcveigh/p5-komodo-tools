@@ -1,0 +1,16 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Converting DMYHMS to Epoch Seconds", 
+  "value": [
+    "use Time::Local;", 
+    "", 
+    "$TIME = timelocal($sec, $min, $hours, $mday, $mon, $year);", 
+    "$TIME = timegm($sec, $min, $hours, $mday, $mon, $year);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

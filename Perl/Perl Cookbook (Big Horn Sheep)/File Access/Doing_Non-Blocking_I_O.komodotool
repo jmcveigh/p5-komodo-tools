@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Doing Non-Blocking I/O", 
+  "value": [
+    "use Fcntl;", 
+    "sysopen(MODEM, \"/dev/cua0\", O_NONBLOCK | O_RDWR) or die \"Can't open modem : $!\";", 
+    "", 
+    "# OR ...", 
+    "use IO::Handle;", 
+    "MODEM->blocking(0); # assume MODEM already opened", 
+    "", 
+    "# OR ...", 
+    "use Fcntl;", 
+    "$flags = \"\";", 
+    "fcntl(HANDLE, F_GETFL, $flags) or die \"Couldn't get flags for HANDLE : $!\";", 
+    "$flags |= O_NONBLOCK;", 
+    "fcntl(HANDLE, F_SETFL, $flags) or die \"Couldn't set flags for HANDLE : $!\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,13 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Pretending a String Is a File", 
+  "value": [
+    "open($fh, \"+<\", \\$string); # read and write contents of $string!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

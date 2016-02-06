@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Returning More than One Array or Hash", 
+  "value": [
+    "($array_ref, $hash_ref) = somefunc();", 
+    "", 
+    "sub somefunc {", 
+    "\tmy @array;", 
+    "\tmy %hash;", 
+    "\t", 
+    "\t# ...", 
+    "\t", 
+    "\treturn ( \\@array, \\%hash );", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

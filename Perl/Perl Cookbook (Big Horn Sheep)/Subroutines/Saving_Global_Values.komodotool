@@ -1,0 +1,17 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Saving Global Values", 
+  "value": [
+    "our $age = 18; # declare and set global variable", 
+    "if (CONDITION) {", 
+    "\tlocal $age = 23;", 
+    "\tfunc(); # sees temporary value of 23", 
+    "} # Perl restores the old value at block exit!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

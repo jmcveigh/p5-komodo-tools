@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Opening a File", 
+  "value": [
+    "open(SOURCE, \"< $path\") or die \"Couldn't open $path for reading: $!\\n\";", 
+    "open(SINK, \"> $path\") or die \"Couldn't open $path for writing: $!\\n\";", 
+    "open(SOURCE, \"<\", $path) or die \"Couldn't open $path for writing: $!\\n\";", 
+    "open(SINK, \">\", $path) or die \"Couldn't open $path for writing: $!\\n\";", 
+    "", 
+    "use Fcntl;", 
+    "sysopen(SOURCE, $path, O_RDONLY) or die \"Couldn't open $path for reading: $!\\n\";", 
+    "sysopen(SINK, $path, O_WRONLY, 0600) or die \"Couldn't open $path for writing: $!\\n\";", 
+    "", 
+    "open(my $fh, \"<\", $path) or die \"Couldn't open $path for reading: $!\\n\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

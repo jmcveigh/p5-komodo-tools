@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Catching Ctrl-C", 
+  "value": [
+    "$SIG{INT} = \\&tsktsk;", 
+    "", 
+    "sub tsktsk {", 
+    "\t$SIG{INT} = \\&tsktsk; # See 'Writing a Signal Handler'", 
+    "\twarn \"\\aThe long habit of living indisposeth us for dying.\\n\";", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

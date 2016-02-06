@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Open Process STDOUT / STDERR", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "open LSERR, \"> ls.err\";", 
+    "", 
+    "chdir('/') or print LSERR \"Error, regrettably could not change working directory to root.\\n\";", 
+    "open LSOUT, \"ls -l|\" or print \"Error, could not reliably retrieve directory entries list.\\n\";", 
+    "my @entries = <LSOUT>;", 
+    "", 
+    "foreach my $entry (@entries) {", 
+    "  chomp($entry);", 
+    "  print($entry . \"\\n\");  ", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

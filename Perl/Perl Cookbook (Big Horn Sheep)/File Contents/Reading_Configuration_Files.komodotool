@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Reading Configuration Files", 
+  "value": [
+    "while (<CONFIG>) {", 
+    "\tchomp;", 
+    "\ts/#.*//; # no comments", 
+    "\ts/^\\s+//; # no leading white", 
+    "\ts/\\s+$//; # no trailing white", 
+    "\tnext unless length; # anything left?", 
+    "\tmy ($var, $value) = split(/\\s*-\\s*/, $_, 2);", 
+    "\t$User_Preferences{$var} = $value;", 
+    "}", 
+    "", 
+    "# OR ..", 
+    "do \"$ENV{HOME}/.progrc\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,30 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Graphing Data", 
+  "value": [
+    "use GD::Graph::lines; # bars, lines, points, pie", 
+    "", 
+    "$chart = GD::Graph::lines->new(480,320);", 
+    "$chart->set(\tx_label => $X_AXIS_LABEL, # no axes for pie chart", 
+    "\t\t\t\ty_label => $Y_AXIS_LABEL,", 
+    "\t\t\t\ttitle => $GRAPH_TITLE,", 
+    "\t\t\t\t# ... more options possible", 
+    "\t\t\t);", 
+    "\t\t\t", 
+    "$plot = $chart->plot($DATA_REF) or die $chart->error;", 
+    "", 
+    "# do something with $plot->png which is the image in PNG form", 
+    "", 
+    "$DATA_REF = [", 
+    "\t[ 1990, 1992, 1993, 1995, 2002], # x values", 
+    "\t[ 10, 14, 18, 20, 25], # first dataset", 
+    "\t[ 9, undef, 17, undef, 12], # second dataset", 
+    "];!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

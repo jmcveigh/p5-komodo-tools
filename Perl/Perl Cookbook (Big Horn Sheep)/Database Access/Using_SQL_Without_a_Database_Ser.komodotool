@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Using SQL Without a Database Server (SQLite)", 
+  "value": [
+    "use DBI;", 
+    "", 
+    "$dbh = DBI->connect(\"dbi:SQLite:dbname=/Users/gnat/salaries.sqlt\", \"\", \"\", { RaiseError => 1, AutoCommit => 1 });", 
+    "$dbh->do(\"UPDATE salaries SET salary = 2 * salary WHERE name = 'Nat'\");", 
+    "", 
+    "$sth = $dbh->prepare(\"SELECT id, deductions FROM salaries WHERE name = 'Nat'\");", 
+    "", 
+    "# ...!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

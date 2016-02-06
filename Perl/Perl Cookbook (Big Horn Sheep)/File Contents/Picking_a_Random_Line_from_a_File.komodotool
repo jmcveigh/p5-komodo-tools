@@ -1,0 +1,15 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Picking a Random Line from a File", 
+  "value": [
+    "srand;", 
+    "rand($.) < 1 && ($line = $_) while <>;", 
+    "# $line is the random line!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,16 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Modifying a File in Place with the -i Switch", 
+  "value": [
+    "% perl -i.orig -p; -e 'FILTER COMMAND' file1 file2 file3 ...", 
+    "", 
+    "#!/usr/bin/perl -i.orig -p", 
+    "# filter commands go here!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

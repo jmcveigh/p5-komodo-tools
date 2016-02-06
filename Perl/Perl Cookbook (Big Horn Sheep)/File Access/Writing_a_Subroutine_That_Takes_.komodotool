@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Writing a Subroutine That Takes Filehandles as Built-ins Do", 
+  "value": [
+    "use Symbol qw(qualify_to_ref);", 
+    "", 
+    "sub my_eof (*) {", 
+    "\tmy $handle = shift;", 
+    "\t$handle = qualify_to_ref($handle, caller());", 
+    "\t# use $handle", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

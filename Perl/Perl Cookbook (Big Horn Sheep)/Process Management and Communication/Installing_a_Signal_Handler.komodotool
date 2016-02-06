@@ -1,0 +1,21 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Installing a Signal Handler", 
+  "value": [
+    "$SIG{QUIT} = \\&got_sig_quit; # call &got_sig_quit for every SIGQUIT", 
+    "$SIG{PIPE} = 'got_sig_pipe'; # call main::got_sig_pipe for every SIGPIPE", 
+    "$SIG{INT} = sub { $ouch++ }; # increment $ouch for every SIGINT", 
+    "", 
+    "# %SIG also lets you ignore a signal", 
+    "$SIG{INT} = 'IGNORE';", 
+    "", 
+    "# it also restores handling for that signal to the default", 
+    "$SIG{STOP} = 'DEFAULT';!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

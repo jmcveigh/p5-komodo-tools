@@ -1,0 +1,21 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Escaping Quotes (Important Security)", 
+  "value": [
+    "#", 
+    "# IMPORTANT SECURITY !!!", 
+    "#", 
+    "$quoted = $dbh->quote($unquoted);", 
+    "", 
+    "$sth->prepare(\"SELECT id, login FROM People WHERE name = $quoted\");", 
+    "", 
+    "$sth->prepare(\"SELECT, id, login FROM People WHERE name = ?\");", 
+    "$sth->execute($unquoted);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

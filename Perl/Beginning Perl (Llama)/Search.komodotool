@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Search", 
+  "value": [
+    "my $haystack = <STDIN>;", 
+    "my $needle = <STDIN>;", 
+    "", 
+    "chomp($haystack);", 
+    "chomp($needle);", 
+    "", 
+    "my $idx = -1;", 
+    "", 
+    "while(($idx = index($haystack,$needle, $idx + 1)) >= 0) {", 
+    "  print $idx;", 
+    "  print \"\\n\";", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

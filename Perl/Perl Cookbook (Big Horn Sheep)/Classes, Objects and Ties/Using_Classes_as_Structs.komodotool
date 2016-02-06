@@ -1,0 +1,29 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Using Classes as Structs", 
+  "value": [
+    "use Class::Struct;", 
+    "", 
+    "struct Person {", 
+    "\tname => '$',", 
+    "\tage => '$',", 
+    "\tpeers => '@',", 
+    "};", 
+    "", 
+    "my $p = Person->new();", 
+    "$p->name(\"Jason Smythe\");", 
+    "$p->age(13);", 
+    "$p->peers( [\"Wilbur\", \"Ralph\", \"Fred\"] ) ;", 
+    "", 
+    "# or this way", 
+    "@{$p->peers} = (\"Wilbur\", \"Ralph\", \"Fred\");", 
+    "", 
+    "printf \"At age %d, %s's first friend is %s.\\n\", $p->age, $p->name, $p->peers(0);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

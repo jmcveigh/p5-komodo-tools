@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Updating a Random-Access File", 
+  "value": [
+    "use Fcntl; # for SEEK_SET or SEEK_CUR", 
+    "", 
+    "$ADDRESS = $RECSIZE * $RECNO;", 
+    "seek(FH, $ADDRESS, SEEK_SET) or die \"couldn't seek : $!\";", 
+    "read(FH, $BUFFER, $RECSIZE) == $RECSIZE or die \"couldn't read : $!\";", 
+    "@FIELDS = unpack($FORMAT, $BUFFER);", 
+    "# update fields, then", 
+    "$BUFFER = pack($FORMAT, @FIELDS);", 
+    "seek(FH, -$RECSIZE, SEEK_CUR) or die \"couldn't seek : $!\";", 
+    "print FH $BUFFER;", 
+    "close FH or die \"couldn't close : $!\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

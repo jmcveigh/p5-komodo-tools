@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Sort Hash", 
+  "value": [
+    "my %last_name = qw { fred flintstone Wilma Flintstone Barney Rubble betty rubble Bamm-Bamm Rubble PEBBLES FLINTSTONE };", 
+    "my @ordered_keys = sort { (lc(sprintf($last_name{$a} . \" \" . $a)) cmp lc(sprintf($last_name{$b}) . \" \" . $b)) } keys %last_name;", 
+    "my @names;", 
+    "", 
+    "foreach my $k (@ordered_keys) {", 
+    "  push @names, \"$k $last_name{$k}\";", 
+    "}", 
+    "", 
+    "my @rendered = join(\",\", @names);", 
+    "", 
+    "print \"@rendered\\n\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

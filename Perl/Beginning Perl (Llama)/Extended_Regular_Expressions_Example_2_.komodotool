@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Extended Regular Expressions Example [2]", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "while(<>) {", 
+    "  chomp;", 
+    "  if (/(?<WORD>\\w+a)(?<SUFFIX>[^\\w\\.].{0,5})/) {", 
+    "    print(\"\\$+{WORD} contains '$+{WORD}' \");", 
+    "    if(\"$+{SUFFIX}\") {", 
+    "      print(\"and \\$+{SUFFIX} contains '$+{SUFFIX}'\");", 
+    "    }", 
+    "    print(\"\\n\");", 
+    "  }", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

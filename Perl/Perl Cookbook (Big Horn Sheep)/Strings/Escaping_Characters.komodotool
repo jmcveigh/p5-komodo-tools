@@ -1,0 +1,17 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Escaping Characters", 
+  "value": [
+    "# backslash", 
+    "$var =~ s/([CHARLIST])/\\\\$1/g;", 
+    "", 
+    "# double", 
+    "$var =~ s/([CHARLIST])/$1$1/g;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

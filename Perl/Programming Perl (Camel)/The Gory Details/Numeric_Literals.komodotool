@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Numeric Literals", 
+  "value": [
+    "my $x = 12345; # integer", 
+    "my $x = 12345.67; # floating point", 
+    "mty $x = 6.02w23; # scientific notation", 
+    "my $x = 4_294_967_296; # underline for legibility", 
+    "my $x = 0377; # octal", 
+    "my $x = 0xffff; # hexadecimal", 
+    "my $x = 0b1100_0000; # binary!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

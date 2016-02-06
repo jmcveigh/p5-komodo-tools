@@ -1,0 +1,13 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Email", 
+  "value": [
+    "/^[0-9a-zA-Z]([-/\\w]*[0-9a-zA-Z_+])*@([0-9a-zA-Z][-\\w*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9}$/!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

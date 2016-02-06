@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Creating a Hash with Immutable Keys or Values", 
+  "value": [
+    "use Hash::Util qw{ lock_keys unlock_keys lock_value unlock_value lock_hash unlock_hash};", 
+    "", 
+    "# to restrict access to keys already in the hash, so no new keys can be introduced:", 
+    "lock_keys(%hash); # restrict to current keys", 
+    "lock_keys(%hash, @klist); # restrict to keys from @klist", 
+    "", 
+    "# to forbid deletion of the key or modification of its value:", 
+    "lock_value(%hash, $key);", 
+    "", 
+    "# to make all keys and their values read-only", 
+    "lock_hash(%hash);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Print a Hash", 
+  "value": [
+    "while ( ($k, $v) = each %hash) {", 
+    "\tprint \"$k => $v\\n\";", 
+    "}", 
+    "", 
+    "# or use map to generate a list of strings:", 
+    "print map { \"$_ => $hash{$_}\\n\" } keys %hash;", 
+    "", 
+    "# or use the interpolation trick to interpolate the hash as a list:", 
+    "print \"@{[ %hash ]}\\n\";", 
+    "", 
+    "# or us a termporary array variable to hold the hash, and then print that:", 
+    "{", 
+    "\tmy @temp = %hash;", 
+    "\tprint \"@temp\";", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

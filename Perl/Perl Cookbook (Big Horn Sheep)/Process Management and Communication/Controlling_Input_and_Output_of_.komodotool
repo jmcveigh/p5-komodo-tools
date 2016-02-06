@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Controlling Input and Output of Another Program", 
+  "value": [
+    "use IPD::Open2;", 
+    "", 
+    "$pid = open2(*README, *WRITEME, $program);", 
+    "print WRITEME \"here's your input\\n\";", 
+    "$output = <README>;", 
+    "close(WRITEME);", 
+    "close(README);", 
+    "waitpid($pid, 0);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

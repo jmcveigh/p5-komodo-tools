@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Modifying a File in Place Without a Temporary File", 
+  "value": [
+    "open(FH, \"+<\", $FILE) or die \"Opening: $!\";", 
+    "@ARRAY = <FH>;", 
+    "# change ARRAY here", 
+    "seek(FH, 0, 0) or die \"Seeking : $!\";", 
+    "print FH @ARRAY or die \"Printing : $!\";", 
+    "truncate(FH, tell(FH)) or die \"Truncating : $!\";", 
+    "close(FH);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

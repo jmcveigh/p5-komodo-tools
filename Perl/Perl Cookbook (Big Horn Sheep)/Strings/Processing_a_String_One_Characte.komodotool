@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Processing a String One Character at a Time", 
+  "value": [
+    "@array = split(//, $string); # each element a single character", 
+    "@array = unpack(\"U*\", $string); # each element a code point (number)", 
+    "", 
+    "while (/(.)/g) { # . is never a newline here", 
+    "\t# $1 has character, ord($1) its number", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

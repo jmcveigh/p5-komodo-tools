@@ -1,0 +1,31 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Guess a Number (High / Low) [1]", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "my $number_in_mind = int(rand 100 + 1);", 
+    "my $user_input = \"\";", 
+    "", 
+    "until($user_input eq $number_in_mind)", 
+    "{", 
+    "  $user_input = <STDIN>;", 
+    "  chomp $user_input;", 
+    "  if(!$user_input || $user_input =~ /quit/i || $user_input =~ /exit/i) {", 
+    "    last;", 
+    "  }", 
+    "  elsif($user_input < $number_in_mind) {", 
+    "    print \"Too low\\n\";", 
+    "  } elsif($user_input > $number_in_mind) {", 
+    "    print \"Too high\\n\";", 
+    "  }", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

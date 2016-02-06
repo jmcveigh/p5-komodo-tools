@@ -1,0 +1,16 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Destroying an Object", 
+  "value": [
+    "sub DESTROY {", 
+    "\tmy $self = shift;", 
+    "\tprintf(\"$self duing at %s\\n\", scalar localtime);", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

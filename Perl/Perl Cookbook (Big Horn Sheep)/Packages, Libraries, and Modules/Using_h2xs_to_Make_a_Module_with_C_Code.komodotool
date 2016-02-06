@@ -1,0 +1,14 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Using h2xs to Make a Module with C Code", 
+  "value": [
+    "% perl Makefile.PL", 
+    "% make!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

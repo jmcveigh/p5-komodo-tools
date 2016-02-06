@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Making a Process Look Like a File with Named Pipes", 
+  "value": [
+    "% mkfifo /path/to/named.pipe", 
+    "", 
+    "# here's a reader for it", 
+    "open($fifo, \"<\", \"/path/to/named.pipe\") or die $!;", 
+    "while (<$fifo>) {", 
+    "\tprint \"Got: $_\";", 
+    "}", 
+    "close $fifo;", 
+    "", 
+    "# here's a writer for it", 
+    "open ($fifo, \">\", \"/path/to/named.pipe\") or die $!\";", 
+    "print $fifo \"Smoke this.\\n\";", 
+    "close $fifo;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

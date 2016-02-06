@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Taking References to Scalars", 
+  "value": [
+    "# to create a reference to a scalar variable, use the backslash operator", 
+    "$scalar_ref = \\$scalar; # get reference to named scalar", 
+    "", 
+    "# to create a reference to an anonymous scalar value (a value that isn't in a variable), assign to a dereferenced undeifned variable;", 
+    "undef $anon_scalar_ref;", 
+    "$$anon_scalar_ref = 15;", 
+    "", 
+    "# this creates a reference to a constant scalar;", 
+    "$anon_scalar_ref = \\15;", 
+    "", 
+    "# use ${...} to dereference", 
+    "print ${ $scalar_ref }; # dereference it", 
+    "${ $scalar_ref } .= \"string\"; #alter referent's value!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

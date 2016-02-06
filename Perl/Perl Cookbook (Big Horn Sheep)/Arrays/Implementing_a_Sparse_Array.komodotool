@@ -1,0 +1,13 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Implementing a Sparse Array", 
+  "value": [
+    "# hint : use a hash instead of an array!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

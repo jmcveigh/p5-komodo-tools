@@ -1,0 +1,26 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "String Literals", 
+  "value": [
+    "# \\n\t\t\tNewline (usually LF)", 
+    "# \\r\t\t\tCarriage return (usually CR)", 
+    "# \\t\t\t\tHorizontal tab", 
+    "# \\f\t\t\tForm feed", 
+    "# \\b\t\t\tBackspace", 
+    "# \\a\t\t\tAlert (bell)", 
+    "# \\e\t\t\tESC character", 
+    "# \\033\t\t\tESC in octal", 
+    "# \\o{33}\t\tAlso ESC in octal", 
+    "# \\x7f\t\t\tDEL in hexadecimal", 
+    "# \\x{263a}\t\tCharacter number 0x263A", 
+    "# \\N{LATIN SMALL LETTER E WITH ACUTE}\t\tThe named character LATIN SMALL LETTER E WITH ACUTE, which is codepoint 0xE9 in Unicode", 
+    "# \\N{U+E9}\t\tCharacter number 0xE9 again", 
+    "# \\cC\t\t\tControl-C!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

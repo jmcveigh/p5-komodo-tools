@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Extracting a Range of Lines", 
+  "value": [
+    "while (<>) {", 
+    "\tif (/BEGIN PATTERN/ .. /END PATTERN/) {", 
+    "\t\t# line falls between BEGIN and END in the", 
+    "\t\t# text, inclusive", 
+    "\t}", 
+    "}", 
+    "", 
+    "while (<>) {", 
+    "\tif (FIRST_LINE_NUM .. LAST_LINE NUM) {", 
+    "\t\t# operate only between first and last line, inclusive", 
+    "\t}", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

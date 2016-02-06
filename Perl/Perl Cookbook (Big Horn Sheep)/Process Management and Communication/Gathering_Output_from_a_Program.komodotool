@@ -1,0 +1,21 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Gathering Output from a Program", 
+  "value": [
+    "$output = `program args`; # collect output into one multiline string", 
+    "@output = `program args`; # collect output into array, one line per element", 
+    "", 
+    "# OR ..", 
+    "open(my $fh, \"-|\", \"program\", @args) or die \"Can't run program: $!\\\";", 
+    "while (<$fh>) {", 
+    "\t$output .= $_;", 
+    "}", 
+    "close $fh;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

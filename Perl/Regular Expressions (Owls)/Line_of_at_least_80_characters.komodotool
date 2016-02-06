@@ -1,0 +1,14 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Line of at least 80 characters", 
+  "value": [
+    "m/.{80,}/", 
+    "length() >= 80 # ok, not a regex!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

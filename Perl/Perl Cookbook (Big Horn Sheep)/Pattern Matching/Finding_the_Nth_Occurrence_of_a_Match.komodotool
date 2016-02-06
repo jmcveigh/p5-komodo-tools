@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Finding the Nth Occurrence of a Match", 
+  "value": [
+    "$WANT = 3;", 
+    "$count = 0;", 
+    "while (/(\\w+)\\s+fish\\b/gi) {", 
+    "\tif (++$count == $WANT) {", 
+    "\t\tprint \"The third fish is a $1 one.\\n\";", 
+    "\t}", 
+    "}", 
+    "", 
+    "# OR ...", 
+    "", 
+    "/(?:\\w+\\s+fish\\s+){2}(\\w+)\\s+fish/i;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

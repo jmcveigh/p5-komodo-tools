@@ -1,0 +1,21 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Constructing an Object", 
+  "value": [
+    "sub new {", 
+    "\tmy $class = shift;", 
+    "\tmy $self = {};", 
+    "\tbless($self, $class);", 
+    "\treturn $self;", 
+    "}", 
+    "", 
+    "# this is the equivalent one-liner", 
+    "sub new { bless( {}, shift ); };!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

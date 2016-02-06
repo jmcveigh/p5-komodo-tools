@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Redefining a Function", 
+  "value": [
+    "undef &grow; # silence -w complaints of redifinition", 
+    "*grow = \\&expand;", 
+    "grow(); # calls expand()", 
+    "", 
+    "{", 
+    "\tlocal *grow = \\&shrink; # only until this block exists", 
+    "\tgrow(); # calls shrink()", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

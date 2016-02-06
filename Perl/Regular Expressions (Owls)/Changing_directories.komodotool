@@ -1,0 +1,13 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Changing directories", 
+  "value": [
+    "S(/usr/bin)(/usr/local/bin)g!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

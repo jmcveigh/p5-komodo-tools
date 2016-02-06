@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Creating Dialog Boxes with Tk", 
+  "value": [
+    "use Tk::DialogBox;", 
+    "", 
+    "$dialog = $main->DialogBox(-title => \"Register This Program\", -buttons => [\"Register\",\"Cancel\"]);", 
+    "", 
+    "# add widgets to the dialog box with $dialog->Add()", 
+    "", 
+    "# later, when you need to display the dialog bozx", 
+    "$button = $dialog->Show();", 
+    "if ($button eq \"Register\") {", 
+    "\t# ...", 
+    "} elsif ($button eq \"Cancel\") {", 
+    "\t# ...", 
+    "} else {", 
+    "\t# this shouldn't happen", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

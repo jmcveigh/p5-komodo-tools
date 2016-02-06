@@ -1,0 +1,17 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Splitting a Filename into Its Component Parts", 
+  "value": [
+    "use File::Basename;", 
+    "", 
+    "$base = basename($path);", 
+    "$dir = dirname($path);", 
+    "($base, $dir, $ext) = fileparse($path);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

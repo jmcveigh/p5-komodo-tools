@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Finding Common or Different Keys in Two Hashes", 
+  "value": [
+    "# find common keys", 
+    "my @common = ();", 
+    "foreach (keys %hash1) {", 
+    "\tpush (@common, $_) if exists $hash2{$_};", 
+    "}", 
+    "", 
+    "# @common now contains common keys", 
+    "", 
+    "# find keys from one hash that aren't in both", 
+    "my @this_not_that = ();", 
+    "foreach (keys %hash1) {", 
+    "\tpush(@this_not_that, $_) uinless exists $hash2{$_};", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

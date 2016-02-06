@@ -1,0 +1,14 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Print Correct Plurals", 
+  "value": [
+    "printf \"It took %d hour%s\\n\", $time, $%time == 1 ? \"\" : \"s\";", 
+    "printf \"%d hour%s %s enough.\\n\", $time, $time == 1 ? \"\" : \"s\", $time == 1 ? \"is\" : \"are\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

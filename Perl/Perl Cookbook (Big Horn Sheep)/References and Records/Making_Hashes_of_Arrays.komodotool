@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Making Hashes of Arrays", 
+  "value": [
+    "# use references to arrays as the has values, use push to append", 
+    "push(@{ $hash{\"KEYNAME\"}}, \"new value\");", 
+    "", 
+    "# then, dereference the value as an array reference when printing out the hash", 
+    "foreach $string (keys %hash) {", 
+    "\tprint \"$string: @{$hash{$string}}\\n\";", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

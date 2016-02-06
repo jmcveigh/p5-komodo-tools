@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Printing a Date", 
+  "value": [
+    "$STRING = localtime($EPOCH_SECONDS);", 
+    "", 
+    "use POSIX qw(strftime);", 
+    "$STRING = strftime($FORMAT, $SECONDS, $MINUTES, $HOUR, $DAY_OF_MONTH, $MONTH, $YEAR, $WEEKDAY, $YEARDAY, $DST;", 
+    "", 
+    "use Date::Manip qw(UnixDate);", 
+    "$STRING = UnixDate($DATE, $FORMAT);", 
+    "!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

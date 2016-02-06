@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Printing to Many Filehandles Simultaneously", 
+  "value": [
+    "foreach $filehandle (@FILEHANDLES) {", 
+    "\tprint $filehandle $stuff_to_print", 
+    "}", 
+    "", 
+    "# OR ...", 
+    "open(MANY, \"| tee file1 file2 file3 > /dev/null\") or die $!;", 
+    "print MANY \"data\\n\" or die $1;", 
+    "close(MANY);", 
+    "", 
+    "# OR ...", 
+    "use IO::Tee;", 
+    "$tee = IO::Tee->new(@FILEHANDLES);", 
+    "print $tee $stuff_to_print;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

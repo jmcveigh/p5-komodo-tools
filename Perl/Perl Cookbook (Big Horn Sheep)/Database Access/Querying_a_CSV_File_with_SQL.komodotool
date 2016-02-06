@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Querying a CSV File with SQL", 
+  "value": [
+    "use DBI;", 
+    "", 
+    "$dbh = DBI->connect(\"dbi:CSV:f_dir=/home/gnat/payroll\", \"\", \"\". { AutoCommit => 1, RaiseError => 1});", 
+    "$dbh->do(\"UPDATE salaries SET salary = salary * 2 WHERE name = 'Nat'\");", 
+    "", 
+    "$sth = $dbh->prepare(\"SELECT name, salary FROM salaries WHERE name = 'Nat'\");", 
+    "$sth->execute();", 
+    "", 
+    "while (@row = $sth->fetchrow_array) {", 
+    "\t# ...", 
+    "}", 
+    "", 
+    "$sth->finish();", 
+    "", 
+    "$dbh->disconnect();!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

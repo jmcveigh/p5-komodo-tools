@@ -1,0 +1,21 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Using Complex Numbers", 
+  "value": [
+    "# $c = $a * $b manually", 
+    "$c_real = ( $a_real * $b_real ) - ( $a_imaginary * $b_imaginary );", 
+    "$c_imaginary = ( $a_real * $b_imaginary ) + ( $b_real * $a_imaginary );", 
+    "", 
+    "# $c = $a * $b using Math::Complex", 
+    "", 
+    "use Math::Complex;", 
+    "$c = $a * $b;", 
+    "!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

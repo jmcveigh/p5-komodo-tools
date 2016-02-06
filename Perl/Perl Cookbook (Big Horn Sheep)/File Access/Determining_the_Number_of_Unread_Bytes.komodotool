@@ -1,0 +1,17 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Determining the Number of Unread Bytes", 
+  "value": [
+    "$size = pack(\"L\", 0);", 
+    "ioctl(FH, $FIONREAD, $size) or die \"Couldn't call ioctl : $!\";", 
+    "$size = unpack(\"L\", $size);", 
+    "", 
+    "# $size bytes can be read!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

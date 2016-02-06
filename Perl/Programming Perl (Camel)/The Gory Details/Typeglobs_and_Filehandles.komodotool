@@ -1,0 +1,26 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Typeglobs and Filehandles", 
+  "value": [
+    "$fh = *STDOUT;", 
+    "", 
+    "$fh = \\*STDOUT;", 
+    "", 
+    "$fh = *STDOUT{IO};", 
+    "", 
+    "sub newopen {", 
+    "\tmy $path = shift;", 
+    "\tlocal *FH; # NOT my() nor our()", 
+    "\topen(FH, '<', $path) || return undef;", 
+    "\treturn *FH; # not \\*FH", 
+    "}", 
+    "", 
+    "$fh = newopen(\"/etc/passwd\");!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

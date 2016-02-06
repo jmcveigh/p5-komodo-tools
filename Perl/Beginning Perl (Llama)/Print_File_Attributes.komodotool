@@ -1,0 +1,31 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Print File Attributes", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "sub report_file_attr {", 
+    "  my $file = shift;", 
+    "  ", 
+    "  if(-e $file) {", 
+    "    print \"$file attributes : \\n\";", 
+    "    print \"\\treadable\\n\" if (-r $file);", 
+    "    print \"\\twriteable\\n\" if (-w $file);", 
+    "    print \"\\texecutable\\n\" if (-x $file);    ", 
+    "  } else {", 
+    "    print \"$file does not exist.\\n\";", 
+    "  }", 
+    "}", 
+    "", 
+    "foreach my $file (@ARGV) {", 
+    "  report_file_attr $file;", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

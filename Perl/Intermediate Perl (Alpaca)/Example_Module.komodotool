@@ -1,0 +1,28 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Example Module", 
+  "value": [
+    "package Oogaboogoo;", 
+    "", 
+    "@day = qw(ark dip wap sen pop sep kir);", 
+    "@month = qw(diz pod bod rod sip waz lin sen kun fiz nap dep);", 
+    "", 
+    "sub date_to_name {", 
+    "  my $num = shift;     ", 
+    "  $day[$num];", 
+    "}", 
+    "", 
+    "sub month_to_name {", 
+    "  my $day = shift;", 
+    "  $month[$num + 1];", 
+    "}", 
+    "", 
+    "1;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

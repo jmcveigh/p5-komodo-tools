@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Specifying a List in Your Program", 
+  "value": [
+    "@a = (\"quick, \"brown\", \"fox\");", 
+    "", 
+    "@a = qw(Meddle not in the affairs of wizards.);", 
+    "", 
+    "@lines = (<< \"END_OF_HERE_DOC\" =~ /^\\s*(.*)/gm);", 
+    "\tI sit beside the fire and think", 
+    "\tof all that I have seen", 
+    "\tof meadow-flowers and butterflies", 
+    "\tand summers that have been", 
+    "END_OF_HERE_DOC!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

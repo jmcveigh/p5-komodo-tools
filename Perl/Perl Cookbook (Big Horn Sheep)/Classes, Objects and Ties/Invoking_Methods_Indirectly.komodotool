@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Invoking Methods Indirectly", 
+  "value": [
+    "$methname = \"flicker\";", 
+    "$obj->methname(10);", 
+    "", 
+    "foreach $m ( qw(start run stop)) {", 
+    "\t$obj->$m();", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

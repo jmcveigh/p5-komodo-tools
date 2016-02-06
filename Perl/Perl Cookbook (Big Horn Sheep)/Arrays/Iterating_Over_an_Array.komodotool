@@ -1,0 +1,15 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Iterating Over an Array", 
+  "value": [
+    "foreach $item(LIST) {", 
+    "\t# do something with $item", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

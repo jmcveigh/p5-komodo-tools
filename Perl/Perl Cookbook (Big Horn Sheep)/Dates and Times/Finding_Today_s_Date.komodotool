@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Finding Today's Date", 
+  "value": [
+    "($DAY, $MONTH, $YEAR) = (localtime)[3,4,5];", 
+    "", 
+    "# OR ...", 
+    "", 
+    "use Time::localtime;", 
+    "$tm = localtime;", 
+    "($DAY, $MONTH, $YEAR) = ($tm->mday, $tm->mon, $tm->year);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

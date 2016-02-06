@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Filtering Your Own Output", 
+  "value": [
+    "head(100);", 
+    "while (<>) {", 
+    "\tprint;", 
+    "}", 
+    "", 
+    "sub head {", 
+    "\tmy $lines = shift || 20;", 
+    "\treturn if $pid = open STDOUT, \"|-\";", 
+    "\tdie \"cannot fork: $!\" unless defined $pid;", 
+    "\twhile (<STDIN>) {", 
+    "\t\tprint;", 
+    "\t\tlast unless --$lines;", 
+    "\t}", 
+    "\texit;", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

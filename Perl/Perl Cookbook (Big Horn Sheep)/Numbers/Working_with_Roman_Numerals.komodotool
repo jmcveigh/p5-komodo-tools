@@ -1,0 +1,15 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Working with Roman Numerals", 
+  "value": [
+    "use Roman;", 
+    "$roman = roman($arabic);", 
+    "$arabic = arabic($roman) if isroman($roman);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

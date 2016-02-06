@@ -1,0 +1,17 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Putting Commas in Numbers", 
+  "value": [
+    "sub commify {", 
+    "\tmy $text = reverse $_[0];", 
+    "\t$text =~ s/(\\d\\d\\d)(?=\\d)(?!\\d*\\.)/$1/g;", 
+    "\treturn scalar reverse $text;", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

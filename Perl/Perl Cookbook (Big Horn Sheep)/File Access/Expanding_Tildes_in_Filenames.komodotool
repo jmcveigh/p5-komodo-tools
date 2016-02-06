@@ -1,0 +1,15 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Expanding Tildes in Filenames", 
+  "value": [
+    "open(FH, glob(\"~joebob/somefile)) || die \"Couldn't open file: $!;", 
+    "# OR ...", 
+    "$filename =~ s{ ^ ~ ( [^/]* )}{ $1 ? (getpwnam($1))[7] : ( $ENV{HOME} || $ENV{LOGDIR} || (getpwuid($c))[7])}ex;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

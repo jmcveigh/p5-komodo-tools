@@ -1,0 +1,17 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "My readlink", 
+  "value": [
+    "use strict;", 
+    "use integer;", 
+    "", 
+    "my ($src) = @ARGV or die \"Please, enter a source file for the purpose of inspecting a symbolic link.\";", 
+    "print $src . \" -> \" . readlink($src) . \"\\n\" if (-e $src);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

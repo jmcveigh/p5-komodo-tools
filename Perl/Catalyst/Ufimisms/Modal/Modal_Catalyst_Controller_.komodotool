@@ -1,0 +1,16 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Modal (Catalyst::Controller)", 
+  "value": [
+    "sub modal : Local {", 
+    "    my ($self, $c) = @_;", 
+    "    $c->stash(template => 'site/modal.tt');", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

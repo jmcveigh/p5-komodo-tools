@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Accessing Substrings", 
+  "value": [
+    "$value = substr($string, $offset, $count);", 
+    "$value = substr($string, $offset);", 
+    "", 
+    "substr($string, $offset, $count) = $newstring;", 
+    "substr($string, $offset, $count, $newstring); # same as previous", 
+    "substr($string, $offset) = $newtail;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

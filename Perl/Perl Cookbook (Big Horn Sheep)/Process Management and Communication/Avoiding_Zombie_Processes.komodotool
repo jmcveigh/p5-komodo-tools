@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Avoiding Zombie Processes", 
+  "value": [
+    "$SIG{CHLD} = 'IGNORE';", 
+    "", 
+    "# OR ...", 
+    "use POSIX \":sys_wait_h\";", 
+    "$SIG{CHLD} = \\&REAPER;", 
+    "sub REAPER {", 
+    "\tmy $stiff;", 
+    "\twhile (($stiff = waitpid(-1, WNOHANG)) > 0) {", 
+    "\t\t# do something with $stiff if you want", 
+    "\t}", 
+    "\t$SIG{CHLD} = \\&REAPER; # install *after* calling waitpid", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

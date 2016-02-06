@@ -1,0 +1,30 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Trimming Blanks from the Ends of a String", 
+  "value": [
+    "$string =~ s/^\\s+//;", 
+    "$string =~ s/\\s+$//;", 
+    "", 
+    "$string = trim($string);", 
+    "@many = trim(@many);", 
+    "", 
+    "sub trim {", 
+    "\tmy @out = @_;", 
+    "\t", 
+    "\tfor (@out) {", 
+    "\t\ts/^\\s+//; # trim left", 
+    "\t\ts/\\s+$//; # trim right", 
+    "\t}", 
+    "\t", 
+    "\treturn @out == 1", 
+    "\t\t? $out[0] # only one to return", 
+    "\t\t: @out; # or many", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,15 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Cloning Constructors", 
+  "value": [
+    "my %proto = shift;", 
+    "my $class = ref($proto) || $proto;", 
+    "my $parent = ref($proto) && $proto;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

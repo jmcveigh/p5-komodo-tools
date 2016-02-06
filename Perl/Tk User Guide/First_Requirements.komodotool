@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "First Requirements", 
+  "value": [
+    "#!/usr/bin/perl -w  ", 
+    "use Tk;", 
+    "use strict;", 
+    "", 
+    "my $mw = MainWindow->new;", 
+    "$mw->Label(-text => 'Hello, world!')->pack;", 
+    "$mw->Button(", 
+    "\t-text    => 'Quit',", 
+    "\t-command => sub { exit },", 
+    ")->pack;", 
+    "MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

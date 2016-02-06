@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Recognizing Two Names for the Same File", 
+  "value": [
+    "%seen = ();", 
+    "", 
+    "sub do_my_thing {", 
+    "\tmy $filename = shift;", 
+    "\tmy ($dev, $ino) = stat $filename;", 
+    "\t", 
+    "\tunless ($seen{$dev, $ino}++) {", 
+    "\t\t# do something with $filename because we haven't", 
+    "\t\t# seen it before", 
+    "\t}", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}
