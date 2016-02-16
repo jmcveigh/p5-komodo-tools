@@ -1,0 +1,16 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Using Cookies", 
+  "value": [
+    "$ua->cookie_jar({});", 
+    "", 
+    "# or instead store cookies in afile between invocations with:", 
+    "$ua->cookie_jar({ file => \"$ENV{HOME}/.cookies\" });!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

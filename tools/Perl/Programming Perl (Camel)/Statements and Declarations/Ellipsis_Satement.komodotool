@@ -1,0 +1,15 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Ellipsis Satement", 
+  "value": [
+    "# Perl uses a bare ellipsis statement as a stub -- that is, a placeholder for code that you haven't implemented yet.", 
+    "", 
+    "...;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

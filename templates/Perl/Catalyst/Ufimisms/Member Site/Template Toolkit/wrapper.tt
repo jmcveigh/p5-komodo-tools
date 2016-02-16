@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>[% template.title or site.title -%]</title>
+
+  <!-- CSS  -->
+  <link href="/static/css/google-icon.css" rel="stylesheet">
+  <link href="/static/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+    <!-- Begin Content -->
+        [% content -%]
+    <!-- End Content -->
+
+
+    <!--  Scripts-->
+    <script src="/static/js/jquery-1.12.0.min.js"></script>
+    <script src="/static/js/materialize.min.js"></script>
+    <script src="/static/js/init.js"></script>
+
+</body>
+</html>

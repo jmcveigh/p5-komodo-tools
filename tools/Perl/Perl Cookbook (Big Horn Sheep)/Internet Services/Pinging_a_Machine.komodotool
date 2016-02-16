@@ -1,0 +1,17 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Pinging a Machine", 
+  "value": [
+    "use Net::Ping;", 
+    "", 
+    "$p = Net::Ping->new() or die \"Can't create new ping object: $!\\n\";", 
+    "print \"$host is alive\" if $p->ping($host);", 
+    "$p->close;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

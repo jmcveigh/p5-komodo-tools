@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Resuming an HTTP GET", 
+  "value": [
+    "use LWP;", 
+    "", 
+    "$have = length($file);", 
+    "", 
+    "$response = $ua->get($URL, 'Range', \"bytes=$have-\");", 
+    "", 
+    "# $response->content hold the rest of the file!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

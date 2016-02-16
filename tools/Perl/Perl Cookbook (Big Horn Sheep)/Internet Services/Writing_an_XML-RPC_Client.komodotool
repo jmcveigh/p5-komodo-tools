@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Writing an XML-RPC Client", 
+  "value": [
+    "use XMLRPC::List;", 
+    "", 
+    "$server = XMLRPC::Lite->proxy(\"http://server.example.com/path\");", 
+    "$result = $server->call('ClassName, handler', @ARGS);", 
+    "", 
+    "die $call->faultstring if $call->fault;", 
+    "print $call->result;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Parsing HTML", 
+  "value": [
+    "# story is everything from <!-- story --> to <!-- /story -->", 
+    "if ($html =~ m{<!-- story -->(.*?)<!-- /story -->}s) {", 
+    "\tmy $story = $1;", 
+    "\t# ...\t", 
+    "} else {", 
+    "\twarn \"No story found in the page\";", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

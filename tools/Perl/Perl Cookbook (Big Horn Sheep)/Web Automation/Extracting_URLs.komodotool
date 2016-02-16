@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Extracting URLs", 
+  "value": [
+    "use HTML::LinkExtor;", 
+    "", 
+    "$parser = HTML::LinkExtor->new(undef, $base_url);", 
+    "$parser->parse_file($filename);", 
+    "@links = $parser->links;", 
+    "foreach $linkarray (@links) {", 
+    "\tmy @element = @$linkarray;", 
+    "\tmy $elt_type = shift @element;", 
+    "\t", 
+    "\twhile (@element) {", 
+    "\t\tmy ($attr_name, $attr_value) = splice(@element, 0, 2);", 
+    "\t}", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

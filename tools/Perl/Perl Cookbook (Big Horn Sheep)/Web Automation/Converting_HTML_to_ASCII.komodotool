@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Converting HTML to ASCII", 
+  "value": [
+    "# external formatter", 
+    "$ascii = `lynx -dump $filename`;", 
+    "", 
+    "# within program", 
+    "", 
+    "use HTML::FormatText 3;", 
+    "$ascii = HTML::FormatText->format_file(", 
+    "\t$filename,", 
+    "\tleftmargin => 0, rightmargin => 50,", 
+    ")!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Extracting or Removing HTML Tags", 
+  "value": [
+    "($plain_text = $html_text) =~ s/<[^>]*>//gs; # WRONG", 
+    "", 
+    "# a correct but slower and slightly more complicated way", 
+    "", 
+    "use HTML::FormatText 2;", 
+    "$plain_text = HTML::FormatText->format_string($html_text);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

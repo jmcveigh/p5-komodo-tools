@@ -1,0 +1,32 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Reading and Writing RSS FILES", 
+  "value": [
+    "use XML::RSS;", 
+    "", 
+    "my $rss = XML::RSS->new;", 
+    "$rss->parsefile($RSS_FILENAME);", 
+    "", 
+    "my @items = @{$rss->{items}};", 
+    "", 
+    "foreach my $item (@items) {", 
+    "\tprint \"title: $item->{'title'}\\n\";", 
+    "\tprint \"linnk: $item->{'link'}\\n\\n\";", 
+    "}", 
+    "", 
+    "# to create an rss file", 
+    "", 
+    "use XML::RSS;", 
+    "", 
+    "my $rss = XML::RSS->new(version => $VERSION);", 
+    "$rss->channel( title => $CHANNEL_TITLE, link => $CHANNEL_LINK, description => $CHANNEL_DESC);", 
+    "$rss->add_item(title => $ITEM_TITLE, link => $ITEM_LINK, description => $ITEM_DESC, name => $ITEM_NAME);", 
+    "print $rss->as_string;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

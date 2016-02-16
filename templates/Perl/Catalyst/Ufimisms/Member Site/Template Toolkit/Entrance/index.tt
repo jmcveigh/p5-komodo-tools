@@ -1,0 +1,31 @@
+<main>
+  <div class="section">      
+    <div class="row">
+      <div class="col offset-s2 s8">
+        <div class="card light-green lighten-4 phatpad">
+          <div class="container">
+            [% IF error_msg %]
+            <div class="row">
+              <div class="col s12">
+                <div class="card red lighten-4 phatpad">
+                  <p class='flow-text'>
+                    [% error_msg -%]
+                  </p>
+                </div>
+              </div>
+            </div>
+            [% END %]
+            <div class="row">                
+              [% form.render -%]
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <p class='flow-text'><a href="[% c.uri_for('reminder') %]" title="Remind me of my username and password by sending me an email.">Remind me of my username and password by sending me an email.</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+  </div>
+</main>

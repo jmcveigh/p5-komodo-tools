@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Processing XML Stylesheet Transfortions", 
+  "value": [
+    "use XML::LibXSLT;", 
+    "", 
+    "my $xslt = XML::LibXSLT->new;", 
+    "", 
+    "my $stylesheet = $xslt->parse_stylesheet_file($XSL_FILENAME);", 
+    "my $result = $style->transform_file($XML_FILENAME);", 
+    "", 
+    "print $stylesheet->output_string($results);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

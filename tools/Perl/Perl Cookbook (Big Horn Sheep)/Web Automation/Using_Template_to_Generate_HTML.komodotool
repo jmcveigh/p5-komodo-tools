@@ -1,0 +1,26 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Using Template to Generate HTML", 
+  "value": [
+    "sub template {", 
+    "\tmy ($filename, $fillings) = @_;", 
+    "\tmy $text;", 
+    "\tlocal $/; # slurp mode (undef)", 
+    "\topen(my $fh, \"<\", $filename) or return;", 
+    "\t$text = <$fh>; # read whole file", 
+    "\tclose($fh); # ignore retval", 
+    "\t# replace quoted words with value in %$fillings hash", 
+    "\t$text =~ s{ %% ( .*? ) %% }", 
+    "\t\t\t  {", 
+    "\t\t\t\texists($fillings->{$1}) ? $fillings->{$1} : \"\"\t\t\t\t", 
+    "\t\t\t  }gsex;", 
+    "\treturn $text;", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

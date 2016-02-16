@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Validating XML", 
+  "value": [
+    "use XML::LibXML;", 
+    "my $parser = XML::LibXML->new;", 
+    "$parser->validation(1);", 
+    "$parser->parse_file($FILENAME);", 
+    "", 
+    "# to validate against W3C Schema, use the XML::Xerces module", 
+    "use XML::Xerces;", 
+    "", 
+    "my $parser = XML::Xerces::DOMParser->new;", 
+    "$parser->setValidationScheme($XML::Xerces::DOMParser::Val_Always);", 
+    "", 
+    "my $error_handler = XML::Xerces::PerlErrorHandler->new();", 
+    "$parser->setErrorHandler($error_handler);", 
+    "", 
+    "$parser->parse($FILENAME);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

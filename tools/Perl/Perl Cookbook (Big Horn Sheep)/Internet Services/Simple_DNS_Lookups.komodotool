@@ -1,0 +1,33 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Simple DNS Lookups", 
+  "value": [
+    "use Socket;", 
+    "", 
+    "@addresses = gethostbyname($name) or die \"Can't resolve $name: $!\\n\";", 
+    "@addresses = map { inet_ntoa($_) } @addresses[4 .. $#addresses];", 
+    "# @addresses is a list of IP addresses (\"208.201.239.48\", \"208.201.239.49\")", 
+    "", 
+    "# Or use inet_aton if you need only the first address", 
+    "", 
+    "use Socket;", 
+    "", 
+    "$address = inet_ntoa(inet_aton($name));", 
+    "", 
+    "# $address is a single IP address \"208.201.239.48\"", 
+    "", 
+    "# If you have an IP address like \"208.201.239.48\"", 
+    "", 
+    "use Socket;", 
+    "", 
+    "$name = gethostbyaddr(inet_aton($address), AF_INET) or die \"Can't resolve $address: $!\\n\";", 
+    "", 
+    "# $name is the hostname (\"www.perl.com\")!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

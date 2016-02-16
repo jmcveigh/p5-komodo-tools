@@ -1,0 +1,30 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Sending Attachments in Mail", 
+  "value": [
+    "use MIME::List;", 
+    "", 
+    "$msg = MIME::List->new( From => 'sender@example.com,", 
+    "\tTo => 'recipient@example.com',", 
+    "\tSubject => 'My photo for the brochure',", 
+    "\tType => 'multipart/mixed',", 
+    ");", 
+    "", 
+    "# Then, add content through the attach method", 
+    "", 
+    "$msg->attach( Type => 'image/jpeg', Path => '/Users/gnat/Photoshopped/nat.jpg', Filename => 'gnat-face.jpg');", 
+    "$msg->attach(Type => 'Text', Data => 'I hope you can use this!');", 
+    "", 
+    "# Finally, send the message, optionally specifying how to send it:", 
+    "", 
+    "$msg->send();", 
+    "# alternatively", 
+    "$msg->send('smtp', 'mailserver.example.com');!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

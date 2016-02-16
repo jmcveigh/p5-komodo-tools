@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Simulating Telnet from a Program", 
+  "value": [
+    "use Net::Telnet;", 
+    "", 
+    "$t = Net::Telnet->new(", 
+    "\tTiemout => 10,", 
+    "\tPrompt => '/%/',", 
+    "\tHost => $hostname,", 
+    ");", 
+    "", 
+    "$t->login($username, $password);", 
+    "@files = $t->cmd(\"ls\");", 
+    "$t->print(\"top\");", 
+    "(undef, $process_string) = $t->waitfor('/\\d+ processes/');", 
+    "$t->close;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,29 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Switch Statement", 
+  "value": [
+    "for ($item) {", 
+    "\twhen (/alpha/) {", 
+    "\t", 
+    "\t}", 
+    "\t", 
+    "\twhen (/beta/) {", 
+    "\t", 
+    "\t}", 
+    "\t", 
+    "\twhen (/gamma/) {", 
+    "\t", 
+    "\t}", 
+    "\t", 
+    "\tdefault {", 
+    "\t", 
+    "\t}", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

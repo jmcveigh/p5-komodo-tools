@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Accessing an LDAP Server", 
+  "value": [
+    "use Net::LDAP;", 
+    "", 
+    "$ldap = Net::LDAP->new(\"ldap.example.com\") or die $@;", 
+    "$ldap->bind();", 
+    "$mesg = $ldap->search(base => $base_dn, filter => $FILTER);", 
+    "$mesg->code() && die $mesg->error;", 
+    "", 
+    "foreach $result ($mesg->all_entries) {", 
+    "\t# do something with $result", 
+    "}", 
+    "", 
+    "$ldap->unbind;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

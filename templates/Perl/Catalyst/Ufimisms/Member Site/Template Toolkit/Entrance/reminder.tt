@@ -1,0 +1,29 @@
+<main>
+  <div class="section">      
+    <div class="row">
+      <div class="col offset-s2 s8">
+        <div class="card light-green lighten-4 phatpad">
+          <div class="container">
+            <div class="row">              
+              <div class="col s12">
+                [%IF success_msg %]
+                <div class="card green lighten-4 phatpad">
+                  <p class='flow-text'>
+                    [% success_msg -%]
+                  </p>
+                  <p class='flow-text'>
+                    Click <strong><a href="[% c.uri_for('/entrance') %]" title="Entrance">HERE</a></strong> to return to entrance.
+                  </p>
+                </div>
+                [% END %]
+              </div>              
+            </div>
+            <div class="row">                
+              [% form.render -%]
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+  </div>
+</main>

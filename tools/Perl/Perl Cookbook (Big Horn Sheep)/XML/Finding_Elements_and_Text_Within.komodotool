@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Finding Elements and Text Within an XML Document", 
+  "value": [
+    "use XML::LibXML;", 
+    "", 
+    "my $parser = XML::LibXML->new;", 
+    "", 
+    "$doc = $parser->parse_file($FILENAME);", 
+    "my @nodes = $doc->findnodes($XPATH_EXPRESSION);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

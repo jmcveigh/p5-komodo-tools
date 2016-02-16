@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Parsing XML into a DOM Tree", 
+  "value": [
+    "use XML::LibXML;", 
+    "my $parser = XML::LibXML->new();", 
+    "my $dom = $parser->parse_string($XML);", 
+    "# or", 
+    "my $dom = $parser->parse_file($FILENAME);", 
+    "my $root = $dom->getDocumentElement;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

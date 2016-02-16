@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Extracting Table Data", 
+  "value": [
+    "use HTML::TableContentParser;", 
+    "", 
+    "$tcp = HTML::TableContentParser->new;", 
+    "$tables = $tcp->parse($HTML);", 
+    "", 
+    "foreach $table (@$tables) {", 
+    "\t@header = map { $_->{data} } @{ $table->{header} };", 
+    "\t# attributes of table tag available as keys in hash", 
+    "\t$table_width = $table->{width};", 
+    "\t", 
+    "\tforeach $row (@{ $tables->{rows}}) {", 
+    "\t\t# attributes of tr tag availabel as keys in hash", 
+    "\t\t$data = $col->{data};", 
+    "\t}", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

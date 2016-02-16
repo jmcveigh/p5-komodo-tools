@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Parsing XML into Data Structures", 
+  "value": [
+    "use XML::Simple;", 
+    "", 
+    "$ref = XMLin($FILENAME, $ForceArray => 1);", 
+    "", 
+    "# if your XML is in a string, pass the string to XML in:", 
+    "use XML::Simple;", 
+    "$ref = XMLin($STRING, ForceArray => 1);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

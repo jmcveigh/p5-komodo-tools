@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Reading Mail with POP3", 
+  "value": [
+    "$pop = Net::POP3->new($mail_server) or die \"Can't open connection to $mail_server : $!\\n\";", 
+    "defined($pop->login($username, $password)) or die \"Can't authenticate: $!\\n\";", 
+    "$messages = $pop->list or die \"Can't get list of undeleted messages: $!\\n\";", 
+    "", 
+    "foreach $msgid (keys %$messages) {", 
+    "\t$message = $pop->get($msgid);", 
+    "\tunless (defined $message) {", 
+    "\t\twarn \"Couldn't fetch $msgid from server: $!\\n\";", 
+    "\t\tnext;", 
+    "\t}", 
+    "\t$pop->delete($msgid);", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,15 @@
+<main>
+  <div class="section">      
+    <div class="row">
+      <div class="col offset-s2 s8">
+        <div class="card light-green lighten-4 phatpad">
+          <div class="container">
+            <div class="row">                
+              [% form.render -%]
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+  </div>
+</main>

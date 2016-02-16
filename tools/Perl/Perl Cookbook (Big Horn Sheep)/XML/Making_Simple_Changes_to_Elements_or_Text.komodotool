@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Making Simple Changes to Elements or Text", 
+  "value": [
+    "#!/bin/perl -w", 
+    "", 
+    "use MySAXFilter1;", 
+    "use MySAXFilter2;", 
+    "use XML::SAX::ParserFactory;", 
+    "use XML::SAX::Machines qw(Pipeline);", 
+    "", 
+    "my $machine = Pipeline(MySAXFilter1 => MySAXFilter2); # or more", 
+    "$machine->parse_uri($FILENAME);", 
+    "", 
+    "$self->SUPER::start_element($tag_struct);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

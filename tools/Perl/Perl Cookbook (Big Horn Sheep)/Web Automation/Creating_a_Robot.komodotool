@@ -1,0 +1,14 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Creating a Robot", 
+  "value": [
+    "use LWP::RobotUA;", 
+    "$ua = LWP::RobotUA->new('websnuffler/0.1', 'me@wherever.com');!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,31 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Extracting Attachment from Mail", 
+  "value": [
+    "use MIME::Parser;", 
+    "", 
+    "$parser = MIME::Parser->new();", 
+    "$parser->output_to_core(1); # don't write attchments to disk", 
+    "$message = $parser->parse_data($MESSAGE); # die()s if can't parse", 
+    "", 
+    "# OR", 
+    "", 
+    "$message = $parser->parse($FILEHANDLE); # die()s if can't parse", 
+    "$head = $message->head(); # object -- see docs", 
+    "$preamble = $message->preamble; # ref to array of lines", 
+    "$epilogue = $message->epilogue; # ref to array of lines", 
+    "", 
+    "$num_parts = $message->parts;", 
+    "for (my $i=0; $i < $num_parts; $i++) {", 
+    "\tmy $part = $message->parts($i);", 
+    "\tmy $content_type = $part->mime_type;", 
+    "\tmy $body = $part->as_string;", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,15 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Parsing a Web Server Log File", 
+  "value": [
+    "while (<LOGFILE>) {", 
+    "\tmy ($client, $identuser, $authuser, $date, $time, $tz, $method, $url, $protocol, $status, $bytes) = /^(\\S+) (\\S+) (\\S+) \\[([^:]+):(\\d+:\\d+:\\d+) ([^\\]]+)\\] \"(\\S+) (.*?) (\\S+\" (\\S+) (\\S+)$/;", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

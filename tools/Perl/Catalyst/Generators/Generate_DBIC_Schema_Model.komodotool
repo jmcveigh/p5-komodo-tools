@@ -1,0 +1,18 @@
+{
+  "insertOutput": 0, 
+  "parseRegex": "", 
+  "doNotOpenOutputWindow": 0, 
+  "keyboard_shortcut": "", 
+  "name": "Generate DBIC Schema Model", 
+  "operateOnSelection": 0, 
+  "value": [
+    "perl script/%b_create.pl model DB DBIC::Schema %(ask:What is the namespace for this Catalyst project?:MyApp)::Schema create=static components=TimeStamp dbi:SQLite:root/data/%(ask:What is the SQLite database filename?:schema.db) on_connect_do=\"PRAGMA foreign_keys = ON\""
+  ], 
+  "cwd": "%D", 
+  "version": "1.0.12", 
+  "env": "", 
+  "showParsedOutputList": 0, 
+  "type": "command", 
+  "parseOutput": 0, 
+  "runIn": "command-output-window"
+}

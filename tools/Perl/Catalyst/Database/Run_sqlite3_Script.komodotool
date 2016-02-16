@@ -1,0 +1,18 @@
+{
+  "insertOutput": 0, 
+  "parseRegex": "", 
+  "doNotOpenOutputWindow": 0, 
+  "keyboard_shortcut": "", 
+  "name": "Run sqlite3 Script", 
+  "operateOnSelection": 0, 
+  "value": [
+    "sqlite3 %D/../root/data/%(ask:Database file name:project.db) < %f"
+  ], 
+  "cwd": "%D", 
+  "version": "1.0.12", 
+  "env": "", 
+  "showParsedOutputList": 0, 
+  "type": "command", 
+  "parseOutput": 0, 
+  "runIn": "command-output-window"
+}

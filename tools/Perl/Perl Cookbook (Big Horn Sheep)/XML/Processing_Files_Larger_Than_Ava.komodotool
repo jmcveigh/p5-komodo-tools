@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Processing Files Larger Than Available Memory", 
+  "value": [
+    "use XML::Twig;", 
+    "", 
+    "my $twig = XML::Twig->new( twig_handlers => {", 
+    "\t$XPATH_EXPRESSION => \\&HANDLER,", 
+    "});", 
+    "", 
+    "$twig->parsefile($FILENAME);", 
+    "$twig->flush();!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

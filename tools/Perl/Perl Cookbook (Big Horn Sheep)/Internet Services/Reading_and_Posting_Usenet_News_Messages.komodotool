@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Reading and Posting Usenet News Messages", 
+  "value": [
+    "use Net::NTTP;", 
+    "", 
+    "$server = Net::NTTP->new(\"news.host.dom\") or die \"Can't connect to news server: $@\\n\";", 
+    "($narticles, $first, $last, $name) = $server->group(\"misc.test\") or die \"Can't select misc.test\\n\";", 
+    "$headers = $server->head($first) or die \"Can't get headers from article $first in $name\\n\";", 
+    "$bodytext = $server->body($first) or die \"Can't get body from article $first in $name\\n\";", 
+    "$article = $server->article($first) or die \"Can't get article $first from $name\\n\";", 
+    "", 
+    "$server->postok() or warn \"Server didn't tell me I could post.\\n\";", 
+    "", 
+    "$server->post( [@lines]) or die \"Can't post: $!\\n\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

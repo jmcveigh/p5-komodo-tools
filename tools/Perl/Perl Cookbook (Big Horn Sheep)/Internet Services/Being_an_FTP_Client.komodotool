@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Being an FTP Client", 
+  "value": [
+    "use Net::FTP;", 
+    "", 
+    "$ftp = Net::FTP->new(\"ftp.host.com\") or die \"Can't connect: $@\\n\";", 
+    "$ftp->login($username, $password) or die \"Couldn't login\\n\";", 
+    "$ftp->cwd($directory) or die \"Couldn't change directory\\n\";", 
+    "$ftp->get($filename) or die \"Couldn't get $filename\\n\";", 
+    "$ftp->put($filename) or die \"Couldn't put $filename\\n\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

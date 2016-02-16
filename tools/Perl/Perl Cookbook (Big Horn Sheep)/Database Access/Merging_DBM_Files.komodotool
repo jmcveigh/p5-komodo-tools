@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Merging DBM Files", 
+  "value": [
+    "%OUTOUT = (%INPUT1, %INPUT2);", 
+    "", 
+    "# OR ...", 
+    "%OUTOUT = ();", 
+    "foreach $href (\\%INPUT1, %\\INPUT2) {", 
+    "\twhile (my($key, $value) = each(%$href)) {", 
+    "\t\tif (exists $OUTPUT{$key}) {", 
+    "\t\t\t# decide which value to use and set $OUTPUT{$key} if necessary", 
+    "\t\t} else {", 
+    "\t\t\t$OUTPUT{$key} = $value;", 
+    "\t\t}", 
+    "\t}", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

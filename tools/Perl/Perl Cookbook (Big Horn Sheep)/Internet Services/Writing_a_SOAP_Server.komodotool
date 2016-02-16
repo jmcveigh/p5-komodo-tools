@@ -1,0 +1,15 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Writing a SOAP Server", 
+  "value": [
+    "use SOAP::Transport::HTTP;", 
+    "", 
+    "$daemon = SOAP::Transport::HTTP::Damon->new(LocalPort => $PORT)->dispatch_to('ClassName')->handle();!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

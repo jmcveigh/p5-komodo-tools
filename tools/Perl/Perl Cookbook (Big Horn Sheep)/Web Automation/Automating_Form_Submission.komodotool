@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Automating Form Submission", 
+  "value": [
+    "use LWP::Simple;", 
+    "use URI::URL;", 
+    "", 
+    "$url = url(\"http://www.amazon.com/exec/obidos/search-handle-url/index=boks);", 
+    "$url->query_from(\"field-author\" => \"Larry Wall\");", 
+    "$page = get($url);!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

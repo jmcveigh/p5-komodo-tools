@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Writing an XML-RPC Server", 
+  "value": [
+    "use XMLRPC::Transport::HTP;", 
+    "", 
+    "$daemon = XMLRPC::Transport::HTTP::Daemon->new(LocalPort => $PORT)->dispatch_to('ClassName')->handle();", 
+    "", 
+    "package ClassName;", 
+    "", 
+    "sub handler {", 
+    "\tmy ($class, $arg_hash_ref) = @_;", 
+    "\t# ...", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}
