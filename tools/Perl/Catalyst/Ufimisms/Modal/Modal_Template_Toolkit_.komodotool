@@ -10,7 +10,6 @@
     "  <title>(%ask1:Title:Pagination Demo)</title>", 
     "", 
     "  <!-- CSS  -->", 
-    "  <!-- <link href=\"/static/css/google-icon.css\" rel=\"stylesheet\"> -->", 
     "  <link href=\"/static/css/materialize.css\" type=\"text/css\" rel=\"stylesheet\" media=\"screen,projection\"/>", 
     "  <link href=\"/static/css/style.css\" type=\"text/css\" rel=\"stylesheet\" media=\"screen,projection\"/>", 
     "</head>", 
