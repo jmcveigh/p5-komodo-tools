@@ -13,7 +13,5 @@ rm ./root/static/materialize/LICENSE;
 rm ./root/static/materialize/README.md;
 rmdir ./root/static/materialize/;
 cp ../../jquery-1.12.0.min.js ./root/static/js;
-cp ../../google-icon.css ./root/static/css;
-cp ../../google-icon.woff ./root/static/font;
 EOC
 print 'Complete!\n';
