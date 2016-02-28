@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>[% template.title or site.title -%]</title>
+
+  <!-- CSS  -->
+  <link href="/static/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/static/css/font-awesome.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <div class="card yellow lighten-4">
+              <div class="row">
+                <div class="col s10 offset-s1">
+                  <p class='flow-text'>[% pwd -%]</p>
+                  <ul class="collection">
+                    [% FOREACH item IN items %]
+                      <li class="collection-item">
+                        <div class="row">
+                          <div class="col s8">
+                            <p class='flow-text'>[% item.line -%]</p>
+                          </div>
+                          <div class="col s4">
+                            <p class='flow-text'>[% item.username -%]</p>
+                          </div>
+                        </div>
+                      </li>
+                    [% END %]
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+              <div class="card yellow lighten-2">
+                <div class="row">
+                  <div class="col s10 offset-s1">
+                    <div class="row">
+                      <!-- Begin Content -->
+                      [% form.render -%]
+                      <!-- End Content -->
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    
+    <!--  Scripts-->
+    <script src="/static/js/jquery-1.12.0.min.js"></script>
+    <script src="/static/js/materialize.min.js"></script>
+    <script src="/static/js/init.js"></script>
+
+</body>
+</html>

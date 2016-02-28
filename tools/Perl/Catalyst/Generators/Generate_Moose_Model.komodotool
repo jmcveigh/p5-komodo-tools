@@ -6,7 +6,7 @@
   "name": "Generate Moose Model", 
   "operateOnSelection": 0, 
   "value": [
-    "perl script/%b_create.pl model %(ask:What is the name of this model's package?:Modell)"
+    "perl script/%b_create.pl model %(ask:What is the name of this model's package?:Model)"
   ], 
   "cwd": "%D", 
   "version": "1.0.12", 

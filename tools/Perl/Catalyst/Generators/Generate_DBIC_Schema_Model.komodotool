@@ -6,7 +6,7 @@
   "name": "Generate DBIC Schema Model", 
   "operateOnSelection": 0, 
   "value": [
-    "perl script/%b_create.pl model DB DBIC::Schema %(ask:What is the namespace for this Catalyst project?:MyApp)::Schema create=static components=TimeStamp dbi:SQLite:root/data/%(ask:What is the SQLite database filename?:schema.db) on_connect_do=\"PRAGMA foreign_keys = ON\""
+    "perl script/%b_create.pl model %(ask:What is the database model name?:DB) DBIC::Schema %(ask:What is the namespace for this Catalyst project?:MyApp)::%(ask:What is the schema for this database?:Schema) create=static components=TimeStamp dbi:SQLite:root/data/%(ask:What is the SQLite database filename?:schema.db) on_connect_do=\"PRAGMA foreign_keys = ON\""
   ], 
   "cwd": "%D", 
   "version": "1.0.12", 
