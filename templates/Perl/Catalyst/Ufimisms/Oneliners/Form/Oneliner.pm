@@ -7,13 +7,13 @@ has '+item_class' => ( default => 'Oneliner::Item' );
 
 has_field 'line' => (
 	type => 'Text',
-    wrapper_class => ['input-field','col','s8'],
+    wrapper_class => ['input-field','','col-sm-8'],
 	required => 1,
 );
 
 has_field 'username' => (
 	type => 'Text',	
-    wrapper_class => ['input-field','col','s2'],    
+    wrapper_class => ['input-field','','col-sm-2'],    
 	required => 1,
 );
 
@@ -23,7 +23,7 @@ has_field 'submit' => (
 	element_attr => {
 		class => ['btn','waves-effect','waves-light'],
 	},
-    wrapper_class => ['input-field','col','s2'],
+    wrapper_class => ['input-field','','col-sm-2'],
 );
 
 1;

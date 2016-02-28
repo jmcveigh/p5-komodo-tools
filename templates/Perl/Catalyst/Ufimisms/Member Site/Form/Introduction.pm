@@ -8,7 +8,7 @@ has '+item_class' => ( default => 'Introduction::Item' );
 
 has_field 'username' => (
 	type => 'Text',
-    wrapper_class => ['input-field','col','s12'],
+    wrapper_class => ['input-field','','col-sm-12'],
     validate_method => \&username_unique,
     minlength => 4,
     maxlength => 18,
@@ -26,14 +26,14 @@ sub username_unique {
 
 has_field 'password' => (
 	type => 'Password',
-    wrapper_class => ['input-field','col','s6'],
+    wrapper_class => ['input-field','','col-sm-6'],
     validate_method => \&password_regex,
 	required => 1,
 );
 
 has_field 'repeat_password' => (
     type => 'Password',
-    wrapper_class => ['input-field','col','s6'],    
+    wrapper_class => ['input-field','','col-sm-6'],    
 	required => 1,
 );
 
@@ -64,7 +64,7 @@ sub password_validation {
 
 has_field 'email' => (
 	type => 'Email',
-    wrapper_class => ['input-field','col','s12'],
+    wrapper_class => ['input-field','','col-sm-12'],
     validate_method => \&email_unique,
 	required => 1,
 );
@@ -80,13 +80,13 @@ sub email_unique {
 
 has_field 'surname' => (
 	type => 'Text',
-    wrapper_class => ['input-field','col','s6'],
+    wrapper_class => ['input-field','','col-sm-6'],
 	required => 1,
 );
 
 has_field 'given_name' => (
 	type => 'Text',
-    wrapper_class => ['input-field','col','s6'],
+    wrapper_class => ['input-field','','col-sm-6'],
 	required => 1,
 );
 
@@ -101,7 +101,7 @@ has_field 'submit' => (
 		wrapper_tag => 'div',
         label_tag => 'label',
 	},
-    wrapper_class => ['input-field','col','s2','offset-s10'],
+    wrapper_class => ['input-field','','col-sm-2','offset-col-sm-10'],
 );
 
 1;

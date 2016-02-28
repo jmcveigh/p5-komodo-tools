@@ -8,7 +8,7 @@ has '+item_class' => ( default => 'Reminder::Item' );
 
 has_field 'email' => (
 	type => 'Email',
-    wrapper_class => ['input-field','col','s12'],    
+    wrapper_class => ['input-field','','col-sm-12'],    
 	required => 1,
 );
 
@@ -34,7 +34,7 @@ has_field 'submit' => (
 		wrapper_tag => 'div',
         label_tag => 'label',
 	},
-    wrapper_class => ['input-field','col','s2','offset-s10'],
+    wrapper_class => ['input-field','','col-sm-2','offset-col-sm-10'],
 );
 
 1;
