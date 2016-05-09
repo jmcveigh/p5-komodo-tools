@@ -1,0 +1,7 @@
+ascii: m e s s 
+ord: 109 101 115 115 
+hex: 6d 65 73 73 
+
+perl -E '@a=qw(m e s s); @b=map{ord($_)}@a; \
+say "ascii: ",map{$_," "}@a;say "ord: ",map{$_," "}@b; \
+say "hex: ",map{sprintf("%x",$_), " "}@b;'

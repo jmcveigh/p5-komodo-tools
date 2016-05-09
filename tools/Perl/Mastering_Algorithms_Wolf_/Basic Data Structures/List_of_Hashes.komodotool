@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "List of Hashes", 
+  "value": [
+    "@loh = (", 
+    "\t{", 
+    "\t\tname => 'Dr. Watson',", 
+    "\t\tstreet => '221b Baker St.',", 
+    "\t\tcity => 'London',", 
+    "\t\tzone => 'NW1',", 
+    "\t\tcountry => 'England',", 
+    "\t},", 
+    "\t{", 
+    "\t\tname => 'Sam Gamgee',", 
+    "\t\tstreet => 'Bagshot Row',", 
+    "\t\tcity => 'Hobbiton',\t\t", 
+    "\t\tcountry => 'The Shire',", 
+    "\t},", 
+    ");!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

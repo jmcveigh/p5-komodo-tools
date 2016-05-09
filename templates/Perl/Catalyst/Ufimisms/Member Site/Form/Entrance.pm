@@ -8,7 +8,8 @@ has '+item_class' => ( default => 'Entrance::Item' );
 
 has_field 'username' => (
 	type => 'Text',
-    wrapper_class => ['input-field','','col-sm-12'],    
+    wrapper_class => ['form-group'],
+    element_class => ['form-control'],
     minlength => 4,
     maxlength => 18,
 	required => 1,
@@ -16,7 +17,8 @@ has_field 'username' => (
 
 has_field 'password' => (
 	type => 'Password',
-    wrapper_class => ['input-field','','col-sm-6'],
+    wrapper_class => ['form-group'],
+    element_class => ['form-control'],
 	required => 1,
 );
 
@@ -33,16 +35,14 @@ sub validate {
 
 has_field 'submit' => (
 	type => 'Submit',
-	value => 'Enter',
+	value => 'Submit',
+    wrapper_class => ['form-group'],
 	element_attr => {
-		class => ['input-field','btn','waves-effect','waves-light','right'],
-		style => 'color: black;',
+		class => ['row', 'btn', 'btn-default', 'pull-right'],
 	},
     tags => { 
-		wrapper_tag => 'div',
-        label_tag => 'label',
+		wrapper_tag => 'div',        
 	},
-    wrapper_class => ['input-field','','col-sm-2','offset-col-sm-10'],
 );
 
 1;

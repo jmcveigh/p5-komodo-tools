@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Tag Example", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "use Tk;", 
+    "use strict;", 
+    "", 
+    "my $mw = MainWindow->new;", 
+    "my $t = $mw->Text()->pack();", 
+    "$t->tagConfigure('bold',  -font => \"{Courier New} 24 {bold}\");", 
+    "# Use -font => \"-*-Courier-Medium-B-Normal--*-120-*-*-*-*-*-*\" for unix", 
+    "$t->insert('end', \"This is some normal text\\n\");", 
+    "$t->insert('end', \"This is some bold text\\n\", 'bold');", 
+    "", 
+    "MainLoop;\t!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

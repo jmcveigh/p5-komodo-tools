@@ -1,0 +1,26 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Reversing elements of a linked list", 
+  "value": [
+    "# $list = list_reverse($list)", 
+    "#\tReverse the order of the elements of a list", 
+    "sub list_reverse {", 
+    "\tmy $old = shift;", 
+    "\tmy $new = undef;", 
+    "\t", 
+    "\twhile (my $cur = $old) {", 
+    "\t\t$old = $old->[NEXT];", 
+    "\t\t$cur->[NEXT] = $new;", 
+    "\t\t$new = $cur;", 
+    "\t}", 
+    "\t", 
+    "\treturn $new;", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

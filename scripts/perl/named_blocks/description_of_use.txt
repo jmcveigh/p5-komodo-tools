@@ -1,0 +1,121 @@
+<p>This document attempts to explain the subtleties of Perl's five named blocks. You'll learn during what phase of operation each one operates at, the order of execution, and the reason they may be needed, including code examples.</p>
+
+<p>The sample code assumes perl version 5.10 or higher.</p>
+
+<p>Perl's five named blocks (in order of execution) are BEGIN, UNITCHECK, CHECK, INIT and END. We'll begin with BEGIN :)</p>
+
+<p>BEGIN: These blocks are executed during compilation, as soon as the definition of the block is complete.</p>
+
+<p>Ensuring lexical state data that shares an outer block with a subroutine is a perfect example of where a BEGIN block makes sense. Here is an example of what happens if the sub uses its state data prior to the data being defined in normal program flow. (hint: it is reset when it is redefined):</p>
+
+
+<p>Code:</p>
+
+<code>
+persist();
+{
+    my $store = 0;
+    sub persist {
+        say $store++;
+    }
+}
+persist();
+persist();
+</code>
+
+<p>Output:</p>
+
+<code>
+./begin.pl
+0 0 1
+</code>
+
+<p>By using the BEGIN block, the inner code is defined during compile, so it is available and ready to use before runtime even starts. We can now safely call persist() as many times as we like regardless of the layout of the code, and the state variable will never be reset.</p>
+
+
+<p>Code:</p>
+
+<code>
+persist();
+ BEGIN {
+    my $store = 0;
+    sub persist {
+        say $store++;
+    }
+}
+persist();
+persist();
+</code>
+
+<p>Output:</p>
+
+<code>
+./begin.pl
+0 1 2
+</code>
+
+<p>NOTE: INIT blocks will perform the same task as the BEGIN block in this case, but INIT is performed at the beginning of runtime as opposed to during compile time. Although INIT could be used here, it is more common to see BEGIN used. BEGIN is only *mandatory* when you need to execute code prior to runtime starting, eg. before any other files or modules are imported. See the INIT section below for an example case where INIT *must* be used.</p>
+
+<p>END: This block will execute after all code in the calling stack has finished. For instance, if I need the program to write to a log file no matter if the program fails or not, I could use an END block to ensure this happens.</p>
+
+<p>Code:</p>
+
+<code>
+open my $fh, '+>', 'file.log' or die "Can't open file: $!";
+
+print "Doing work\n";
+
+other_work();
+
+# write that we've finished
+write();
+
+sub other_work {
+    print "Doing other work\n";
+    die() if 1; #fatal error!
+}
+sub write {
+    my $fh = shift;
+    print $fh "Program run at " . time() . "\n";
+}
+END{
+    open my $fh, '+>', 'file.log' or die "Can't open file: $!";
+    print $fh "Program failed at " . time() . "\n";
+}
+</code>
+
+<p>Because the program terminates via die() before the write() function is called, the log file is not updated, therefore we don't know if the program ran today or not. Since we need to know that the program ran regardless of whether it exited prematurely, we'd use an END block to ensure this. END blocks are executed no matter how or why the program terminates.</p>
+
+<p>INIT/CHECK/UNITCHECK: Perform the same tasks as BEGIN or END, but are executed during different phases, and in different orders.</p>
+
+<p>UNITCHECK: is executed during compile (in reverse order) after the successful compilation of each file loaded with a use() statement. I suppose this would be used if one needed to change the environment in steps to set things up before the next file is loaded. I've never seen it used.</p>
+
+<p>CHECK blocks run in reverse order immediately after all of the code (both use()d code and main code) is compiled. I have read that CHECK blocks are used specifically by people writing and working on the insides of compilers, but don't quote me.</p>
+
+<p>INIT runs code after compilation but before the execution of the code, so realistically, it would be the choice to run what I have up in my BEGIN example above, because I didn't need the code in that example during compilation. However, most coders are more familiar with seeing the use of BEGIN blocks.</p>
+
+<p>There are however distinct situations where INIT must be used instead of BEGIN. If the code within the BEGIN block calls code that will not be defined at compile time (ie. outside of any other BEGIN blocks), compilation will fail. eg:</p>
+
+<code>
+BEGIN {
+    my $store = init_store();
+    sub persist {
+        say $store++;
+    }
+}
+
+sub init_store { 0; }
+</code>
+
+<p>Output:</p>
+
+<code>
+Undefined subroutine &main::init_store called at ./init.pl line 10.
+BEGIN failed--compilation aborted at ./init.pl line 14.
+</code>
+
+<p>The state data can not be defined within the BEGIN block, because the init_store() sub is not known about until runtime. Remember that BEGIN blocks are executed during compilation, prior to the program running. An INIT block must be used in this case.</p>
+  
+<p>See <a href="http://perldoc.perl.org/perlmod.html#BEGIN,-UNITCHECK,-CHECK,-INIT-and-END">perldoc perlmod</a></p>
+
+<p>Thanks to <a href="http://www.perlmonks.org/?node_id=699288">JavaFan</a> for the INIT section code example.</p>

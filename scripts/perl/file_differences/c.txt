@@ -1,0 +1,3 @@
+in c.txt, saying hello 
+hellothere no space, no match
+hello how do you do

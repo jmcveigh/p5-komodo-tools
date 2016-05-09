@@ -1,0 +1,29 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Transparent Bitmap", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "#", 
+    "# Transparent X11 bitmap.", 
+    "", 
+    "use Tk;", 
+    "use strict;", 
+    "", 
+    "my $mw = MainWindow->new;", 
+    "my $b = $mw->Bitmap(-file       => 'images/circle.xbm',", 
+    "\t\t    -foreground => 'purple',", 
+    "\t\t    -background => 'yellow',", 
+    "\t            -maskfile => 'images/circle.msk',", 
+    ");", 
+    "", 
+    "my $l = $mw->Label(-image => $b, -background => 'white')->pack;", 
+    "", 
+    "MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

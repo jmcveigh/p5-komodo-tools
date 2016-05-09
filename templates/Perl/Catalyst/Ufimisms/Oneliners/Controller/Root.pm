@@ -16,14 +16,14 @@ sub oneliners_form {
     
     $oneliners->deserialize;
     
-    $c->stash(template => 'index.tt', form => $form, items => $oneliners->items);
+    $c->stash(template => 'index.ttkt.html', form => $form, items => $oneliners->items);
     $form->process(params => $c->req->params );
     return unless $form->validated();
     
     my $oneliner = $c->model('Oneliner')->new($c->req->params);
     
     push @{$oneliners->items}, $oneliner;
-    
+
     $oneliners->serialize;
     
     $c->response->redirect($c->uri_for($self->action_for('posted')));
@@ -31,7 +31,7 @@ sub oneliners_form {
 
 sub posted :Local :Args(0) {
     my ($self, $c) = @_;
-    $c->stash(template => 'posted.tt');
+    $c->stash(template => 'posted.ttkt.html');
 }
 
 sub index :Path :Args(0) {

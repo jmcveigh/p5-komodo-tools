@@ -1,0 +1,63 @@
+#
+# code to pre
+#
+
+perl -pe 's/pre>/code>/g;'
+
+
+#
+# convert html (perlmonks) to ubb
+#
+
+perl -p -e 's/<code>/[code]/g; \
+s/<\/code>/[\/code]/g; \
+s/<a href="/\[url="/g; \
+s/">(.*?)<\/a>/"\]$1\[\/url\]/g; \
+s/<[\/]?\w+>//g;'
+
+#
+# de-html a document (originally meant for perlmonks)
+#
+
+perl -p -e 's/(?:<[\/]?\w+>|<a href="|">.*<\/a>)//g'
+
+#
+# take input, sort it, print the text back out in order,
+# and print blank newlines where the line num doesn't exist
+# in the input
+#
+
+perl -le 'for(<>){/(.*?)(\d+)/;$h{$2}=$1;$a=$2if$2>$a;}for(1..$a){print $h{$_} || ""}' c.txt
+
+today 5
+tomorrow 3
+but not as 2
+anything can 11
+what the hell 4
+I don't know 6
+I'm outta here! 10
+
+#
+# print perlmonks level change dates
+#
+
+get levelchange info by appending ";displaytype=xml" to the end of your home node:
+
+http://perlmonks.org/?node_id=789981;displaytype=xml
+
+and searching for the single line after "levelchange". Put it into a file and:
+
+perl -nE '@a=split(/;/); for(@a){($a,$b)=split(/\s+(?=\d{4})/);say "$a: $b";}' data.txt 
+
+1-2: 2009-08-29 08:54:42
+2-3: 2009-09-02 01:29:29
+3-4: 2009-09-03 08:24:46
+4-5: 2009-09-10 08:50:28
+5-6: 2010-06-29 08:26:43
+6-7: 2010-09-03 10:45:47
+7-8: 2012-04-01 23:00:22
+8-9: 2012-04-28 12:09:22
+9-10: 2012-05-30 03:34:59
+10-11: 2014-11-30 09:34:57
+11-12: 2015-06-17 08:24:20
+

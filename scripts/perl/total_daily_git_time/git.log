@@ -1,0 +1,1857 @@
+commit 31a9eedeea8622958a8d4b7442cb035dee1a226f
+Author: Steve Bertrand <steveb@cpan.org>
+Date:   Mon Jan 18 08:10:41 2016 -0700
+
+    bumped ver to 1.62
+
+commit 0526ba7017b21660088a3eabe55a2c3d9fed2fad
+Merge: e9acf52 220307a
+Author: Steve Bertrand <steveb@cpan.org>
+Date:   Mon Jan 18 08:04:46 2016 -0700
+
+    Merge remote-tracking branch 'origin/master'
+
+commit e9acf52f13ee5658be71a185d8b656614a2197f0
+Author: Steve Bertrand <steveb@cpan.org>
+Date:   Mon Jan 18 08:02:59 2016 -0700
+
+    closes #3; _write_file() was breaking if file param was a dir, and no copy param sent in
+
+commit 220307aa2f9f078385a5ab067478def96b2a0995
+Author: Steve Bertrand <steveb@cpan.org>
+Date:   Sat Jan 16 13:07:14 2016 -0700
+
+    added github bugtracker
+
+commit 0f83132f63ec1251d50c2f6ed5eeaada45c1cab8
+Author: Steve Bertrand <steveb@cpan.org>
+Date:   Sat Jan 16 12:59:25 2016 -0700
+
+    added github bugtracker
+
+commit 99485c934d40389193d83da371c6791667dab630
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Fri Jan 15 08:37:49 2016 -0700
+
+    bumped ver to 1.61
+
+commit 4db3db6feb017630318aff2dc95df311f9a7cfde
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Jan 15 08:34:51 2016 -0700
+
+    updated Changes
+
+commit 0f6a0884e1c840a6604812213bc11abdde68eaca
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Fri Jan 15 08:30:11 2016 -0700
+
+    fixed coverage/travis html in pod
+
+commit 43a14d8a3f97e3214d9d99aaa565cf9a4e956537
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Thu Jan 14 11:58:17 2016 -0700
+
+    fixed coverage link/image
+
+commit b7795aa9e40c3e7dd7debcc75405deb1d16e0094
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Thu Jan 14 11:32:31 2016 -0700
+
+    bumped ver to 1.60
+
+commit ea39bee414daf53591ce5214dc8f954bb0cc1fe4
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Thu Jan 14 11:27:54 2016 -0700
+
+    v1.59 release candidate
+
+commit 30420374656c040c156b7f9c51768432976df2aa
+Author: stevieb9 <steveb@cpan.org>
+Date:   Thu Jan 14 11:14:06 2016 -0700
+
+    fixed no eval catch in t/54 for v5.8-v5.10
+
+commit a0579514258f37abb90c2c91f96d96b853251fdc
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Thu Jan 14 10:00:22 2016 -0700
+
+    fix missing curly brace
+
+commit 17db14a1fc89d4f7944f0e9721298fd3cce413f9
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Thu Jan 14 09:58:34 2016 -0700
+
+    attempt to fix $@ clobber in t/54
+
+commit 39474159424cf4c4f17500ec88df70c7fec7160f
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Thu Jan 14 09:47:26 2016 -0700
+
+    closes #2; closes #1;
+    
+    - add_functionality() now checks if the sub we're adding already exists
+
+commit e63e299a5bddfafb74995de697340ffecaf0ed16
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Thu Jan 14 09:16:54 2016 -0700
+
+    work on add_func, #1 and #2
+
+commit be6079e3ffb60739369418ad38bcbf5616c0ba90
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Wed Jan 13 08:41:03 2016 -0700
+
+    Added tests for trace() for further condition coverage
+
+commit 207403420690d0dc901be8de0a742847cd4f06ce
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Jan 12 15:36:49 2016 -0700
+
+    added more tests to cover more branching
+
+commit 7ac2a515c3aef4da34cb512006ae91ae051c2ae9
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Jan 12 15:20:10 2016 -0700
+
+    added t/55-dir.t
+
+commit bddff4e1904ecbf8a3357c5d5a1f4936882a0a83
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Jan 12 15:19:46 2016 -0700
+
+    in dir mode, we now use the copy param as a directory and copy the working files there
+
+commit 1d6b87b5fa46eb12fceaff45c324fcb55c946f88
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 12 14:10:23 2016 -0700
+
+    removed unneeded check/code for newline
+
+commit 5865b442411d52d36d6370db4741639ba8564658
+Author: stevieb9 <steveb@cpan.org>
+Date:   Tue Jan 12 13:53:14 2016 -0700
+
+    moved eval{} to before  creation as  was getting clobbered somehow
+
+commit f4ba01df5c386552d0cfbb48211eefef8bf8ff75
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 12 12:51:49 2016 -0700
+
+    removed { from regex in sub name check
+
+commit c6f86a8d99ad9e1fd184b81a91ca9e7b847a54fd
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 12 12:44:04 2016 -0700
+
+    removed { from regex in sub name check
+
+commit 0f2aa1506d46eaad2dd6f2b9744219cf1c81409e
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 12 12:38:46 2016 -0700
+
+    removed { from regex in sub name check
+
+commit 117e3cd97a935daabb979893b84e30f693390ab1
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 12 12:33:49 2016 -0700
+
+    removed { from regex in sub name check
+
+commit 63c587f5d2008c57607047b821c211fe2b63bf69
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 12 12:27:53 2016 -0700
+
+    test fixes
+
+commit 36ba7e5aee4aeb739026b6de9789c7169ada690c
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 12 12:17:53 2016 -0700
+
+    test fixes
+
+commit 34c218de5da4a90cbe0d078a472eb53a2fb553af
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 12 12:12:23 2016 -0700
+
+    fixed add_func test failing on 5.8-5.10
+
+commit 11aeed67d6a2f6b0c96ab10d08409111d0d94b59
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 12 11:53:34 2016 -0700
+
+    added tests for post_proc multi and _engine()
+
+commit 6424bfa1b4d874f29e01eb5967eed07a12031b2b
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 12 11:09:38 2016 -0700
+
+    Modified BEGIN blocks to better suit test coverage
+
+commit 4c1568e2700255bfea35b2826acf7d326c43fb3a
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 12 10:42:35 2016 -0700
+
+    Modified BEGIN blocks to better suit test coverage
+
+commit 8627f134d8712684b4ea348a628725d4afb76906
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 12 10:31:53 2016 -0700
+
+    Modified require/import implementation of Devel::Trace::Subs
+
+commit c21b1b4184eaec035da1497527fc538520a658af
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 12 10:21:00 2016 -0700
+
+    Removed erroneous code in postproc
+    
+    - weird eval code looked like remnants of a bad copy/paste
+    - removed bad search code in subs()
+
+commit 2d88f5c4a7645c7f50abf724daaaae1c24e35e03
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 12 10:00:57 2016 -0700
+
+    Added tests for inject_after() and missing() engines
+    
+    - inject after test for no search term or code param
+    - missing test for search regex on/off
+
+commit 90dcd66b52e4c49fbf71bb7ad3fd11596b4dee65
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 12 09:38:38 2016 -0700
+
+    Removed unnecessary search/lines code in Engine's objects()
+
+commit 0ab586e39537d889dca8fd4c2909e599993c977c
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 12 09:09:42 2016 -0700
+
+    Added tests for add_functionality()
+
+commit 6f3681b86d21901afec555dee2ab263fd98fc382
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 12 08:23:44 2016 -0700
+
+    Added tests for remove()
+
+commit a159d0eb6b3892ad9ba186d51d7f3815616fe51f
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Mon Jan 11 14:59:35 2016 -0700
+
+    Added new data file for last commit's test additions
+
+commit 7dbc6bf065b55eb5f2be639de3ca97a610cd2d1a
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Mon Jan 11 14:55:58 2016 -0700
+
+    Tests for inject() to test multi-line sub defs (opening brace on 2nd line)
+
+commit 9dc356ccd2e37780c0be6e2d8da4b6d60b749e9f
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Mon Jan 11 14:34:01 2016 -0700
+
+    More tests for coverage
+
+commit de5828b919cdf5adf38f9c096eb7a411dfa44b07
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Mon Jan 11 14:18:28 2016 -0700
+
+    Changed from Archive::Tar to Pod::Usage in _file() test due to earlier entry to corelist
+
+commit 43a2a79b61d1ed44b84def248b913485b6647c2c
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Mon Jan 11 14:13:59 2016 -0700
+
+    Adding more tests for coverage (dumps and _file())
+
+commit cc491607f5ec0705b18f660450590037d0a2be03
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Mon Jan 11 13:47:07 2016 -0700
+
+    removed _test_print() engine and related tests
+
+commit 62766671309049067f9ce2fe32870666d3955d7d
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Mon Jan 11 12:04:57 2016 -0700
+
+    undid last commit
+
+commit dbf316edc3c63747ae94eecde8f8c5ae5485582a
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Mon Jan 11 11:48:01 2016 -0700
+
+    Testing Sub begin coverage
+
+commit 38122f3634c2dbe66e1988dab3ea5a51c291cb21
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Mon Jan 11 11:35:29 2016 -0700
+
+    Testing Sub begin coverage
+
+commit d42b5b8841b38d44dc075332a0a82eeec6a90db1
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Mon Jan 11 11:27:53 2016 -0700
+
+    Testing Sub begin coverage
+
+commit 79c343cbedb3ba2f587e8b99c4ad4cc22a2a6832
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Mon Jan 11 11:16:09 2016 -0700
+
+    added test for Sub::lines_with()
+
+commit 65ff600fa47cad674ed9b62e901a09ed1d2622e9
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Fri Jan 8 13:03:10 2016 -0700
+
+    Makefile cleanup
+
+commit 3fe6791b96b358272653289b85967b984d48d298
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Fri Jan 8 12:25:02 2016 -0700
+
+    updated readme
+
+commit f9230e22e8c47fb6bbaf15e912a4f9d32b5600a8
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Fri Jan 8 12:16:16 2016 -0700
+
+    tests for coverage
+
+commit cc5ac94d826eed8150498c14102349bd88913627
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Jan 8 12:03:29 2016 -0700
+
+    coverage tests
+
+commit 1978d88da6766d2df47af26aa2a6856f22cee617
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Jan 8 11:51:47 2016 -0700
+
+    figured out trace() t/40 test issues
+
+commit df7d2c413df7ba81cccfaab6709cd4fa36c9582e
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Fri Jan 8 11:39:55 2016 -0700
+
+    trace() tests; added use statements to test file
+
+commit 114b6e3b1058ffed1e265426af8d0f3f0cc95297
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Jan 8 11:35:43 2016 -0700
+
+    trace testing
+
+commit 0cc8e54e9f7b8052f29459e96c2e86715b96925d
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Jan 8 11:32:25 2016 -0700
+
+    trace testing
+
+commit 6cd499c9ac05c01836ab15e1a19d196917a5dac5
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Jan 8 11:03:44 2016 -0700
+
+    trace testing
+
+commit 28599837788fc8d86f03ae9010b0744b94fdc5ee
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Jan 8 11:00:34 2016 -0700
+
+    trace testing
+
+commit 16457a4595016b19f9756c8b5b0b48327ace45f5
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Jan 8 10:56:16 2016 -0700
+
+    trace() tests
+
+commit 82570fb58941c5009c70544fe653acb4f7daa38a
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Jan 8 10:42:43 2016 -0700
+
+    added MOck::Sub build prereq
+
+commit c0475ca4fffe6d3a5ac22a76e2bebb297d60e7fc
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Jan 8 10:39:45 2016 -0700
+
+    added new trace() tests for coverage
+
+commit 1b42f0e7d329f744b18db48354eaee647552a55a
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Jan 7 14:10:57 2016 -0700
+
+    fixed coverage
+
+commit 397e8330d2346757e3a2a126c9a41973d807d376
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Thu Jan 7 09:04:11 2016 -0700
+
+    travis fixes
+
+commit 88b29000283e895d4dd7643ad27369bac8a4f06f
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Thu Jan 7 07:49:45 2016 -0700
+
+    added coverage link
+
+commit 9e3af5fc39520fa455662b6853d95365d20cb28b
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Jan 5 12:12:34 2016 -0700
+
+    travis
+
+commit 2aae0162a47e0a10b48caefd7251ba657b8efda6
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Jan 5 12:09:53 2016 -0700
+
+    travis
+
+commit 3873cd0667aa045b8d1d06864f6418e2be18f5ac
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Tue Jan 5 11:39:36 2016 -0700
+
+    copyright update; added coverage
+
+commit d1ce3e7d2baad190e0b46be5f721150d70ca783b
+Author: stevieb9 <steveb@cpan.org>
+Date:   Wed Dec 30 10:35:55 2015 -0700
+
+    bumped req of file::edit::portable to 1.13
+
+commit 654473c2548372d6072eb3282acf7e3d67f8a032
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Wed Dec 30 10:11:42 2015 -0700
+
+    added more cleanup in t/__clean.t for win32
+
+commit 5784101fae74e38d006ce4cd527149e835e8bdd1
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Dec 30 10:07:31 2015 -0700
+
+    bumped ver to 1.59
+
+commit b9b74b68af9dda8fd4d5f8b6231d06780ae9ddd5
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Dec 30 10:02:37 2015 -0700
+
+    fixed count in t/24-preproc
+
+commit f36e159209ea6c36cc3a070a4a9dde9737e800ac
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Dec 30 09:58:13 2015 -0700
+
+    more test fixes, prep for release
+
+commit 046a9957c6ee5bc5631536f79b53f05581b1e18c
+Author: sbertrand <steve.bertrand@gmail.com>
+Date:   Wed Dec 30 09:49:50 2015 -0700
+
+    Modified t/21 to be win32 friendly
+
+commit 202efb18be1a0bec2593407f58d34e8ab4f2e4e0
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Dec 30 09:31:42 2015 -0700
+
+    test fixes
+
+commit 24da476151d20a2ab6a67c890b0f611e6c1c3b27
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Nov 20 14:20:41 2015 -0700
+
+    PPI: more pod updates
+
+commit b0c39bf48fb206440adc8410656e354beb5966cb
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Nov 20 14:18:03 2015 -0700
+
+    PPI: added pod for order
+
+commit 6f1a56f619215b63a5f44532378b9eb112d7900b
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Nov 20 14:06:01 2015 -0700
+
+    PPI:
+    
+    - added order()
+    - updated tests
+
+commit 45e5abd79ed55d7f2f10c4800277d3c7e69319d0
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Nov 20 13:43:01 2015 -0700
+
+    PPI: _core() now sets ->{order} to keep track of original sub order in the file
+
+commit 41773e2cc68e04f7009affeeb3aa20ad98308b7c
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Nov 20 13:27:08 2015 -0700
+
+    bumped ver to 1.58
+
+commit 649fa992182efbdd331757ceb8fa3e5a85be5c4e
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Nov 20 13:13:32 2015 -0700
+
+    updated Changes
+
+commit 2f47a45af66e1194ae7f172d3dd3b46e5b035864
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Nov 20 13:07:04 2015 -0700
+
+    PPI: sub code is now compiled with PPI
+    
+    - each sub no longer contains a copy of the entire file
+
+commit 0ad172983d76959465e92aeda60f6c51bd02ad3e
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Nov 20 12:55:14 2015 -0700
+
+    PPI: moved call to _read_file() up into core so we set {file_contents}
+
+commit 66409f05dd5f1a5e0060ab1db3d0828e3dad246e
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Nov 20 12:28:25 2015 -0700
+
+    PPI: re-added delete file_contents param
+
+commit 27c950b1e55a2dc3f87d623dff2a195042e6b40c
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Nov 20 12:25:57 2015 -0700
+
+    PPI: removed most tests from t/30, we don't keep the whole file within each sub anymore
+
+commit 83f946bf301db22119014846b119032537a9bf2e
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Nov 20 12:23:06 2015 -0700
+
+    PPI: s/contents/code/ in test file
+
+commit c7be011b1d990a04d0eb3d2355e36b8b29c7d8e3
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Nov 20 12:15:57 2015 -0700
+
+    PPI: changes to allow PPI hacks instead of custom
+    
+    - bumped req ver of FEP to 1.10 due to a croak() fix needed
+      in order to allow recsep() to return something even if a
+      file couldn't be read. (This was against the docs)
+
+commit 3157e08649bc855393b90afce102b7a62bc35208
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Nov 20 10:59:54 2015 -0700
+
+    More work on @file_contents
+    
+    - renamed 'contents' attr in _proc() sub to code
+    - modified Postproc
+
+commit 5fa5cfe6ddf6a4351fb59126efdb638b678d0eb4
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Nov 20 10:17:28 2015 -0700
+
+    - still @file_contents work, $sub->code now populated with PPI
+
+commit cdc423e20a444f1d6cdc37311db4d98744e46e8b
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Nov 20 10:13:44 2015 -0700
+
+    Further work on removing @file_contents
+
+commit 431a8abad46452ffc2984e974e02fe37a335c354
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Nov 20 09:42:16 2015 -0700
+
+    Migrating away from @file_contents, using PPI instead
+    
+    - changed _read_file() to return the name of a tempfile that has been
+      written to with the data from orig $file and platform recseps
+    - _read_file() now returns the name of the mentioned temp file
+    - _proc() now uses $ppi_sub->content to populate each subs content
+
+commit cd876a59e39e7ff21280a57e6fb36b7018708c9e
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Oct 30 14:31:14 2015 -0600
+
+    testing
+
+commit 30652d3c6324a6166e944e544263bf9c8abd41d2
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Oct 30 14:21:53 2015 -0600
+
+    Fri Oct 30 14:21:53 MDT 2015
+
+commit 1a16a4acd327b41a12c5794332ce5fc7b3b246af
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Oct 30 08:38:35 2015 -0600
+
+    updated travis with coveralls
+
+commit 87be708bacdcd1b8d939f1320512e338ee177296
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Oct 30 08:27:38 2015 -0600
+
+    added coveralls.io in REPO
+
+commit 1a809cbcee3d1d2d291caec6a0939c4a296f9ae0
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Oct 30 08:22:58 2015 -0600
+
+    bumped req ver of FEP
+
+commit 1ee57f0347db3daf36ab1cd16ffe8c2b7045b333
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 29 14:29:56 2015 -0600
+
+    bumped ver to 1.57
+
+commit bd19046566087678cb1be1728d8047d02e388a88
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 29 14:10:17 2015 -0600
+
+    added check in BEGIN before clobbering *trace()
+
+commit b2a0d5d880c80bf7edb098c8dc7dc5c0cdec9a63
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 22 14:47:43 2015 -0600
+
+    cleaned up examples/cache_benchmark.pl
+
+commit 6b59048a77c9e71a2905881e1854961d92e8fd0b
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 22 13:55:35 2015 -0600
+
+    5.6 removed from travis
+
+commit 0de21aacc4509d403d0b61326fd4a69151c51e00
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 22 13:48:41 2015 -0600
+
+    finalized work, we now run on perl v5.8+
+
+commit c60f6efe57dffbbb88968314412728d0e60a44b3
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 22 12:58:17 2015 -0600
+
+    another //
+
+commit 2de51c115cd41cdee76a4bf4faf93ad6fb3862a2
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 22 12:54:15 2015 -0600
+
+    typo
+
+commit 23cb53b217556722561434bc4cf8b6b3c9d94e50
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 22 12:50:36 2015 -0600
+
+    removed another defined-or
+
+commit 1028783e9fed28868203de361460e4bf9abbc936
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 22 12:43:06 2015 -0600
+
+    clean up more post-5.6 features
+
+commit be7acf0eaf8d13325b135ba9bfe8b0eb5841bb11
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 22 12:37:02 2015 -0600
+
+    changed each() on array to for() loop
+
+commit e3b87d35ce1955ce80d7498c9322a40d34fa95ab
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 22 12:28:54 2015 -0600
+
+    makefile typo fix
+
+commit 99de2ea1ccdc9476b0d63f1ca2b0d1b292c06b85
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 22 12:27:19 2015 -0600
+
+    lowered req perl ver to 5.6 for testing builds
+
+commit 979a3e490c3c17cbfedd58d95bd5dfc3f677ed5c
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 22 12:24:44 2015 -0600
+
+    replaced // with defined
+
+commit 24db8d56d184f557d89cd6bc0944ed8db8de5b42
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Oct 19 10:54:42 2015 -0600
+
+    bumped ver to 1.54_01
+
+commit c1eb0c06298c5f0dfc6d9ebc31b19d0cb0a0bd3a
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Oct 19 10:37:14 2015 -0600
+
+    small modifications for inject_use, as index was off for DTS
+
+commit f685c81c10fb7958217ec49e1f57afb97acdb51c
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Oct 19 08:34:25 2015 -0600
+
+    bumped ver to 1.53_01
+
+commit 77da72e6e96fbeb756109423ec82818c951edccf
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Oct 19 08:27:41 2015 -0600
+
+    reorganized tests due to windows test failures
+
+commit ce46b768b37f30693547116499df69e8ce1e6387
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Oct 16 15:05:45 2015 -0600
+
+    updated pod in preproc
+
+commit 926161a451f4504af9b37f4bbe79975d9da7fc39
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Oct 16 15:02:15 2015 -0600
+
+    directory cleanup
+
+commit 70e089ca3dfd5c0637b9c07eff572aa329d524c5
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Oct 16 14:38:46 2015 -0600
+
+    bumped ver to 1.52 cpan release
+
+commit 07f306282a1aa5e709a1b1e482b671a558972d41
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Oct 16 14:27:11 2015 -0600
+
+    inject() now uses FEP::splice() for line_num and inject_use
+
+commit 18b81f76b5df8baea1ebd30a2b91eed0bab0e59d
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Oct 16 14:11:16 2015 -0600
+
+    inject() works with FEP::splice()
+
+commit 01cc5e9a57fc503bc2feaebaf23583f5dadc4b26
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Oct 16 13:07:30 2015 -0600
+
+    bumped FEP prereq to ver 1.04
+
+commit 73c4fa72d520d0365e2f67f2881d1dac8f2f247a
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Oct 16 13:06:02 2015 -0600
+
+    bumped ver to 1.51, CPAN release
+
+commit 685f962d7fa6a2d20644f88db7acbfcbb4aa4c35
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Oct 16 12:29:20 2015 -0600
+
+    add_functionality() now writes to the appropriate dispatch tables
+
+commit 40d8b5043ba2c7078e89bcc6ad9680943e75c9e9
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 15 15:43:35 2015 -0600
+
+    File::Find dep removed, POD and other cleanup
+
+commit a5911fe3fd9602a36de50fc6591e0abab505f9cb
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 15 15:30:56 2015 -0600
+
+    Much work on add_functionality()
+
+commit 2cff9b6386efcd6dee78fc6c5e0df610dbee6a66
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 15 10:39:43 2015 -0600
+
+    General cleanup
+
+commit 12317b1e337e9025d9f83f918fd75886427d1e07
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 15 10:23:56 2015 -0600
+
+    Added maxdepth param test to t/44
+
+commit e6d71a38b1960e194382ded88cfbd707e92b107d
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 15 10:15:57 2015 -0600
+
+    Fixed tests in t/44
+
+commit 0cbb19e03170f272419df8b91d6c400ad292bb1a
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 15 10:09:45 2015 -0600
+
+    extensions param rework, we now use FEP::dir() for _run_directory()
+
+commit dc4b3cff816f4ccdbbbbb128cc5dae782eb21204
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 15 07:57:20 2015 -0600
+
+    Bumped ver to 1.50_02
+
+commit 3caed4182d59c3e1264b9c0cf77e3b75eabaf070
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Oct 14 10:24:31 2015 -0600
+
+    Bumped prereq ver of F::E::P to 1.02
+
+commit 06a27467d59e07eea0bd026a7b23addd0b2ff94a
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Oct 5 15:34:30 2015 -0600
+
+    Removed erroneous print output in t/41
+
+commit 07bcc3e74bbc556f832cf7a696bb1a67abef43bb
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Oct 5 08:05:20 2015 -0600
+
+    Removed blead from travis
+
+commit bd30206088a2a0d0e111b2c19a5fee04141a47a2
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Oct 5 07:51:20 2015 -0600
+
+    Bumped ver to 1.50_01
+
+commit 1b7e37c89485207565c0ae28a79c2ee00bd7b944
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Oct 5 07:50:52 2015 -0600
+
+    t/000-compile.t is now a devel test, bumped ver to CPAN version 1.50
+
+commit 7beb7ace508c32f844fac3c138def5c8362af9de
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 1 15:24:52 2015 -0600
+
+    Bumped ver to 1.49_01
+
+commit db4a61d94fa6ff4a394c38f8f1ac847319dfcbdd
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 1 15:20:06 2015 -0600
+
+    in t/000-compile.t, we now force version 0.12.0 due to a failing CPAN test
+
+commit 24c45c65dbc6432086d7f99b87198d05ef2a02fc
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 1 14:51:19 2015 -0600
+
+    Added build info to pod
+
+commit 1e9300447baed8162485e3e02ab1e147a4df419d
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 1 14:25:15 2015 -0600
+
+    Added link to travis ci/bumped ver to 1.48_01
+
+commit 8ff426f8e24a4020707087fd3bfcc90ca4c52a27
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 1 13:49:44 2015 -0600
+
+    more travis tests
+
+commit aa370fb885c0c790d1693012325029f0b59fd83b
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 1 13:34:32 2015 -0600
+
+    more travis testing
+
+commit 09dd286c7c59e7a69b00d6c6c436ef26910a0993
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 1 13:25:37 2015 -0600
+
+    more work on travis
+
+commit 3607ffe62712993db04b6ec766e0a064d1ef6cd9
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 1 13:13:03 2015 -0600
+
+    travis.yml
+
+commit 80540feaee8085711e3d75a7fec50e92781d12a3
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 1 13:01:04 2015 -0600
+
+    Added travis-perl-helpers
+
+commit e956ed2fa19477e7e45d177ca7b856ef07b4db89
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 1 12:52:15 2015 -0600
+
+    Updated MANIFEST.SKIP w/ travis file
+
+commit 21af12d1652833b261a932dcce94555bb4f2a2f7
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Oct 1 12:50:14 2015 -0600
+
+    Added .travis.yml
+
+commit 519bb07e9378b7152d26158159f3e4c7e1beba01
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Sep 30 14:34:15 2015 -0600
+
+    update test
+
+commit dd0fd74e216a9400fd0e08d0748fb4a01a2b966a
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Sep 30 13:55:01 2015 -0600
+
+    Changes fix
+
+commit b915cd77c80ff62191a2a5dd774d07c8ac00f832
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Sep 30 13:47:28 2015 -0600
+
+    Bumped ver to 1.46_01
+
+commit 0fe6f48b1fcf29f9c4922111860707c69af66fcd
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Sep 30 13:38:02 2015 -0600
+
+    Prefilter is now Postprocessor, everywhere
+
+commit efe4c6c72d68483a14500019de7652e3f4545783
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Sep 30 10:03:12 2015 -0600
+
+    Much cleanup and test fixes/changes
+    
+    -bumped ver to 1.46
+
+commit 6c766506824cf484d393f39b42fdb4d1d6352014
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Sep 30 09:00:28 2015 -0600
+
+    Size of the data and instance object have been reduced by ~100%
+    
+    - major cleanup of unecessary structures being kept inside $self
+
+commit 4151d2034954355ca096ca4f0fbf6bcf67e9172b
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Sep 30 08:02:33 2015 -0600
+
+    Removed unneeded line from _proc()
+
+commit 2829adf5b5e1850709515be014e3dd4b835a27ae
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Sep 30 08:01:15 2015 -0600
+
+    Removed a defined-or check on  in _core()
+
+commit d7fb800e5ab4f3cfba02541ba4ff7d8e7cf7b795
+Author: Steve Bertrand <steveb@cpan.org>
+Date:   Tue Sep 29 16:14:36 2015 -0600
+
+    Code cleanup
+
+commit 76dbc41f0bc6fa001761c1187ef0134d7a24c1fd
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 15:35:25 2015 -0600
+
+    MANIFEST update
+
+commit e306fdea69c3c1499dddd72eca80e537c256fa10
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 15:30:34 2015 -0600
+
+    Bumped ver to 1.44_03
+
+commit 8b94c2f56800afbd1b2ab30bbf93b33f80a9f556
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 15:28:57 2015 -0600
+
+    Moved call to _clean_core_config() from run() to _run_end()
+
+commit 9ec56e314d9e88c9b152f266e350072c6bc891b3
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 15:22:15 2015 -0600
+
+    Removed unneeded logic
+
+commit cf490ce033b6bc2b6acc5395cdfae8ec5c28ca30
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 14:59:42 2015 -0600
+
+    Significant code/dir cleanup
+
+commit c9e9f98a2d46d972206a323323f237f74e3a887e
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 14:20:22 2015 -0600
+
+    POD reordering
+
+commit 11c61c8ca9b30806abcbd0ceee1b578adf72b03a
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 13:21:54 2015 -0600
+
+    fixed bad regex in eval test in t/43
+
+commit 84a3921ac897ab93056d6b4b36dd264271ebcf08
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 12:57:36 2015 -0600
+
+    pod cleanup
+
+commit 879c4ab75bd709854d1359d0fa314323d5a26dab
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 12:52:51 2015 -0600
+
+    cleanup
+
+commit ef06539e91db4638c12faae0101188a881bf2f86
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 12:36:01 2015 -0600
+
+    Creating a .bak file now does the right thing
+
+commit 5d67683fbb9f219b62448f4694caa644d4e09f0b
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 12:07:06 2015 -0600
+
+    Bumped ver to 1.44_02
+
+commit 949bdf45d31050a74b15dccae26e3eb59c6b17b9
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 11:53:15 2015 -0600
+
+    Fixed bug in file=>'module::name', backup wasn't able to be created
+
+commit 5c587899ecda1c4981fe344fbc10b2db4416062c
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 10:13:12 2015 -0600
+
+    Back to  on its own line. dev versions break it in the package declaration
+
+commit 47bc50fb1c321f6b1cd99617efc3fb377b75678e
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 10:07:34 2015 -0600
+
+    Bumped ver to dev version 1.44_01
+
+commit 2687f33005d3a242c150aaeb9dbdd509de92c9db
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 10:03:45 2015 -0600
+
+    Makefile.PL has Windows fixes removed
+
+commit ad464d448b2f861d9c399ac3b7f173bf6e3a0c61
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 09:51:24 2015 -0600
+
+    Reduced core dump by ~50 lines
+
+commit c1eb127a66de9e08ea7c36f530e1de9400631a80
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 09:48:52 2015 -0600
+
+    Reduced core dump by ~50 lines
+
+commit c774a6d66db7898c9360c01891dce9aa806c7bb9
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 09:28:29 2015 -0600
+
+    _read_file() and _write_file() both now use File::Edit::Portable
+    
+    - added t/43
+    - pod
+
+commit 1fa81b9d5b7f60f9e85ab25ee30547696c8db4da
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 08:55:47 2015 -0600
+
+    File::Edit::Portable obj is now embedded in
+
+commit 0018a4d762a1e62adfcf805268e5b34dcbfb9be3
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 08:45:56 2015 -0600
+
+    _read_file() now uses File::Edit::Portable
+
+commit fede7eb1ea1f19b3ad5079c0f272f7ff348f064f
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 29 08:19:47 2015 -0600
+
+    module() now accepts a single string param "module('Data::Dumper')
+
+commit 00fca83bff739e59f1b0ce64b9871c9e430fd8c5
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Sep 24 09:52:33 2015 -0600
+
+    Added t/000-compile.t, Test::Compile
+
+commit 46bb5ff9da0fa50e13687b890141f0db33221cd8
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Sep 23 09:53:51 2015 -0600
+
+    Added Perl::Critic test
+
+commit 9a04915298b91c7f9ae4974f998bf6b30186e77c
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Sep 23 09:09:02 2015 -0600
+
+    Added LICENSE to Makefile.PL
+
+commit e168d81d2919ff950ebe1093b43e875d6e73c3b0
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 22 14:15:54 2015 -0600
+
+    Bumped ver to 1.44, logical sub relocation
+
+commit 819d598654335d9877bcc0b9ed4aedb228313788
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 22 13:33:05 2015 -0600
+
+    Added ver.pl - example file, but usable in DES
+
+commit 0c8cd9e8095fa001e20f2c6f4a96377e1661d458
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 22 13:32:34 2015 -0600
+
+    Test rewrites due to search_replace()/replace() changes
+
+commit 3102d6c1cd6d549a17ab8f51c2eebd97e35c1981
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 22 12:16:03 2015 -0600
+
+    search_replace() now takes 'exec => $cref' for param
+
+commit d5683f36bd3bb0ff67f9739518fd901a501231b8
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 22 11:44:01 2015 -0600
+
+    Fixed load issue in Module (hardcoded test module name)
+
+commit 22c89e119de9b19115b69df68f9fe54e84b4a54e
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 22 07:49:02 2015 -0600
+
+    Removed Build.PL, bumped ver to 1.42
+
+commit b33165a3aaccffc189385ff9d623cae492e16cd2
+Merge: 15a3b9d 810f0ab
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 22 07:30:06 2015 -0600
+
+    Merge branch 'master' of https://github.com/stevieb9/devel-examine-subs
+
+commit 15a3b9d59950c7dbcd5104bb02dfea41a002deee
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 22 07:30:03 2015 -0600
+
+    small tweaks
+
+commit 810f0ab7335df761b63ccd15c4f992f9cc652e26
+Author: Steve Bertrand <steveb@cpan.org>
+Date:   Tue Sep 22 06:08:51 2015 -0600
+
+    bumped ver
+
+commit 113e68b5a75c01828e7d38c2144900c3c5cc7d46
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Sep 21 14:31:20 2015 -0600
+
+    makefile cleanup
+
+commit 7f9695291b52a5ae44e4747efcd2f33bbafd62f6
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Sep 21 14:07:37 2015 -0600
+
+    Changes update
+
+commit e309bb56d5017f23af5ace58a461cf61bd9695c4
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Sep 21 13:45:57 2015 -0600
+
+    Added tests to t/09
+
+commit 1784a9185c167e652a44224de0702378fe15a199
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Sep 21 13:35:58 2015 -0600
+
+    t/24-pre_proc_dump now back in use
+    
+    Had to move the call to dump from _pre_proc() to _core()
+
+commit 8e318a6ac0b03079a58c75f26ab864e7dab8261c
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Sep 21 12:53:40 2015 -0600
+
+    Line ending fix - change from \r\n to \R
+
+commit 15b544e7bdb8ec24366e14457505b9742b1506c3
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Sep 21 12:35:28 2015 -0600
+
+    Removed Tie::File from t/26
+
+commit a8aea280efbc461340c7bcc9752ce44197cd8695
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Sep 21 12:31:16 2015 -0600
+
+    Removed Tie::File from t/19
+
+commit 80c1dd66e954134b754c4cc0e899e357e0f897be
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Sep 21 12:26:01 2015 -0600
+
+    Re-added win fix to makefile.pl
+
+commit ae921107e944dcd843ab59e286135078dfdfc640
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Sep 21 12:14:55 2015 -0600
+
+    Removed many more Tie::File uses
+    
+    - completely reworked inject_after() to sort the subs by start line
+      number
+    - re-added .bak backup functionality
+    - _write_file() now works on copy
+
+commit f5c65b8e5ae22a85fe524d879f4b29156d953d6c
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Mon Sep 21 07:41:31 2015 -0600
+
+    Put version info into package line
+
+commit 82e66e1c1bc4131d3e63904ab192eaf191ca0877
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Sep 18 15:05:58 2015 -0600
+
+    - makefile
+
+commit 36617bd3f4429a6b907c2a7549b2d1e887967ed9
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Sep 18 14:50:29 2015 -0600
+
+    - test fix
+
+commit abfc671cb395ac2ec2d6e2183282bbbe1f4c13e8
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Sep 18 14:46:59 2015 -0600
+
+    - search_replace() now tie::file free
+
+commit 53918627a62d985f6839f92c229b4a239a285b6c
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Sep 18 14:14:06 2015 -0600
+
+    - preprocs Tie::File free
+
+commit 13750b9b750ded380c3eefee3f118e42c5ce0fce
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Sep 18 14:12:46 2015 -0600
+
+    - remove() now works with _write_file()
+
+commit 1fe43418eee4ed6f85646eda6ac61f193f0fcc78
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Sep 18 14:09:47 2015 -0600
+
+    - removed tie::file from inject()
+    - finished _write_file()
+    - initial calls to it complete
+
+commit 7a766ec92cf8d4bcefb2dcd8576fafd2227eae3f
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Sep 18 13:21:25 2015 -0600
+
+    - more work removing Tie::File and writing built-in read/write subs
+
+commit e200ca06f069386fcbd88e77b3799f392f0959a2
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Fri Sep 18 10:48:36 2015 -0600
+
+    - initial migration away from Tie::File
+    - wrote _read_file()
+
+commit f7868ee86746f800fc387e04ac7c5ef2535c6ff9
+Author: Steve Bertrand <steveb@cpan.org>
+Date:   Thu Sep 17 18:56:04 2015 -0600
+
+    - use 5.012 in all modules
+
+commit f240f843d51cad052a051116b3fe12be538ba1c5
+Author: Steve Bertrand <steveb@cpan.org>
+Date:   Thu Sep 17 18:33:14 2015 -0600
+
+    - removed EOL check in eol check
+
+commit 82e358c076913cd187fc448dc8d4189a2746b8e7
+Author: Steve Bertrand <steveb@cpan.org>
+Date:   Thu Sep 17 18:25:03 2015 -0600
+
+    - consolodated the if statement for trace()
+    - bumped ver to 1.38
+
+commit f7dbf3453b9298b25351ae547d94709041fed8d9
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Sep 17 17:48:22 2015 -0600
+
+    - bumped to ver 1.37
+
+commit 1c770000c775ab3a842ffe18c63fc9b996b10d43
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Sep 17 17:37:55 2015 -0600
+
+    - bumped ver to 1.36
+
+commit 508c73c4bae03680cf877602bd094de0125d720b
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Sep 17 17:32:14 2015 -0600
+
+    - added checks for \r\n, sets EOL in $ENV{DES_EOL}
+    - updated Tie::File open calls
+    - added a win sample file, added tests
+    - added "or die" statements to all Tie::File opens
+
+commit d0c239a83f6b9a9b236184b07f9784b7aabd9305
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Sep 17 16:39:09 2015 -0600
+
+    - added end_of_line()
+    - added recsep to Tie::File
+
+commit a359437c27aa90e40e3bb6c0738cb0cd9835d8e4
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Sep 17 15:48:28 2015 -0600
+
+    - added _eol()
+
+commit a7e3cdcd6134cd496bfa8e1d0c90b896ccc026d8
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Sep 17 15:29:11 2015 -0600
+
+    - put win check back in
+
+commit b51bbfdcae3989977d9927be3e1d837d5527fee3
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Sep 17 15:17:39 2015 -0600
+
+    - undid win32 checks in Makefile.PL
+
+commit dfd26568dc496833308b45c8bbe995fb93d4e5ca
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Sep 17 14:22:00 2015 -0600
+
+    - further Makefile changes
+
+commit 6be042ff26d60198c9d7fe7014ccde3bf608b3ab
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Sep 17 13:43:57 2015 -0600
+
+    - bumped to ver 1.35
+
+commit 34571311d851f1dbcc3a381cc36314ad49d92250
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Sep 17 13:41:54 2015 -0600
+
+    - updated Makefile.PL win32 checks
+    - updated Changes
+
+commit 379e4524717b0e7cc4ad8efd5ae0e4bfa9b03df1
+Author: unknown <sbertrand@dt01.stg.hitachi.local>
+Date:   Thu Sep 17 13:32:29 2015 -0600
+
+    - Makefile now transforms all test files (s/\n/\r\n/g) when on a win32
+      system
+
+commit 172d871851c3ff737850c4d871dec90435895262
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Thu Sep 17 09:23:01 2015 -0600
+
+    - due to cpan tester errors, needed to bump min perl ver to 5.012,
+    because each on an array wasn't until that version
+
+commit cd9e9a3476ab6a0fbdca8ee5fff22b687522d19a
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Sep 16 15:46:55 2015 -0600
+
+    - added t/40 test for dts
+
+commit 9497646b129af5a1a25fb2e110ec88d590b2aa3c
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Sep 16 15:23:26 2015 -0600
+
+    - bumped ver to 1.34
+
+commit bc16f3e636a3b393b0da2be6014fb39633a37884
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Sep 16 15:17:54 2015 -0600
+
+    - re-added DTS support by conditionally loading the module
+
+commit b2052af9f90649a10a8f0f91c864ddc3f4ee4dc0
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Sep 16 14:16:02 2015 -0600
+
+    bumped to v1.33
+
+commit 2de36b9c439610eea8c126c5c82460054b0d9386
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Wed Sep 16 14:11:46 2015 -0600
+
+    - removed DTS as it broke CPAN install due to circular reference
+
+commit c2454d507b7177fa56d317e23156526f7a1b6266
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 15 10:37:37 2015 -0600
+
+    - updated changes, added repo to pod
+
+commit 33fb17a2239f4727c6a8d07cfaf6c6cca12b8fd7
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 15 10:33:19 2015 -0600
+
+    - added repo to pod
+
+commit aeea09de5182759253b5208f180fa5729d56d881
+Author: Steve Bertrand <steve02@hitachi-id.com>
+Date:   Tue Sep 15 10:30:44 2015 -0600
+
+    - migrate from hg to git
+
+commit fd7a3ec8f5b11bfd4e01a3980ab95abbc205ee83
+Author: spek <spek@localhost>
+Date:   Tue Sep 15 08:49:55 2015 -0600
+
+    - bumped ver to 1.32
+
+commit 9e44e9e8f7635b23cd676474ecdf207e5a183074
+Author: spek <spek@localhost>
+Date:   Tue Sep 15 08:35:17 2015 -0600
+
+    - updated deps
+    - changes
+
+commit c37f7d2495d429d6ddd8648f33d329b8e9915dff
+Author: spek <spek@localhost>
+Date:   Tue Sep 15 08:31:50 2015 -0600
+
+    - implemented Devel::Trace::Subs trace debugging
+
+commit c04a14c40e0fabd83cb97e6c1ee0c04de15c8882
+Author: spek <spek@localhost>
+Date:   Tue Sep 15 08:25:09 2015 -0600
+
+    - typo in new indent in inject()
+
+commit 630da85b19b20cc2fe46ffe5c9e07b957b857ac6
+Author: spek <spek@localhost>
+Date:   Tue Sep 15 08:19:50 2015 -0600
+
+    - made significant changes to fetching indent on after_sub_def, in the event there is whitespace on the first line
+
+commit 78557e26ca5099139e1c01dd611f549cb99140c8
+Author: spek <spek@localhost>
+Date:   Mon Sep 14 16:22:31 2015 -0600
+
+    - set minimum perl ver to 5.10
+
+commit 11772940a6e7077e8e2ea63569acbd4fd6d105d1
+Author: spek <spek@localhost>
+Date:   Mon Sep 14 15:19:45 2015 -0600
+
+    - bumped ver to 1.31
+
+commit b692918cd35f8e245db96ca855e28aa60f515d69
+Author: spek <spek@localhost>
+Date:   Mon Sep 14 15:07:33 2015 -0600
+
+    - updated changes
+
+commit 91764c8e5ee6d61d358bdfc768ae95e89ca414ff
+Author: spek <spek@localhost>
+Date:   Mon Sep 14 15:03:40 2015 -0600
+
+    - updated MANIFEST
+
+commit 5a36043aa5ecd9277d019d3de4c8aee60a175d94
+Author: spek <spek@localhost>
+Date:   Mon Sep 14 14:59:39 2015 -0600
+
+    - README update
+
+commit 65616d27a24de167b5ca2bbb1bd011511c085012
+Author: spek <spek@localhost>
+Date:   Mon Sep 14 14:59:23 2015 -0600
+
+    - fixed bug where eval'ing require/import wasn't loading the module
+    - changed to eval use instead
+
+commit 0cd5aabc8961ab78c54f029c355d9e4059a8387a
+Author: spek <spek@localhost>
+Date:   Mon Sep 14 14:28:30 2015 -0600
+
+    - pod updates
+    - test updates
+
+commit 67512c3e165f8e60b2c83e0e36171a1d4b4991d8
+Author: spek <spek@localhost>
+Date:   Mon Sep 14 13:15:02 2015 -0600
+
+    - added 'inject_after_sub_def' param to inject() preproc
+    - now can inject after a sub def, even if the open brace is on next line
+    - also, it keeps indenting properly
+    - new tests
+
+commit e0ce70e6505ac3a30abfb09f58788410b1d9c83c
+Author: spek <spek@localhost>
+Date:   Mon Sep 14 10:57:29 2015 -0600
+
+    - updated Changes
+
+commit f91c3291c377f526879b0171a0cf89aeb41ec182
+Author: spek <spek@localhost>
+Date:   Mon Sep 14 10:49:02 2015 -0600
+
+    - updated test data files after removing newline insert in inject_after()
+
+commit 6964375d7ea5ea6c9f1092b84b9310f9d7413944
+Author: spek <spek@localhost>
+Date:   Mon Sep 14 10:40:04 2015 -0600
+
+    - bumped ver to 1.30
+
+commit 34368b6cd200f23b9ed09c310ea058662b4079c1
+Author: spek <spek@localhost>
+Date:   Mon Sep 14 10:33:16 2015 -0600
+
+    - removed adding a newline after code in inject_after() engine
+
+commit 71f341a7804711eec830e4f5ca3deef00672a8b8
+Author: spek <spek@localhost>
+Date:   Sun Sep 13 10:07:16 2015 -0600
+
+    - updated tests after adding new inject/remove params
+
+commit d4816c98b322a9766df7c21e8137e46aeeee23d1
+Author: spek <spek@localhost>
+Date:   Sun Sep 13 09:53:19 2015 -0600
+
+    - fixed bug in inject_after engine where $indent would warn on undefined, as if it wasn't in a param, it was set to undef
+    - fixed bug in inject_after engine where a -f $copy would warn because it was undef and no checks were in place
+
+commit a8e051d397829c884e22d3470fcaddf55f909312
+Author: spek <spek@localhost>
+Date:   Sun Sep 13 09:30:49 2015 -0600
+
+    - added remove() preproc and public method
+    - work on making DTF install/remove work
+
+commit 7b8c173735e78a4e77a986ab51d3e875d4018ef7
+Author: spek <spek@localhost>
+Date:   Sun Sep 13 08:56:48 2015 -0600
+
+    - finalized inject() preproc with 'inject_use' param
+
+commit 3a77b8ee7c47cb931c64fdbf08130a3287d7062a
+Author: spek <spek@localhost>
+Date:   Sun Sep 13 08:23:45 2015 -0600
+
+    - replaced inject code in _subs() with a new preprocessor with inject() as a public method
+
+commit e7b6606fbf33f03610df420c61a8bd7e338974a7
+Author: spek <spek@localhost>
+Date:   Sat Sep 12 10:06:25 2015 -0600
+
+    - removed all trace()
+
+commit 4d8a30b7f288eda3b06786566b0b133cce3b29ae
+Author: spek <spek@localhost>
+Date:   Sat Sep 12 09:48:44 2015 -0600
+
+    - finalized delete in _subs()
+
+commit c41dd901bee1a29dbaf36674acdda1399cbdb0f6
+Author: spek <spek@localhost>
+Date:   Sat Sep 12 09:41:02 2015 -0600
+
+    - added initial delete code
+
+commit 2d420aa5a7066747b5902c58006c4c7db0c25f72
+Author: spek <spek@localhost>
+Date:   Fri Sep 11 15:38:18 2015 -0600
+
+    - added Devel::Trace::Flow capabilities
+
+commit 11312d492efe92f1765660045397f777d3974c9f
+Author: spek <spek@localhost>
+Date:   Fri Sep 11 15:11:58 2015 -0600
+
+    - added inject() and rudimentary inject_use in _subs()
+
+commit c7f58840986890c4b1f5267e265d9dd7510c4cc3
+Author: spek <spek@localhost>
+Date:   Wed Sep 9 15:08:13 2015 -0600
+
+    -cleaning
+
+commit 1a2616fde786e7872532076ef3457ae062033232
+Author: spek <spek@localhost>
+Date:   Wed Sep 9 14:57:49 2015 -0600
+
+    bumped ver to 1.29, formatting
+
+commit b9dd1f5d4bdc04a55c8bc39ea3884703489a9bfa
+Author: spek <spek@localhost>
+Date:   Wed Sep 9 14:53:57 2015 -0600
+
+    updated Makefile.PL
+
+commit 92250c6f39fcdaae2d1f63e9bbc73db7eeb9fb59
+Author: spek <spek@localhost>
+Date:   Wed Sep 9 14:24:02 2015 -0600
+
+    - pre filters are now: 'string' or $cref or ['string', $cref, 'string'] etc
+
+commit 2c7480e94abd03024188b39af8ad2483d11da9f9
+Author: spek <spek@localhost>
+Date:   Wed Sep 9 13:32:37 2015 -0600
+
+    updated readme
+
+commit f9810a9e38eca0b101780504f496778ce366f92e
+Author: spek <spek@localhost>
+Date:   Wed Sep 9 13:29:11 2015 -0600
+
+    - all public methods (except run) now take a hash as parameters as opposed to href
+    - internally, the hash is converted using _params() to an href, which is passed around
+      to the various engines etc
+
+commit 22cf7f303da33177626e5ec7713ec32b1e1acfb3
+Author: spek <spek@localhost>
+Date:   Wed Sep 9 10:47:18 2015 -0600
+
+    - updated cache_benchmark.pl
+    - updated README
+
+commit 0f5ece73678036edc7bb85c32f5ee9bd024c5fe5
+Author: spek <spek@localhost>
+Date:   Wed Sep 9 10:46:49 2015 -0600
+
+    - updated/fixed examples/cache_benchmark.pl
+
+commit 999170d6fa890b88ac1345e6507f1945ce101a79
+Author: spek <spek@localhost>
+Date:   Wed Sep 9 10:11:51 2015 -0600
+
+    - test cleanup
+
+commit 77644a7dc5cd62b13b0c19a4006c8e3caf1cdeb7
+Author: spek <spek@localhost>
+Date:   Wed Sep 9 09:51:37 2015 -0600
+
+    - renamed cache_enabled top level param to 'cache' and put it under params
+    - code cleanup related to the above
+
+commit 6ae1a88ff34f50060e6a10d779da78e75fb22ef1
+Merge: 90fdb49 d9c0643
+Author: spek <spek@localhost>
+Date:   Wed Sep 9 08:47:48 2015 -0600
+
+    drop #247 head
+
+commit d9c0643e133893b6a1b102d562ca48c367a2410a
+Author: spek <spek@localhost>
+Date:   Wed Sep 9 08:23:33 2015 -0600
+
+    - updated .hgignore
+
+commit 90fdb49d1bfb7930aa7090b38ef4e70be14e71d0
+Author: spek <spek@localhost>
+Date:   Wed Sep 9 06:55:31 2015 -0600
+
+    - updated Changes
+    - remove erroneous blank lines
+
+commit 7fbee3cb3d47cb66251059f35d7655e875d16d05
+Author: spek <spek@localhost>
+Date:   Tue Sep 8 15:42:25 2015 -0600
+
+    - updated Changes
+
+commit c1340d9737f05d223491d9f84e42aacf48b905a8
+Author: spek <spek@localhost>
+Date:   Tue Sep 8 15:39:45 2015 -0600
+
+    Added new 'cache_dump' param
+
+commit e0e15e2b0193cd1395b199612e04cc47838d0908
+Author: spek <spek@localhost>
+Date:   Tue Sep 8 15:29:06 2015 -0600
+
+    Cache is now working, disabled by default
+
+commit 0006dbfcca8203cb32ffabd59f1c93b0c995e0f7
+Author: spek <spek@localhost>
+Date:   Tue Sep 8 13:39:46 2015 -0600
+
+    - changed file width to 78 chars
+    - refactored all code that extended beyond that
+
+commit 63c95f9df7e6dafb3f2d1860b31551e48f0eb4b8
+Author: spek <spek@localhost>
+Date:   Sat Aug 15 13:19:06 2015 -0600
+
+    - more cache work, tests ok
+    - when cache is enabled, everything is off
+
+commit 39c9c033d8fba24a37ed6e3eefcf0f151ed5967f
+Author: spek <spek@localhost>
+Date:   Sat Aug 15 12:06:07 2015 -0600
+
+    - core cache framework in place
+
+commit 6efb7fb77cd7163e03b0d3ab590ba31cf275d7f3
+Author: spek <spek@localhost>
+Date:   Sat Aug 15 11:37:50 2015 -0600
+
+    - made run_directory() private
+
+commit e54ab6bbf7f6a03e3789cf1f2ff8bbf4cf541f1b
+Author: spek <spek@localhost>
+Date:   Sat Aug 15 11:36:29 2015 -0600
+
+    - added return val in run()
+    - moved all config cleanup and setting of _run_end() into run from _cache() and run_directory()
+    - this'll allow us to move forward with caching and keeps everything in one place
+
+commit 35efc13720607537e1a1291f609b1b0f77202d33
+Author: spek <spek@localhost>
+Date:   Fri Aug 14 15:36:53 2015 -0600
+
+    - added _cache()
+
+commit f699a8d877b82f5f9342e7d8214fbb3e6d05ba4e
+Author: spek <spek@localhost>
+Date:   Fri Aug 14 15:27:23 2015 -0600
+
+    - added _cache_safe()
+    - added t/38 for _cache_safe()
+
+commit ee2299ddd629dff348f5f8b577079ce4f8907316
+Author: spek <spek@localhost>
+Date:   Fri Aug 14 15:16:51 2015 -0600
+
+    - use Data::Compare
+    - more caching config test work
+
+commit 3ff686b4bb4948434443dca4f110ea66e3a278f4
+Author: spek <spek@localhost>
+Date:   Fri Aug 14 14:34:20 2015 -0600
+
+    - added initial param checking code for cache
+
+commit 3317e93fabfcc1d5dee8c537ea9704e2d0b7e640
+Author: spek <spek@localhost>
+Date:   Fri Aug 14 12:37:22 2015 -0600
+
+    - bumped to v1.28
+
+commit f063039d97fd794798351c18d45ecacd0aadee8f
+Author: spek <spek@localhost>
+Date:   Fri Aug 14 12:15:21 2015 -0600
+
+    - fixed bug in run() due to _config() changes... had to run _config() before setting _run_end()
+
+commit 98a0d02824bba51c4b2824d505d346bcfbb21db6
+Author: spek <spek@localhost>
+Date:   Fri Aug 14 12:02:30 2015 -0600
+
+    - fixed bug in inject_after(), where config vars weren't being checked properly to set inject_after param due to _config() changes
+
+commit 92e283d83a2bc29759a73efd8c8fcb583de9d470
+Author: spek <spek@localhost>
+Date:   Fri Aug 14 11:47:18 2015 -0600
+
+    - fixed issue in lines()... $self->{params}{search} wasn't set due to _config() change, so we now look in $p->{search} instead to check whether the pre-filter should be loaded
+
+commit 22f2a7f68e125b440402efad42d31f32e98c5cbf
+Author: spek <spek@localhost>
+Date:   Fri Aug 14 11:23:59 2015 -0600
+
+    - removed all calls to _config(), outside of new(), run() and add_functionality() (any method that doesn't call run() needs to set _config())
+
+commit ff42f63cd0c00744dfc660c99fa6b810f890adf4
+Author: spek <spek@localhost>
+Date:   Fri Aug 14 11:18:43 2015 -0600
+
+    - changed the way config gets handled... only run() submits to _config(), as run() is called in every situation. The rest of the calls to _config() have been commented out for testing. This is so we can get a last_config stored for caching
+
+commit beb0ab2b5c501e2b0b2e09314253d6c846e780a2
+Author: spek <spek@localhost>
+Date:   Thu Aug 13 15:52:34 2015 -0600
+
+    - small =E<gt> fix in pod
+
+commit 263509d0d47c8a167aabd9926cd9f78894686cde
+Author: spek <spek@localhost>
+Date:   Thu Aug 13 15:46:25 2015 -0600
+
+    - Changes update
+    - README update
+
+commit c941bd126d03246872a7e680c14057782793058f
+Author: spek <spek@localhost>
+Date:   Thu Aug 13 15:45:02 2015 -0600
+
+    - v1.27
+    - added 'objects_in_hash' param, set to true to get the objects within a hash where the key is the subs name and value is the object
+    - new tests
+    - updated tests
+    - updates/fixes to pod
+
+commit 6398fa1b8e9f5bcf337ed47441575012c6758b89
+Author: spek <spek@localhost>
+Date:   Thu Aug 13 14:28:37 2015 -0600
+
+    - pod cleanup
+
+commit 8e2c9bb7e916214656c8662eab0c416fd840856b
+Author: spek <spek@localhost>
+Date:   Thu Aug 13 10:35:20 2015 -0600
+
+    - updated README
+
+commit b23581b62ceafed85033d60fe448318fe7ed7d7c
+Author: spek <spek@localhost>
+Date:   Thu Aug 13 10:33:23 2015 -0600
+
+    - removed erroneous () in sub calls with no params
+
+commit d75d4d7afc8b5a49a15230d9055c57a94a0793b6
+Author: spek <spek@localhost>
+Date:   Thu Aug 13 09:57:42 2015 -0600
+
+    - bumped ver to 1.27
+    - made 'regex' param enabled by default
+
+commit 5d71d42de9acb6df7ff79bda2e46736e29ebb041
+Author: spek <spek@localhost>
+Date:   Thu Aug 13 08:39:21 2015 -0600
+
+    - bumped to v1.26
+    - formatting/cleanup
+    -
+
+commit 17fd63440335189a8fb2a509a877aa94740894a7
+Author: spek <spek@localhost>
+Date:   Thu Aug 13 08:24:12 2015 -0600
+
+    - pod fixes
+    - added pod for Preprocessor
+
+commit 3f3daad1c894f0109e8441ee49e10e6d5e2c5eb7
+Author: spek <spek@localhost>
+Date:   Wed Aug 12 15:12:25 2015 -0600
+
+    - bumped to 1.25
+
+commit a977bba269396a01df5e7e2c3d9dc014cb32a7c2
+Author: spek <spek@localhost>
+Date:   Wed Aug 12 14:30:44 2015 -0600
+
+    - pod cleanup
+    - some tweaking in _pre_filter()

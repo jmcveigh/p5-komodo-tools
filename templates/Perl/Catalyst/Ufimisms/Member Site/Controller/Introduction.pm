@@ -4,26 +4,11 @@ use MemberSite::Form::Introduction;
 use Storable qw(dclone);
 use Digest::MD5 qw(md5_base64);
 use Mail::Mailer;
+use URI::Encode qw(uri_encode uri_decode);
+use Template;
 use namespace::autoclean;
-
+use constant EMAIL_TITLE_VALIDATION => 'Welcome.  This is a welcome email for MemberSite.';
 BEGIN { extends 'Catalyst::Controller'; }
-
-=head1 NAME
-
-MemberSite::Controller::Introduction - Catalyst Controller
-
-=head1 DESCRIPTION
-
-Catalyst Controller.
-
-=head1 METHODS
-
-=cut
-
-
-=head2 index
-
-=cut
 
 sub index :Path :Args(0) {
     my ($self, $c) = @_;
@@ -32,38 +17,38 @@ sub index :Path :Args(0) {
 
 sub success :Local :Path('success') {
     my ($self, $c) = @_;
-    $c->stash(template => 'introduction/success.tt');
+    $c->stash(template => 'introduction/success.ttkt.html');
 }
 
 sub validation :Local {
     my ($self, $c) = @_;
     
-    my $validation_digest = $c->request->param('v');
+    my $validation_digest = uri_decode($c->request->param('v'));
     
     my $member = $c->model('DB::Member')->single({validation_digest => $validation_digest});
     if (defined($member)) {
         $member->validated(1);
         $member->update;
-        $c->stash(template => 'introduction/success.tt');        
+        $c->stash(template => 'introduction/success.ttkt.html');
     } else {
         $c->response->body('Invalid request.');
     }
 }
 
 sub form {
-    my ($self, $c) = @_;    
+    my ($self, $c) = @_;
     my $form = MemberSite::Form::Introduction->new;
-    $c->stash(template => 'introduction/index.tt', form => $form);
+    $c->stash(template => 'introduction/index.ttkt.html', form => $form);
     $form->process(params => $c->req->params );
     return unless $form->validated();
-        
+
     my $values = dclone($c->req->params);
     delete($values->{submit});
     delete($values->{repeat_password});
     
     my $validation_context = new Digest::MD5->new;    
     $validation_context->add([$values->{username}, $values->{email}]);
-    $values->{validation_digest} = $validation_context->b64digest;
+    $values->{validation_digest} = uri_encode($validation_context->b64digest);
         
     # add member record to database
     my $member = $c->model('DB::Member')->new_result($values);
@@ -74,36 +59,25 @@ sub form {
     $mailer->open( {
         From => 'jmcveigh@echoplex.office.local',
         To => $values->{email},
-        Subject => 'Welcome.  This is a welcome email for MemberSite.',
+        Subject => EMAIL_TITLE_VALIDATION,
     });    
 
-    print $mailer <<"VALIDATION_MSG";
-    Hello, $values->{given_name}!
-    
-    This is a Welcome email message for MemberSite.
-    
-    Please click on the following URL to validate this email address :
-    
-    <a href="0.0.0.0:3000/introduction/validation?v=$values->{validation_digest}">0.0.0.0:3000/introduction/validation?v=$values->{validation_digest}</a>
-VALIDATION_MSG
+    my $ttkt = Template->new;
+    my $ttkt_output = '';
+
+    $ttkt->process('root/mail/validation.ttkt.html',{
+        given_name => $values->{given_name},
+        surname => $values->{surname},
+        email => $values->{email},
+        validation_digest => $values->{validation_digest},
+    },\$ttkt_output);
+
+    print $mailer $ttkt_output;
 
     $mailer->close();
     
     $c->response->redirect($c->uri_for($self->action_for('success')));
 }
-
-=encoding utf8
-
-=head1 AUTHOR
-
-Jason McVeigh
-
-=head1 LICENSE
-
-This library is free software. You can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
 
 __PACKAGE__->meta->make_immutable;
 

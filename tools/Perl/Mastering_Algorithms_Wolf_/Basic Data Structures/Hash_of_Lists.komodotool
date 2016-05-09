@@ -1,0 +1,26 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Hash of Lists", 
+  "value": [
+    "%hol = (", 
+    "\t'Dr. Watson' => [", 
+    "\t\t\t\t\t\tundef,\t'221b',", 
+    "\t\t'Baker St.',\tundef,\t'London',", 
+    "\t\t'NW1',\t\t\tundef,\t'England',", 
+    "\t\tundef", 
+    "\t],", 
+    "\t'Sam Gamgee' => [", 
+    "\t\t\t\t\t\tundef,\tundef,", 
+    "\t\t'Bagshot Row',\tundef,\t'Hobbiton',", 
+    "\t\tundef,\t\t\tundef,\t'The Shire',", 
+    "\t\tundef", 
+    "\t],", 
+    ");!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

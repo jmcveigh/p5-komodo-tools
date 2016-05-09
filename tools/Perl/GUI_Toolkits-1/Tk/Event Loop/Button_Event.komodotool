@@ -1,0 +1,31 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Button Event", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "", 
+    "use Tk;", 
+    "use strict;", 
+    "", 
+    "my $mw = MainWindow->new;", 
+    "", 
+    "my $b = $mw->Button(-text => 'Click B1 Then B2', -command => \\&callback)->pack;", 
+    "$b->bind('<ButtonRelease-2>' => \\&callback);", 
+    "          ", 
+    "MainLoop;", 
+    "", 
+    "sub callback {", 
+    "    print \"\\n\";", 
+    "    print \"callback args  = @_\\n\";", 
+    "    print \"\\$Tk::event     = $Tk::event\\n\";", 
+    "    print \"\\$Tk::widget    = $Tk::widget\\n\";", 
+    "    print \"\\$Tk::event->W  = \", $Tk::event->W, \"\\n\";", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

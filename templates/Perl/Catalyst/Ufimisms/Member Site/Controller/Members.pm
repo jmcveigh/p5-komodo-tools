@@ -1,6 +1,5 @@
 package MemberSite::Controller::Members;
 use Moose;
-use MemberSite::Utils;
 use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
@@ -41,7 +40,7 @@ sub auto :Private {
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->stash(template => 'members/index.tt');
+    $c->stash(template => 'members/index.ttkt.html');
 }
 
 

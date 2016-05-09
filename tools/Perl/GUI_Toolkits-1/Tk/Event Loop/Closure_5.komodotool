@@ -1,0 +1,29 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Closure 5", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "use Tk;", 
+    "", 
+    "$mw = MainWindow->new;", 
+    "", 
+    "# Fifth attempt at creating a series of Buttons with unique", 
+    "# identifiers. This is a variation of the previous example", 
+    "# that avoids the use of an explicit subroutine.", 
+    "", 
+    "foreach $b (1 .. 5) {", 
+    "    $mw->Button(", 
+    "        -text    => $b, ", 
+    "        -command => [sub {print \"Button $_[0]\\n\"}, $b],", 
+    "    )->pack;", 
+    "}", 
+    "", 
+    "MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

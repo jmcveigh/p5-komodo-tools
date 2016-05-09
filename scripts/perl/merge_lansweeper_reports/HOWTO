@@ -1,0 +1,3 @@
+- run Computer: Part of Domain report and copy the report to without_office.txt
+- run Computer: OS and Office report and copy to with_office.txt
+- run ./merge.pl and import new.txt into Excel as a delimited by ';' file

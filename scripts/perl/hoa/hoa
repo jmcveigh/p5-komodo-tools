@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+my @params = qw( a b c d );
+
+my $str = "A|"
+    . "b|"
+    . join( "|", @params );
+
+print "$str\n";

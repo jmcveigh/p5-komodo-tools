@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Command Queue", 
+  "value": [
+    "@control_commands = ();", 
+    "", 
+    "push ( @control_commands, \"rotate shoulder until above table\" );", 
+    "push ( @control_commands, \"open elbow until hand at table level\" );", 
+    "push ( @control_commands, \"open fingers\" );", 
+    "push ( @control_commands, \"close elbow 45 degrees\" );", 
+    "", 
+    "while ($command = shift (@control_commands)) {", 
+    "\t# ... execute $command", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,31 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Closure 3", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "use Tk;", 
+    "use strict;", 
+    "", 
+    "my $mw = MainWindow->new;", 
+    "", 
+    "# Third attempt at creating a series of Buttons with unique", 
+    "# identifiers. This works as expected because we've made", 
+    "# $b lexically scoped, thus creating a closure.  This is a", 
+    "# feature of Perl, and is another good reason to run strict.", 
+    "", 
+    "foreach my $b (1 .. 5) {", 
+    "    $mw->Button(", 
+    "        -text    => $b, ", 
+    "        -command => sub {print \"Button $b\\n\"},", 
+    "    )->pack;", 
+    "}", 
+    "", 
+    "MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

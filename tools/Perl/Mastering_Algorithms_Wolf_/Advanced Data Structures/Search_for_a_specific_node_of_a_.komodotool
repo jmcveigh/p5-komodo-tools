@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Search for a specific node of a linked list", 
+  "value": [
+    "for ($elem = $list; $elem; $elem = $elem->[NEXT]) {", 
+    "\tif ($elem->[VAL] == $target) {", 
+    "\t\t# found it !", 
+    "\t\t... # use it", 
+    "\t\tlast;", 
+    "\t}", 
+    "}", 
+    "", 
+    "unless ($elem) {", 
+    "\t# node not found", 
+    "\t# deal with failure", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,10 @@
+
+# use the modulus operator to repeat
+# during iteration
+
+my @hash = ( 1 .. 3 );
+my @text = ( 'a' .. 'z' );
+
+for my $i ( 0 .. $#text ) {
+   print "$text[ $i ]-$hash[ $i % @hash ]\n";
+}

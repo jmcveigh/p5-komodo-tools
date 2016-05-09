@@ -1,0 +1,1 @@
+perl -MEmail::Valid -e 'print Email::Valid->address("0\@stanford.edu") ? "yes\n" : "no\n"' 

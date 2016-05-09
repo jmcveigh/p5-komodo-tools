@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Therm", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "use Tk;", 
+    "use Tk::Thermometer;", 
+    "use subs qw//;", 
+    "", 
+    "my $mw = MainWindow->new;", 
+    "", 
+    "my $therm = $mw->Thermometer(", 
+    "    -label  => 'Reactants Temp',", 
+    "    -tscale => 'Celsius',", 
+    ")->pack;", 
+    "$therm->set(-273);", 
+    "print \"get=\", $therm->get, \"!\\n\";", 
+    "", 
+    "MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

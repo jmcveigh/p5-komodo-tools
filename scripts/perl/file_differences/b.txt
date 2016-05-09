@@ -1,0 +1,5 @@
+hello from b.txt
+this line shouldn't match
+this line hello should match
+shouldn't
+hello should match

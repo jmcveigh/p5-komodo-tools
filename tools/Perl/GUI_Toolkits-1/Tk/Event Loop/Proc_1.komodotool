@@ -1,0 +1,17 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Proc 1", 
+  "value": [
+    "#!/usr/local/bin/perl", 
+    "", 
+    "print STDERR \"proc1 started, executing proc2 ...\\n\";", 
+    "system \"proc2\";", 
+    "print STDOUT \"proc2 complete, and so is proc1\\n\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

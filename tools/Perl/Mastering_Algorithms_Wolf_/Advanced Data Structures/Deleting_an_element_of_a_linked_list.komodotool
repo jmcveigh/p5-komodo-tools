@@ -1,0 +1,14 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Deleting an element of a linked list", 
+  "value": [
+    "$val = $list->[VAL];", 
+    "$list = $list->[NEXT];!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

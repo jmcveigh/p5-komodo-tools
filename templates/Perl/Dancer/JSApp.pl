@@ -1,0 +1,87 @@
+#!/bin/perl
+use strict;
+use warnings;
+
+use Gtk3 -init;
+use Gtk3::WebKit;
+use Dancer;
+use threads;
+use Inline::Files;
+
+my $dance_pid;
+
+get '/hello/:name' => sub {
+    my $buffer = '';
+    my $given_name = param('name');
+
+    while (<HEADER>) {
+        $buffer .= $_;
+    }
+
+$buffer .= <<"EOF";
+<body>
+<h4>
+Hello, World!
+</h4>
+<h5>
+I believe your name is $given_name!
+</h5>
+</body>
+EOF
+    while (<FOOTER>) {
+        $buffer .= $_;
+    }
+
+    return($buffer);
+};
+
+sub app {
+    $dance_pid = fork and dance and exit;
+}
+
+sub main {
+    my ($url) = shift @ARGV || 'http://0.0.0.0:3000/hello/Jason';
+
+    my $window = Gtk3::Window->new('toplevel');
+    $window->set_default_size(320, 240);
+    $window->signal_connect(destroy => sub {
+        Gtk3->main_quit();
+    });
+
+    # Create a WebKit widget
+    my $view = Gtk3::WebKit::WebView->new();
+
+    # Load a page
+    $view->load_uri($url);
+
+    # Pack the widgets together
+    my $scrolls = Gtk3::ScrolledWindow->new();
+    $scrolls->add($view);
+    $window->add($scrolls);
+    $window->show_all();
+
+    Gtk3::main;
+    return(0);
+}
+
+app();
+main();
+kill 'QUIT', $dance_pid if defined($dance_pid);
+exit;
+__HEADER__
+<!DOCTYPE html>
+<html>
+<head>
+<style type='text/css'>
+    * {
+        color: DeepPink;
+        font-family: "Courier New", Courier, monospace;
+    }
+
+    body {
+        background-color: Black;
+    }
+</style>
+</head>
+__FOOTER__
+</html>

@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Signature", 
+  "value": [
+    "Made with \u2665 by Jason McVeigh of General Software Contracting in Orillia, ON, CA.", 
+    "I \u2665 what I do and I hope you do too.", 
+    "", 
+    "# OR ...", 
+    "", 
+    "<p>", 
+    "Made with &hearts; by <a href=\"mailto:jmcveigh@outlook.com\">Jason McVeigh</a> of <a href='mailto: jmcveigh@outlook.com' title='Send Jason McVeigh an Email message'>General Software Contracting</a> in Orillia, ON, CA.", 
+    "<br>", 
+    "<i>I &hearts; what I do and I hope you do too.</i>", 
+    "</p>!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

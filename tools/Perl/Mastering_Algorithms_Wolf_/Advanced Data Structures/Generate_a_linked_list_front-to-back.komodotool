@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Generate a linked list front-to-back", 
+  "value": [
+    "$list = undef;", 
+    "$tail = \\$list;", 
+    "foreach (1 .. 5) {", 
+    "\tmy $node = [ undef, $_ * $_ ];", 
+    "\t$$tail = $node;", 
+    "\t$tail = \\$node->[NEXT];", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

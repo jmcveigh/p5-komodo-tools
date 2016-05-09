@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Autoincrement and Autodecrement", 
+  "value": [
+    "$i = $i++;", 
+    "print ++$i + $i++;", 
+    "", 
+    "my $foo;", 
+    "$foo = \"99\"; print ++$foo;\t\t# prints \"100\"", 
+    "$foo = \"a9\"; print ++$foo;\t\t# prints \"b0\"", 
+    "$foo = \"Az\"; print ++$foo;\t\t# prints \"Ba\"", 
+    "$foo = \"zz\"; print ++$foo;\t\t# prints \"aaa\"!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}
