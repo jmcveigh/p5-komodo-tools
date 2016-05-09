@@ -1,0 +1,31 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Predefined Bitmaps", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "use Tk;", 
+    "use strict;", 
+    "", 
+    "my $mw = MainWindow->new;", 
+    "", 
+    "my $row = my $col = 0;", 
+    "foreach my $b (qw/error gray75 gray50 gray25 gray12", 
+    "      hourglass info questhead question Tk transparent warning/) {", 
+    "    $mw->Label(-text => $b)->grid(-row => $row, -column => $col);", 
+    "    $mw->Label(-bitmap => $b)->grid(-row => $row+1, -column => $col++);", 
+    "    if ($col > 5) {$row +=2; $col = 0}", 
+    "}", 
+    "", 
+    "my $c = $mw->Canvas(qw/-width 35 -height 35/);", 
+    "$c->grid(-row => $row, -column => 3);", 
+    "$c->createBitmap(20, 20, -bitmap => '@images/Icon.xbm');", 
+    "$mw->iconbitmap('@images/Icon.xbm');", 
+    "MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

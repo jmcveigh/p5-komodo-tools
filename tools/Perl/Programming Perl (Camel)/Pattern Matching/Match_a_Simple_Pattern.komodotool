@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Match a Simple Pattern", 
+  "value": [
+    "$haystack =~ m/needle/\t     \t\t\t\t# match a simple pattern", 
+    "$haystack =~ /needle/\t      \t\t\t\t# same thing", 
+    "$italiano =~ s/butter/olive oil/\t\t\t# a healthy substitution", 
+    "$rotate13 =~ tr/a-zA-Z/n-za-m-N-AZ-M/\t\t# easy encryption (to break)", 
+    "", 
+    "# without a binding operator, $_ is implicity used as the \"topic\"", 
+    "/new life/ and /new civilizations/\t\t\t# search in $_ and (if found) boldly search again", 
+    "s/sugar/aspartame/\t\t\t\t\t\t\t# substitute a substitute into $_", 
+    "tr/ATCG/TAGC/\t\t\t\t\t\t\t\t# complement the DNA stranded in $_", 
+    "!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

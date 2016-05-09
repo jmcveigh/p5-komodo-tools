@@ -1,0 +1,4 @@
+http://cpan.org
+http://perlmonks.org
+http://devshed.org
+http://google.ca

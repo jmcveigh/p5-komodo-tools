@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        function select_all(cb){
+    
+            to_toggle = (cb.name == 'cert_select_all') ? 'CERT' : 'REVOKE';
+            
+            if (! cb.checked){
+                cbs = $('[type=checkbox][name|='+to_toggle+']');
+                cbs.each(function(){this.checked=false;});
+                return;
+            };
+
+            cbs = $('[type=checkbox][name|='+to_toggle+']');
+            
+            cbs.each(function () {
+
+                re = new RegExp(to_toggle+"-(.*)");
+                key = re.exec($(this).attr('name'))[1];
+
+                to_check = (cb.name == 'cert_select_all') 
+                    ? 'REVOKE-' + key 
+                    : 'CERT-' + key;
+
+                to_check_cb = $('[type=checkbox][name='+to_check+']');
+                to_check_checked = to_check_cb.prop('checked');
+                
+                if (! to_check_checked){
+                        this.checked='checked';
+                }
+                else {
+                    if ($(this).prop('checked')){
+                        this.checked=false;
+                    }
+                };
+            });
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Cert</td>
+            <td>Revoke</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" title="help" name="cert_select_all" onclick="select_all(this);"></td>
+            <td><input type="checkbox" name="revoke_select_all" onclick="select_all(this);"></td>
+            <td>select/deselect all</td>
+        </tr>
+
+        <tr>
+            <td><input type="checkbox" name="CERT-1"></td>
+            <td><input type="checkbox" name="REVOKE-1"></td>
+            <td>user 1</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="CERT-2"></td>
+            <td><input type="checkbox" name="REVOKE-2"></td>
+            <td>user 2</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="CERT-3"></td>
+            <td><input type="checkbox" name="REVOKE-3"></td>
+            <td>user 3</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="CERT-4"></td>
+            <td><input type="checkbox" name="REVOKE-4"></td>
+            <td>user 4</td>
+        </tr>
+    </table>
+</body>
+</html>
+

@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Creative Commons Zero 1.0", 
+  "value": [
+    "# This software is distributed with rights as under Creative Commons Zero 1.0.", 
+    "# Sale is licensed by General Software Contracting in Orillia, ON, CA.", 
+    "# See Also {{ mailto:jmcveigh@outlook.com }}", 
+    "", 
+    "# OR ...", 
+    "", 
+    "<p>", 
+    "This software is distributed with rights as under Creative Commons Zero 1.0.<br>", 
+    "Sale is licensed by <a href='mailto:jmcveigh@outlook.com' title='Send General Software Contracting an Email message'>General Software Contracting</a> in <span>Orillia, ON, CA</span>.<br>", 
+    "</p>!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

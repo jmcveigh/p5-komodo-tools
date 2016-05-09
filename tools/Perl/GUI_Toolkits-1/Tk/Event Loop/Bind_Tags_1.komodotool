@@ -1,0 +1,33 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Bind Tags 1", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "", 
+    "use strict;", 
+    "use Tk;", 
+    "", 
+    "my $mw = MainWindow->new;", 
+    "", 
+    "my $twice = $mw->Button(qw/-text Beep -command/ =>  sub {$mw->bell});", 
+    "$twice->pack;", 
+    "$twice->bind('<ButtonRelease-2>' => \\&twice);", 
+    "", 
+    "my (@bindtags) = $twice->bindtags;", 
+    "print \"\\$twice's bindtags:\\n\\n\", join(\"\\n\", @bindtags), \"\\n\";", 
+    "", 
+    "sub twice {", 
+    "    my $button = shift;", 
+    "    $button->Callback(-command);", 
+    "    $button->Callback(-command);", 
+    "}", 
+    "", 
+    "MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

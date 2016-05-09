@@ -1,0 +1,33 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Background 2", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "#", 
+    "# background2 - a tile take precedence over a background color.", 
+    "", 
+    "use Tk;", 
+    "use Tk::PNG;", 
+    "use strict;", 
+    "", 
+    "my $mw = MainWindow->new;", 
+    "my $icon = $mw->Photo(-file=>'images/Icon.xpm');", 
+    "my $tile = $mw->Photo(-file=>'images/tile.png');", 
+    "", 
+    "my $c1 = $mw->Canvas(", 
+    "    -tile       => $tile,", 
+    "    -background => 'green',", 
+    "    qw/-width 200 -height 200/,", 
+    ");", 
+    "$c1->pack(-side => 'left');", 
+    "$c1->createImage(105, 105, -image => $icon);", 
+    "", 
+    "MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

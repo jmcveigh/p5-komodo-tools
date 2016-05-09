@@ -1,0 +1,25 @@
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-2 col-sm-8">
+        <div class="row">
+          <div class="col-sm-12">
+            [%IF success_msg %]
+            <div class='text-info'>
+              <p>
+                [% success_msg -%]
+              </p>
+              <p class='text-info'>
+                Click <strong><a href="[% c.uri_for('/entrance') %]" title="Entrance">HERE</a></strong> to return to entrance.
+              </p>
+            </div>
+            [% END %]
+          </div>
+        </div>
+        <div class="row">
+          [% form.render -%]
+        </div>
+      </div>
+    </div>    
+  </div>
+</main>

@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Hello, World! (Wx)", 
+  "value": [
+    "use Wx;", 
+    "", 
+    "my $app = Wx::SimpleApp->new;", 
+    "my $frame = Wx::Frame->new( undef, -1, 'Hello, World!' );", 
+    "", 
+    "$frame->Show;", 
+    "$app->MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

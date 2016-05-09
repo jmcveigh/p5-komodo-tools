@@ -1,0 +1,16 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Queue from a linked list", 
+  "value": [
+    "while ($list) {", 
+    "\tmy $val = $list->[VAL];", 
+    "\t$list = $list->[NEXT];", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

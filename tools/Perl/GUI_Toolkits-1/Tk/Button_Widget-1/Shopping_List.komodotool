@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Shopping List", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "use Tk;", 
+    "use strict;", 
+    "", 
+    "my $mw = MainWindow->new(-title => 'Shopping List');", 
+    "foreach (qw/Bread Milk Soda Eggs/) {", 
+    "    $mw->Checkbutton(-text => $_)->pack(-side => 'left');", 
+    "}", 
+    "", 
+    "$mw->Button(-text => \"Purchase\")->pack(-side => 'bottom');", 
+    "", 
+    "MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

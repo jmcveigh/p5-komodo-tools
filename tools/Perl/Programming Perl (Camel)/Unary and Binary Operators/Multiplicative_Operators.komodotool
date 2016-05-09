@@ -1,0 +1,16 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Multiplicative Operators", 
+  "value": [
+    "print \"-\" x 80;\t\t\t\t\t\t\t\t# print row of dashes", 
+    "print \"\\t\" x ($tab / 8), \" \" x ($tab%8);\t# tab over", 
+    "my @ones = (1) x 80;\t\t\t\t\t\t# a list of 80 1's", 
+    "@ones = (5) x @ones;\t\t\t\t\t\t# set all elements to 5!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

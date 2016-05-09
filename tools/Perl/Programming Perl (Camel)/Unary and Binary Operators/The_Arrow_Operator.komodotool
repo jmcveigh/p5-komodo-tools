@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "The Arrow Operator", 
+  "value": [
+    "$aref->[42]\t\t\t\t\t# an array dereference", 
+    "$href->{\"corned beef\"}\t\t# a hash dereference", 
+    "$sref->(1,2,3)\t\t\t\t# a subsubroutine dereference", 
+    "$aref->[42] = 'Huh!';       # autovivify an array in $aref", 
+    "$href->{\"corned beef\"}      # autovivify a hash in $href", 
+    "", 
+    "my $yogi = Beat->new(\"Yogi\");       # a class method call", 
+    "$yogi->swipe('picnic basket');      # an object method call!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

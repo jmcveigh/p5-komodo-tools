@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Execute Command", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "#", 
+    "# Execute a command asynchronously.", 
+    "", 
+    "use Tk;", 
+    "use Tk::ExecuteCommand;", 
+    "use strict;", 
+    "", 
+    "my $mw = MainWindow->new;", 
+    "my $exec = $mw->ExecuteCommand(-command => 'hostname');", 
+    "$exec->pack(qw/-expand 1 -fill both/);", 
+    "my $q = $mw->Button(-text => 'Quit', -command => \\&exit)->pack;", 
+    "$exec->configure(-command => 'proc1');", 
+    "", 
+    "MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

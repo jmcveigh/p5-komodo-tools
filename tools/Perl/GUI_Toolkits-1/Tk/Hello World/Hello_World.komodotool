@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Hello World", 
+  "value": [
+    "#!/usr/bin/perl", 
+    "use Tk;", 
+    "my $mw = MainWindow->new;", 
+    "$mw->title('Hello World');", 
+    "$mw->Button(-text => 'Done', -command => sub { exit })->pack;", 
+    "MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

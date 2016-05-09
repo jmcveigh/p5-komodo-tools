@@ -1,0 +1,13 @@
+DOMAIN=coiled_coil_region
+START=59
+END=83
+EVALUE=0
+TYPE=INTRINSIC
+STATUS=visible|OK
+
+DOMAIN=low_complexity_region
+START=345
+END=363
+EVALUE=0
+TYPE=INTRINSIC
+STATUS=visible|OK

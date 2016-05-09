@@ -33,7 +33,7 @@ sub index :Path :Args(0) {
 sub form {
     my ($self, $c) = @_;    
     my $form = MemberSite::Form::Entrance->new;
-    $c->stash(template => 'entrance/index.tt', form => $form);
+    $c->stash(template => 'entrance/index.ttkt.html', form => $form);
     $form->process(params => $c->req->params);
     return unless $form->validated();        
     my $values = dclone($c->req->params);
@@ -50,13 +50,13 @@ sub form {
         $c->stash(error_msg => 'Enter both username and password.');
     }
     
-    $c->stash(template => 'entrance/index.tt');
+    $c->stash(template => 'entrance/index.ttkt.html');
 }
 
 sub reminder :Local :Args(0) {
     my ($self, $c) = @_;
     my $form = MemberSite::Form::Reminder->new;
-    $c->stash(template => 'entrance/reminder.tt', form => $form);
+    $c->stash(template => 'entrance/reminder.ttkt.html', form => $form);
     $form->process(params => $c->req->params);
     return unless $form->validated();        
 
@@ -84,7 +84,7 @@ VALIDATION_MSG
         $c->stash(success_msg => 'An email containing the username and password has been sent to the specified address.');
     }
     
-    $c->stash(template => 'entrance/reminder.tt');
+    $c->stash(template => 'entrance/reminder.ttkt.html');
 }
 
 =encoding utf8

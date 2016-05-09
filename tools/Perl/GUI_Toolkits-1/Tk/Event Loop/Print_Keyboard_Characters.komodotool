@@ -1,0 +1,32 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Print Keyboard Characters", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "#", 
+    "# keysym - print keyboard character keysysm.", 
+    "", 
+    "use Tk;", 
+    "use strict;", 
+    "", 
+    "my $mw = MainWindow->new;", 
+    "$mw->Label(-text => 'Type a character to see its keysym.')->grid;", 
+    "$mw->Button(qw/-text Quit -command/ => \\&exit)->grid;", 
+    "$mw->bind('<KeyPress>' => \\&print_keysym);", 
+    "", 
+    "MainLoop;", 
+    "", 
+    "sub print_keysym {", 
+    "    my($widget) = @_;", 
+    "    my $e = $widget->XEvent;    # get event object", 
+    "    my($keysym_text, $keysym_decimal) = ($e->K, $e->N);", 
+    "    print \"keysym=$keysym_text, numeric=$keysym_decimal\\n\";", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

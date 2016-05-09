@@ -1,0 +1,8 @@
+my $ssh = Net::SSH::Perl->new(
+                            "$IPAddress",
+                            user => $userid,
+                            debug => 1,
+                            protocol => '2,1',
+                            interactive => 0,
+                            identity_files => \@key_files,
+                           ); 

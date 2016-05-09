@@ -1,0 +1,23 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Using Multiplicative Operators to Initialize Hash Slices", 
+  "value": [
+    "# You can also use x to initialize hash slices:", 
+    "", 
+    "my %hash;", 
+    "my @keys = qw(perls before swine);", 
+    "@hash{@keys} = (\"\") x @keys;", 
+    "", 
+    "# This is the same as :", 
+    "", 
+    "$hash{perls} = \"\";", 
+    "$hash{before} = \"\";", 
+    "$hash{swine} = \"\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

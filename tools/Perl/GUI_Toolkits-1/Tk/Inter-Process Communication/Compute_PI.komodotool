@@ -1,0 +1,33 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Compute PI", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "#", 
+    "# Compute a moderately accurate value of pi with a single", 
+    "# processor.", 
+    "", 
+    "use strict;", 
+    "", 
+    "my $intervals = 1_000;", 
+    "my $h = 1.0 / $intervals;", 
+    "my $sum = 0.0;", 
+    "", 
+    "for(my $i = 1; $i <= $intervals; $i++) {", 
+    "    my $x = $h * ($i - 0.5);", 
+    "    $sum += 4.0 / (1.0 + $x*$x);", 
+    "}", 
+    "", 
+    "my $pi = $h * $sum;", 
+    "printf(\"\\nComputed pi = %22.20f\\n\", $pi);", 
+    "my $actual_pi = 3.14159265358979323846;", 
+    "printf(\"Actual   pi = %22.20f\\n\", $actual_pi);", 
+    "printf(\"Error       = %22.20f\\n\", abs($pi - $actual_pi));!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,20 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Create a linked list of lines from a file", 
+  "value": [
+    "$head = undef;", 
+    "$tail = \\$head;", 
+    "", 
+    "while (<>) {", 
+    "\tmy $line = [ undef, $_ ];", 
+    "\t$$tail = $line;", 
+    "\t$tail = \\$line->[NEXT];", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

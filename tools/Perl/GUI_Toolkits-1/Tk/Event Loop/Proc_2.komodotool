@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Proc 2", 
+  "value": [
+    "#!/usr/local/bin/perl", 
+    "$| = 1;", 
+    "$n = 10;", 
+    "while ($n--) {", 
+    "    print \" proc2 $n ...\\n\";", 
+    "    sleep 1;", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

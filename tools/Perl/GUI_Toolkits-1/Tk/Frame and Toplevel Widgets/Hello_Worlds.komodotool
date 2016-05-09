@@ -1,0 +1,30 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Hello Worlds", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "#", 
+    "# Advanced Hello World program using two MainWindows.", 
+    "", 
+    "use Tk;", 
+    "use subs qw/beep/;", 
+    "use strict;", 
+    "", 
+    "my $mw1 = MainWindow->new;", 
+    "my $mw2 = MainWindow->new(-screen => $ARGV[0] ||= $ENV{DISPLAY});", 
+    "", 
+    "$mw1->Button(-text => 'MainWindow 1 Bell', -command => [\\&beep, $mw1])->pack;", 
+    "$mw1->Button(-text => 'MainWindow 2 Bell', -command => [\\&beep, $mw2])->pack;", 
+    "$mw1->Button(qw/-text Quit -command/ => \\&exit)->pack;", 
+    "", 
+    "MainLoop;", 
+    "", 
+    "sub beep {shift->bell}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

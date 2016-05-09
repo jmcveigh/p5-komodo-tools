@@ -1,0 +1,33 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Nav 2", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "use Tk;", 
+    "use Tk::NavListbox;", 
+    "use strict;", 
+    "", 
+    "my $mw = MainWindow->new;", 
+    "$mw->title(\"Using NavListbox\");", 
+    "", 
+    "my $nlb = $mw->Scrolled(qw/NavListbox -width 30 -height 5/,", 
+    "     -font     => 'Courier 12',", 
+    "     -validate => sub {", 
+    "         my ($entry) = @_;  ", 
+    "\t print \"Validate only digits for this this entry: '$entry'\\n\"; ", 
+    "         return 1 if ($entry =~ /^[0-9]*$/);", 
+    "\t return 0; ", 
+    "    },", 
+    ")->pack(-fill => 'both', -expand => 1);", 
+    "", 
+    "$nlb->insert('end', qw/one two three four five six seven eight nine ten/);", 
+    "", 
+    "MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

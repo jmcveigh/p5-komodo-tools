@@ -1,0 +1,16 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Types of Perl Operators", 
+  "value": [
+    "!$x\t\t\t\t\t# a unary operator", 
+    "$x * $y\t\t\t\t# a binary operator", 
+    "$x ? $y : $z \t\t# a trinary operator", 
+    "print $x, $y, $z\t# a list operator!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

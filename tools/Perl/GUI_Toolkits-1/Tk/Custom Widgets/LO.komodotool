@@ -1,0 +1,22 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "LO", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "use Tk;", 
+    "use Tk::LabOptionmenu;", 
+    "use strict;", 
+    "", 
+    "my $mw = MainWindow->new;", 
+    "my $lo = $mw->LabOptionmenu(-label => 'Ranking', -options => [1..2])->pack;", 
+    "$lo->configure(-background  => '#d9d9d9');", 
+    "$lo->addOptions(3 .. 5);", 
+    "MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

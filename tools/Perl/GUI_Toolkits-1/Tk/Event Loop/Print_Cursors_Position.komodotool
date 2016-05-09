@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Print Cursors Position", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "#", 
+    "# keysym - print keyboard character keysysms and the cursor's position.", 
+    "", 
+    "use Tk;", 
+    "use strict;", 
+    "", 
+    "my $mw = MainWindow->new;", 
+    "$mw->bind('<KeyPress>' => sub {", 
+    "    print 'Keysym=', $Tk::event->K, ', numeric=', $Tk::event->N, \"\\n\";", 
+    "});", 
+    "", 
+    "MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

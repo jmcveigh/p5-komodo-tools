@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Establishing a Default Value", 
+  "value": [
+    "# use $b if $b is true, else $c", 
+    "$a = $b || $c;", 
+    "", 
+    "# set $x to $y unless $x is already true", 
+    "$x ||= $y;", 
+    "", 
+    "# use $b if $b is defined, else $c", 
+    "$a = defined($b) ? $b : $c;", 
+    "", 
+    "# the \"new\" defined-or operator from future perl;", 
+    "use v5.9;", 
+    "$a = $b // $c;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,25 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Hash of Hashes", 
+  "value": [
+    "%hoh = (", 
+    "\t'Dr. Watson' => {\t\t", 
+    "\t\tstreet => '221b Baker St.',", 
+    "\t\tcity => 'London',", 
+    "\t\tzone => 'NW1',", 
+    "\t\tcountry => 'England',", 
+    "\t},", 
+    "\t'Sam Gamgee' => {\t\t", 
+    "\t\tstreet => 'Bagshot Row',", 
+    "\t\tcity => 'Hobbiton',\t\t", 
+    "\t\tcountry => 'The Shire',", 
+    "\t},", 
+    ");!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

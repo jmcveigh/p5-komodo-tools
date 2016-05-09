@@ -1,0 +1,28 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Transparent Cursor", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "use Tk;", 
+    "use strict;", 
+    "", 
+    "my $mw = MainWindow->new;", 
+    "my $c = $mw->Canvas->grid;", 
+    "$c->configure(-cursor =>", 
+    " ['@images/trans_cur.xbm', 'images/trans_cur.msk', 'black', 'white']);", 
+    "", 
+    "$c->CanvasBind('<Motion>' => sub {", 
+    "    my($c) = @_;", 
+    "    my($x, $y) = ($Tk::event->x, $Tk::event->y);", 
+    "    print \"cursor at canvas coordinate ($x,$y)\\n\";", 
+    "});", 
+    "", 
+    "MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

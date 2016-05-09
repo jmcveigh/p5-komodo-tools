@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Hello, World! (Gtk3)", 
+  "value": [
+    "use Gtk3 -init;", 
+    "my $window = Gtk3::Window->new ('toplevel');", 
+    "my $button = Gtk3::Button->new ('Quit');", 
+    "$button->signal_connect (clicked => sub { Gtk3::main_quit });", 
+    "$window->add ($button);", 
+    "$window->show_all;", 
+    "Gtk3::main;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

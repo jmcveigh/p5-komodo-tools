@@ -1,0 +1,27 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Nil", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "", 
+    "package Tk::Nil;", 
+    "use base qw/Tk::Toplevel/;", 
+    "Construct Tk::Widget 'Nil';", 
+    "", 
+    "package main;", 
+    "use Tk;", 
+    "use strict;", 
+    "", 
+    "my $mw = MainWindow->new(-title => 'Nil MW');", 
+    "my $nil = $mw->Nil(-title => 'Nil object');", 
+    "$nil->configure(-background  => '#d9d9d9');", 
+    "print '-background = ', $nil->cget(-background), \"\\n\";", 
+    "MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

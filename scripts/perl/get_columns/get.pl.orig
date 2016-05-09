@@ -1,0 +1,48 @@
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+use 5.10.0;
+use List::Util qw( first );
+use Data::Dumper;
+
+my @master_cols = qw( NAME CITY );
+my @positions;
+my @results;
+
+my $n = 1;
+while ( my $line = <DATA> ){
+    
+    chomp $line;
+
+    my @row = split /\|/, $line;
+
+    if ( $n == 1 ){
+        while ( my ( $i, $elem ) = each @row ){
+            if ( first { $elem eq $_ } @master_cols ){
+                push @positions, $i;
+    
+            }
+        }
+        $n++;
+    }
+
+    for my $pos ( @positions ){
+        push @{ $results[ $pos ] }, $row[ $pos ]; 
+    } 
+
+}
+print Dumper \@results;
+
+for my $result ( @results ){
+    print "\n";
+    for my $line ( @{ $result } ){
+        print join '|', $line;
+    }
+}
+
+__DATA__
+NAME|AGE|CITY|ZIP
+AAA|23|STAT|60001
+BBB|34|PPOR|12345
+CCC|11|TRET|2345

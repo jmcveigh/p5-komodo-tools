@@ -1,0 +1,26 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Button Class 1", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "# ", 
+    "# butclass - show Button class bindings.", 
+    "", 
+    "use Tk;", 
+    "use strict;", 
+    "", 
+    "my $mw = MainWindow->new;", 
+    "my $b = $mw->Button(qw/-text Beep -command/ => sub {$mw->bell});", 
+    "$b->pack;", 
+    "my $class = ref $b;", 
+    "print \"Button \\$b is an instance of class '$class'.\\n\" .", 
+    "      \"This class has bindings for these events:\\n\\n\";", 
+    "print join(\"\\n\", $b->bind($class) ), \"\\n\";!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "indent_relative": "false", 
+  "type": "snippet", 
+  "treat_as_ejs": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Nav", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "use Tk;", 
+    "use Tk::NavListbox;", 
+    "use strict;", 
+    "", 
+    "my $mw = MainWindow->new;", 
+    "my $nlb = $mw->NavListbox->pack;", 
+    "print \"NavListbox = \", $nlb, \"\\n\";", 
+    "for (qw/one two three four five six seven eight none ten/) {", 
+    "    $nlb->insert('end', $_);", 
+    "}", 
+    "MainLoop;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

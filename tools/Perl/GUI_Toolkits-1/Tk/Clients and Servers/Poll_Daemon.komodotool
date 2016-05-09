@@ -1,0 +1,32 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Poll Daemon", 
+  "value": [
+    "#!/usr/local/bin/perl -w", 
+    "#", 
+    "# polld - the poll daemon works on Unix and Win32.", 
+    "", 
+    "use IO::Socket;", 
+    "use Tk;", 
+    "use strict;", 
+    "", 
+    "my $socket = IO::Socket::INET->new(", 
+    "    Listen    => 5, ", 
+    "    Reuse     => 1, ", 
+    "    LocalPort => 10254, ", 
+    "    Proto     => 'tcp',", 
+    ") or die \"Couldn't open socket: $!\";", 
+    "", 
+    "my $new_sock = $socket->accept();", 
+    "while (1) {", 
+    "    syswrite $new_sock, \"polld\";", 
+    "    sleep 5;", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

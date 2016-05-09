@@ -1,0 +1,15 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Conditional Operator", 
+  "value": [
+    "my $a = $ok ? $b : $c; # get a scalar", 
+    "my @a = $ok ? @b : @c; # get an array", 
+    "my $a = $ok ? @b : @c; # get a count of an array's elements!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}
