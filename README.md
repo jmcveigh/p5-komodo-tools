@@ -16,9 +16,7 @@ INSTALLATION
 
 NOTES
 -----
-- Context of Catalyst Executable Tools is to have the my_project.psgi as the file with Komodo's current file focus.
-- Please, be patient as I provide augmentations.
-
+- Context of Catalyst Executable Tools is to have the my_project.conf as the file with Komodo's current file focus.
 
 This is a completed works, in part, by Jason McVeigh of General Software Contracting and the Linux User Group in Orillia, ON, CA.
 
