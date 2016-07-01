@@ -1,0 +1,33 @@
+/*
+.waves-ripple {
+    padding-top: 0.400em;
+    padding-bottom: 0.400em;
+    margin-top: 0.10em;
+    margin-bottom: 0.10em;
+    opacity: 1.000;
+    
+    background-color: #000000;
+    background-image: radial-gradient(rgba(255,255,255,1.0),rgba(255,255,255,0.0),rgba(255,255,25,0.0),rgba(255,255,255,0.0)),radial-gradient(rgba(255,255,255,1.0),rgba(255,255,255,0.0),rgba(255,255,255,0.0),rgba(255,255,255,0.0));
+    background-position: center top -0.4em,center bottom -0.4em;
+    background-size: 100% 1.0em,100% 1.0em;
+    background-clip: padding-box,padding-box;
+    background-attachment: scroll,scroll;
+    background-origin: padding-box,padding-box;
+    background-repeat: no-repeat,no-repeat;
+    
+    box-shadow: 0 0.1em 0.4em rgba(255,255,255,1.0);
+}
+
+.event aside,.venue section,.event img,.venue img,header,.btn-lg,.event .waves-ripple {
+    margin-bottom: 1.0em;
+}
+
+.event img,.venue img,header,.btn-lg,.event .waves-ripple,.color4.boxContent {
+    box-shadow: 0 0.1em 0.4em rgba(255,255,255,1.0);
+    margin-bottom: 1.0em;
+}
+
+h2 {
+        margin-top: 1em;
+}
+*/

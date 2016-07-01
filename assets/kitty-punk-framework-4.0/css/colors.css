@@ -1,0 +1,354 @@
+/* 
+    Document   : colors
+    Author     : Jason McVeigh
+    Description: Colours for Speed Data Canada
+*/
+
+
+.panel-default>.panel-heading {background:#6D8997; }
+.panel-default>.panel-heading:hover {background:#69D997; }
+.panel-default>.panel-heading:hover a {color:#6D8997; }
+.panel-title>a {color:#6D8997;}
+.panel-title>a:hover {text-decoration: none;}
+
+body {
+	color:#F3FE0E;
+	background: #172027;
+}
+
+blockquote small {
+	color:#69D997;
+}
+h1, h2, h3, h4, h5 {
+	color:#6D8997;
+}
+h2 {
+ color:#F3FE0E;	
+ margin-top: 1em;
+}
+h2 i {color:#F3FE0E}
+h2.subTitle:after, h2.noSubtitle:after {
+	background-color:#6D8997;
+}
+
+.paralaxText blockquote:before, .paralaxText blockquote:after {
+	color:#69D997;
+}
+#welcome, #paralaxSlice1,#paralaxSlice2,#paralaxSlice3,#paralaxSlice4,#paralaxSlice5,#paralaxSlice6 {
+	background-color:#172027;
+}
+
+#welcome {
+	background-image: url('../images/theme-pics/welcome-bg-1.jpg');	
+}
+
+#paralaxSlice1 {
+	background-image: url('../images/theme-pics/wallpaper-bg-1.jpg');
+	
+}
+
+#paralaxSlice2 {
+	background-image: url('../images/theme-pics/wallpaper-bg-2.jpg');
+}
+
+#paralaxSlice3 {
+	background-image: url('../images/theme-pics/wallpaper-bg-3.jpg');
+}
+
+#paralaxSlice4 {
+	background-image: url('../images/theme-pics/wallpaper-bg-4.jpg');
+}
+
+#paralaxSlice5 {
+	background-image: url('../images/theme-pics/wallpaper-bg-5.jpg');
+}
+
+#paralaxSlice6 {
+	background-image: url('../images/theme-pics/wallpaper-bg-6.jpg');
+}
+
+.paralaxText blockquote, .paralaxText h2, .paralaxText h3, .paralaxText h4, .paralaxText p, .paralaxText i{
+	color:#69D997;
+}
+
+a {
+	color:#69D997;
+}
+a:hover, .scrollspyNav .active a {
+	color:#69D997;
+}
+ul.iconsList li a {
+	color:#F3FE0E;
+}
+ul.iconsList li a:hover, ul.iconsList i {
+	color:#6D8997
+}
+
+.btn {
+	background: #F804F9;
+	color:#172027;
+	border:2px solid #69D997;
+}
+.btn:hover {
+	color:#FF08FF;
+	border-color:#69D997;
+	text-shadow:none;
+	background:#172027;
+}
+.btn-primary {
+	background: #006DCC;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] {
+	background: #FF08FF;
+}
+.btn-info {
+	background: #F3FE0E;
+}
+.btn-success {
+	background: #69D997;
+}
+.btn-warning {
+	background: #69D997;
+}
+.btn-danger {
+	background: #F3FE0E;
+}
+.btn-link, .btn-link:active, .btn-link[disabled], .btn-link:hover {
+	background:none;
+	border:none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow:none;
+	box-shadow: none;
+	color:#F3FE0E;
+}
+.btnWrapper {
+	border:1px solid #6D8997;
+}
+
+#mainHeader{
+    background-color: #172027;
+	-webkit-box-shadow: 0 1px 10px rgba(255, 255, 255, 0.1);
+	-moz-box-shadow: 0 1px 10px rgba(255,255,255,.1);
+	box-shadow: 0 1px 10px rgba(255, 255, 255, 0.1);
+}
+
+#mainMenu ul li a, #resMainMenu ul li a {
+	color:#F3FE0E;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	background: #F3FE0E;
+	color:#69D997;
+}
+
+footer {
+	color: #69D997;
+	background: #69D997;
+	background-image: url('../images/theme-pics/footer-bg-1.jpg');
+}
+
+#footerRights {	
+	color:#F3FE0E;	
+}
+p.credits {
+	color:#F3FE0E;
+}
+p.credits a {
+	color:#6D8997;
+}
+
+#home h2 {color:#172027;}
+
+.flexslider {
+	box-shadow:none;
+}
+.slides .txt div {
+	background:#F3FE0E;
+	color:#69D997;
+}
+.flexslider .flex-direction-nav a {
+	background-color:#69D997;
+}
+
+.flexslider .flex-control-paging li a:hover, #sliderWrapper .flex-control-paging li a.flex-active{
+	background: #172027;
+	border:2px solid #172027;
+}
+.flexslider .flex-control-paging li a {
+	background: transparent;
+	border:2px solid rgba(255,255,255,0.25);
+}
+.flexslider .flex-control-nav {
+	background:transparent;
+}
+.flexslider h2 {
+	color:#172027;
+	background-color:#F3FE0E;
+}
+.flexslider h3 {
+	color:#172027;
+	background-color:#F3FE0E;
+}
+.flexslider .caption p {
+	background-color:#F3FE0E;
+	color:#172027;
+}
+
+#flexHome  h2 {	color:#FA02F9;
+	background:none;
+	margin: 0;
+	}
+#flexHome  h3 {	color:#6D8997;
+	background:none;
+	margin: 0;
+}
+
+nav#filter a {
+	background-color: #6D8997;
+	color:#F3FE0E;
+}
+nav#filter a:hover, nav#filter a.current {
+	background-color: #F3FE0E;
+	color:#69D997;
+}
+li.filterTitle {
+	color:#F3FE0E;
+}
+section#projectDescription {
+	background-color:#69D997;
+}
+.mask{background-color: #69D997;}
+
+.iconLinks a span {color:#F3FE0E;}
+
+.pricingBloc {
+	background-color:#172027;
+	border:1px solid rgba(255, 255, 255, 0.2);
+
+}
+.pricingBloc ul li {
+	border-bottom:1px solid #6D8997;
+	color:#F3FE0E !important;
+}
+.pricingBloc ul li:last-child {
+	border-bottom:none;
+}
+.pricingBloc h3 {
+	background-color:#F3FE0E;
+	color:#F3FE0E !important;
+	border:none;
+}
+.pricingBloc h4 {
+	background-color:#F3FE0E;
+	color:#172027 !important;
+
+}
+.pricingBloc p {
+	background-color:#6D8997;
+	color:#F3FE0E !important;
+}
+.pricingBloc.focusPlan {
+	margin-top:0;
+	border-color:#6D8997;
+}
+.pricingBloc.focusPlan h3{
+	background-color:#F3FE0E;
+	color:#172027 !important;
+}
+.pricingBloc.focusPlan h4 {
+	background-color:#69D997;
+	padding:1.25em;
+	color:#172027 !important;
+}
+
+.form-control:focus{
+	border: none;
+	background-color:#6D8997;
+	box-shadow:none;
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+}
+.form-control {
+	color: #F3FE0E;
+	background-color:#6D8997;
+    border:none;
+}
+.error {color: #F3FE0E;
+background-color: #69D997;
+border-color: #6D8997;}
+
+label.error {color:#172027;
+background-color: #F3FE0E;
+border:none}
+
+#projectQuote, #projectQuote h4{background:#6D8997;color:#F3FE0E;}
+
+.boxFeature i{color:#FA02F9;} 
+
+.slice{
+	background-color:#000;
+}
+
+.ctaBox {border:2px solid rgba(255,255,255,0.05);}
+.ctaBoxFullwidth{border:none}
+
+.ctaBox blockquote {
+	color:#172027;
+}
+
+.color1, .slice.color1, .bulle.color1, .ctaBox.color1{
+	background-color:#6D8997;
+	color:#F3FE0E;
+}
+
+.color1 h2, .color1 h3, .color1 h4, .color1 h5, .color1 blockquote, .color1 a{
+	color:#172027;
+	
+}
+.color1 a.btn{color:#172027;}
+.color1 a.btn:hover{color:#F3FE0E;}
+
+.color4, .slice.color4, .bulle.color4, .ctaBox.color4{
+	background-color: #69D997;
+	color:#172027;
+}
+
+.color4 h2, .color4 h3, .color4 h4, .color4 h5, .color4 blockquote, .color4 a {
+	color:#172027;
+}
+
+.color4 h3.subTitle:after, .color4 h2.noSubtitle:after {
+	background:#172027;
+}
+
+.iconRounded {border:2px solid #69D997;color:#172027;background-color:#172027;}
+.iconRounded:hover, .color1 .iconRounded:hover{background-color:#69D997;color:#172027;}
+.color1 .iconRounded {color:#69D997;}
+.color4 .iconRounded {background-color:#172027;color:#69D997;}
+
+footer a {
+		color: #FA02F9;
+}
+
+footer p {
+		color: #693997;
+}
+
+footer h6 {
+		color: #F3FE0E;
+}
+
+.paralaxSliceWithGutter {
+    color: #69D997;
+    background-color: #69D997;
+	background-repeat: repeat;
+	background-attachment: fixed;
+	background-position: center top;
+}
+
+.paralaxSliceWithGutter {
+    padding: 44px 0px;
+}
+
+.paralaxSliceWithGutter {
+    display: block;
+}
