@@ -1,0 +1,2177 @@
+<html><head><title>plugins code examples</title><style>
+
+P.ExampleTitle {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 6.000000pt;
+	margin-bottom: 6.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 0.000000pt;
+	font-size: 9.000000pt;
+	font-weight: medium;
+	font-style: Italic;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Birka";
+}
+
+P.CodeExample {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-weight: bold;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "TheSansMonoCondensed";
+}
+
+P.Code {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Courier";
+}
+
+
+
+
+
+</style><body><P CLASS="Code">
+[%&nbsp;USE&nbsp;date&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;date(gmt&nbsp;=&nbsp;1)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Today&nbsp;is&nbsp;[%&nbsp;date.format&nbsp;%].</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Today&nbsp;is&nbsp;09:31:55&nbsp;11-Aug-2003.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;today&nbsp;=&nbsp;date&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;here&nbsp;=&nbsp;Directory&nbsp;'.'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;USE&nbsp;there&nbsp;=&nbsp;Directory&nbsp;'/etc'&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;autoformat&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-1 Autoformatting&nbsp;a&nbsp;Martin&nbsp;Gardner&nbsp;quote&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;autoformat&nbsp;right&nbsp;=&nbsp;42&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;autoformat('</P>
+<P CLASS="CodeExample">
+Biographical&nbsp;history,&nbsp;as&nbsp;taught&nbsp;in&nbsp;our&nbsp;public&nbsp;schools,&nbsp;is&nbsp;still</P>
+<P CLASS="CodeExample">
+largely&nbsp;a&nbsp;history&nbsp;of&nbsp;boneheads:&nbsp;&nbsp;ridiculous&nbsp;kings&nbsp;and&nbsp;queens,&nbsp;paranoid</P>
+<P CLASS="CodeExample">
+political&nbsp;leaders,&nbsp;compulsive&nbsp;voyagers,&nbsp;ignorant&nbsp;generals&nbsp;--&nbsp;the</P>
+<P CLASS="CodeExample">
+flotsam&nbsp;and&nbsp;jetsam&nbsp;of&nbsp;historical&nbsp;currents.&nbsp;&nbsp;The&nbsp;men&nbsp;who&nbsp;radically</P>
+<P CLASS="CodeExample">
+altered&nbsp;history,&nbsp;the&nbsp;great&nbsp;scientists&nbsp;and&nbsp;mathematicians,&nbsp;are&nbsp;seldom</P>
+<P CLASS="CodeExample">
+mentioned,&nbsp;if&nbsp;at&nbsp;all.</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Martin&nbsp;Gardner</P>
+<P CLASS="CodeExample">
+')</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Biographical&nbsp;history,&nbsp;as&nbsp;taught&nbsp;in&nbsp;our</P>
+<P CLASS="Code">
+public&nbsp;schools,&nbsp;is&nbsp;still&nbsp;largely&nbsp;a&nbsp;history</P>
+<P CLASS="Code">
+of&nbsp;boneheads:&nbsp;ridiculous&nbsp;kings&nbsp;and&nbsp;queens,</P>
+<P CLASS="Code">
+paranoid&nbsp;political&nbsp;leaders,&nbsp;compulsive</P>
+<P CLASS="Code">
+voyagers,&nbsp;ignorant&nbsp;generals&nbsp;--&nbsp;the&nbsp;flotsam</P>
+<P CLASS="Code">
+and&nbsp;jetsam&nbsp;of&nbsp;historical&nbsp;currents.&nbsp;The&nbsp;men</P>
+<P CLASS="Code">
+who&nbsp;radically&nbsp;altered&nbsp;history,&nbsp;the&nbsp;great</P>
+<P CLASS="Code">
+scientists&nbsp;and&nbsp;mathematicians,&nbsp;are&nbsp;seldom</P>
+<P CLASS="Code">
+mentioned,&nbsp;if&nbsp;at&nbsp;all.</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Martin&nbsp;Gardner</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-2 Using&nbsp;autoformat&nbsp;in&nbsp;filter&nbsp;mode&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;autoformat&nbsp;justify&nbsp;=&nbsp;'center'&nbsp;-%]</P>
+<P CLASS="CodeExample">
+Programming&nbsp;is&nbsp;a&nbsp;Dark&nbsp;Art,&nbsp;and&nbsp;it&nbsp;will&nbsp;always&nbsp;be.&nbsp;The&nbsp;programmer&nbsp;is</P>
+<P CLASS="CodeExample">
+fighting&nbsp;against&nbsp;the&nbsp;two&nbsp;most&nbsp;destructive&nbsp;forces&nbsp;in&nbsp;the&nbsp;universe:</P>
+<P CLASS="CodeExample">
+entropy&nbsp;and&nbsp;human&nbsp;stupidity.&nbsp;They're&nbsp;not&nbsp;things&nbsp;you&nbsp;can&nbsp;always</P>
+<P CLASS="CodeExample">
+overcome&nbsp;with&nbsp;a&nbsp;&quot;methodology&quot;&nbsp;or&nbsp;on&nbsp;a&nbsp;schedule.</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Damian&nbsp;Conway</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Programming&nbsp;is&nbsp;a&nbsp;Dark&nbsp;Art,&nbsp;and&nbsp;it&nbsp;will</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;always&nbsp;be.&nbsp;The&nbsp;programmer&nbsp;is&nbsp;fighting</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;against&nbsp;the&nbsp;two&nbsp;most&nbsp;destructive&nbsp;forces&nbsp;in</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;universe:&nbsp;entropy&nbsp;and&nbsp;human&nbsp;stupidity.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;They're&nbsp;not&nbsp;things&nbsp;you&nbsp;can&nbsp;always&nbsp;overcome</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;a&nbsp;&quot;methodology&quot;&nbsp;or&nbsp;on&nbsp;a&nbsp;schedule.</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Damian&nbsp;Conway</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;q&nbsp;=&nbsp;CGI&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+Hello,&nbsp;[%&nbsp;q.param('name')&nbsp;OR&nbsp;'Mr.&nbsp;Unnamed'&nbsp;%]!</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;param&nbsp;IN&nbsp;q.param&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;param&nbsp;%]&nbsp;-&gt;&nbsp;[%&nbsp;q.param(param)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;params&nbsp;=&nbsp;q.params;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;params.exists('story_id');</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;story&nbsp;id&nbsp;=&nbsp;params.story_id;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;q&nbsp;=&nbsp;CGI('uid=18&amp;name=Dave+Cross&amp;nick=davorg')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;params&nbsp;=&nbsp;q.params&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;import(params)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+UID:&nbsp;[%&nbsp;uid&nbsp;%]</P>
+<P CLASS="Code">
+Nick:&nbsp;[%&nbsp;nick&nbsp;%]</P>
+<P CLASS="Code">
+Name:&nbsp;[%&nbsp;name&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+UID:&nbsp;[%&nbsp;params.uid&nbsp;%]</P>
+<P CLASS="Code">
+Nick:&nbsp;[%&nbsp;params.nick&nbsp;%]</P>
+<P CLASS="Code">
+Name:&nbsp;[%&nbsp;params.name&nbsp;#&nbsp;or&nbsp;q.param('name')&nbsp;--&nbsp;same&nbsp;thing&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;SessionID&nbsp;=&nbsp;q.cookie('SessionID')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;q.start_ol;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;FOREACH&nbsp;param&nbsp;IN&nbsp;q.param;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.start_li;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.start_b;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;param;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.end_b;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:&nbsp;&quot;;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.param(param);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.end_li;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.end_ol;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-3 Stringified&nbsp;array&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;&nbsp;q&nbsp;=&nbsp;CGI&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;q.checkbox_group(name&nbsp;=&nbsp;'modules'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label&nbsp;=&nbsp;'Modules&nbsp;to&nbsp;install'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values&nbsp;=&nbsp;[&nbsp;'Template-Toolkit',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'DBD::Google',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Calendar::Simple'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;])&nbsp;</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+ARRAY(0x859eab4)</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-4 Joined&nbsp;array&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;q&nbsp;=&nbsp;CGI&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;q.checkbox_group(name&nbsp;=&nbsp;'modules'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label&nbsp;=&nbsp;'Modules&nbsp;to&nbsp;install'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values&nbsp;=&nbsp;[&nbsp;'Template-Toolkit',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'DBD::Google',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Calendar::Simple'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]).join(&quot;&#92;n&quot;)</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;input&nbsp;type=&quot;checkbox&quot;&nbsp;name=&quot;modules&quot;&nbsp;value=&quot;Template-Toolkit&quot;&nbsp;label=&quot;Modules&nbsp;to&nbsp;install&quot;&nbsp;/&gt;Template-Toolkit</P>
+<P CLASS="Code">
+&lt;input&nbsp;type=&quot;checkbox&quot;&nbsp;name=&quot;modules&quot;&nbsp;value=&quot;DBD::Google&quot;&nbsp;label=&quot;Modules&nbsp;to&nbsp;install&quot;&nbsp;/&gt;DBD::Google</P>
+<P CLASS="Code">
+&lt;input&nbsp;type=&quot;checkbox&quot;&nbsp;name=&quot;modules&quot;&nbsp;value=&quot;Calendar::Simple&quot;&nbsp;label=&quot;Modules&nbsp;to&nbsp;install&quot;&nbsp;/&gt;Calendar::Simple</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;datafile(filename,&nbsp;delim&nbsp;=&nbsp;':')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;machines&nbsp;=&nbsp;datafile('machine-list.txt',&nbsp;delim&nbsp;=&nbsp;&quot;,&quot;)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+name,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ip</P>
+<P CLASS="Code">
+apollo,&nbsp;&nbsp;&nbsp;RedHat&nbsp;7.3,&nbsp;&nbsp;10.100.5.100</P>
+<P CLASS="Code">
+hera,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RedHat&nbsp;7.2,&nbsp;&nbsp;10.100.33.227</P>
+<P CLASS="Code">
+juno,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Solaris&nbsp;8,&nbsp;&nbsp;&nbsp;10.100.6.41</P>
+<P CLASS="Code">
+artemis,&nbsp;&nbsp;RedHat&nbsp;7.3,&nbsp;&nbsp;10.100.6.42</P>
+<P CLASS="Code">
+hermes,&nbsp;&nbsp;&nbsp;Solaris&nbsp;9,&nbsp;&nbsp;&nbsp;10.100.55.182</P>
+<P CLASS="Code">
+zeus,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RedHat&nbsp;7.3,&nbsp;&nbsp;10.100.6.78</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-5 Turning&nbsp;machine-list.txt&nbsp;into&nbsp;XML&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;machines&nbsp;=&nbsp;datafile('example/machine-list.txt',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delim&nbsp;=&nbsp;',')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;machines&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;machine&nbsp;IN&nbsp;machines.sort('name')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;machine&nbsp;name=&quot;[%&nbsp;machine.name&nbsp;%]&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os=&quot;[%&nbsp;machine.os&nbsp;%]&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ip=&quot;[%&nbsp;machine.ip&nbsp;%]&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;/machines&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;machines&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;machine&nbsp;name=&quot;apollo&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os=&quot;RedHat&nbsp;7.3&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ip=&quot;10.100.5.100&quot;&nbsp;/&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;machine&nbsp;name=&quot;artemis&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os=&quot;RedHat&nbsp;7.3&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ip=&quot;10.100.6.42&quot;&nbsp;/&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;machine&nbsp;name=&quot;hera&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os=&quot;RedHat&nbsp;7.2&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ip=&quot;10.100.33.227&quot;&nbsp;/&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;machine&nbsp;name=&quot;hermes&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os=&quot;Solaris&nbsp;9&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ip=&quot;10.100.55.182&quot;&nbsp;/&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;machine&nbsp;name=&quot;juno&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os=&quot;Solaris&nbsp;8&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ip=&quot;10.100.6.41&quot;&nbsp;/&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;machine&nbsp;name=&quot;zeus&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os=&quot;RedHat&nbsp;7.3&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ip=&quot;10.100.6.78&quot;&nbsp;/&gt;</P>
+<P CLASS="Code">
+&lt;/machines&gt;</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;date(format&nbsp;=&nbsp;'%Y/%m/%d'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locale&nbsp;=&nbsp;'fr_FR')</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;date.format&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+File&nbsp;last&nbsp;modified:&nbsp;[%&nbsp;date.format(template.modtime)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;day&nbsp;=&nbsp;date(format&nbsp;=&nbsp;'%A'&nbsp;locale&nbsp;=&nbsp;'en_GB')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;day.format('09:31:56&nbsp;11-08-2003')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Monday</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;date.format(template.modtime,&nbsp;'%d-%b-%Y')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;date.format(template.modtime,&nbsp;'%d-%b-%Y',&nbsp;'en_GB')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;date.format(template.modtime,&nbsp;'%d-%b-%Y',&nbsp;'en_GB',&nbsp;1)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;date.format(format&nbsp;=&nbsp;'%H:%M:%S')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;date.format(time&nbsp;=&nbsp;template.modtime&nbsp;format&nbsp;=&nbsp;'%H:%M:%S')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;date.format(mytime&nbsp;format&nbsp;=&nbsp;'%H:%M:%S')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;date.format(mytime&nbsp;format&nbsp;=&nbsp;'%H:%M:%S'&nbsp;locale&nbsp;=&nbsp;'fr_FR')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;date.format(mytime&nbsp;format&nbsp;=&nbsp;'%H:%M:%S'&nbsp;gmt&nbsp;=&nbsp;1)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;date.format(date.now,&nbsp;'%A')&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+It&nbsp;has&nbsp;been&nbsp;[%&nbsp;date.now&nbsp;-&nbsp;template.modtime&nbsp;%]&nbsp;seconds&nbsp;since</P>
+<P CLASS="Code">
+[%&nbsp;template.name&nbsp;%]&nbsp;was&nbsp;last&nbsp;modified.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;calc&nbsp;=&nbsp;date.calc&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;calc.Monday_of_Week(22,&nbsp;2001).join('/')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;q&nbsp;=&nbsp;CGI&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;manip&nbsp;=&nbsp;date.manip&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;time&nbsp;=&nbsp;manip.UnixDate(q.param('date'),&nbsp;&quot;%s&quot;)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;date.format(time)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;dir&nbsp;=&nbsp;Directory&nbsp;'/tmp'&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;regular&nbsp;files&nbsp;(not&nbsp;directories)</P>
+<P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;file&nbsp;=&nbsp;dir.files&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;file.name&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;directories&nbsp;only</P>
+<P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;file&nbsp;=&nbsp;dir.dirs&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;file.name&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;files&nbsp;and/or&nbsp;directories</P>
+<P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;file&nbsp;=&nbsp;dir.list&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;file.name&nbsp;%]&nbsp;([%&nbsp;file.isdir&nbsp;?&nbsp;'directory'&nbsp;:&nbsp;'file'&nbsp;%])</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;etc&nbsp;=&nbsp;directory&nbsp;'/etc/'&nbsp;nostat&nbsp;=&nbsp;1&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;file&nbsp;=&nbsp;dir.list&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;IF&nbsp;file.isdir&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Directory:&nbsp;[%&nbsp;file.name&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;ELSE&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;File:&nbsp;[%&nbsp;file.name&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-6 Dumping&nbsp;a&nbsp;hash&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;dumper&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;terms&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sass&nbsp;&nbsp;=&nbsp;'know,&nbsp;be&nbsp;aware&nbsp;of,&nbsp;meet,&nbsp;have&nbsp;sex&nbsp;with'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hoopy&nbsp;=&nbsp;'really&nbsp;together&nbsp;guy'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frood&nbsp;=&nbsp;'really,&nbsp;amazingly&nbsp;together&nbsp;guy'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;dumper.dump(terms)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$VAR1&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'hoopy'&nbsp;=&gt;&nbsp;'really&nbsp;together&nbsp;guy',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'frood'&nbsp;=&gt;&nbsp;'really,&nbsp;amazingly&nbsp;together&nbsp;guy',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'sass'&nbsp;=&gt;&nbsp;'know,&nbsp;be&nbsp;aware&nbsp;of,&nbsp;meet,&nbsp;have&nbsp;sex&nbsp;with'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-7 Dumping&nbsp;the&nbsp;CGI&nbsp;plugin&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;CGI&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;dumper&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;dumper.dump(CGI)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$VAR1&nbsp;=&nbsp;bless(&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.charset'&nbsp;=&gt;&nbsp;'ISO-8859-1',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.parameters'&nbsp;=&gt;&nbsp;[&nbsp;&nbsp;],</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.fieldnames'&nbsp;=&gt;&nbsp;{&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'escape'&nbsp;=&gt;&nbsp;1</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;'CGI'&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-8 Dumping&nbsp;the&nbsp;CGI&nbsp;plugin&nbsp;with&nbsp;dump_html&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;CGI&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;dumper&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;dumper.dump_html(CGI)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$VAR1&nbsp;=&nbsp;bless(&nbsp;{&lt;br&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.charset'&nbsp;=&amp;gt;&nbsp;'ISO-8859-1',&lt;br&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.parameters'&nbsp;=&amp;gt;&nbsp;[&nbsp;&nbsp;],&lt;br&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.fieldnames'&nbsp;=&amp;gt;&nbsp;{&nbsp;&nbsp;},&lt;br&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'escape'&nbsp;=&amp;gt;&nbsp;1&lt;br&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;'CGI'&nbsp;);&lt;br&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-9 Modifying&nbsp;Data::Dumper's&nbsp;output&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;CGI&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;dumper(Pad&nbsp;=&nbsp;'//&nbsp;',&nbsp;Varname&nbsp;=&nbsp;'CGI')&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;dumper.dump(CGI)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+//&nbsp;$CGI1&nbsp;=&nbsp;bless(&nbsp;{</P>
+<P CLASS="Code">
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.charset'&nbsp;=&gt;&nbsp;'ISO-8859-1',</P>
+<P CLASS="Code">
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.parameters'&nbsp;=&gt;&nbsp;[&nbsp;&nbsp;],</P>
+<P CLASS="Code">
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.fieldnames'&nbsp;=&gt;&nbsp;{&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'escape'&nbsp;=&gt;&nbsp;1</P>
+<P CLASS="Code">
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;'CGI'&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;file&nbsp;'foo.html'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;USE&nbsp;file&nbsp;'foo/bar/baz.html'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;USE&nbsp;file&nbsp;'/foo/bar/baz.html'&nbsp;nostat&nbsp;=&nbsp;1&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+dev&nbsp;ino&nbsp;mode&nbsp;nlink&nbsp;uid&nbsp;gid&nbsp;rdev&nbsp;size&nbsp;</P>
+<P CLASS="Code">
+atime&nbsp;mtime&nbsp;ctime&nbsp;blksize&nbsp;blocks</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;baz&nbsp;=&nbsp;File&nbsp;'/foo/bar/baz.html'&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;baz.mtime&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;baz.mode&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-10 user&nbsp;and&nbsp;uid&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;Makefile&nbsp;=&nbsp;file&nbsp;'Makefile'&nbsp;&nbsp;%]</P>
+<P CLASS="CodeExample">
+uid:&nbsp;[%&nbsp;Makefile.uid&nbsp;%]</P>
+<P CLASS="CodeExample">
+user:&nbsp;[%&nbsp;Makefile.user&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+uid:&nbsp;500</P>
+<P CLASS="Code">
+user:&nbsp;darren</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-11 noid&nbsp;=&nbsp;1&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;Makefile&nbsp;=&nbsp;file&nbsp;'Makefile'&nbsp;noid&nbsp;=&nbsp;1&nbsp;%]</P>
+<P CLASS="CodeExample">
+uid:&nbsp;[%&nbsp;Makefile.uid&nbsp;%]</P>
+<P CLASS="CodeExample">
+user:&nbsp;[%&nbsp;Makefile.user&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+uid:&nbsp;500</P>
+<P CLASS="Code">
+user:</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;TRY&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;USE&nbsp;File&nbsp;'/tmp/myfile'&nbsp;&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;File&nbsp;exists!</P>
+<P CLASS="Code">
+[%&nbsp;CATCH&nbsp;File&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;File&nbsp;error:&nbsp;[%&nbsp;error.info&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;file&nbsp;'/some/where/over/the/rainbow.html',&nbsp;nostat&nbsp;=&nbsp;1&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;file.mtime&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;nothing</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;file&nbsp;'/foo/bar.html'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;file.path&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;/foo/bar.html</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;file&nbsp;'/foo/bar.html'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;file.name&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;bar.html</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;file&nbsp;'/foo/bar.html'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;file.name&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;/foo</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;file&nbsp;'/foo/bar.html'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;file.ext&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;html</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;file&nbsp;'bar.html'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;file.home&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;nothing</P>
+<P CLASS="Code">
+[%&nbsp;USE&nbsp;file&nbsp;'foo/bar.html'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;file.home&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;..</P>
+<P CLASS="Code">
+[%&nbsp;USE&nbsp;file&nbsp;'foo/bar/baz.html'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;file.home&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;../..</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;file&nbsp;'foo/bar.html',&nbsp;root='/tmp'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;file.root&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;/tmp</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;file&nbsp;'foo/bar.html',&nbsp;root='/tmp'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;file.path&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;foo/bar.html</P>
+<P CLASS="Code">
+[%&nbsp;file.root&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;/tmp</P>
+<P CLASS="Code">
+[%&nbsp;file.abs&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;/tmp/foo/bar.html</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;file&nbsp;'foo/bar/baz.html'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;file.rel('wiz/waz.html')&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;../../wiz/waz.html</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-12 HTML&nbsp;comments&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;commented&nbsp;=&nbsp;format('&lt;!--&nbsp;%s&nbsp;--&gt;')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;commented('The&nbsp;cat&nbsp;sat&nbsp;on&nbsp;the&nbsp;mat')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;!--&nbsp;The&nbsp;cat&nbsp;sat&nbsp;on&nbsp;the&nbsp;mat&nbsp;--&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-13 image&nbsp;tag&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;img&nbsp;=&nbsp;format('&lt;img&nbsp;src=&quot;%s&quot;&nbsp;width=&quot;%d&quot;&nbsp;height=&quot;%d&quot;&nbsp;/&gt;')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;img('logo.png',&nbsp;'0088',&nbsp;42)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;img&nbsp;src=&quot;logo.png&quot;&nbsp;width=&quot;88&quot;&nbsp;height=&quot;42&quot;&nbsp;/&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-14 Using&nbsp;precision&nbsp;and&nbsp;width&nbsp;with&nbsp;format&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;fmt&nbsp;=&nbsp;format(&quot;%2.8f&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;USE&nbsp;Math;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;fmt(Math.pi)</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+3.14159265</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;img1&nbsp;=&nbsp;GD.Image&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;empty&nbsp;image&nbsp;of&nbsp;default&nbsp;size&nbsp;(64x64)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;USE&nbsp;img2&nbsp;=&nbsp;GD.Image(X,&nbsp;Y)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;empty&nbsp;image&nbsp;(X&nbsp;x&nbsp;Y)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;USE&nbsp;img3&nbsp;=&nbsp;GD.Image(filename)&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;a&nbsp;preexisting&nbsp;image&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;orange&nbsp;=&nbsp;img.colorAllocate(255,&nbsp;165,&nbsp;0)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;red&nbsp;=&nbsp;img.colorAllocate(255,&nbsp;0,&nbsp;0)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;blue&nbsp;=&nbsp;img.colorAllocate(0,&nbsp;0,&nbsp;255)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;index&nbsp;=&nbsp;img.getPixel(42,&nbsp;42);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;rgb&nbsp;=&nbsp;img.rgb(index)&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;rgb&nbsp;=&nbsp;img.getPixel(42,&nbsp;42).rgb(index)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;img.png&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;emit&nbsp;the&nbsp;image&nbsp;as&nbsp;a&nbsp;PNG...&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;img.jpeg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;...&nbsp;or&nbsp;as&nbsp;a&nbsp;JPEG...&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;img.gd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;...&nbsp;or&nbsp;in&nbsp;GD&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;img.gd2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;...&nbsp;or&nbsp;GD2&nbsp;formats&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-15 Strange,&nbsp;pointless&nbsp;shapes&nbsp;made&nbsp;entirely&nbsp;with&nbsp;GD&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;FILTER&nbsp;null;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;USE&nbsp;im&nbsp;&nbsp;&nbsp;=&nbsp;GD.Image(100,&nbsp;100);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;USE&nbsp;c&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GD.Constants;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;USE&nbsp;poly&nbsp;=&nbsp;GD.Polygon;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;allocate&nbsp;some&nbsp;colors;&nbsp;white&nbsp;is&nbsp;the&nbsp;background</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;white&nbsp;&nbsp;=&nbsp;im.colorAllocate(255,&nbsp;255,&nbsp;255);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;black&nbsp;&nbsp;=&nbsp;im.colorAllocate(0,&nbsp;0,&nbsp;0);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;orange&nbsp;=&nbsp;im.colorAllocate(255,&nbsp;165,&nbsp;0);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;blue&nbsp;&nbsp;&nbsp;=&nbsp;im.colorAllocate(0,&nbsp;0,&nbsp;255);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Put&nbsp;a&nbsp;black-bordered&nbsp;orange&nbsp;square&nbsp;in&nbsp;the&nbsp;middle</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;im.filledRectangle(10,&nbsp;10,&nbsp;90,&nbsp;90,&nbsp;orange);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;im.rectangle(10,&nbsp;10,&nbsp;90,&nbsp;90,&nbsp;black);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Draw&nbsp;a&nbsp;diamond&nbsp;in&nbsp;the&nbsp;middle</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;poly.addPt(0,&nbsp;50);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;poly.addPt(50,&nbsp;100);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;poly.addPt(100,&nbsp;50);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;poly.addPt(50,&nbsp;0);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;im.filledPolygon(poly,&nbsp;blue);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Put&nbsp;a&nbsp;smaller&nbsp;black-bordered&nbsp;white&nbsp;square&nbsp;in&nbsp;the&nbsp;middle&nbsp;of&nbsp;that</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;im.filledRectangle(30,&nbsp;30,&nbsp;70,&nbsp;70,&nbsp;white);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;im.rectangle(30,&nbsp;30,&nbsp;70,&nbsp;70,&nbsp;black);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Output&nbsp;binary&nbsp;image&nbsp;in&nbsp;PNG&nbsp;format</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;im.png&nbsp;|&nbsp;stdout(1);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-16 Generating&nbsp;a&nbsp;graph&nbsp;of&nbsp;the&nbsp;top&nbsp;10&nbsp;posters&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;</P>
+<P CLASS="CodeExample">
+FILTER&nbsp;null;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;USE&nbsp;graph&nbsp;=&nbsp;GD.Graph.pie(600,&nbsp;400);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;USE&nbsp;gdc&nbsp;=&nbsp;GD.Constants;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;USE&nbsp;posters&nbsp;=&nbsp;datafile('posters');</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;=&nbsp;[</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;posters</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;the&nbsp;count</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;];</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;list&nbsp;=&nbsp;'templates@template-toolkit.org';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;poster&nbsp;IN&nbsp;posters;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.0.push(poster.name);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.1.push(poster.posts);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;graph.set(title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;Top&nbsp;10&nbsp;posters&nbsp;to&nbsp;$list&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transparent&nbsp;=&nbsp;0</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;logo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'tt2power.png'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_margin&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;4</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b_margin&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;4</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r_margin&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;4</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l_margin&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;4</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start_angle&nbsp;=&nbsp;-90&nbsp;#&nbsp;aesthetics&nbsp;hack</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;A&nbsp;big&nbsp;font&nbsp;for&nbsp;the&nbsp;title</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;graph.set_title_font(gdc.gdGiantFont);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;graph.plot(data).png&nbsp;|&nbsp;stdout(1);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;FILTER&nbsp;null;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;=&nbsp;'Template&nbsp;Toolkit';</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;USE&nbsp;gdc&nbsp;=&nbsp;GD.Constants;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;USE&nbsp;t&nbsp;=&nbsp;GD.Text(text&nbsp;=&nbsp;msg</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font&nbsp;=&nbsp;gdc.gdGiantFont);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;width&nbsp;=&nbsp;t.get('width');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;width&nbsp;of&nbsp;the&nbsp;string&nbsp;in&nbsp;pixels</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;height&nbsp;=&nbsp;t.get('height');&nbsp;&nbsp;&nbsp;#&nbsp;height&nbsp;of&nbsp;the&nbsp;string&nbsp;in&nbsp;pixels</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;imgwidth&nbsp;=&nbsp;width&nbsp;*&nbsp;3;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;imgheight&nbsp;=&nbsp;height&nbsp;*&nbsp;3;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;USE&nbsp;img&nbsp;=&nbsp;GD.Image(imgwidth,&nbsp;imgheight);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;black&nbsp;=&nbsp;img.colorAllocate(0,&nbsp;0,&nbsp;0);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;orange&nbsp;=&nbsp;img.colorAllocate(255,&nbsp;165,&nbsp;0);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;img.string(gdc.gdGiantFont,&nbsp;width,&nbsp;height,&nbsp;msg,&nbsp;orange);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;img.png&nbsp;|&nbsp;stdout(1);</P>
+<P CLASS="Code">
+END;</P>
+<P CLASS="Code">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-17 Generating&nbsp;a&nbsp;single&nbsp;element&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;HTML&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;HTML.element('html')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;html&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-18 Generating&nbsp;an&nbsp;element&nbsp;with&nbsp;attributes&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;HTML&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;HTML.element('img',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;=&nbsp;'logo.png'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width&nbsp;=&nbsp;88</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height&nbsp;=&nbsp;38</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt&nbsp;=&nbsp;'Company&nbsp;Logo'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;'logo')</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;img&nbsp;alt=&quot;Company&nbsp;Logo&quot;&nbsp;height=&quot;38&quot;&nbsp;src=&quot;logo.png&quot;&nbsp;width=&quot;88&quot;&nbsp;name=&quot;logo&quot;&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-19 Generating&nbsp;an&nbsp;element&nbsp;with&nbsp;sorted&nbsp;attributes&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;HTML(sorted=1)&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;HTML.element('img',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;=&nbsp;'logo.png'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width&nbsp;=&nbsp;88</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height&nbsp;=&nbsp;38</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt&nbsp;=&nbsp;'Company&nbsp;Logo'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;'logo')&nbsp;</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;img&nbsp;alt=&quot;Company&nbsp;Logo&quot;&nbsp;height=&quot;38&quot;&nbsp;name=&quot;logo&quot;&nbsp;src=&quot;logo.png&quot;&nbsp;width=&quot;88&quot;&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-20 Using&nbsp;escape&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;HTML&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;HTML.escape(&quot;I'd&nbsp;prefer&nbsp;that&nbsp;you&nbsp;type&nbsp;that&nbsp;tag&nbsp;as&nbsp;&lt;br&nbsp;/&gt;&quot;)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+I'd&nbsp;prefer&nbsp;that&nbsp;you&nbsp;type&nbsp;that&nbsp;tag&nbsp;as&nbsp;&amp;lt;br&nbsp;/&amp;gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-21 Using&nbsp;url&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;HTML&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;HTML.url(&quot;I'd&nbsp;prefer&nbsp;that&nbsp;you&nbsp;type&nbsp;that&nbsp;tag&nbsp;as&nbsp;&lt;br&nbsp;/&gt;&quot;)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+I%27d%20prefer%20that%20you%20type%20that%20tag%20as%20%3Cbr%20%2F%3E</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-22 Generating&nbsp;a&nbsp;string&nbsp;of&nbsp;attributes&nbsp;from&nbsp;a&nbsp;hash&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;HTML(sorted=1);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;attr&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;=&nbsp;'submit'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;'search'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;=&nbsp;'Go!'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;HTML.attributes(attr);</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+name=&quot;search&quot;&nbsp;type=&quot;submit&quot;&nbsp;value=&quot;Go!&quot;</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;image&nbsp;'tt2power.png'&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-23 Basic&nbsp;image&nbsp;info&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;image.name&nbsp;%]&nbsp;was&nbsp;last&nbsp;modified&nbsp;on&nbsp;[%&nbsp;date.format(image.modtime)&nbsp;%].</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+tt2power.png&nbsp;was&nbsp;last&nbsp;modified&nbsp;on&nbsp;09:29:02&nbsp;11-Aug-2003.</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;6-24 Image&nbsp;height&nbsp;and&nbsp;width&nbsp;</P>
+<P CLASS="CodeExample">
+Height:&nbsp;[%&nbsp;image.height&nbsp;%]</P>
+<P CLASS="CodeExample">
+Width:&nbsp;[%&nbsp;image.width&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Height:&nbsp;47</P>
+<P CLASS="Code">
+Width:&nbsp;78</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Content-type:&nbsp;image/png</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+png</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;res&gt;&nbsp;&lt;unit&gt;</P>
+<P CLASS="Code">
+&lt;xres&gt;&nbsp;&quot;/&quot;&nbsp;&lt;yres&gt;&nbsp;&lt;unit&gt;</P>
+<P CLASS="Code">
+&lt;xres&gt;&nbsp;&quot;/&quot;&nbsp;&lt;yres&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Resolution:&nbsp;1/1</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;image.attr&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+width=&quot;78&quot;&nbsp;height=&quot;47&quot;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;image.tag&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;img&nbsp;src=&quot;tt2power.png&quot;&nbsp;width=&quot;78&quot;&nbsp;height=&quot;47&quot;&nbsp;/&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;image.tag(alt&nbsp;=&nbsp;'Powered&nbsp;by&nbsp;TT',&nbsp;name&nbsp;=&nbsp;'tt2power')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;img&nbsp;src=&quot;tt2power.png&quot;&nbsp;width=&quot;78&quot;&nbsp;height=&quot;47&quot;&nbsp;alt=&quot;Powered&nbsp;by&nbsp;TT&quot;&nbsp;name=&quot;tt2power&quot;&nbsp;/&gt;</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-25 Creating&nbsp;your&nbsp;own&nbsp;iterator&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;iterator(list)&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;item&nbsp;IN&nbsp;iterator&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;'&lt;list&gt;'&nbsp;IF&nbsp;iterator.first&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;item&gt;[%&nbsp;item&nbsp;%]&lt;/item&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;'&lt;/list&gt;'&nbsp;IF&nbsp;iterator.last&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-26 Iterating&nbsp;over&nbsp;part&nbsp;of&nbsp;a&nbsp;list&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;days&nbsp;=&nbsp;[&nbsp;'Sunday'&nbsp;&nbsp;&nbsp;'Monday'&nbsp;'Tuesday'&nbsp;'Wednesday'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Thursday'&nbsp;'Friday'&nbsp;'Saturday'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;weekdays&nbsp;=&nbsp;iterator(days.slice(1,5))&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;weekday&nbsp;IN&nbsp;weekdays&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;weekday&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-27 Reusing&nbsp;iterators&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;USE&nbsp;iterator([&nbsp;1&nbsp;..&nbsp;3&nbsp;]);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;USE&nbsp;fmt&nbsp;=&nbsp;format(&quot;%02d&nbsp;=&gt;&nbsp;%02d/%02d&#92;n&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;BLOCK&nbsp;iterate;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fmt(i,&nbsp;it.count,&nbsp;it.size)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;i&nbsp;IN&nbsp;it;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;iterate&nbsp;it&nbsp;=&nbsp;iterator&nbsp;FOREACH&nbsp;[&nbsp;1&nbsp;..&nbsp;3&nbsp;]&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+01&nbsp;=&gt;&nbsp;01/03</P>
+<P CLASS="Code">
+02&nbsp;=&gt;&nbsp;02/03</P>
+<P CLASS="Code">
+03&nbsp;=&gt;&nbsp;03/03</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+01&nbsp;=&gt;&nbsp;01/03</P>
+<P CLASS="Code">
+02&nbsp;=&gt;&nbsp;02/03</P>
+<P CLASS="Code">
+03&nbsp;=&gt;&nbsp;03/03</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+01&nbsp;=&gt;&nbsp;01/03</P>
+<P CLASS="Code">
+02&nbsp;=&gt;&nbsp;02/03</P>
+<P CLASS="Code">
+03&nbsp;=&gt;&nbsp;03/03</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;pod&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;pom&nbsp;=&nbsp;pod.parse_file('Chapter6.pod')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;USE&nbsp;String&nbsp;'initial&nbsp;text'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;USE&nbsp;String&nbsp;text='initial&nbsp;text'&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;greeting&nbsp;=&nbsp;String&nbsp;'Hello&nbsp;World'&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;greeting&nbsp;=&nbsp;String.new('Hello&nbsp;World')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;greeting&nbsp;=&nbsp;String.new(&nbsp;text&nbsp;=&gt;&nbsp;'Hello&nbsp;World'&nbsp;)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;greet2&nbsp;=&nbsp;greeting.copy&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;greeting.text&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;greeting&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;msg&nbsp;=&nbsp;&quot;It&nbsp;printed&nbsp;'$greeting'&nbsp;and&nbsp;then&nbsp;dumped&nbsp;core&#92;n&quot;&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;msg.append(&quot;PS&nbsp;&nbsp;Don't&nbsp;eat&nbsp;the&nbsp;yellow&nbsp;snow&quot;)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;msg.copy.append(&quot;PS&nbsp;&nbsp;Don't&nbsp;eat&nbsp;the&nbsp;yellow&nbsp;snow&quot;)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;msg.copy.append('foo').right(72)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;foo&nbsp;=&nbsp;String.new('foo')&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;foo.append('bar')&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;prints&nbsp;&quot;foobar&quot;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;CALL&nbsp;foo.append('bar')&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;nothing</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;err&nbsp;=&nbsp;String&nbsp;text&nbsp;=&nbsp;'Bad&nbsp;Things&nbsp;Happened'&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;msg&nbsp;=&nbsp;err.new('False&nbsp;alarm!')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;urgent_error&nbsp;=&nbsp;err.copy.append('&nbsp;-&nbsp;lp1&nbsp;on&nbsp;fire')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;msg.text&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;msg&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String(&quot;foo&quot;)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;String.length&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;=&gt;&nbsp;3</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;item&nbsp;=&nbsp;String.new('foo&nbsp;bar&nbsp;baz&nbsp;wiz&nbsp;waz&nbsp;woz')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;item.search('wiz')&nbsp;?&nbsp;'WIZZY!&nbsp;:-)'&nbsp;:&nbsp;'not&nbsp;wizzy&nbsp;:-('&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;item.split&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;item.split('baz|waz')&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;str=String('foobar')&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;str.append('.html')&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;str&nbsp;=&gt;&nbsp;'foobar.html'</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;str.copy.append('.html')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;str.append('.html')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;CALL&nbsp;str.append('.html')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;String.append('.html').trim.format(href)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;msg.push('foo',&nbsp;'bar')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;msg.append('foo',&nbsp;'bar')&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String&nbsp;'foo&nbsp;bar'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;String.pop('&nbsp;bar')&nbsp;&nbsp;&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;=&gt;&nbsp;'foo'</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;msg.unshift('foo&nbsp;',&nbsp;'bar&nbsp;')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;msg.prepend('foo&nbsp;',&nbsp;'bar&nbsp;')&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String&nbsp;'foo&nbsp;bar'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;String.shift('foo&nbsp;')&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;=&gt;&nbsp;'bar'</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;msg.left(20)&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;msg.right(20)&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;msg.center(20)&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;American&nbsp;spelling</P>
+<P CLASS="Code">
+[%&nbsp;msg.centre(20)&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;European&nbsp;spelling</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String(&quot;world&quot;)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;String.format(&quot;Hello&nbsp;%s&#92;n&quot;)&nbsp;%]&nbsp;&nbsp;#&nbsp;=&gt;&nbsp;&quot;Hello&nbsp;World&#92;n&quot;</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String(&quot;foo&quot;)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;String.upper&nbsp;%]&nbsp;&nbsp;#&nbsp;=&gt;&nbsp;'FOO'</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String(&quot;FOO&quot;)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;String.lower&nbsp;%]&nbsp;&nbsp;#&nbsp;=&gt;&nbsp;'foo'</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String(&quot;foo&quot;)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;String.capital&nbsp;%]&nbsp;&nbsp;#&nbsp;=&gt;&nbsp;'Foo'</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String(&quot;FOO&quot;)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;String.lower.capital&nbsp;%]&nbsp;&nbsp;#&nbsp;=&gt;&nbsp;'Foo'</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String(&quot;foop&quot;)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;String.chop&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;=&gt;&nbsp;'foo'</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String(&quot;foo&#92;n&quot;)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;String.chomp&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;=&gt;&nbsp;'foo'</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String(&quot;&nbsp;&nbsp;&nbsp;foo&nbsp;&nbsp;&nbsp;&#92;n&#92;n&nbsp;&quot;)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;String.trim&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;=&gt;&nbsp;'foo'</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String(&quot;&nbsp;&#92;n&#92;r&nbsp;&nbsp;&#92;t&nbsp;&nbsp;foo&nbsp;&nbsp;&nbsp;&#92;n&nbsp;&#92;n&nbsp;bar&nbsp;&nbsp;&#92;n&quot;)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;String.collapse&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;=&gt;&nbsp;&quot;foo&nbsp;bar&quot;</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String('long&nbsp;string')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;String.truncate(4)&nbsp;%]&nbsp;&nbsp;#&nbsp;=&gt;&nbsp;'long'</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;msg&nbsp;=&nbsp;String('Hello&nbsp;World')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;msg.truncate(8,&nbsp;'...')&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;=&gt;&nbsp;'Hello...'</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String('foo&nbsp;bar&nbsp;foo&nbsp;baz')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;String.replace('foo',&nbsp;'wiz')&nbsp;&nbsp;%]&nbsp;&nbsp;#&nbsp;=&gt;&nbsp;'wiz&nbsp;bar&nbsp;wiz&nbsp;baz'</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String('foo&nbsp;bar&nbsp;foo&nbsp;baz')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;String.remove('foo&nbsp;')&nbsp;&nbsp;%]&nbsp;&nbsp;#&nbsp;=&gt;&nbsp;'bar&nbsp;baz'</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;String('foo&nbsp;')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;String.repeat(3)&nbsp;&nbsp;%]&nbsp;&nbsp;#&nbsp;=&gt;&nbsp;'foo&nbsp;foo&nbsp;foo&nbsp;'</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;table&nbsp;list,&nbsp;rows&nbsp;=&nbsp;5&nbsp;&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-28 rows&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;table&nbsp;alphabet,&nbsp;rows&nbsp;=&nbsp;5&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;row&nbsp;IN&nbsp;table.row;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;cell&nbsp;IN&nbsp;row;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$cell&nbsp;&nbsp;&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+a&nbsp;&nbsp;f&nbsp;&nbsp;k&nbsp;&nbsp;p&nbsp;&nbsp;u&nbsp;&nbsp;z&nbsp;&nbsp;</P>
+<P CLASS="Code">
+b&nbsp;&nbsp;g&nbsp;&nbsp;l&nbsp;&nbsp;q&nbsp;&nbsp;v&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+c&nbsp;&nbsp;h&nbsp;&nbsp;m&nbsp;&nbsp;r&nbsp;&nbsp;w&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+d&nbsp;&nbsp;i&nbsp;&nbsp;n&nbsp;&nbsp;s&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+e&nbsp;&nbsp;j&nbsp;&nbsp;o&nbsp;&nbsp;t&nbsp;&nbsp;y</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;6-29 cols&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;table&nbsp;alphabet,&nbsp;cols&nbsp;=&nbsp;5&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;col&nbsp;IN&nbsp;table.col;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;cell&nbsp;IN&nbsp;col;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$cell&nbsp;&nbsp;&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+a&nbsp;&nbsp;b&nbsp;&nbsp;c&nbsp;&nbsp;d&nbsp;&nbsp;e&nbsp;&nbsp;f&nbsp;&nbsp;</P>
+<P CLASS="Code">
+g&nbsp;&nbsp;h&nbsp;&nbsp;i&nbsp;&nbsp;j&nbsp;&nbsp;k&nbsp;&nbsp;l&nbsp;&nbsp;</P>
+<P CLASS="Code">
+m&nbsp;&nbsp;n&nbsp;&nbsp;o&nbsp;&nbsp;p&nbsp;&nbsp;q&nbsp;&nbsp;r&nbsp;&nbsp;</P>
+<P CLASS="Code">
+s&nbsp;&nbsp;t&nbsp;&nbsp;u&nbsp;&nbsp;v&nbsp;&nbsp;w&nbsp;&nbsp;x&nbsp;&nbsp;</P>
+<P CLASS="Code">
+y&nbsp;&nbsp;z</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-30 row(0)&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;table&nbsp;alphabet,&nbsp;rows&nbsp;=&nbsp;5&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;item&nbsp;IN&nbsp;table.row(0);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;item&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+a</P>
+<P CLASS="Code">
+f</P>
+<P CLASS="Code">
+k</P>
+<P CLASS="Code">
+p</P>
+<P CLASS="Code">
+u</P>
+<P CLASS="Code">
+z</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-31 pad&nbsp;=&nbsp;0&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;table&nbsp;alphabet,&nbsp;cols=5,&nbsp;pad=0&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;item&nbsp;=&nbsp;table.col(4);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;item&nbsp;%]&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;siteroot&nbsp;=&nbsp;url('http://www.template-toolkit.org')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;next&nbsp;=&nbsp;url('search.cgi',&nbsp;search&nbsp;=&nbsp;search,&nbsp;next&nbsp;=&nbsp;curpage&nbsp;+&nbsp;1)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;news&nbsp;=&nbsp;url(&quot;$siteroot/news&quot;)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-32 url&nbsp;in&nbsp;action&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;tt&nbsp;=&nbsp;url('http://www.template-toolkit.org/')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+The&nbsp;&lt;a&nbsp;href=&quot;[%&nbsp;tt&nbsp;%]&quot;&gt;Template&nbsp;Toolkit&lt;/a&gt;&nbsp;rules!</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+The&nbsp;&lt;a&nbsp;href=&quot;http://www.template-toolkit.org/&quot;&gt;Template&nbsp;Toolkit&lt;/a&gt;&nbsp;rules!</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-33 url&nbsp;+&nbsp;parameters&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;article&nbsp;=&nbsp;url('http://slashdot.org/article.pl'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mode&nbsp;=&nbsp;'nested',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;threshold&nbsp;=&nbsp;1)&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;article(sid&nbsp;=&nbsp;'xxx')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+http://slashdot.org/article.pl?mode=nested&amp;amp;sid=xxx&amp;amp;threshold=1</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-34 Basic&nbsp;wrapping&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;wrap&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;text&nbsp;=&nbsp;BLOCK&nbsp;-%]</P>
+<P CLASS="CodeExample">
+First,&nbsp;attach&nbsp;the&nbsp;transmutex&nbsp;multiplier&nbsp;to&nbsp;the&nbsp;cross-wired&nbsp;quantum&nbsp;homogenizer.</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;wrap(text,&nbsp;30)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+First,&nbsp;attach&nbsp;the&nbsp;transmutex</P>
+<P CLASS="Code">
+multiplier&nbsp;to&nbsp;the&nbsp;cross-wired</P>
+<P CLASS="Code">
+quantum&nbsp;homogenizer.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;6-35 Wrap&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;bullet&nbsp;=&nbsp;wrap(40,&nbsp;'*&nbsp;',&nbsp;'&nbsp;&nbsp;')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+First,&nbsp;attach&nbsp;the&nbsp;transmutex&nbsp;multiplier&nbsp;to&nbsp;the&nbsp;cross-wired&nbsp;quantum&nbsp;homogenizer.</P>
+<P CLASS="CodeExample">
+[%-&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;bullet&nbsp;-%]</P>
+<P CLASS="CodeExample">
+Then&nbsp;remodulate&nbsp;the&nbsp;shield&nbsp;to&nbsp;match&nbsp;the&nbsp;harmonic&nbsp;frequency,&nbsp;taking&nbsp;care&nbsp;to&nbsp;correct&nbsp;the&nbsp;phase&nbsp;difference.</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+*&nbsp;First,&nbsp;attach&nbsp;the&nbsp;transmutex</P>
+<P CLASS="Code">
+&nbsp;&nbsp;multiplier&nbsp;to&nbsp;the&nbsp;cross-wired&nbsp;quantum</P>
+<P CLASS="Code">
+&nbsp;&nbsp;homogenizer.</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+*&nbsp;Then&nbsp;remodulate&nbsp;the&nbsp;shield&nbsp;to&nbsp;match</P>
+<P CLASS="Code">
+&nbsp;&nbsp;the&nbsp;harmonic&nbsp;frequency,&nbsp;taking&nbsp;care</P>
+<P CLASS="Code">
+&nbsp;&nbsp;to&nbsp;correct&nbsp;the&nbsp;phase&nbsp;difference.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;load&nbsp;plugin</P>
+<P CLASS="Code">
+[%&nbsp;USE&nbsp;dom&nbsp;=&nbsp;XML.DOM&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;also&nbsp;provide&nbsp;XML::Parser&nbsp;options</P>
+<P CLASS="Code">
+[%&nbsp;USE&nbsp;dom&nbsp;=&nbsp;XML.DOM(ProtocolEncoding&nbsp;=&gt;&nbsp;'ISO-8859-1')&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;parse&nbsp;an&nbsp;XML&nbsp;file</P>
+<P CLASS="Code">
+[%&nbsp;doc&nbsp;=&nbsp;dom.parse(filename)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;doc&nbsp;=&nbsp;dom.parse(file&nbsp;=&gt;&nbsp;filename)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;parse&nbsp;XML&nbsp;text</P>
+<P CLASS="Code">
+[%&nbsp;doc&nbsp;=&nbsp;dom.parse(xmltext)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;doc&nbsp;=&nbsp;dom.parse(text&nbsp;=&gt;&nbsp;xmltext)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;call&nbsp;any&nbsp;XML::DOM&nbsp;methods&nbsp;on&nbsp;document/element&nbsp;nodes</P>
+<P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;node&nbsp;=&nbsp;doc.getElementsByTagName('report')&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;*&nbsp;[%&nbsp;node.getAttribute('title')&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;or&nbsp;just&nbsp;'[%&nbsp;node.title&nbsp;%]'</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;define&nbsp;VIEW&nbsp;to&nbsp;present&nbsp;node(s)</P>
+<P CLASS="Code">
+[%&nbsp;VIEW&nbsp;report&nbsp;notfound='xmlstring'&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;#&nbsp;handler&nbsp;block&nbsp;for&nbsp;a&nbsp;&lt;report&gt;...&lt;/report&gt;&nbsp;element</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;BLOCK&nbsp;report&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;item.content(view)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;#&nbsp;handler&nbsp;block&nbsp;for&nbsp;a&nbsp;&lt;section&nbsp;title=&quot;...&quot;&gt;...&lt;/section&gt;&nbsp;element</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;BLOCK&nbsp;section&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&lt;h1&gt;[%&nbsp;item.title&nbsp;%]&lt;/h1&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;item.content(view)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;#&nbsp;default&nbsp;template&nbsp;block&nbsp;converts&nbsp;item&nbsp;to&nbsp;string&nbsp;representation</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;BLOCK&nbsp;xmlstring;&nbsp;item.toString;&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;#&nbsp;block&nbsp;to&nbsp;generate&nbsp;simple&nbsp;text</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;BLOCK&nbsp;text;&nbsp;item;&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;now&nbsp;present&nbsp;node&nbsp;(and&nbsp;children)&nbsp;via&nbsp;view</P>
+<P CLASS="Code">
+[%&nbsp;report.print(node)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;or&nbsp;print&nbsp;node&nbsp;content&nbsp;via&nbsp;view</P>
+<P CLASS="Code">
+[%&nbsp;node.content(report)&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;news&nbsp;=&nbsp;XML.RSS(filename)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;item&nbsp;=&nbsp;news.items&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;item.title&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;item.link&nbsp;&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;xmlstyle</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributes&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;0</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cellpadding&nbsp;=&nbsp;4</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;FILTER&nbsp;xmlstyle&nbsp;%]</P>
+<P CLASS="Code">
+&lt;table&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;...</P>
+<P CLASS="Code">
+&lt;/table&gt;</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;table&nbsp;border=&quot;0&quot;&nbsp;cellpadding=&quot;4&quot;&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;...</P>
+<P CLASS="Code">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;xmlstyle</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributes&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;0</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cellpadding&nbsp;=&nbsp;4</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;FILTER&nbsp;xmlstyle</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tr&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributes&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valign=&quot;top&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&lt;table&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="Code">
+&lt;/table&gt;</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;style_one&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table&nbsp;=&nbsp;{&nbsp;...&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tr&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{&nbsp;...&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;style_two&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table&nbsp;=&nbsp;{&nbsp;...&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;td&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{&nbsp;...&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;style_three&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;th&nbsp;=&nbsp;{&nbsp;...&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tv&nbsp;=&nbsp;{&nbsp;...&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;USE&nbsp;xmlstyle&nbsp;style_one&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;FILTER&nbsp;xmlstyle&nbsp;style_two&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;#&nbsp;style_one&nbsp;and&nbsp;style_two&nbsp;applied&nbsp;here</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;FILTER&nbsp;xmlstyle&nbsp;style_three&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;#&nbsp;style_one&nbsp;and&nbsp;style_three&nbsp;applied&nbsp;here</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;xmlstyle</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;div&nbsp;=&nbsp;{&nbsp;attributes&nbsp;=&nbsp;{&nbsp;align&nbsp;=&nbsp;'left'&nbsp;}&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;FILTER&nbsp;xmlstyle&nbsp;%]</P>
+<P CLASS="Code">
+&lt;div&gt;foo&lt;/div&gt;</P>
+<P CLASS="Code">
+&lt;div&nbsp;align=&quot;right&quot;&gt;bar&lt;/div&gt;</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;div&nbsp;align=&quot;left&quot;&gt;foo&lt;/div&gt;</P>
+<P CLASS="Code">
+&lt;div&nbsp;align=&quot;right&quot;&gt;bar&lt;/div&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FILTER&nbsp;xmlstyle</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;th&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;element&nbsp;=&nbsp;'td'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributes&nbsp;=&nbsp;{&nbsp;bgcolor='red'&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;th&gt;Heading&lt;/th&gt;</P>
+<P CLASS="Code">
+&lt;/tr&gt;</P>
+<P CLASS="Code">
+&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;td&gt;Value&lt;/td&gt;</P>
+<P CLASS="Code">
+&lt;/tr&gt;</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;td&nbsp;bgcolor=&quot;red&quot;&gt;Heading&lt;/td&gt;</P>
+<P CLASS="Code">
+&lt;/tr&gt;</P>
+<P CLASS="Code">
+&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;td&gt;Value&lt;/td&gt;</P>
+<P CLASS="Code">
+&lt;/tr&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FILTER&nbsp;xmlstyle</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre_start&nbsp;=&nbsp;'&lt;div&nbsp;align=&quot;center&quot;&gt;'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post_end&nbsp;&nbsp;=&nbsp;'&lt;/div&gt;'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;th&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;element&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'td'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributes&nbsp;=&nbsp;{&nbsp;bgcolor='red'&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post_start&nbsp;=&nbsp;'&lt;b&gt;'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre_end&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'&lt;/b&gt;'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&lt;table&gt;</P>
+<P CLASS="Code">
+&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;th&gt;Heading&lt;/th&gt;</P>
+<P CLASS="Code">
+&lt;/tr&gt;</P>
+<P CLASS="Code">
+&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;td&gt;Value&lt;/td&gt;</P>
+<P CLASS="Code">
+&lt;/tr&gt;</P>
+<P CLASS="Code">
+&lt;/table&gt;</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;div&nbsp;align=&quot;center&quot;&gt;</P>
+<P CLASS="Code">
+&lt;table&gt;</P>
+<P CLASS="Code">
+&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;td&nbsp;bgcolor=&quot;red&quot;&gt;&lt;b&gt;Heading&lt;/b&gt;&lt;/td&gt;</P>
+<P CLASS="Code">
+&lt;/tr&gt;</P>
+<P CLASS="Code">
+&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;td&gt;Value&lt;/td&gt;</P>
+<P CLASS="Code">
+&lt;/tr&gt;</P>
+<P CLASS="Code">
+&lt;/table&gt;</P>
+<P CLASS="Code">
+&lt;/div&gt;</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;xpath&nbsp;=&nbsp;XML.XPath(xmlfile)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;USE&nbsp;xpath&nbsp;=&nbsp;XML.XPath(file&nbsp;=&gt;&nbsp;xmlfile)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;USE&nbsp;xpath&nbsp;=&nbsp;XML.XPath(filename&nbsp;=&gt;&nbsp;xmlfile)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;load&nbsp;plugin&nbsp;and&nbsp;specify&nbsp;XML&nbsp;text&nbsp;to&nbsp;parse</P>
+<P CLASS="Code">
+[%&nbsp;USE&nbsp;xpath&nbsp;=&nbsp;XML.XPath(xmltext)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;USE&nbsp;xpath&nbsp;=&nbsp;XML.XPath(xml&nbsp;=&gt;&nbsp;xmltext)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;USE&nbsp;xpath&nbsp;=&nbsp;XML.XPath(text&nbsp;=&gt;&nbsp;xmltext)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;then&nbsp;call&nbsp;any&nbsp;XPath&nbsp;methods&nbsp;(see&nbsp;XML::XPath&nbsp;docs)</P>
+<P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;page&nbsp;=&nbsp;xpath.findnodes('/html/body/page')&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;page.getAttribute('title')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;define&nbsp;VIEW&nbsp;to&nbsp;present&nbsp;node(s)</P>
+<P CLASS="Code">
+[%&nbsp;VIEW&nbsp;repview&nbsp;notfound='xmlstring'&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;#&nbsp;handler&nbsp;block&nbsp;for&nbsp;a&nbsp;&lt;report&gt;...&lt;/report&gt;&nbsp;element</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;BLOCK&nbsp;report&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;item.content(view)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;#&nbsp;handler&nbsp;block&nbsp;for&nbsp;a&nbsp;&lt;section&nbsp;title=&quot;...&quot;&gt;...&lt;/section&gt;&nbsp;element</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;BLOCK&nbsp;section&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&lt;h1&gt;[%&nbsp;item.getAttribute('title')&nbsp;|&nbsp;html&nbsp;%]&lt;/h1&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;item.content(view)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;#&nbsp;default&nbsp;template&nbsp;block&nbsp;passes&nbsp;tags&nbsp;through&nbsp;and&nbsp;renders</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;#&nbsp;out&nbsp;the&nbsp;children&nbsp;recursively</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;BLOCK&nbsp;xmlstring;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.starttag;&nbsp;item.content(view);&nbsp;item.endtag;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;#&nbsp;block&nbsp;to&nbsp;generate&nbsp;simple&nbsp;text</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;BLOCK&nbsp;text;&nbsp;item&nbsp;|&nbsp;html;&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;now&nbsp;present&nbsp;node&nbsp;(and&nbsp;children)&nbsp;via&nbsp;view</P>
+<P CLASS="Code">
+[%&nbsp;repview.print(page)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;or&nbsp;print&nbsp;node&nbsp;content&nbsp;via&nbsp;view</P>
+<P CLASS="Code">
+[%&nbsp;page.content(repview)&nbsp;%]</P>
+</BODY>
+</HTML>
+</body></html>

@@ -1,0 +1,3541 @@
+<html><head><title>web applications code examples</title><style>
+
+P.ExampleTitle {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 6.000000pt;
+	margin-bottom: 6.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 0.000000pt;
+	font-size: 9.000000pt;
+	font-weight: medium;
+	font-style: Italic;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Birka";
+}
+
+P.CodeExample {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-weight: bold;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "TheSansMonoCondensed";
+}
+
+P.Code {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Courier";
+}
+
+
+
+
+
+</style><body><P CLASS="ExampleTitle">
+Example&nbsp;12-1 ttcgi1.pl&nbsp;</P>
+<P CLASS="CodeExample">
+#!/usr/bin/perl</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;warnings;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$|&nbsp;=&nbsp;1;</P>
+<P CLASS="CodeExample">
+print&nbsp;&quot;Content-type:&nbsp;text/html&#92;n&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;Template-&gt;new(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+my&nbsp;$input&nbsp;=&nbsp;'destruction1.html';</P>
+<P CLASS="CodeExample">
+my&nbsp;$vars&nbsp;&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;planet&nbsp;&nbsp;=&gt;&nbsp;'Earth',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;captain&nbsp;=&gt;&nbsp;'Prostetnic&nbsp;Vogon&nbsp;Jeltz',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;time&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'two&nbsp;of&nbsp;your&nbsp;earth&nbsp;minutes',</P>
+<P CLASS="CodeExample">
+};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($input,&nbsp;$vars)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$|&nbsp;=&nbsp;1;</P>
+<P CLASS="Code">
+print&nbsp;&quot;Content-type:&nbsp;text/html&#92;n&#92;n&quot;;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-2 destruction1.html&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;html&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&lt;head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;title&gt;Destruction&nbsp;of&nbsp;[%&nbsp;planet&nbsp;%]&nbsp;is&nbsp;Imminent!&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&lt;/head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&lt;body&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;People&nbsp;of&nbsp;[%&nbsp;planet&nbsp;%],&nbsp;your&nbsp;attention&nbsp;please.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;is&nbsp;[%&nbsp;captain&nbsp;%]&nbsp;of&nbsp;the&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;Galactic&nbsp;Hyperspace&nbsp;Planning&nbsp;Council.&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;As&nbsp;you&nbsp;will&nbsp;no&nbsp;doubt&nbsp;be&nbsp;aware,&nbsp;the&nbsp;plans&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;development&nbsp;of&nbsp;the&nbsp;outlying&nbsp;regions</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;Galaxy&nbsp;require&nbsp;the&nbsp;building&nbsp;of&nbsp;a&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;hyperspatial&nbsp;express&nbsp;route&nbsp;through&nbsp;your&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;star&nbsp;system,&nbsp;and&nbsp;regrettably&nbsp;your&nbsp;planet</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;one&nbsp;of&nbsp;those&nbsp;scheduled&nbsp;for&nbsp;destruction.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;process&nbsp;will&nbsp;take&nbsp;slightly&nbsp;less&nbsp;than</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;time&nbsp;%].</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&lt;/body&gt;</P>
+<P CLASS="CodeExample">
+&lt;/html&gt;</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-3 ttcgi2.pl&nbsp;</P>
+<P CLASS="CodeExample">
+#!/usr/bin/perl</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;warnings;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template::Config;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$|&nbsp;=&nbsp;1;</P>
+<P CLASS="CodeExample">
+print&nbsp;&quot;Content-type:&nbsp;text/html&#92;n&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$tdir&nbsp;&nbsp;=&nbsp;Template::Config-&gt;instdir('templates');</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;Template-&gt;new({</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE_PATH&nbsp;=&gt;&nbsp;[&nbsp;'.',&nbsp;$tdir&nbsp;],</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'html/page'</P>
+<P CLASS="CodeExample">
+});</P>
+<P CLASS="CodeExample">
+my&nbsp;$input&nbsp;&nbsp;=&nbsp;'destruction2.html';</P>
+<P CLASS="CodeExample">
+my&nbsp;$vars&nbsp;&nbsp;&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;planet&nbsp;&nbsp;=&gt;&nbsp;'Earth',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;captain&nbsp;=&gt;&nbsp;'Prostetnic&nbsp;Vogon&nbsp;Jeltz',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;time&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'two&nbsp;of&nbsp;your&nbsp;earth&nbsp;minutes',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;html&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&gt;&nbsp;&quot;Destruction&nbsp;of&nbsp;Earth&nbsp;is&nbsp;Imminent!&quot;,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="CodeExample">
+};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($input,&nbsp;$vars)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$tdir&nbsp;&nbsp;=&nbsp;Template::Config-&gt;instdir('templates');</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$tt&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;Template-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE_PATH&nbsp;=&gt;&nbsp;[&nbsp;'.',&nbsp;$tdir&nbsp;],</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'html/page'</P>
+<P CLASS="Code">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$vars&nbsp;&nbsp;&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;planet&nbsp;&nbsp;=&gt;&nbsp;'Earth',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;captain&nbsp;=&gt;&nbsp;'Prostetnic&nbsp;Vogon&nbsp;Jeltz',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;time&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'two&nbsp;of&nbsp;your&nbsp;earth&nbsp;minutes',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;html&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&gt;&nbsp;&quot;Destruction&nbsp;of&nbsp;Earth&nbsp;is&nbsp;Imminent!&quot;,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-4 destruction2.html&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;html_para&nbsp;%]</P>
+<P CLASS="CodeExample">
+People&nbsp;of&nbsp;[%&nbsp;planet&nbsp;%],&nbsp;your&nbsp;attention&nbsp;please.</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+This&nbsp;is&nbsp;[%&nbsp;captain&nbsp;%]&nbsp;of&nbsp;the&nbsp;</P>
+<P CLASS="CodeExample">
+Galactic&nbsp;Hyperspace&nbsp;Planning&nbsp;Council.&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+As&nbsp;you&nbsp;will&nbsp;no&nbsp;doubt&nbsp;be&nbsp;aware,&nbsp;the&nbsp;plans&nbsp;</P>
+<P CLASS="CodeExample">
+for&nbsp;development&nbsp;of&nbsp;the&nbsp;outlying&nbsp;regions</P>
+<P CLASS="CodeExample">
+of&nbsp;the&nbsp;Galaxy&nbsp;require&nbsp;the&nbsp;building&nbsp;of&nbsp;a&nbsp;</P>
+<P CLASS="CodeExample">
+hyperspatial&nbsp;express&nbsp;route&nbsp;through&nbsp;your&nbsp;</P>
+<P CLASS="CodeExample">
+star&nbsp;system,&nbsp;and&nbsp;regrettably&nbsp;your&nbsp;planet</P>
+<P CLASS="CodeExample">
+is&nbsp;one&nbsp;of&nbsp;those&nbsp;scheduled&nbsp;for&nbsp;destruction.</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+The&nbsp;process&nbsp;will&nbsp;take&nbsp;slightly&nbsp;less&nbsp;than</P>
+<P CLASS="CodeExample">
+[%&nbsp;time&nbsp;%].</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-5 ttcgi3.pl&nbsp;</P>
+<P CLASS="CodeExample">
+#!/usr/bin/perl</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;warnings;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$|&nbsp;=&nbsp;1;</P>
+<P CLASS="CodeExample">
+print&nbsp;&quot;Content-type:&nbsp;text/html&#92;n&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;&nbsp;&nbsp;=&nbsp;Template-&gt;new({</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE_PATH&nbsp;=&gt;&nbsp;'/home/dent/vogon/templates',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'vogon/page'</P>
+<P CLASS="CodeExample">
+});</P>
+<P CLASS="CodeExample">
+my&nbsp;$vars&nbsp;&nbsp;&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;planet&nbsp;&nbsp;=&gt;&nbsp;'Earth',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;captain&nbsp;=&gt;&nbsp;'Prostetnic&nbsp;Vogon&nbsp;Jeltz',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;time&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'two&nbsp;of&nbsp;your&nbsp;earth&nbsp;minutes',</P>
+<P CLASS="CodeExample">
+};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process(&#92;*DATA,&nbsp;$vars)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+_&nbsp;_DATA_&nbsp;_</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;html_para&nbsp;%]</P>
+<P CLASS="CodeExample">
+People&nbsp;of&nbsp;[%&nbsp;planet&nbsp;%],&nbsp;your&nbsp;attention&nbsp;please.</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+This&nbsp;is&nbsp;[%&nbsp;captain&nbsp;%]&nbsp;of&nbsp;the&nbsp;</P>
+<P CLASS="CodeExample">
+Galactic&nbsp;Hyperspace&nbsp;Planning&nbsp;Council.&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+As&nbsp;you&nbsp;will&nbsp;no&nbsp;doubt&nbsp;be&nbsp;aware,&nbsp;the&nbsp;plans&nbsp;</P>
+<P CLASS="CodeExample">
+for&nbsp;development&nbsp;of&nbsp;the&nbsp;outlying&nbsp;regions</P>
+<P CLASS="CodeExample">
+of&nbsp;the&nbsp;Galaxy&nbsp;require&nbsp;the&nbsp;building&nbsp;of&nbsp;a&nbsp;</P>
+<P CLASS="CodeExample">
+hyperspatial&nbsp;express&nbsp;route&nbsp;through&nbsp;your&nbsp;</P>
+<P CLASS="CodeExample">
+star&nbsp;system,&nbsp;and&nbsp;regrettably&nbsp;your&nbsp;planet</P>
+<P CLASS="CodeExample">
+is&nbsp;one&nbsp;of&nbsp;those&nbsp;scheduled&nbsp;for&nbsp;destruction.</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+The&nbsp;process&nbsp;will&nbsp;take&nbsp;slightly&nbsp;less&nbsp;than</P>
+<P CLASS="CodeExample">
+[%&nbsp;time&nbsp;%].</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$tt-&gt;process(&#92;*DATA,&nbsp;$vars)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-6 ttcgi4.pl&nbsp;</P>
+<P CLASS="CodeExample">
+#!/usr/bin/perl</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;warnings;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template;</P>
+<P CLASS="CodeExample">
+use&nbsp;CGI;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$|&nbsp;=&nbsp;1;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$cgi&nbsp;&nbsp;&nbsp;=&nbsp;CGI-&gt;new(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;Template-&gt;new(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+my&nbsp;$input&nbsp;=&nbsp;'cgiparams.html';</P>
+<P CLASS="CodeExample">
+my&nbsp;$vars&nbsp;&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;cgi&nbsp;&nbsp;&nbsp;=&gt;&nbsp;$cgi,</P>
+<P CLASS="CodeExample">
+};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+print&nbsp;$cgi-&gt;header;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($input,&nbsp;$vars)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-7 cgiparams.html&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;h1&gt;CGI&nbsp;Parameters&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;ul&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;p&nbsp;=&nbsp;cgi.param&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;b&gt;[%&nbsp;p&nbsp;%]&lt;/b&gt;&nbsp;[%&nbsp;cgi.param(p)&nbsp;%]&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;/ul&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-8 Output&nbsp;of&nbsp;cgiparams.html&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;h1&gt;CGI&nbsp;Parameters&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;b&gt;pi&lt;/b&gt;&nbsp;3.14&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;b&gt;e&lt;/b&gt;&nbsp;2.718&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;b&gt;message&lt;/b&gt;&nbsp;Hello&nbsp;World&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+&lt;/ul&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;@cookies;</P>
+<P CLASS="Code">
+my&nbsp;$vars&nbsp;&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;cgi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;$cgi,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;cookies&nbsp;=&gt;&nbsp;&#92;@cookies,</P>
+<P CLASS="Code">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;cookie&nbsp;=&nbsp;cgi.cookie(&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'SessionID',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;&nbsp;&nbsp;=&nbsp;12345678,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expires&nbsp;=&nbsp;'+1m'&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;)</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;cookies.push(cookie)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$output;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$tt-&gt;process($input,&nbsp;$vars,&nbsp;&#92;$output)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+if&nbsp;(@cookies)&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;@cookies&nbsp;=&nbsp;(&quot;-cookie&quot;,&nbsp;[&nbsp;@cookies&nbsp;]);</P>
+<P CLASS="Code">
+}</P>
+<P CLASS="Code">
+print&nbsp;$cgi-&gt;header(@cookies),&nbsp;$output;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-9 ttcgi5.pl&nbsp;</P>
+<P CLASS="CodeExample">
+#!/usr/bin/perl</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;warnings;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template;</P>
+<P CLASS="CodeExample">
+use&nbsp;CGI;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$|&nbsp;=&nbsp;1;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$cgi&nbsp;&nbsp;&nbsp;=&nbsp;CGI-&gt;new(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;Template-&gt;new(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+my&nbsp;$input&nbsp;=&nbsp;'cgicookie.html';</P>
+<P CLASS="CodeExample">
+my&nbsp;@cookies;</P>
+<P CLASS="CodeExample">
+my&nbsp;$vars&nbsp;&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;cgi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;$cgi,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;cookies&nbsp;=&gt;&nbsp;&#92;@cookies,</P>
+<P CLASS="CodeExample">
+};</P>
+<P CLASS="CodeExample">
+my&nbsp;$output;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($input,&nbsp;$vars,&nbsp;&#92;$output)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+if&nbsp;(@cookies)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;@cookies&nbsp;=&nbsp;('-cookie',&nbsp;[&nbsp;@cookies&nbsp;]);</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+print&nbsp;$cgi-&gt;header(@cookies),&nbsp;$output;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-10 cgicookie.html&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;IF&nbsp;(cookie&nbsp;=&nbsp;cgi.cookie('SessionID'))&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&lt;h1&gt;Got&nbsp;Cookie&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your&nbsp;SessionID&nbsp;is&nbsp;[%&nbsp;cookie&nbsp;%].</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;ELSE&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;[%&nbsp;cookie&nbsp;=&nbsp;cgi.cookie(&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'SessionID',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;&nbsp;&nbsp;=&nbsp;12345678,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expires&nbsp;=&nbsp;'+1m'&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cookies.push(cookie)&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&lt;h1&gt;Set&nbsp;Cookie&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cookie&nbsp;has&nbsp;been&nbsp;set.&nbsp;&nbsp;Please&nbsp;reload&nbsp;page.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#!/usr/bin/perl</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+use&nbsp;strict;</P>
+<P CLASS="Code">
+use&nbsp;warnings;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+use&nbsp;DBI;</P>
+<P CLASS="Code">
+use&nbsp;CGI;</P>
+<P CLASS="Code">
+use&nbsp;CGI::Carp&nbsp;qw(fatalsToBrowser);</P>
+<P CLASS="Code">
+use&nbsp;Template;</P>
+<P CLASS="Code">
+$|&nbsp;=&nbsp;1;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$ROOTDIR&nbsp;=&nbsp;'/home/dent/web/guide';</P>
+<P CLASS="Code">
+my&nbsp;$ROOTURL&nbsp;=&nbsp;'/&#126;dent/guide';</P>
+<P CLASS="Code">
+my&nbsp;$ROOTCGI&nbsp;=&nbsp;'/cgi-bin/dent/guide.pl';</P>
+<P CLASS="Code">
+my&nbsp;$DBDSN&nbsp;&nbsp;&nbsp;=&nbsp;'DBI:mysql:guide';</P>
+<P CLASS="Code">
+my&nbsp;$DBUSER&nbsp;&nbsp;=&nbsp;'dent';</P>
+<P CLASS="Code">
+my&nbsp;$DBPASS&nbsp;&nbsp;=&nbsp;'ruhtra';</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$cgi&nbsp;=&nbsp;CGI-&gt;new(&nbsp;&nbsp;);</P>
+<P CLASS="Code">
+my&nbsp;$dbh&nbsp;=&nbsp;DBI-&gt;connect($DBDSN,&nbsp;$DBUSER,&nbsp;$DBPASS)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;&quot;failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;database:&nbsp;$DBI::errstr&quot;;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+my&nbsp;($param,&nbsp;$template);</P>
+<P CLASS="Code">
+my&nbsp;$vars&nbsp;=&nbsp;{&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;rootdir&nbsp;=&gt;&nbsp;$ROOTDIR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;rooturl&nbsp;=&gt;&nbsp;$ROOTURL,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;rootcgi&nbsp;=&gt;&nbsp;$ROOTCGI,</P>
+<P CLASS="Code">
+};</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+if&nbsp;($param&nbsp;=&nbsp;$cgi-&gt;param('name'))&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;...</P>
+<P CLASS="Code">
+}</P>
+<P CLASS="Code">
+elsif&nbsp;($param&nbsp;=&nbsp;$cgi-&gt;param('id'))&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;...</P>
+<P CLASS="Code">
+}</P>
+<P CLASS="Code">
+elsif&nbsp;($param&nbsp;=&nbsp;$cgi-&gt;param('search'))&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;...</P>
+<P CLASS="Code">
+}</P>
+<P CLASS="Code">
+else&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;...</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+if&nbsp;($param&nbsp;=&nbsp;$cgi-&gt;param('name'))&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$entry&nbsp;=&nbsp;$dbh-&gt;selectrow_hashref(</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;SELECT&nbsp;id,&nbsp;name,&nbsp;author,&nbsp;about,&nbsp;date</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;entry&nbsp;WHERE&nbsp;name=?&quot;,&nbsp;{&nbsp;},&nbsp;$param)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$DBI::errstr;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$vars-&gt;{&nbsp;entry&nbsp;}&nbsp;=&nbsp;$entry;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;'entry.html';</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+elsif&nbsp;($param&nbsp;=&nbsp;$cgi-&gt;param('id'))&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$entry&nbsp;=&nbsp;$dbh-&gt;selectrow_hashref(</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;SELECT&nbsp;id,&nbsp;name,&nbsp;author,&nbsp;about,&nbsp;date</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;entry&nbsp;WHERE&nbsp;id=?&quot;,&nbsp;{&nbsp;},&nbsp;$param)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$DBI::errstr;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$vars-&gt;{&nbsp;entry&nbsp;}&nbsp;=&nbsp;$entry;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;'entry.html';</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+elsif&nbsp;($param&nbsp;=&nbsp;$cgi-&gt;param('search'))&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$vars-&gt;{&nbsp;search&nbsp;}&nbsp;=&nbsp;$param;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$param&nbsp;=&#126;&nbsp;s/*/&#92;%/g;&nbsp;&nbsp;#&nbsp;change&nbsp;'*'&nbsp;to&nbsp;'%'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$sth&nbsp;=&nbsp;$dbh-&gt;prepare(</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SELECT&nbsp;id,&nbsp;name,&nbsp;author,&nbsp;about,&nbsp;date&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;entry&nbsp;WHERE&nbsp;name&nbsp;LIKE&nbsp;?'&nbsp;)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$DBI::errstr;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$sth-&gt;execute($param)&nbsp;||&nbsp;die&nbsp;$sth-&gt;errstr(&nbsp;&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$vars-&gt;{&nbsp;entries&nbsp;}&nbsp;=&nbsp;$sth-&gt;fetchall_arrayref({&nbsp;&nbsp;});</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;'entries.html';</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$vars-&gt;{&nbsp;search&nbsp;}&nbsp;=&nbsp;$param;</P>
+<P CLASS="Code">
+$param&nbsp;=&#126;&nbsp;s/*/&#92;%/g;&nbsp;&nbsp;#&nbsp;change&nbsp;'*'&nbsp;to&nbsp;'%'</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+else&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;'index.html';</P>
+<P CLASS="Code">
+}</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE_PATH&nbsp;=&gt;&nbsp;[</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$ROOTDIR/templates/cgi&quot;,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$ROOTDIR/templates/lib&quot;,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;],</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;PRE_PROCESS&nbsp;=&gt;&nbsp;'config',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'wrapper',</P>
+<P CLASS="Code">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+print&nbsp;$cgi-&gt;header(&nbsp;&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$tt-&gt;process($template,&nbsp;$vars)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-11 guide/cgi-bin/guide.pl&nbsp;</P>
+<P CLASS="CodeExample">
+#!/usr/bin/perl</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;warnings;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;DBI;</P>
+<P CLASS="CodeExample">
+use&nbsp;CGI;</P>
+<P CLASS="CodeExample">
+use&nbsp;CGI::Carp&nbsp;qw(fatalsToBrowser);</P>
+<P CLASS="CodeExample">
+use&nbsp;Template;</P>
+<P CLASS="CodeExample">
+$|&nbsp;=&nbsp;1;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#--------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;configuration</P>
+<P CLASS="CodeExample">
+#--------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$ROOTDIR&nbsp;=&nbsp;'/home/dent/web/guide';</P>
+<P CLASS="CodeExample">
+my&nbsp;$ROOTURL&nbsp;=&nbsp;'/&#126;dent/guide';</P>
+<P CLASS="CodeExample">
+my&nbsp;$ROOTCGI&nbsp;=&nbsp;'/cgi-bin/dent/guide.pl';</P>
+<P CLASS="CodeExample">
+my&nbsp;$DBDSN&nbsp;&nbsp;&nbsp;=&nbsp;'DBI:mysql:guide';</P>
+<P CLASS="CodeExample">
+my&nbsp;$DBUSER&nbsp;&nbsp;=&nbsp;'dent';</P>
+<P CLASS="CodeExample">
+my&nbsp;$DBPASS&nbsp;&nbsp;=&nbsp;'ruhtra';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$cgi&nbsp;=&nbsp;CGI-&gt;new(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+my&nbsp;$dbh&nbsp;=&nbsp;DBI-&gt;connect($DBDSN,&nbsp;$DBUSER,&nbsp;$DBPASS)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;&quot;failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;database:&nbsp;$DBI::errstr&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;($param,&nbsp;$template);</P>
+<P CLASS="CodeExample">
+my&nbsp;$vars&nbsp;=&nbsp;{&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;rootdir&nbsp;=&gt;&nbsp;$ROOTDIR,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;rooturl&nbsp;=&gt;&nbsp;$ROOTURL,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;rootcgi&nbsp;=&gt;&nbsp;$ROOTCGI,</P>
+<P CLASS="CodeExample">
+};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#--------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;application</P>
+<P CLASS="CodeExample">
+#--------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+if&nbsp;($param&nbsp;=&nbsp;$cgi-&gt;param('name'))&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$entry&nbsp;=&nbsp;$dbh-&gt;selectrow_hashref(</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;SELECT&nbsp;id,&nbsp;name,&nbsp;author,&nbsp;about,&nbsp;date</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;entry&nbsp;WHERE&nbsp;name=?&quot;,&nbsp;{&nbsp;},&nbsp;$param)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$DBI::errstr;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$vars-&gt;{&nbsp;entry&nbsp;}&nbsp;=&nbsp;$entry;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;'entry.html';</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+elsif&nbsp;($param&nbsp;=&nbsp;$cgi-&gt;param('id'))&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$entry&nbsp;=&nbsp;$dbh-&gt;selectrow_hashref(</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;SELECT&nbsp;id,&nbsp;name,&nbsp;author,&nbsp;about,&nbsp;date</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;entry&nbsp;WHERE&nbsp;id=?&quot;,&nbsp;{&nbsp;},&nbsp;$param)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$DBI::errstr;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$vars-&gt;{&nbsp;entry&nbsp;}&nbsp;=&nbsp;$entry;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;'entry.html';</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+elsif&nbsp;($param&nbsp;=&nbsp;$cgi-&gt;param('search'))&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$vars-&gt;{&nbsp;search&nbsp;}&nbsp;=&nbsp;$param;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$param&nbsp;=&#126;&nbsp;s/*/&#92;%/g;&nbsp;&nbsp;#&nbsp;change&nbsp;'*'&nbsp;to&nbsp;'%'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$sth&nbsp;=&nbsp;$dbh-&gt;prepare(</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SELECT&nbsp;id,&nbsp;name,&nbsp;author,&nbsp;about,&nbsp;date&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;entry&nbsp;WHERE&nbsp;name&nbsp;LIKE&nbsp;?'&nbsp;)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$DBI::errstr;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$sth-&gt;execute($param)&nbsp;||&nbsp;die&nbsp;$sth-&gt;errstr(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$vars-&gt;{&nbsp;entries&nbsp;}&nbsp;=&nbsp;$sth-&gt;fetchall_arrayref({&nbsp;&nbsp;});</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;'entries.html';</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+else&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;'index.html';</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;presentation</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;&nbsp;=&nbsp;Template-&gt;new({</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE_PATH&nbsp;=&gt;&nbsp;[</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$ROOTDIR/templates/cgi&quot;,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$ROOTDIR/templates/lib&quot;,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;],</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;PRE_PROCESS&nbsp;=&gt;&nbsp;'config',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'wrapper',</P>
+<P CLASS="CodeExample">
+});</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+print&nbsp;$cgi-&gt;header(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($template,&nbsp;$vars)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-12 guide/templates/lib/config&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;USE&nbsp;Date;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;MACRO&nbsp;date(d)&nbsp;BLOCK;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;entry&nbsp;dates&nbsp;contain&nbsp;both&nbsp;date&nbsp;and&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;time,&nbsp;but&nbsp;we&nbsp;just&nbsp;want&nbsp;the&nbsp;date</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;items&nbsp;=&nbsp;d.split('-');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date.format(</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;0:00:00&nbsp;$items.2/$items.1/$items.0&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;format&nbsp;=&nbsp;'%d-%B-%Y'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;site&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;TT&nbsp;Hitch&nbsp;Hiker's&nbsp;Guide&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;admin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'webmaster@template-toolkit.org'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copyright&nbsp;=&nbsp;'2003&nbsp;Andy&nbsp;Wardley'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;site.url&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;guide&nbsp;&nbsp;=&nbsp;rootcgi</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index&nbsp;&nbsp;=&nbsp;&quot;$rooturl/index&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;images&nbsp;=&nbsp;&quot;$rooturl/images&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;css&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$rooturl/css/tt2.css&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;site.col&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;back&nbsp;&nbsp;=&nbsp;'#FFFFFF'&nbsp;&nbsp;#&nbsp;white</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;&nbsp;=&nbsp;'#000000'&nbsp;&nbsp;#&nbsp;black</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line&nbsp;&nbsp;=&nbsp;'#00AAF0'&nbsp;&nbsp;#&nbsp;sky&nbsp;blue</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;site.logo&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$site.url.images/logo/tt2_120x40.gif&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;TT2&nbsp;Logo&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width&nbsp;&nbsp;=&nbsp;120</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height&nbsp;=&nbsp;40</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;page&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;=&nbsp;template.name</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;&nbsp;=&nbsp;template.name</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;template.title</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;=&nbsp;template.about</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;&nbsp;=&nbsp;template.type&nbsp;or&nbsp;'html'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date&nbsp;&nbsp;=&nbsp;template.date&nbsp;or&nbsp;Date.format(template.modtime)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-13 guide/templates/lib/wrapper&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;SWITCH&nbsp;page.type;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CASE&nbsp;'text';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CASE&nbsp;'html';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;WRAPPER&nbsp;html&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;layout;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CASE;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;THROW&nbsp;page.type&nbsp;&quot;Invalid&nbsp;page&nbsp;type:&nbsp;$page.type&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-14 guide/templates/lib/html&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;!DOCTYPE&nbsp;HTML&nbsp;PUBLIC&nbsp;&quot;-//W3C//DTD&nbsp;HTML&nbsp;4.01&nbsp;Transitional//EN&quot;&gt;</P>
+<P CLASS="CodeExample">
+&lt;html&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&lt;head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;site.title&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;&quot;:&nbsp;$page.title&quot;&nbsp;IF&nbsp;page.title&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;link&nbsp;rel=&quot;stylesheet&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;href=&quot;[%&nbsp;site.url.css&nbsp;%]&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;meta&nbsp;http-equiv=&quot;Content-Type&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content=&quot;text/html;&nbsp;charset=iso-8859-1&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&lt;/head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&lt;body&nbsp;bgcolor=&quot;[%&nbsp;site.col.back&nbsp;%]&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text=&quot;[%&nbsp;site.col.text&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;content&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&lt;/body&gt;</P>
+<P CLASS="CodeExample">
+&lt;/html&gt;</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;12-15 guide/templates/lib/layout&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;MACRO&nbsp;line&nbsp;BLOCK&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;colspan=&quot;3&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;line&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;width=&quot;100%&quot;&nbsp;height=&quot;70%&quot;&nbsp;border=&quot;0&quot;&nbsp;cellpadding=&quot;4&quot;&nbsp;cellspacing=&quot;4&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;middle&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;width=&quot;150&quot;&nbsp;align=&quot;center&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;logo&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;left&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;header&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;right&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;form&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;line&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;top&quot;&nbsp;height=&quot;100%&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;colspan=&quot;3&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;page&nbsp;content&nbsp;--&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;content&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;end&nbsp;of&nbsp;page&nbsp;content&nbsp;--&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;line&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;bottom&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;colspan=&quot;3&quot;&nbsp;align=&quot;center&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;footer&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-16 guide/templates/lib/header&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;h1&nbsp;class=&quot;title&quot;&gt;[%&nbsp;page.title&nbsp;%]&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;IF&nbsp;page.about&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;div&nbsp;class=&quot;info&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;page.about&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;/div&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-17 guide/templates/lib/form&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;form&nbsp;action=&quot;[%&nbsp;site.url.guide&nbsp;%]&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;method=&quot;POST&quot;&nbsp;enctype=&quot;application/x-www-form-urlencoded&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;table&nbsp;border=&quot;0&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;middle&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;submit&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;submit&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value=&quot;&nbsp;Search&nbsp;&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;text&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;search&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size=&quot;30&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value=&quot;[%&nbsp;search&nbsp;%]&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;middle&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;class=&quot;info&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.g.,&nbsp;&lt;i&gt;earth&lt;/i&gt;,&nbsp;&lt;i&gt;magrethea&lt;/i&gt;,&nbsp;&lt;i&gt;ear*&lt;/i&gt;,&nbsp;&lt;i&gt;*th*&lt;/i&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/table&gt;</P>
+<P CLASS="CodeExample">
+&lt;/form&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-18 guide/templates/lib/logo&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;image&nbsp;=&nbsp;site.logo&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;a&nbsp;href=&quot;[%&nbsp;site.url.index&nbsp;%]&quot;&gt;&lt;img</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;src=&quot;[%&nbsp;image.src&nbsp;%]&quot;&nbsp;alt=&quot;[%&nbsp;image.alt&nbsp;%]&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;width=&quot;[%&nbsp;image.width&nbsp;%]&quot;&nbsp;height=&quot;[%&nbsp;image.height&nbsp;%]&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;border=&quot;0&quot;&nbsp;/&gt;&lt;/a&gt;</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;12-19 guide/templates/lib/footer&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;p&nbsp;class=&quot;info&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&amp;copy;&nbsp;Copyright&nbsp;[%&nbsp;site.copyright&nbsp;%].</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;All&nbsp;Rights&nbsp;Reserved.</P>
+<P CLASS="CodeExample">
+&nbsp;&lt;br&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;page.name&nbsp;%]&nbsp;last&nbsp;modified&nbsp;[%&nbsp;page.date&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-20 guide/templates/cgi/entry.html&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;#&nbsp;set&nbsp;various&nbsp;page&nbsp;items</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;page.title&nbsp;=&nbsp;entry.name;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;page.name&nbsp;&nbsp;=&nbsp;&quot;Entry&nbsp;for&nbsp;$entry.name&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;page.date&nbsp;&nbsp;=&nbsp;date(entry.date);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;page.about&nbsp;=&nbsp;&quot;by&nbsp;$entry.author&nbsp;on&nbsp;$page.date&quot;</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;entry.about&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-21 guide/templates/cgi/entries.html&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;page.title&nbsp;=&nbsp;'Search&nbsp;Results'&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;n&nbsp;=&nbsp;entries.size&nbsp;or&nbsp;'no'&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;h3&gt;There&nbsp;[%&nbsp;n&nbsp;=&nbsp;&nbsp;=&nbsp;1&nbsp;?&nbsp;'is'&nbsp;:&nbsp;'are'&nbsp;%]&nbsp;[%&nbsp;n&nbsp;%]&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;n&nbsp;=&nbsp;&nbsp;=&nbsp;1&nbsp;?&nbsp;'entry'&nbsp;:&nbsp;'entries'&nbsp;%]&nbsp;matching&nbsp;your&nbsp;search.&lt;/h3&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;IF&nbsp;entries.size&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%-&nbsp;FOREACH&nbsp;entry&nbsp;IN&nbsp;entries&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;[%&nbsp;site.url.guide&nbsp;%]?id=[%&nbsp;entry.id&nbsp;%]&quot;&gt;[%&nbsp;entry.name&nbsp;%]&lt;/a&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;class=&quot;info&quot;&gt;by&nbsp;[%&nbsp;entry.author&nbsp;%]&nbsp;on&nbsp;[%&nbsp;date(entry.date)&nbsp;%].&lt;/span&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%-&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/ul&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-22 cgiplugin.html&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;cgi&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;h1&gt;CGI&nbsp;Parameters&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;ul&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;p&nbsp;=&nbsp;cgi.param&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;b&gt;[%&nbsp;p&nbsp;%]&lt;/b&gt;&nbsp;[%&nbsp;cgi.param(p)&nbsp;%]&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;/ul&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;CGI&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;p&nbsp;=&nbsp;CGI.param&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-23 guide/cgi-bin/ttguide.pl&nbsp;</P>
+<P CLASS="CodeExample">
+#!/usr/bin/perl</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;warnings;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$|&nbsp;=&nbsp;1;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$ROOTDIR&nbsp;=&nbsp;'/home/dent/guide';</P>
+<P CLASS="CodeExample">
+my&nbsp;$ROOTURL&nbsp;=&nbsp;'/&#126;dent/guide';</P>
+<P CLASS="CodeExample">
+my&nbsp;$ROOTCGI&nbsp;=&nbsp;'/cgi-bin/dent/ttguide.pl';</P>
+<P CLASS="CodeExample">
+my&nbsp;$DBDSN&nbsp;&nbsp;&nbsp;=&nbsp;'DBI:mysql:guide';</P>
+<P CLASS="CodeExample">
+my&nbsp;$DBUSER&nbsp;&nbsp;=&nbsp;'dent';</P>
+<P CLASS="CodeExample">
+my&nbsp;$DBPASS&nbsp;&nbsp;=&nbsp;'ruhtra';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$input&nbsp;=&nbsp;'guide.html';</P>
+<P CLASS="CodeExample">
+my&nbsp;$vars&nbsp;&nbsp;=&nbsp;{&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;rootdir&nbsp;=&gt;&nbsp;$ROOTDIR,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;rooturl&nbsp;=&gt;&nbsp;$ROOTURL,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;rootcgi&nbsp;=&gt;&nbsp;$ROOTCGI,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;dbdsn&nbsp;&nbsp;&nbsp;=&gt;&nbsp;$DBDSN,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;dbuser&nbsp;&nbsp;=&gt;&nbsp;$DBUSER,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;dbpass&nbsp;&nbsp;=&gt;&nbsp;$DBPASS,</P>
+<P CLASS="CodeExample">
+};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;&nbsp;=&nbsp;Template-&gt;new({</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE_PATH&nbsp;=&gt;&nbsp;[</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$ROOTDIR/templates/cgi&quot;,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$ROOTDIR/templates/lib&quot;,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;],</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;PRE_PROCESS&nbsp;=&gt;&nbsp;'config',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'wrapper',</P>
+<P CLASS="CodeExample">
+});</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+print&nbsp;&quot;Content-type:&nbsp;text/html&#92;n&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($input,&nbsp;$vars)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-24 guide/templates/cgi/guide.html&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;USE&nbsp;cgi;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;USE&nbsp;dbi(&nbsp;dbdsn,&nbsp;dbuser,&nbsp;dbpass&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;main&nbsp;control&nbsp;loop</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;(param&nbsp;=&nbsp;cgi.param('name'));</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;entry/name;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;ELSIF&nbsp;(param&nbsp;=&nbsp;cgi.param('id'));</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;entry/id;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;ELSIF&nbsp;(param&nbsp;=&nbsp;cgi.param('search'));</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;entry/search;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;ELSE;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;index.html;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+USE&nbsp;cgi;</P>
+<P CLASS="Code">
+USE&nbsp;dbi(&nbsp;dbdsn,&nbsp;dbuser,&nbsp;dbpass&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+IF&nbsp;(param&nbsp;=&nbsp;cgi.param('name'));</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;entry/name;</P>
+<P CLASS="Code">
+ELSIF&nbsp;(param&nbsp;=&nbsp;cgi.param('id'));</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;entry/id;</P>
+<P CLASS="Code">
+ELSIF&nbsp;(param&nbsp;=&nbsp;cgi.param('search'));</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;entry/search;</P>
+<P CLASS="Code">
+ELSE;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;index.html;</P>
+<P CLASS="Code">
+END;</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-25 guide/templates/cgi/entry/name&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;entries&nbsp;=&nbsp;dbi.query(</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;SELECT&nbsp;id,&nbsp;name,&nbsp;author,&nbsp;about,&nbsp;date</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;entry&nbsp;WHERE&nbsp;name='$param'&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;entries&nbsp;is&nbsp;an&nbsp;iterator,&nbsp;so&nbsp;get&nbsp;first&nbsp;item</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;entry&nbsp;=&nbsp;entries.get;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;entry;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;entry.html;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;ELSE;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;notfound.html;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+entry&nbsp;=&nbsp;entries.get;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-26 guide/templates/cgi/entry/id&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;entries&nbsp;=&nbsp;dbi.query(</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;SELECT&nbsp;id,&nbsp;name,&nbsp;author,&nbsp;about,&nbsp;date</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;entry&nbsp;WHERE&nbsp;id=$param&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;entry&nbsp;=&nbsp;entries.get;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;entry;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;entry.html;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;ELSE;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;notfound.html;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-27 guide/templates/cgi/entry/search&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;search&nbsp;=&nbsp;param.replace('*',&nbsp;'%');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;entries&nbsp;=&nbsp;dbi.query(</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;SELECT&nbsp;id,&nbsp;name,&nbsp;author,&nbsp;about,&nbsp;date&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;entry&nbsp;WHERE&nbsp;name&nbsp;LIKE&nbsp;'$search'&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;entries.html</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entries&nbsp;=&nbsp;entries.get_all;</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+search&nbsp;=&nbsp;param.replace('*',&nbsp;'%');</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-28 Apache::Template&nbsp;configuration&nbsp;</P>
+<P CLASS="CodeExample">
+PerlModule&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apache::Template</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+TT2IncludePath&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/home/dent/guide/templates/cgi</P>
+<P CLASS="CodeExample">
+TT2IncludePath&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/home/dent/guide/templates/lib</P>
+<P CLASS="CodeExample">
+TT2PreProcess&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;config</P>
+<P CLASS="CodeExample">
+TT2Process&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;process</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+TT2Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rooturl&nbsp;/&#126;dent/guide</P>
+<P CLASS="CodeExample">
+TT2Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rootcgi&nbsp;/ttguide</P>
+<P CLASS="CodeExample">
+TT2Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dbdsn&nbsp;&nbsp;&nbsp;DBI:mysql:guide</P>
+<P CLASS="CodeExample">
+TT2Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dbuser&nbsp;&nbsp;dent</P>
+<P CLASS="CodeExample">
+TT2Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dbpass&nbsp;&nbsp;ruhtra</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+Alias&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ttguide&nbsp;/home/dent/guide/templates/cgi</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;Location&nbsp;/ttguide&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;SetHandler&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;perl-script</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;PerlHandler&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apache::Template</P>
+<P CLASS="CodeExample">
+&lt;/Location&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-29 templates/lib/process&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;$template&nbsp;WRAPPER&nbsp;wrapper&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Alias&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ttguide&nbsp;/home/dent/guide/templates/cgi</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;Location&nbsp;/ttguide&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;SetHandler&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;perl-script</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;PerlHandler&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apache::Template</P>
+<P CLASS="Code">
+&lt;/Location&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-30 lib/TTBook/Apache/Handler.pm&nbsp;</P>
+<P CLASS="CodeExample">
+package&nbsp;TTBook::Apache::Handler;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;warnings;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template;</P>
+<P CLASS="CodeExample">
+use&nbsp;Apache;</P>
+<P CLASS="CodeExample">
+use&nbsp;Apache::Constants&nbsp;qw(OK&nbsp;SERVER_ERROR&nbsp;DECLINED);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+our&nbsp;$VERSION&nbsp;=&nbsp;1.00;</P>
+<P CLASS="CodeExample">
+our&nbsp;$TT;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;handler&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$r&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$output;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;%params&nbsp;=&nbsp;$r-&gt;method(&nbsp;&nbsp;)&nbsp;eq&nbsp;'POST'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&nbsp;$r-&gt;content(&nbsp;&nbsp;)&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;$r-&gt;args(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$template&nbsp;=&nbsp;$r-&gt;path_info(&nbsp;&nbsp;)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;'index.html';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&#126;&nbsp;s[^/][&nbsp;&nbsp;]g;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$TT&nbsp;||=&nbsp;do&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$rootdir&nbsp;=&nbsp;$r-&gt;dir_config('rootdir')</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;error($r,&nbsp;&quot;'rootdir'&nbsp;not&nbsp;defined&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Template-&gt;new({</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE_PATH&nbsp;=&gt;&nbsp;[</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$rootdir/templates/cgi&quot;,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$rootdir/templates/lib&quot;,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRE_PROCESS&nbsp;=&gt;&nbsp;'config',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'wrapper',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ERROR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'error.html',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$r-&gt;content_type('text/html');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$r-&gt;send_http_header(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$TT-&gt;process($template,&nbsp;&#92;%params,&nbsp;$r)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;error($r,&nbsp;$TT-&gt;error(&nbsp;&nbsp;));</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;OK;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;error&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$r&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$r-&gt;log_error(@_);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;SERVER_ERROR;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+1;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;handler&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$r&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$output;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;%params&nbsp;=&nbsp;$r-&gt;method(&nbsp;&nbsp;)&nbsp;eq&nbsp;'POST'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&nbsp;$r-&gt;content(&nbsp;&nbsp;)&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;$r-&gt;args(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$template&nbsp;=&nbsp;$r-&gt;path_info(&nbsp;&nbsp;)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;'index.html';</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$template&nbsp;=&#126;&nbsp;s[^/][&nbsp;&nbsp;]g;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$TT&nbsp;||=&nbsp;do&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$rootdir&nbsp;=&nbsp;$r-&gt;dir_config('rootdir')</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;error($r,&nbsp;&quot;'rootdir'&nbsp;not&nbsp;defined&quot;);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Template-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE_PATH&nbsp;=&gt;&nbsp;[</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$rootdir/templates/cgi&quot;,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$rootdir/templates/lib&quot;,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRE_PROCESS&nbsp;=&gt;&nbsp;'config',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'wrapper',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ERROR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'error.html',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;});</P>
+<P CLASS="Code">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$r-&gt;content_type('text/html');</P>
+<P CLASS="Code">
+$r-&gt;send_http_header(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$TT-&gt;process($template,&nbsp;&#92;%params,&nbsp;$r)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;error($r,&nbsp;$TT-&gt;error(&nbsp;&nbsp;));</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+return&nbsp;OK;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-31 etc/tthandler.conf&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;perl&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;use&nbsp;lib&nbsp;qw(&nbsp;/home/dent/guide/lib&nbsp;)</P>
+<P CLASS="CodeExample">
+&lt;/perl&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+PerlModule&nbsp;&nbsp;&nbsp;TTBook::Apache::Handler</P>
+<P CLASS="CodeExample">
+PerlSetVar&nbsp;&nbsp;&nbsp;rootdir&nbsp;/home/dent/guide</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;Location&nbsp;/myhandler&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;SetHandler&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;perl-script</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;PerlHandler&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TTBook::Apache::Handler</P>
+<P CLASS="CodeExample">
+&lt;/Location&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+package&nbsp;TTBook::H2G2::Database;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+use&nbsp;strict;</P>
+<P CLASS="Code">
+use&nbsp;DBI;</P>
+<P CLASS="Code">
+use&nbsp;Class::Base;</P>
+<P CLASS="Code">
+use&nbsp;base&nbsp;qw(&nbsp;Class::Base&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+our&nbsp;$SQL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;get_entry_id&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'SELECT&nbsp;id,&nbsp;name,&nbsp;author,&nbsp;about,&nbsp;date</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;entry&nbsp;WHERE&nbsp;id=?',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;get_entry_name&nbsp;=&gt;&nbsp;'SELECT&nbsp;id,&nbsp;name,&nbsp;author,&nbsp;about,&nbsp;date&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;entry&nbsp;WHERE&nbsp;name=?',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;entry_search&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'SELECT&nbsp;id,&nbsp;name,&nbsp;author,&nbsp;about,&nbsp;date&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;entry&nbsp;WHERE&nbsp;name&nbsp;LIKE&nbsp;?',</P>
+<P CLASS="Code">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;init&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$config)&nbsp;=&nbsp;@_;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;@$self{&nbsp;keys&nbsp;%$config&nbsp;}&nbsp;=&nbsp;values&nbsp;%$config;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;{&nbsp;sql&nbsp;}&nbsp;=&nbsp;$SQL;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;connect(&nbsp;&nbsp;)&nbsp;||&nbsp;return;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self;</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;connect&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;{&nbsp;dbh&nbsp;}&nbsp;||=&nbsp;do&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$dsn&nbsp;=&nbsp;$self-&gt;dsn(&nbsp;&nbsp;)&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;$self-&gt;error(&quot;No&nbsp;DSN&nbsp;available&quot;);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DBI-&gt;connect($dsn,&nbsp;$self-&gt;{&nbsp;user&nbsp;},&nbsp;$self-&gt;{&nbsp;pass&nbsp;},&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;RaiseError&nbsp;=&gt;&nbsp;0,&nbsp;PrintError&nbsp;=&gt;&nbsp;0&nbsp;})&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error($DBI::errstr);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;dsn&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;{&nbsp;dsn&nbsp;}&nbsp;||=&nbsp;do&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($name,&nbsp;$host,&nbsp;$port)&nbsp;=&nbsp;@$self{&nbsp;qw(&nbsp;name&nbsp;host&nbsp;port&nbsp;)&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$host&nbsp;.=&nbsp;&quot;:$port&quot;&nbsp;if&nbsp;$host&nbsp;&amp;&amp;&nbsp;$port;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$name&nbsp;.=&nbsp;&quot;@$host&quot;&nbsp;if&nbsp;$host;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;join(':',&nbsp;'DBI',&nbsp;$self-&gt;{&nbsp;driver&nbsp;},&nbsp;$name);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;prepare&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$sql&nbsp;&nbsp;=&nbsp;shift&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;$self-&gt;error(&quot;no&nbsp;SQL&quot;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$dbh&nbsp;&nbsp;=&nbsp;$self-&gt;{&nbsp;dbh&nbsp;}&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;$self-&gt;error(&quot;DBI&nbsp;not&nbsp;connected&quot;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$query;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($query&nbsp;=&nbsp;$self-&gt;{&nbsp;sql&nbsp;}-&gt;{&nbsp;$sql&nbsp;})&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$cache&nbsp;=&nbsp;$self-&gt;{&nbsp;sql_query&nbsp;}&nbsp;||=&nbsp;{&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$cache-&gt;{&nbsp;$sql&nbsp;}&nbsp;||=&nbsp;$dbh-&gt;prepare($query)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error(&quot;DBI&nbsp;prepare&nbsp;failed:&nbsp;$DBI::errstr&quot;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$dbh-&gt;prepare($sql)&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error(&quot;DBI&nbsp;prepare&nbsp;failed:&nbsp;$DBI::errstr&quot;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;query&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$sql&nbsp;&nbsp;=&nbsp;shift&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;$self-&gt;error(&quot;no&nbsp;SQL&quot;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$dbh&nbsp;&nbsp;=&nbsp;$self-&gt;{&nbsp;dbh&nbsp;}&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;$self-&gt;error(&quot;DBI&nbsp;not&nbsp;connected&quot;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$sth&nbsp;=&nbsp;$self-&gt;prepare($sql)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$sth-&gt;execute(@_)&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;$self-&gt;error($sth-&gt;errstr(&nbsp;&nbsp;));&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$sth;</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;item&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$sth&nbsp;&nbsp;=&nbsp;$self-&gt;query(@_)&nbsp;||&nbsp;return;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$sth-&gt;fetchrow_hashref(&nbsp;&nbsp;)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error($DBI::errstr&nbsp;||&nbsp;&quot;not&nbsp;found&quot;);</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;list&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$sth&nbsp;&nbsp;=&nbsp;$self-&gt;query(@_)&nbsp;||&nbsp;return;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$sth-&gt;fetchall_arrayref({&nbsp;&nbsp;})</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error($DBI::errstr&nbsp;||&nbsp;&quot;not&nbsp;found&quot;);</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;DESTROY&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;disconnect('object&nbsp;destroyed')&nbsp;if&nbsp;$self-&gt;{&nbsp;dbh&nbsp;};</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-32 lib/TTBook/H2G2/Database.pm&nbsp;</P>
+<P CLASS="CodeExample">
+#=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;TTBook::H2G2::Database</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;DESCRIPTION</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;Backend&nbsp;database&nbsp;module&nbsp;for&nbsp;the&nbsp;H2G2&nbsp;web&nbsp;application.</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;AUTHOR</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;Andy&nbsp;Wardley&nbsp;&lt;abw@wardley.org&gt;</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;COPYRIGHT</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;Copyright&nbsp;(C)&nbsp;2003&nbsp;Andy&nbsp;Wardley.&nbsp;&nbsp;All&nbsp;Rights&nbsp;Reserved.</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;This&nbsp;module&nbsp;is&nbsp;free&nbsp;software;&nbsp;you&nbsp;can&nbsp;redistribute&nbsp;it&nbsp;and/or</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;modify&nbsp;it&nbsp;under&nbsp;the&nbsp;same&nbsp;terms&nbsp;as&nbsp;Perl&nbsp;itself.</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;REVISION</P>
+<P CLASS="CodeExample">
+#=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+package&nbsp;TTBook::H2G2::Database;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;DBI;</P>
+<P CLASS="CodeExample">
+use&nbsp;Class::Base;</P>
+<P CLASS="CodeExample">
+use&nbsp;base&nbsp;qw(&nbsp;Class::Base&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+our&nbsp;$VERSION&nbsp;=&nbsp;sprintf(&quot;%d.%02d&quot;,&nbsp;q$Revision:&nbsp;1.21&nbsp;$&nbsp;=&#126;&nbsp;/(&#92;d+)&#92;.(&#92;d+)/);</P>
+<P CLASS="CodeExample">
+our&nbsp;$ERROR&nbsp;&nbsp;&nbsp;=&nbsp;'';</P>
+<P CLASS="CodeExample">
+our&nbsp;$SQL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;get_entry_id&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'SELECT&nbsp;id,&nbsp;name,&nbsp;author,&nbsp;about,&nbsp;date</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;entry&nbsp;WHERE&nbsp;id=?',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;get_entry_name&nbsp;=&gt;&nbsp;'SELECT&nbsp;id,&nbsp;name,&nbsp;author,&nbsp;about,&nbsp;date&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;entry&nbsp;WHERE&nbsp;name=?',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;entry_search&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'SELECT&nbsp;id,&nbsp;name,&nbsp;author,&nbsp;about,&nbsp;date&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;entry&nbsp;WHERE&nbsp;name&nbsp;LIKE&nbsp;?',</P>
+<P CLASS="CodeExample">
+};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;init(&#92;%config)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Initialization&nbsp;method&nbsp;called&nbsp;by&nbsp;Class::Base&nbsp;new(&nbsp;&nbsp;)&nbsp;constructor.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;init&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$config)&nbsp;=&nbsp;@_;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;@$self{&nbsp;keys&nbsp;%$config&nbsp;}&nbsp;=&nbsp;values&nbsp;%$config;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;{&nbsp;sql&nbsp;}&nbsp;=&nbsp;$SQL;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;connect(&nbsp;&nbsp;)&nbsp;||&nbsp;return;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;dsn(&nbsp;&nbsp;)</P>
+<P CLASS="CodeExample">
+#&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;Generate&nbsp;a&nbsp;DSN&nbsp;string&nbsp;from&nbsp;the&nbsp;database&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;connection&nbsp;parameters.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;dsn&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;{&nbsp;dsn&nbsp;}&nbsp;||=&nbsp;do&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($name,&nbsp;$host,&nbsp;$port)&nbsp;=&nbsp;@$self{&nbsp;qw(&nbsp;name&nbsp;host&nbsp;port&nbsp;)&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$host&nbsp;.=&nbsp;&quot;:$port&quot;&nbsp;if&nbsp;$host&nbsp;&amp;&amp;&nbsp;$port;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$name&nbsp;.=&nbsp;&quot;@$host&quot;&nbsp;if&nbsp;$host;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;join(':',&nbsp;'DBI',&nbsp;$self-&gt;{&nbsp;driver&nbsp;},&nbsp;$name);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;connect(&nbsp;&nbsp;)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Connect&nbsp;to&nbsp;the&nbsp;backend&nbsp;database.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;connect&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;{&nbsp;dbh&nbsp;}&nbsp;||=&nbsp;do&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$dsn&nbsp;=&nbsp;$self-&gt;dsn(&nbsp;&nbsp;)&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;$self-&gt;error(&quot;No&nbsp;DSN&nbsp;available&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DBI-&gt;connect($dsn,&nbsp;$self-&gt;{&nbsp;user&nbsp;},&nbsp;$self-&gt;{&nbsp;pass&nbsp;},&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;RaiseError&nbsp;=&gt;&nbsp;0,&nbsp;PrintError&nbsp;=&gt;&nbsp;0&nbsp;})&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error($DBI::errstr);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;disconnect(&nbsp;&nbsp;)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Disconnect&nbsp;the&nbsp;database.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;disconnect&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$msg&nbsp;=&nbsp;shift&nbsp;||&nbsp;'';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$msg&nbsp;=&nbsp;&quot;&nbsp;($msg)&quot;&nbsp;if&nbsp;length&nbsp;$msg;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;delete&nbsp;$self-&gt;{&nbsp;sql_query&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;{&nbsp;dbh&nbsp;}-&gt;disconnect(&nbsp;&nbsp;)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;$self-&gt;{&nbsp;dbh&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;delete&nbsp;$self-&gt;{&nbsp;dbh&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;1;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;prepare($sql)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Prepare&nbsp;a&nbsp;query&nbsp;and&nbsp;store&nbsp;the&nbsp;live&nbsp;statement&nbsp;handle&nbsp;internally&nbsp;for</P>
+<P CLASS="CodeExample">
+#&nbsp;subsequent&nbsp;execute(&nbsp;&nbsp;)&nbsp;calls.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;prepare&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$sql&nbsp;&nbsp;=&nbsp;shift&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;$self-&gt;error(&quot;no&nbsp;SQL&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$dbh&nbsp;&nbsp;=&nbsp;$self-&gt;{&nbsp;dbh&nbsp;}&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;$self-&gt;error(&quot;DBI&nbsp;not&nbsp;connected&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$query;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($query&nbsp;=&nbsp;$self-&gt;{&nbsp;sql&nbsp;}-&gt;{&nbsp;$sql&nbsp;})&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$cache&nbsp;=&nbsp;$self-&gt;{&nbsp;sql_query&nbsp;}&nbsp;||=&nbsp;{&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$cache-&gt;{&nbsp;$sql&nbsp;}&nbsp;||=&nbsp;$dbh-&gt;prepare($query)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error(&quot;DBI&nbsp;prepare&nbsp;failed:&nbsp;$DBI::errstr&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$dbh-&gt;prepare($sql)&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error(&quot;DBI&nbsp;prepare&nbsp;failed:&nbsp;$DBI::errstr&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;query($sql,&nbsp;@params)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Prepares&nbsp;and&nbsp;executes&nbsp;an&nbsp;SQL&nbsp;query.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;query&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$sql&nbsp;&nbsp;=&nbsp;shift&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;$self-&gt;error(&quot;no&nbsp;SQL&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$dbh&nbsp;&nbsp;=&nbsp;$self-&gt;{&nbsp;dbh&nbsp;}&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;$self-&gt;error(&quot;DBI&nbsp;not&nbsp;connected&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$sth&nbsp;=&nbsp;$self-&gt;prepare($sql)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$sth-&gt;execute(@_)&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;$self-&gt;error($sth-&gt;errstr(&nbsp;&nbsp;));</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$sth;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;item($sql,&nbsp;@args)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Executes&nbsp;the&nbsp;$sql&nbsp;query,&nbsp;passing&nbsp;@args&nbsp;and&nbsp;calls&nbsp;fetchrow_hashref(&nbsp;&nbsp;)&nbsp;on</P>
+<P CLASS="CodeExample">
+#&nbsp;the&nbsp;returned&nbsp;statement&nbsp;handle&nbsp;to&nbsp;fetch&nbsp;a&nbsp;single&nbsp;row&nbsp;as&nbsp;a&nbsp;hash.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;item&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$sth&nbsp;&nbsp;=&nbsp;$self-&gt;query(@_)&nbsp;||&nbsp;return;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$sth-&gt;fetchrow_hashref(&nbsp;&nbsp;)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error($DBI::errstr&nbsp;||&nbsp;&quot;not&nbsp;found&quot;);</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;list($sql,&nbsp;@args)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Executes&nbsp;the&nbsp;$sql&nbsp;query,&nbsp;passing&nbsp;@args&nbsp;and&nbsp;calls&nbsp;fetchall_arrayref(&nbsp;&nbsp;)&nbsp;on</P>
+<P CLASS="CodeExample">
+#&nbsp;the&nbsp;returned&nbsp;statement&nbsp;handle&nbsp;to&nbsp;fetch&nbsp;all&nbsp;rows&nbsp;as&nbsp;a&nbsp;list&nbsp;of&nbsp;hashes.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;list&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$sth&nbsp;&nbsp;=&nbsp;$self-&gt;query(@_)&nbsp;||&nbsp;return;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$sth-&gt;fetchall_arrayref({&nbsp;&nbsp;})</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error($DBI::errstr&nbsp;||&nbsp;&quot;not&nbsp;found&quot;);</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;insert_id(&nbsp;&nbsp;)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Returns&nbsp;the&nbsp;identity&nbsp;of&nbsp;the&nbsp;record&nbsp;most&nbsp;recently&nbsp;inserted&nbsp;into&nbsp;the&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;database.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;insert_id&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;{&nbsp;dbh&nbsp;}-&gt;{&nbsp;mysql_insertid&nbsp;};</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;quote($value&nbsp;[,&nbsp;$data_type&nbsp;])</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Returns&nbsp;a&nbsp;quoted&nbsp;string&nbsp;(correct&nbsp;for&nbsp;the&nbsp;connected&nbsp;database)&nbsp;from&nbsp;the&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;value&nbsp;passed&nbsp;in.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;quote&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$dbh&nbsp;&nbsp;=&nbsp;$self-&gt;{&nbsp;dbh&nbsp;}&nbsp;||&nbsp;return&nbsp;$self-&gt;error(&quot;DBI&nbsp;not&nbsp;connected&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$dbh-&gt;quote(@_);</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;dbh(&nbsp;&nbsp;)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Internal&nbsp;method&nbsp;that&nbsp;retrieves&nbsp;the&nbsp;database&nbsp;handle&nbsp;belonging&nbsp;to&nbsp;the</P>
+<P CLASS="CodeExample">
+#&nbsp;instance&nbsp;or&nbsp;attempts&nbsp;to&nbsp;create&nbsp;a&nbsp;new&nbsp;one&nbsp;using&nbsp;connect.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;dbh&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;{&nbsp;dbh&nbsp;}&nbsp;||&nbsp;$self-&gt;connect(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;DESTROY(&nbsp;&nbsp;)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Destructor&nbsp;method&nbsp;called&nbsp;automatically&nbsp;when&nbsp;the&nbsp;object&nbsp;goes&nbsp;out&nbsp;of&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;scope.&nbsp;&nbsp;&nbsp;Disconnects&nbsp;any&nbsp;active&nbsp;database.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;DESTROY&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;disconnect('object&nbsp;destroyed')&nbsp;if&nbsp;$self-&gt;{&nbsp;dbh&nbsp;};</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+1;</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-33 lib/TTBook/H2G2/Config.pm&nbsp;</P>
+<P CLASS="CodeExample">
+#=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;TTBook::H2G2::Config</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;DESCRIPTION</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;Configuration&nbsp;module&nbsp;for&nbsp;the&nbsp;Hitch-Hiker's&nbsp;Guide&nbsp;to&nbsp;the&nbsp;Galaxy&nbsp;web&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;application.</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;AUTHOR</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;Andy&nbsp;Wardley&nbsp;&lt;abw@wardley.org&gt;</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;COPYRIGHT</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;Copyright&nbsp;(C)&nbsp;2003&nbsp;Andy&nbsp;Wardley.&nbsp;&nbsp;All&nbsp;Rights&nbsp;Reserved.</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;This&nbsp;module&nbsp;is&nbsp;free&nbsp;software;&nbsp;you&nbsp;can&nbsp;redistribute&nbsp;it&nbsp;and/or</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;modify&nbsp;it&nbsp;under&nbsp;the&nbsp;same&nbsp;terms&nbsp;as&nbsp;Perl&nbsp;itself.</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;REVISION</P>
+<P CLASS="CodeExample">
+#=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+package&nbsp;TTBook::H2G2::Config;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;warnings;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+our&nbsp;$VERSION&nbsp;&nbsp;=&nbsp;1.00;</P>
+<P CLASS="CodeExample">
+our&nbsp;$ROOTDIR&nbsp;&nbsp;=&nbsp;'/home/dent/web/guide';</P>
+<P CLASS="CodeExample">
+our&nbsp;$ROOTURL&nbsp;&nbsp;=&nbsp;'/H2G2';</P>
+<P CLASS="CodeExample">
+our&nbsp;$ROOTCGI&nbsp;&nbsp;=&nbsp;'/H2G2/guide';</P>
+<P CLASS="CodeExample">
+our&nbsp;$DATABASE&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;driver&nbsp;&nbsp;=&gt;&nbsp;'mysql',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'guide',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;user&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'dent',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;pass&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'ruhtra',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;host&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;port&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'',</P>
+<P CLASS="CodeExample">
+};</P>
+<P CLASS="CodeExample">
+our&nbsp;$TEMPLATE&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE_PATH&nbsp;=&gt;&nbsp;[</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$ROOTDIR/templates/cgi&quot;,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$ROOTDIR/templates/lib&quot;,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;],</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;PRE_PROCESS&nbsp;&nbsp;=&gt;&nbsp;'config',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'wrapper',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;VARIABLES&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rooturl&nbsp;&nbsp;=&gt;&nbsp;$ROOTURL,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rootcgi&nbsp;&nbsp;=&gt;&nbsp;$ROOTCGI,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+};</P>
+<P CLASS="CodeExample">
+our&nbsp;$TEMPLATES&nbsp;=&nbsp;{&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;index&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'index.html',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;entry&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'entry.html',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;entries&nbsp;=&gt;&nbsp;'entries.html',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;error&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'error.html',</P>
+<P CLASS="CodeExample">
+};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+1;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+package&nbsp;TTBook::H2G2;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+use&nbsp;strict;</P>
+<P CLASS="Code">
+use&nbsp;Template;</P>
+<P CLASS="Code">
+use&nbsp;TTBook::H2G2::Config;</P>
+<P CLASS="Code">
+use&nbsp;TTBook::H2G2::Database;</P>
+<P CLASS="Code">
+use&nbsp;Class::Base;</P>
+<P CLASS="Code">
+use&nbsp;base&nbsp;qw(&nbsp;Class::Base&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+our&nbsp;$ROOTURL&nbsp;&nbsp;&nbsp;=&nbsp;$TTBook::H2G2::Config::ROOTURL;</P>
+<P CLASS="Code">
+our&nbsp;$TEMPLATES&nbsp;=&nbsp;$TTBook::H2G2::Config::TEMPLATES;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;init&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$config)&nbsp;=&nbsp;@_;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;user&nbsp;can&nbsp;provide&nbsp;custom&nbsp;database&nbsp;object</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;{&nbsp;database&nbsp;}&nbsp;=&nbsp;$config-&gt;{&nbsp;database&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;same&nbsp;for&nbsp;template&nbsp;object</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;{&nbsp;template&nbsp;}&nbsp;=&nbsp;$config-&gt;{&nbsp;template&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;merge&nbsp;user-supplied&nbsp;templates&nbsp;with&nbsp;defaults</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$templates&nbsp;=&nbsp;$config-&gt;{&nbsp;templates&nbsp;}&nbsp;||&nbsp;{&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;{&nbsp;templates&nbsp;}&nbsp;=&nbsp;{&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map&nbsp;{&nbsp;defined&nbsp;$templates-&gt;{&nbsp;$_&nbsp;}&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&nbsp;($_&nbsp;=&gt;&nbsp;$templates-&gt;{&nbsp;$_&nbsp;})</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;($_&nbsp;=&gt;&nbsp;$TEMPLATES-&gt;{&nbsp;$_&nbsp;})&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;keys&nbsp;%$TEMPLATES</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self;</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;database&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;{&nbsp;database&nbsp;}&nbsp;||=&nbsp;do&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$params&nbsp;=&nbsp;@_&nbsp;&amp;&amp;&nbsp;UNIVERSAL::isa($_[0],&nbsp;'HASH')&nbsp;?&nbsp;shift&nbsp;:&nbsp;{&nbsp;@_&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$config&nbsp;=&nbsp;$TTBook::H2G2::Config::DATABASE;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$config&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%$config,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%$params,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TTBook::H2G2::Database-&gt;new($config)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error(TTBook::H2G2::Database-&gt;error(&nbsp;&nbsp;));</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;template&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;{&nbsp;template&nbsp;}&nbsp;||=&nbsp;do&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$params&nbsp;=&nbsp;@_&nbsp;&amp;&amp;&nbsp;UNIVERSAL::isa($_[0],&nbsp;'HASH')&nbsp;?&nbsp;shift&nbsp;:&nbsp;{&nbsp;@_&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$config&nbsp;=&nbsp;$TTBook::H2G2::Config::TEMPLATE;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$config&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%$config,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%$params,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Template-&gt;new($config)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;$self-&gt;error(Template-&gt;error(&nbsp;&nbsp;));</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;entry&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$args&nbsp;=&nbsp;@_&nbsp;&amp;&amp;&nbsp;ref&nbsp;$_[0]&nbsp;eq&nbsp;'HASH'&nbsp;?&nbsp;shift&nbsp;:&nbsp;{&nbsp;@_&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$database&nbsp;=&nbsp;$self-&gt;database(&nbsp;&nbsp;)&nbsp;||&nbsp;return;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$entry;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(defined&nbsp;$args-&gt;{&nbsp;id&nbsp;})&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$database-&gt;item(&nbsp;get_entry_id&nbsp;=&gt;&nbsp;$args-&gt;{&nbsp;id&nbsp;}&nbsp;)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error($database-&gt;error(&nbsp;&nbsp;));</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;elsif&nbsp;(defined&nbsp;$args-&gt;{&nbsp;name&nbsp;})&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$database-&gt;item(&nbsp;get_entry_name&nbsp;=&gt;&nbsp;$args-&gt;{&nbsp;name&nbsp;}&nbsp;)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error($database-&gt;error(&nbsp;&nbsp;));</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;error(&quot;entry(&nbsp;&nbsp;)&nbsp;expects&nbsp;'name'&nbsp;or&nbsp;'id'&nbsp;parameter&quot;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;search&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$search)&nbsp;=&nbsp;@_;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$database&nbsp;=&nbsp;$self-&gt;database(&nbsp;&nbsp;)&nbsp;||&nbsp;return;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;change&nbsp;'*'&nbsp;to&nbsp;'%'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$search&nbsp;=&#126;&nbsp;s/*/&#92;%/g;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$database-&gt;list(&nbsp;entry_search&nbsp;=&gt;&nbsp;$search&nbsp;)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error($database-&gt;error(&nbsp;&nbsp;));</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;run&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$params)&nbsp;=&nbsp;@_;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$templates&nbsp;=&nbsp;$self-&gt;{&nbsp;templates&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($tt,&nbsp;$template,&nbsp;$output);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(defined&nbsp;$params-&gt;{&nbsp;name&nbsp;}&nbsp;||&nbsp;defined&nbsp;$params-&gt;{&nbsp;id&nbsp;})&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;fetch&nbsp;entry&nbsp;if&nbsp;'name'&nbsp;or&nbsp;'id'&nbsp;specified</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$entry&nbsp;=&nbsp;$self-&gt;entry($params);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($entry)&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$params-&gt;{&nbsp;entry&nbsp;}&nbsp;=&nbsp;$entry;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;$templates-&gt;{&nbsp;entry&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$params-&gt;{&nbsp;error&nbsp;}&nbsp;=&nbsp;$self-&gt;error(&nbsp;&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;$templates-&gt;{&nbsp;error&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;elsif&nbsp;(defined&nbsp;$params-&gt;{&nbsp;search&nbsp;})&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;search&nbsp;for&nbsp;entries&nbsp;if&nbsp;'search'&nbsp;specified</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$entries&nbsp;=&nbsp;$self-&gt;search($params-&gt;{&nbsp;search&nbsp;});</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($entries)&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$params-&gt;{&nbsp;entries&nbsp;}&nbsp;=&nbsp;$entries;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;$templates-&gt;{&nbsp;entries&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$params-&gt;{&nbsp;error&nbsp;}&nbsp;=&nbsp;$self-&gt;error(&nbsp;&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;$templates-&gt;{&nbsp;error&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[&nbsp;redirect&nbsp;=&gt;&nbsp;&quot;$ROOTURL/index.html&quot;&nbsp;];</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$tt&nbsp;=&nbsp;$self-&gt;template(&nbsp;&nbsp;)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;[&nbsp;error&nbsp;=&gt;&nbsp;$self-&gt;error(&nbsp;&nbsp;)&nbsp;];</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$tt-&gt;process($template,&nbsp;$params,&nbsp;&#92;$output)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;[&nbsp;error&nbsp;=&gt;&nbsp;$tt-&gt;error(&nbsp;&nbsp;)&nbsp;];</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+return&nbsp;[&nbsp;output&nbsp;=&gt;&nbsp;&#92;$output&nbsp;];</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-34 lib/TTBook/H2G2.pm&nbsp;</P>
+<P CLASS="CodeExample">
+#=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;TTBook::H2G2</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;DESCRIPTION</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;A&nbsp;web&nbsp;application&nbsp;for&nbsp;a&nbsp;guide&nbsp;such&nbsp;as&nbsp;the&nbsp;Hitch&nbsp;Hiker's&nbsp;Guide&nbsp;to&nbsp;the&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;Galaxy.</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;AUTHOR</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;Andy&nbsp;Wardley&nbsp;&lt;abw@wardley.org&gt;</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;COPYRIGHT</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;Copyright&nbsp;(C)&nbsp;2003&nbsp;Andy&nbsp;Wardley.&nbsp;&nbsp;All&nbsp;Rights&nbsp;Reserved.</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;This&nbsp;module&nbsp;is&nbsp;free&nbsp;software;&nbsp;you&nbsp;can&nbsp;redistribute&nbsp;it&nbsp;and/or</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;modify&nbsp;it&nbsp;under&nbsp;the&nbsp;same&nbsp;terms&nbsp;as&nbsp;Perl&nbsp;itself.</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;REVISION</P>
+<P CLASS="CodeExample">
+#=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+package&nbsp;TTBook::H2G2;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template;</P>
+<P CLASS="CodeExample">
+use&nbsp;TTBook::H2G2::Config;</P>
+<P CLASS="CodeExample">
+use&nbsp;TTBook::H2G2::Database;</P>
+<P CLASS="CodeExample">
+use&nbsp;Class::Base;</P>
+<P CLASS="CodeExample">
+use&nbsp;base&nbsp;qw(&nbsp;Class::Base&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+our&nbsp;$VERSION&nbsp;=&nbsp;sprintf(&quot;%d.%02d&quot;,&nbsp;q$Revision:&nbsp;1.21&nbsp;$&nbsp;=&#126;&nbsp;/(&#92;d+)&#92;.(&#92;d+)/);</P>
+<P CLASS="CodeExample">
+our&nbsp;$DEBUG&nbsp;&nbsp;&nbsp;=&nbsp;0&nbsp;unless&nbsp;defined&nbsp;$DEBUG;</P>
+<P CLASS="CodeExample">
+our&nbsp;$ERROR&nbsp;&nbsp;&nbsp;=&nbsp;'';</P>
+<P CLASS="CodeExample">
+our&nbsp;$ROOTURL&nbsp;&nbsp;&nbsp;=&nbsp;$TTBook::H2G2::Config::ROOTURL;</P>
+<P CLASS="CodeExample">
+our&nbsp;$TEMPLATES&nbsp;=&nbsp;$TTBook::H2G2::Config::TEMPLATES;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;init(&#92;%config)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Initializer&nbsp;method&nbsp;called&nbsp;by&nbsp;Class::Base&nbsp;new(&nbsp;&nbsp;)&nbsp;method.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;init&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$config)&nbsp;=&nbsp;@_;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;user&nbsp;can&nbsp;provide&nbsp;custom&nbsp;database&nbsp;object</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;{&nbsp;database&nbsp;}&nbsp;=&nbsp;$config-&gt;{&nbsp;database&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;same&nbsp;for&nbsp;template&nbsp;object</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;{&nbsp;template&nbsp;}&nbsp;=&nbsp;$config-&gt;{&nbsp;template&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;merge&nbsp;user-supplied&nbsp;templates&nbsp;with&nbsp;defaults</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$templates&nbsp;=&nbsp;$config-&gt;{&nbsp;templates&nbsp;}&nbsp;||&nbsp;{&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;{&nbsp;templates&nbsp;}&nbsp;=&nbsp;{&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map&nbsp;{&nbsp;defined&nbsp;$templates-&gt;{&nbsp;$_&nbsp;}&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&nbsp;($_&nbsp;=&gt;&nbsp;$templates-&gt;{&nbsp;$_&nbsp;})</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;($_&nbsp;=&gt;&nbsp;$TEMPLATES-&gt;{&nbsp;$_&nbsp;})&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;keys&nbsp;%$TEMPLATES</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;database(&nbsp;&nbsp;)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Create&nbsp;or&nbsp;reuse&nbsp;existing&nbsp;database&nbsp;object.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;database&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;{&nbsp;database&nbsp;}&nbsp;||=&nbsp;do&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$params&nbsp;=&nbsp;@_&nbsp;&amp;&amp;&nbsp;UNIVERSAL::isa($_[0],&nbsp;'HASH')&nbsp;?&nbsp;shift&nbsp;:&nbsp;{&nbsp;@_&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$config&nbsp;=&nbsp;$TTBook::H2G2::Config::DATABASE;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$config&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%$config,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%$params,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TTBook::H2G2::Database-&gt;new($config)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error(TTBook::H2G2::Database-&gt;error(&nbsp;&nbsp;));</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;template(&nbsp;&nbsp;)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Create&nbsp;or&nbsp;reuse&nbsp;existing&nbsp;template&nbsp;processing&nbsp;object.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;template&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;{&nbsp;template&nbsp;}&nbsp;||=&nbsp;do&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$params&nbsp;=&nbsp;@_&nbsp;&amp;&amp;&nbsp;UNIVERSAL::isa($_[0],&nbsp;'HASH')&nbsp;?&nbsp;shift&nbsp;:&nbsp;{&nbsp;@_&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$config&nbsp;=&nbsp;$TTBook::H2G2::Config::TEMPLATE;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$config&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%$config,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%$params,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Template-&gt;new($config)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;$self-&gt;error(Template-&gt;error(&nbsp;&nbsp;));</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;entry(&nbsp;id&nbsp;=&gt;&nbsp;12345&nbsp;)</P>
+<P CLASS="CodeExample">
+#&nbsp;entry(&nbsp;name&nbsp;=&gt;&nbsp;'Earth'&nbsp;)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Fetch&nbsp;an&nbsp;entry&nbsp;from&nbsp;the&nbsp;database.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;entry&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$args&nbsp;=&nbsp;@_&nbsp;&amp;&amp;&nbsp;ref&nbsp;$_[0]&nbsp;eq&nbsp;'HASH'&nbsp;?&nbsp;shift&nbsp;:&nbsp;{&nbsp;@_&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$database&nbsp;=&nbsp;$self-&gt;database(&nbsp;&nbsp;)&nbsp;||&nbsp;return;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$entry;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(defined&nbsp;$args-&gt;{&nbsp;id&nbsp;})&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$database-&gt;item(&nbsp;get_entry_id&nbsp;=&gt;&nbsp;$args-&gt;{&nbsp;id&nbsp;}&nbsp;)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error($database-&gt;error(&nbsp;&nbsp;));</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;elsif&nbsp;(defined&nbsp;$args-&gt;{&nbsp;name&nbsp;})&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$database-&gt;item(&nbsp;get_entry_name&nbsp;=&gt;&nbsp;$args-&gt;{&nbsp;name&nbsp;}&nbsp;)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error($database-&gt;error(&nbsp;&nbsp;));</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;error(&quot;entry(&nbsp;&nbsp;)&nbsp;expects&nbsp;'name'&nbsp;or&nbsp;'id'&nbsp;parameter&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;search($term)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Search&nbsp;for&nbsp;items&nbsp;in&nbsp;the&nbsp;database&nbsp;based&nbsp;on&nbsp;a&nbsp;search&nbsp;term.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;search&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$search)&nbsp;=&nbsp;@_;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$database&nbsp;=&nbsp;$self-&gt;database(&nbsp;&nbsp;)&nbsp;||&nbsp;return;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;change&nbsp;'*'&nbsp;to&nbsp;'%'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$search&nbsp;=&#126;&nbsp;s/*/&#92;%/g;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$database-&gt;list(&nbsp;entry_search&nbsp;=&gt;&nbsp;$search&nbsp;)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$self-&gt;error($database-&gt;error(&nbsp;&nbsp;));</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;run(&#92;%params)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Run&nbsp;web&nbsp;application.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;run&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$params)&nbsp;=&nbsp;@_;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$templates&nbsp;=&nbsp;$self-&gt;{&nbsp;templates&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($tt,&nbsp;$template,&nbsp;$output);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(defined&nbsp;$params-&gt;{&nbsp;name&nbsp;}&nbsp;||&nbsp;defined&nbsp;$params-&gt;{&nbsp;id&nbsp;})&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;fetch&nbsp;entry&nbsp;if&nbsp;'name'&nbsp;or&nbsp;'id'&nbsp;specified</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$entry&nbsp;=&nbsp;$self-&gt;entry($params);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($entry)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$params-&gt;{&nbsp;entry&nbsp;}&nbsp;=&nbsp;$entry;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;$templates-&gt;{&nbsp;entry&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$params-&gt;{&nbsp;error&nbsp;}&nbsp;=&nbsp;$self-&gt;error(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;$templates-&gt;{&nbsp;error&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;elsif&nbsp;(defined&nbsp;$params-&gt;{&nbsp;search&nbsp;})&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;search&nbsp;for&nbsp;entries&nbsp;if&nbsp;'search'&nbsp;specified</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$entries&nbsp;=&nbsp;$self-&gt;search($params-&gt;{&nbsp;search&nbsp;});</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($entries)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$params-&gt;{&nbsp;entries&nbsp;}&nbsp;=&nbsp;$entries;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;$templates-&gt;{&nbsp;entries&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$params-&gt;{&nbsp;error&nbsp;}&nbsp;=&nbsp;$self-&gt;error(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;$templates-&gt;{&nbsp;error&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[&nbsp;redirect&nbsp;=&gt;&nbsp;&quot;$ROOTURL/index.html&quot;&nbsp;];</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;process&nbsp;template&nbsp;and&nbsp;return&nbsp;output&nbsp;or&nbsp;error</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$tt&nbsp;=&nbsp;$self-&gt;template(&nbsp;&nbsp;)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;[&nbsp;error&nbsp;=&gt;&nbsp;$self-&gt;error(&nbsp;&nbsp;)&nbsp;];</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$tt-&gt;process($template,&nbsp;$params,&nbsp;&#92;$output)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;[&nbsp;error&nbsp;=&gt;&nbsp;$tt-&gt;error(&nbsp;&nbsp;)&nbsp;];</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[&nbsp;output&nbsp;=&gt;&nbsp;&#92;$output&nbsp;];</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+1;</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-35 lib/TTBook/H2G2/Apache.pm&nbsp;</P>
+<P CLASS="CodeExample">
+#=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;TTBook::H2G2::Apache</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;DESCRIPTION</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;Apache/mod_perl&nbsp;handler&nbsp;for&nbsp;the&nbsp;H2G2&nbsp;web&nbsp;application.</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;AUTHOR</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;Andy&nbsp;Wardley&nbsp;&lt;abw@wardley.org&gt;</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;COPYRIGHT</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;Copyright&nbsp;(C)&nbsp;2003&nbsp;Andy&nbsp;Wardley.&nbsp;&nbsp;All&nbsp;Rights&nbsp;Reserved.</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;This&nbsp;module&nbsp;is&nbsp;free&nbsp;software;&nbsp;you&nbsp;can&nbsp;redistribute&nbsp;it&nbsp;and/or</P>
+<P CLASS="CodeExample">
+#&nbsp;&nbsp;&nbsp;modify&nbsp;it&nbsp;under&nbsp;the&nbsp;same&nbsp;terms&nbsp;as&nbsp;Perl&nbsp;itself.</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;REVISION</P>
+<P CLASS="CodeExample">
+#=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+package&nbsp;TTBook::H2G2::Apache;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;Apache;</P>
+<P CLASS="CodeExample">
+use&nbsp;Apache::Constants&nbsp;qw(OK&nbsp;SERVER_ERROR);</P>
+<P CLASS="CodeExample">
+use&nbsp;TTBook::H2G2;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+our&nbsp;$VERSION&nbsp;=&nbsp;1.00;</P>
+<P CLASS="CodeExample">
+our&nbsp;$H2G2APP;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;handler&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$r&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;%params&nbsp;&nbsp;&nbsp;=&nbsp;$r-&gt;method(&nbsp;&nbsp;)&nbsp;eq&nbsp;'POST'&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&nbsp;$r-&gt;content(&nbsp;&nbsp;)&nbsp;:&nbsp;$r-&gt;args(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;create&nbsp;or&nbsp;reuse&nbsp;existing&nbsp;application&nbsp;object</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$H2G2APP&nbsp;||=&nbsp;TTBook::H2G2-&gt;new(&nbsp;&nbsp;)&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;return&nbsp;error($r,&nbsp;&quot;Can't&nbsp;create&nbsp;webapp&nbsp;instance:&nbsp;&quot;,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TTBook::H2G2-&gt;error(&nbsp;&nbsp;));</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;run&nbsp;the&nbsp;application</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$result&nbsp;=&nbsp;$H2G2APP-&gt;run(&#92;%params)&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;error($r,&nbsp;&quot;Can't&nbsp;run&nbsp;webapp&quot;,&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$H2G2APP-&gt;error(&nbsp;&nbsp;));</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;handle&nbsp;the&nbsp;result</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$action&nbsp;=&nbsp;shift&nbsp;@$result;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($action&nbsp;eq&nbsp;'output')&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$content&nbsp;=&nbsp;shift&nbsp;@$result;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$r-&gt;content_type('text/html');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$r-&gt;headers_out-&gt;add('Content-Length',&nbsp;length($$content));</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$r-&gt;send_http_header(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$r-&gt;print($$content);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;OK;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;elsif&nbsp;($action&nbsp;eq&nbsp;'redirect')&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$url&nbsp;=&nbsp;shift&nbsp;@$result;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$r-&gt;internal_redirect($url);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;elsif&nbsp;($action&nbsp;eq&nbsp;'error')&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;error($r,&nbsp;@$result);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;error($r,&nbsp;&quot;cannot&nbsp;handle&nbsp;action:&nbsp;$action&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;error&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$r&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$r-&gt;log_error(@_);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;SERVER_ERROR;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+1;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$result&nbsp;=&nbsp;$H2G2APP-&gt;run(&#92;%params)&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;error($r,&nbsp;&quot;Can't&nbsp;run&nbsp;webapp&quot;,&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$H2G2APP-&gt;error(&nbsp;&nbsp;));</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$action&nbsp;=&nbsp;shift&nbsp;@$result;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+if&nbsp;($action&nbsp;eq&nbsp;'output')&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$content&nbsp;=&nbsp;shift&nbsp;@$result;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$r-&gt;content_type('text/html');</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$r-&gt;headers_out-&gt;add('Content-Length',&nbsp;length($$content));</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$r-&gt;send_http_header(&nbsp;&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$r-&gt;print($$content);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;OK;</P>
+<P CLASS="Code">
+}</P>
+<P CLASS="Code">
+elsif&nbsp;($action&nbsp;eq&nbsp;'redirect')&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$url&nbsp;=&nbsp;shift&nbsp;@$result;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$r-&gt;internal_redirect($url);</P>
+<P CLASS="Code">
+}</P>
+<P CLASS="Code">
+elsif&nbsp;($action&nbsp;eq&nbsp;'error')&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;error($r,&nbsp;@$result);</P>
+<P CLASS="Code">
+}</P>
+<P CLASS="Code">
+else&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;error($r,&nbsp;&quot;cannot&nbsp;handle&nbsp;action:&nbsp;$action&quot;);</P>
+<P CLASS="Code">
+}</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;12-36 etc/ttguide.conf&nbsp;</P>
+<P CLASS="CodeExample">
+Alias&nbsp;/H2G2/images/&nbsp;&nbsp;&nbsp;/home/dent/guide/images/</P>
+<P CLASS="CodeExample">
+Alias&nbsp;/H2G2/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/home/dent/guide/html/</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;perl&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;use&nbsp;lib&nbsp;qw(&nbsp;/home/dent/guide/lib&nbsp;)</P>
+<P CLASS="CodeExample">
+&lt;/perl&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+PerlModule&nbsp;&nbsp;&nbsp;TTBook::H2G2::Apache</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;Location&nbsp;/H2G2/guide&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;SetHandler&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;perl-script</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;PerlHandler&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TTBook::H2G2::Apache</P>
+<P CLASS="CodeExample">
+&lt;/Location&gt;</P>
+<HR align="left" width="50%">
+</BODY>
+</HTML>
+</body></html>

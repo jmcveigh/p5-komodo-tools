@@ -1,0 +1,2132 @@
+<html><head><title>building a complete website using ttkt-html code examples</title><style>
+
+P.ExampleTitle {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 6.000000pt;
+	margin-bottom: 6.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 0.000000pt;
+	font-size: 9.000000pt;
+	font-weight: medium;
+	font-style: Italic;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Birka";
+}
+
+P.CodeExample {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-weight: bold;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "TheSansMonoCondensed";
+}
+
+P.Code {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Courier";
+}
+
+
+
+
+
+</style><body><P CLASS="ExampleTitle">
+Example&nbsp;2-1 hello.html&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;html&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Arthur&nbsp;Dent:&nbsp;Greet&nbsp;the&nbsp;Planet&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;body&nbsp;bgcolor=&quot;#FF6600&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Greet&nbsp;the&nbsp;Planet&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello&nbsp;World!</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;hr&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;align=&quot;middle&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;copy;&nbsp;Copyright&nbsp;2003&nbsp;Arthur&nbsp;Dent</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/body&gt;</P>
+<P CLASS="CodeExample">
+&lt;/html&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-2 hello.tt&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;html&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;[%&nbsp;author&nbsp;%]:&nbsp;[%&nbsp;title&nbsp;%]&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;body&nbsp;bgcolor=&quot;[%&nbsp;bgcol&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;[%&nbsp;title&nbsp;%]&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello&nbsp;World!</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;hr&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;align=&quot;middle&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;copy;&nbsp;Copyright&nbsp;[%&nbsp;year&nbsp;%]&nbsp;[%&nbsp;author&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/body&gt;</P>
+<P CLASS="CodeExample">
+&lt;/html&gt;</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;tpage&nbsp;--define&nbsp;author=&quot;Arthur&nbsp;Dent&quot;&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--define&nbsp;title=&quot;Greet&nbsp;the&nbsp;Planet&quot;&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--define&nbsp;bgcol=&quot;#FF6600&quot;&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--define&nbsp;year=2003&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hello.tt&nbsp;&gt;&nbsp;hello.html</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-3 header&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;html&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;[%&nbsp;author&nbsp;%]:&nbsp;[%&nbsp;title&nbsp;%]&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;body&nbsp;bgcolor=&quot;[%&nbsp;bgcol&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;[%&nbsp;title&nbsp;%]&lt;/h1&gt;</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;2-4 footer&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;hr&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;align=&quot;middle&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;copy;&nbsp;Copyright&nbsp;[%&nbsp;year&nbsp;%]&nbsp;[%&nbsp;author&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/body&gt;</P>
+<P CLASS="CodeExample">
+&lt;/html&gt;</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-5 goodbye.tt&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;header&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Goodbye&nbsp;World.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;footer&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;tpage&nbsp;--define&nbsp;author=&quot;Arthur&nbsp;Dent&quot;&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--define&nbsp;title=&quot;We'll&nbsp;Meet&nbsp;Again&quot;&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--define&nbsp;bgcol=&quot;#FF6600&quot;&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--define&nbsp;year=2003&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;goodbye.tt&nbsp;&gt;&nbsp;goodbye.html</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-6 goodbye.html&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;html&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Arthur&nbsp;Dent:&nbsp;We'll&nbsp;Meet&nbsp;Again&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;body&nbsp;bgcolor=&quot;#FF6600&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;We'll&nbsp;Meet&nbsp;Again&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Goodbye&nbsp;World.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;hr&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;align=&quot;middle&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;copy;&nbsp;Copyright&nbsp;2003&nbsp;Arthur&nbsp;Dent</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/body&gt;</P>
+<P CLASS="CodeExample">
+&lt;/html&gt;</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;INSERT&nbsp;footer&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;hr&nbsp;/&gt;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;align=&quot;middle&quot;&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;copy;&nbsp;Copyright&nbsp;2003&nbsp;Arthur&nbsp;Dent</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;/body&gt;</P>
+<P CLASS="Code">
+&lt;/html&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-7 config&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;author&nbsp;=&nbsp;'Arthur&nbsp;Dent'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;bgcol&nbsp;&nbsp;=&nbsp;'#FF6600'&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;orange</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;year&nbsp;&nbsp;&nbsp;=&nbsp;2003</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;copyr&nbsp;&nbsp;=&nbsp;&quot;Copyright&nbsp;$year&nbsp;$author&quot;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%#&nbsp;this&nbsp;is&nbsp;a&nbsp;comment</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;this&nbsp;line&nbsp;is&nbsp;also&nbsp;part&nbsp;of&nbsp;the&nbsp;comment</P>
+<P CLASS="Code">
+%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-8 earth.tt&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;title&nbsp;=&nbsp;'Earth'&nbsp;-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;config&nbsp;-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;header&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mostly&nbsp;Harmless.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;footer&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;title&nbsp;=&nbsp;'Earth'&nbsp;%][%&nbsp;PROCESS&nbsp;config&nbsp;%][%&nbsp;PROCESS&nbsp;header&nbsp;%]</P>
+<P CLASS="Code">
+...</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;tpage&nbsp;earth.tt&nbsp;&gt;&nbsp;earth.html</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;title&nbsp;=&nbsp;'Earth';</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;PROCESS&nbsp;config;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;PROCESS&nbsp;header</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;title&nbsp;=&nbsp;'Earth'&nbsp;-%]</P>
+<P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;config&nbsp;-%]</P>
+<P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;header&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;pi&nbsp;&nbsp;=&nbsp;3.142&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;semicolon&nbsp;optional</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;=&nbsp;2.718&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;i&nbsp;&nbsp;&nbsp;=&nbsp;1.414;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;semicolon&nbsp;mandatory</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;PROCESS&nbsp;config;&nbsp;&nbsp;#&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;phi&nbsp;=&nbsp;1.618&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;semicolon&nbsp;optional</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;SET&nbsp;pi&nbsp;&nbsp;=&nbsp;3.142</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;=&nbsp;2.718</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i&nbsp;&nbsp;&nbsp;=&nbsp;1.414;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;PROCESS&nbsp;config;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;SET&nbsp;phi&nbsp;=&nbsp;1.618</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;title&nbsp;=&nbsp;'Earth';</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;PROCESS&nbsp;config</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;header</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-9 magrethea.tt&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;title&nbsp;=&nbsp;'Magrethea';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;PROCESS&nbsp;config</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;header</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;Home&nbsp;of&nbsp;the&nbsp;custom-made&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;luxury-planet&nbsp;building&nbsp;industry.</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;footer&nbsp;%]</P>
+
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;cd&nbsp;/home/dent</P>
+<P CLASS="Code">
+$&nbsp;mkdir&nbsp;web</P>
+<P CLASS="Code">
+$&nbsp;cd&nbsp;web</P>
+<P CLASS="Code">
+$&nbsp;mkdir&nbsp;src&nbsp;lib&nbsp;html&nbsp;etc&nbsp;bin</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-10 etc/ttree.cfg&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;directories</P>
+<P CLASS="CodeExample">
+src&nbsp;&nbsp;=&nbsp;/home/dent/web/src</P>
+<P CLASS="CodeExample">
+lib&nbsp;&nbsp;=&nbsp;/home/dent/web/lib</P>
+<P CLASS="CodeExample">
+dest&nbsp;=&nbsp;/home/dent/web/html</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;copy&nbsp;images&nbsp;and&nbsp;other&nbsp;binary&nbsp;files</P>
+<P CLASS="CodeExample">
+copy&nbsp;=&nbsp;&#92;.(png|gif|jpg)$</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;ignore&nbsp;CVS,&nbsp;RCS,&nbsp;and&nbsp;Emacs&nbsp;temporary&nbsp;files</P>
+<P CLASS="CodeExample">
+ignore&nbsp;=&nbsp;&#92;b(CVS|RCS)&#92;b</P>
+<P CLASS="CodeExample">
+ignore&nbsp;=&nbsp;^#</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;misc&nbsp;options</P>
+<P CLASS="CodeExample">
+verbose</P>
+<P CLASS="CodeExample">
+recurse</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;directories</P>
+<P CLASS="Code">
+src&nbsp;&nbsp;=&nbsp;/home/dent/web/src</P>
+<P CLASS="Code">
+lib&nbsp;&nbsp;=&nbsp;/home/dent/web/lib</P>
+<P CLASS="Code">
+dest&nbsp;=&nbsp;/home/dent/web/html</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;copy&nbsp;images&nbsp;and&nbsp;other&nbsp;binary&nbsp;files</P>
+<P CLASS="Code">
+copy&nbsp;=&nbsp;&#92;.(png|gif|jpg)$</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;ignore&nbsp;CVS,&nbsp;RCS,&nbsp;and&nbsp;Emacs&nbsp;temporary&nbsp;files</P>
+<P CLASS="Code">
+ignore&nbsp;=&nbsp;&#92;b(CVS|RCS)&#92;b</P>
+<P CLASS="Code">
+ignore&nbsp;=&nbsp;^#</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;misc&nbsp;options</P>
+<P CLASS="Code">
+verbose</P>
+<P CLASS="Code">
+recurse</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Do&nbsp;you&nbsp;want&nbsp;me&nbsp;to&nbsp;create&nbsp;a&nbsp;sample&nbsp;'.ttreerc'&nbsp;file&nbsp;for&nbsp;you?</P>
+<P CLASS="Code">
+(file:&nbsp;/home/dent/.ttreerc)&nbsp;&nbsp;&nbsp;[y/n]:</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;ttree</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;ttree&nbsp;-f&nbsp;/home/dent/web/etc/ttree.cfg</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-11 bin/build&nbsp;</P>
+<P CLASS="CodeExample">
+ttree&nbsp;-f&nbsp;/home/dent/web/etc/ttree.cfg&nbsp;$@</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+cfg&nbsp;=&nbsp;/home/dent/web/etc</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;tpage&nbsp;-f&nbsp;ttree.cfg</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+cfg&nbsp;=&nbsp;/home/dent/.ttree</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;cd&nbsp;/home/dent</P>
+<P CLASS="Code">
+$&nbsp;mkdir&nbsp;.ttree</P>
+<P CLASS="Code">
+$&nbsp;cd&nbsp;.ttree</P>
+<P CLASS="Code">
+$&nbsp;ln&nbsp;-s&nbsp;/home/dent/web/etc/ttree.cfg&nbsp;dentweb</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;tpage&nbsp;-f&nbsp;dentweb</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;bin/build&nbsp;-h</P>
+<P CLASS="Code">
+ttree&nbsp;2.63&nbsp;(Template&nbsp;Toolkit&nbsp;version&nbsp;2.10)</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+usage:&nbsp;ttree&nbsp;[options]&nbsp;[files]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+Options:</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;-a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(--all)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process&nbsp;all&nbsp;files,&nbsp;regardless&nbsp;of&nbsp;modification</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;-r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(--recurse)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recurse&nbsp;into&nbsp;sub-directories</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;-p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(--preserve)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Preserve&nbsp;file&nbsp;ownership&nbsp;and&nbsp;permission</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;-n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(--nothing)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Do&nbsp;nothing,&nbsp;just&nbsp;print&nbsp;summary&nbsp;(enables&nbsp;-v)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;-v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(--verbose)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Verbose&nbsp;mode</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;-h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(--help)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;help</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;-dbg&nbsp;&nbsp;&nbsp;&nbsp;(--debug)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Debug&nbsp;mode</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;-s&nbsp;DIR&nbsp;&nbsp;(--src=DIR)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Source&nbsp;directory</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;-d&nbsp;DIR&nbsp;&nbsp;(--dest=DIR)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Destination&nbsp;directory</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;-c&nbsp;DIR&nbsp;&nbsp;(--cfg=DIR)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location&nbsp;of&nbsp;configuration&nbsp;files</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;-l&nbsp;DIR&nbsp;&nbsp;(--lib=DIR)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;directory&nbsp;(INCLUDE_PATH)&nbsp;&nbsp;(multiple)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;-f&nbsp;FILE&nbsp;(--file=FILE)&nbsp;&nbsp;&nbsp;&nbsp;Read&nbsp;named&nbsp;configuration&nbsp;file&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(multiple)</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+File&nbsp;search&nbsp;specifications&nbsp;(all&nbsp;may&nbsp;appear&nbsp;multiple&nbsp;times):</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--ignore=REGEX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ignore&nbsp;files&nbsp;matching&nbsp;REGEX</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--copy=REGEX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copy&nbsp;files&nbsp;matching&nbsp;REGEX</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--accept=REGEX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process&nbsp;only&nbsp;files&nbsp;matching&nbsp;REGEX&nbsp;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+Additional&nbsp;options&nbsp;to&nbsp;set&nbsp;Template&nbsp;Toolkit&nbsp;configuration&nbsp;items:</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--define&nbsp;var=value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Define&nbsp;template&nbsp;variable</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--interpolate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Interpolate&nbsp;'$var'&nbsp;references&nbsp;in&nbsp;text</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--anycase&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accept&nbsp;directive&nbsp;keywords&nbsp;in&nbsp;any&nbsp;case.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--pre_chomp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chomp&nbsp;leading&nbsp;whitespace&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--post_chomp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chomp&nbsp;trailing&nbsp;whitespace</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--trim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Trim&nbsp;blank&nbsp;lines&nbsp;around&nbsp;template&nbsp;blocks</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--eval_perl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Evaluate&nbsp;[%&nbsp;PERL&nbsp;%]&nbsp;...&nbsp;[%&nbsp;END&nbsp;%]&nbsp;code&nbsp;blocks</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--load_perl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Load&nbsp;regular&nbsp;Perl&nbsp;modules&nbsp;via&nbsp;USE&nbsp;directive</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--pre_process=TEMPLATE&nbsp;&nbsp;&nbsp;Process&nbsp;TEMPLATE&nbsp;before&nbsp;each&nbsp;main&nbsp;template</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--post_process=TEMPLATE&nbsp;&nbsp;Process&nbsp;TEMPLATE&nbsp;after&nbsp;each&nbsp;main&nbsp;template</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--process=TEMPLATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process&nbsp;TEMPLATE&nbsp;instead&nbsp;of&nbsp;main&nbsp;template</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--wrapper=TEMPLATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process&nbsp;TEMPLATE&nbsp;wrapper&nbsp;around&nbsp;main&nbsp;template</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--default=TEMPLATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use&nbsp;TEMPLATE&nbsp;as&nbsp;default</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--error=TEMPLATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use&nbsp;TEMPLATE&nbsp;to&nbsp;handle&nbsp;errors</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--start_tag=STRING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STRING&nbsp;defines&nbsp;start&nbsp;of&nbsp;directive&nbsp;tag</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--end_tag=STRING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STRING&nbsp;defined&nbsp;end&nbsp;of&nbsp;directive&nbsp;tag</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--tag_style=STYLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use&nbsp;pre-defined&nbsp;tag&nbsp;STYLE&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--plugin_base=PACKAGE&nbsp;&nbsp;&nbsp;&nbsp;Base&nbsp;PACKAGE&nbsp;for&nbsp;plugins&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--compile_ext=STRING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File&nbsp;extension&nbsp;for&nbsp;compiled&nbsp;template&nbsp;files</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--compile_dir=DIR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Directory&nbsp;for&nbsp;compiled&nbsp;template&nbsp;files</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;--perl5lib=DIR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Specify&nbsp;additional&nbsp;Perl&nbsp;library&nbsp;directories</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;bin/build&nbsp;</P>
+<P CLASS="Code">
+ttree&nbsp;2.63&nbsp;(Template&nbsp;Toolkit&nbsp;version&nbsp;2.10)</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Source:&nbsp;/home/dent/web/src</P>
+<P CLASS="Code">
+&nbsp;Destination:&nbsp;/home/dent/web/html</P>
+<P CLASS="Code">
+Include&nbsp;Path:&nbsp;[&nbsp;/home/dent/web/lib&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ignore:&nbsp;[&nbsp;&#92;b(CVS|RCS)&#92;b,&nbsp;^#&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copy:&nbsp;[&nbsp;&#92;.(png|gif|jpg)$&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accept:&nbsp;[&nbsp;*&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;+&nbsp;earth.html</P>
+<P CLASS="Code">
+&nbsp;&nbsp;+&nbsp;magrethea.html</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;bin/build&nbsp;</P>
+<P CLASS="Code">
+ttree&nbsp;2.63&nbsp;(Template&nbsp;Toolkit&nbsp;version&nbsp;2.10)</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Source:&nbsp;/home/dent/web/src</P>
+<P CLASS="Code">
+&nbsp;Destination:&nbsp;/home/dent/web/html</P>
+<P CLASS="Code">
+Include&nbsp;Path:&nbsp;[&nbsp;/home/dent/web/lib&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ignore:&nbsp;[&nbsp;&#92;b(CVS|RCS)&#92;b,&nbsp;^#&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copy:&nbsp;[&nbsp;&#92;.(png|gif|jpg)$&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accept:&nbsp;[&nbsp;*&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;-&nbsp;earth.html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(not&nbsp;modified)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;-&nbsp;magrethea.html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(not&nbsp;modified)</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;bin/build&nbsp;earth.html&nbsp;magrethea.html</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;bin/build&nbsp;-a</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+pre_process&nbsp;&nbsp;=&nbsp;config</P>
+<P CLASS="Code">
+pre_process&nbsp;&nbsp;=&nbsp;header</P>
+<P CLASS="Code">
+post_process&nbsp;=&nbsp;footer</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-12 src/magrethea.html&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;title&nbsp;=&nbsp;'Magrethea'&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;Home&nbsp;of&nbsp;the&nbsp;custom-made&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;luxury-planet&nbsp;building&nbsp;industry.</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;bin/build&nbsp;-a</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-13 src/milliways.html&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;META&nbsp;title&nbsp;=&nbsp;'Milliways'&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;The&nbsp;Restaurant&nbsp;at&nbsp;the&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;End&nbsp;of&nbsp;the&nbsp;Universe.</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;template.title&nbsp;%]&nbsp;not&nbsp;[%&nbsp;title&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-14 lib/header&nbsp; &lt;html&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;[%&nbsp;author&nbsp;%]:&nbsp;[%&nbsp;template.title&nbsp;%]&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;body&nbsp;bgcolor=&quot;[%&nbsp;bgcol&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;[%&nbsp;template.title&nbsp;%]&lt;/h1&gt;</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-15 lib/entry&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;The&nbsp;Hitch&nbsp;Hiker's&nbsp;Guide&nbsp;to&nbsp;the&nbsp;Galaxy</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;has&nbsp;this&nbsp;to&nbsp;say&nbsp;on&nbsp;the&nbsp;subject&nbsp;of</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&quot;[%&nbsp;title&nbsp;%]&quot;.</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;border=&quot;0&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;top&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;[%&nbsp;title&nbsp;%]:&lt;/b&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;content&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;title&nbsp;&nbsp;&nbsp;=&nbsp;template.title</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;content&nbsp;=&nbsp;'Mostly&nbsp;harmless'</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;entry&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;entry</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;&nbsp;&nbsp;=&nbsp;template.title</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;=&nbsp;'Mostly&nbsp;harmless'</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;entry</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;&nbsp;&nbsp;=&nbsp;template.title</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;=&nbsp;'Mostly&nbsp;harmless'</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;content&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;Mostly&nbsp;harmless</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;name&nbsp;&nbsp;=&nbsp;'Zaphod&nbsp;Beeblebrox'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;'President&nbsp;of&nbsp;the&nbsp;Galaxy'</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;INCLUDE&nbsp;entry&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;&nbsp;&nbsp;=&nbsp;'Earth'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;=&nbsp;'Mostly&nbsp;harmless'</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+Hi!&nbsp;&nbsp;I'm&nbsp;[%&nbsp;name&nbsp;%],&nbsp;[%&nbsp;title&nbsp;%].</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Hi!&nbsp;&nbsp;I'm&nbsp;Zaphod&nbsp;Beeblebrox,&nbsp;President&nbsp;of&nbsp;the&nbsp;Galaxy.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Hi!&nbsp;&nbsp;I'm&nbsp;Zaphod&nbsp;Beeblebrox,&nbsp;Earth.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;html&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;head&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;[%&nbsp;title&nbsp;%]&lt;/title&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;/head&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;body&nbsp;bgcolor=&quot;[%&nbsp;bgcol&nbsp;%]&quot;&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;...</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;DEFAULT&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;&quot;Arthur&nbsp;Dent's&nbsp;Web&nbsp;Site&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bgcol&nbsp;=&nbsp;'#FF6600'</P>
+<P CLASS="Code">
+-%]</P>
+<P CLASS="Code">
+&lt;html&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;head&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;[%&nbsp;title&nbsp;%]&lt;/title&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;/head&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;body&nbsp;bgcolor=&quot;[%&nbsp;bgcol&nbsp;%]&quot;&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;...</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;bgcol&nbsp;or&nbsp;'#FF6600'&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;bgcol&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;title&nbsp;?&nbsp;&quot;Arthur&nbsp;Dent:&nbsp;$title&quot;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&quot;Arthur&nbsp;Dent's&nbsp;Web&nbsp;Site&quot;&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Arthur&nbsp;Dent:&nbsp;Earth</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Arthur&nbsp;Dent's&nbsp;Web&nbsp;Site</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;age&nbsp;&gt;&nbsp;18&nbsp;?&nbsp;'Welcome&nbsp;to&nbsp;my&nbsp;site...'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&quot;Sorry,&nbsp;but&nbsp;you're&nbsp;not&nbsp;old&nbsp;enough...&quot;</P>
+<P CLASS="Code">
+%]</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;foo&nbsp;=&nbsp;bar&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;foo&nbsp;=&nbsp;&nbsp;=&nbsp;bar&nbsp;?&nbsp;'equal'&nbsp;:&nbsp;'not&nbsp;equal'&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;pagetitle&nbsp;=&nbsp;title&nbsp;?&nbsp;&quot;Arthur&nbsp;Dent:&nbsp;$title&quot;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&quot;Arthur&nbsp;Dent's&nbsp;Web&nbsp;Site&quot;&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;title&nbsp;=&nbsp;title&nbsp;?&nbsp;&quot;Arthur&nbsp;Dent:&nbsp;$title&quot;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&quot;Arthur&nbsp;Dent's&nbsp;Web&nbsp;Site&quot;&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;headtext&nbsp;=&nbsp;PROCESS&nbsp;header&nbsp;%]</P>
+
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;body</P>
+<P CLASS="Code">
+[%-&nbsp;IF&nbsp;bgcol&nbsp;-%]</P>
+<P CLASS="Code">
+&nbsp;bgcolor=&quot;[%&nbsp;bgcol&nbsp;%]&quot;</P>
+<P CLASS="Code">
+[%-&nbsp;END&nbsp;-%]</P>
+<P CLASS="Code">
+&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;body&nbsp;bgcolor=&quot;#FF6600&quot;&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;body&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;INCLUDE&nbsp;header&nbsp;IF&nbsp;title&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;IF&nbsp;title;&nbsp;INCLUDE&nbsp;header;&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;body&nbsp;[%-&nbsp;&quot;&nbsp;bgcolor=&#92;&quot;$bgcol&#92;&quot;&quot;&nbsp;IF&nbsp;bgcol&nbsp;%]&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;IF&nbsp;bgcol&nbsp;-%]</P>
+<P CLASS="Code">
+&lt;body&nbsp;bgcolor=&quot;[%&nbsp;bgcol&nbsp;%]&quot;&gt;</P>
+<P CLASS="Code">
+[%-&nbsp;ELSE&nbsp;-%]</P>
+<P CLASS="Code">
+&lt;body&gt;</P>
+<P CLASS="Code">
+[%-&nbsp;END&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;IF&nbsp;name&nbsp;=&nbsp;&nbsp;=&nbsp;'Arthur&nbsp;Dent'&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;OR&nbsp;name&nbsp;=&nbsp;&nbsp;=&nbsp;'Ford&nbsp;Prefect'&nbsp;%]</P>
+<P CLASS="Code">
+Hello&nbsp;[%&nbsp;name&nbsp;%]!</P>
+<P CLASS="Code">
+[%&nbsp;ELSIF&nbsp;name.match('(?i:vogon)')&nbsp;%]</P>
+<P CLASS="Code">
+I'm&nbsp;sorry,&nbsp;but&nbsp;there's&nbsp;no&nbsp;one&nbsp;at&nbsp;home.</P>
+<P CLASS="Code">
+Please&nbsp;don't&nbsp;bother&nbsp;calling&nbsp;again.</P>
+<P CLASS="Code">
+[%&nbsp;ELSE&nbsp;%]</P>
+<P CLASS="Code">
+Hello&nbsp;World!</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;INCLUDE&nbsp;entry</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;&nbsp;&nbsp;=&nbsp;'Vogon&nbsp;Poetry'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;=&nbsp;'Vogon&nbsp;poetry&nbsp;is&nbsp;of&nbsp;course&nbsp;the&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;third&nbsp;worst&nbsp;in&nbsp;the&nbsp;Universe.&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;second&nbsp;worst&nbsp;is&nbsp;that&nbsp;of...</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...etc...</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...in&nbsp;the&nbsp;destruction&nbsp;of&nbsp;the&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;planet&nbsp;Earth'</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Grunthos&nbsp;is&nbsp;reported&nbsp;to&nbsp;have&nbsp;been&nbsp;&quot;disappointed&quot;&nbsp;</P>
+<P CLASS="Code">
+by&nbsp;the&nbsp;poem's&nbsp;reception.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;INCLUDE&nbsp;entry</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;&nbsp;&nbsp;=&nbsp;'Grunthos&nbsp;the&nbsp;Flatulent'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;=&nbsp;'Grunthos&nbsp;is&nbsp;reported&nbsp;to&nbsp;have&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;been&nbsp;&quot;disappointed&quot;&nbsp;by&nbsp;the&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;poem&#92;'s&nbsp;reception.'</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;INCLUDE&nbsp;entry</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;&nbsp;&nbsp;=&nbsp;'Grunthos&nbsp;the&nbsp;Flatulent'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;=&nbsp;&quot;Grunthos&nbsp;is&nbsp;reported&nbsp;to&nbsp;have&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;been&nbsp;&#92;&quot;disappointed&#92;&quot;&nbsp;by&nbsp;the&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;poem's&nbsp;reception.&quot;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;WRAPPER&nbsp;entry</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;'Grunthos&nbsp;the&nbsp;Flatulent'</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;Grunthos&nbsp;is&nbsp;reported&nbsp;to&nbsp;have&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;been&nbsp;&quot;disappointed&quot;&nbsp;by&nbsp;the&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;poem's&nbsp;reception.</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;reaction&nbsp;=&nbsp;'disappointed'&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;WRAPPER&nbsp;entry</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;'Grunthos&nbsp;the&nbsp;Flatulent'</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;Grunthos&nbsp;is&nbsp;reported&nbsp;to&nbsp;have&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;been&nbsp;&quot;[%&nbsp;reaction&nbsp;%]&quot;&nbsp;by&nbsp;the&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;poem's&nbsp;reception.</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-16 lib/wrapper&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;html&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;[%&nbsp;author&nbsp;%]:&nbsp;[%&nbsp;template.title&nbsp;%]&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;body&nbsp;bgcolor=&quot;[%&nbsp;bgcol&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;[%&nbsp;template.title&nbsp;%]&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;content&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;hr&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;align=&quot;middle&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;copy;&nbsp;[%&nbsp;copyr&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/body&gt;</P>
+<P CLASS="CodeExample">
+&lt;/html&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+pre_process&nbsp;&nbsp;=&nbsp;config</P>
+<P CLASS="Code">
+wrapper&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;wrapper</P>
+<P CLASS="Code">
+#&nbsp;pre_process&nbsp;&nbsp;=&nbsp;header</P>
+<P CLASS="Code">
+#&nbsp;post_process&nbsp;=&nbsp;footer</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;WRAPPER&nbsp;wrapper&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;The&nbsp;entire&nbsp;page&nbsp;content&nbsp;goes&nbsp;here...</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;bin/build&nbsp;-a</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;table&nbsp;border=&quot;0&quot;&nbsp;cellpadding=&quot;0&quot;&nbsp;cellspacing=&quot;0&quot;&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;top&quot;&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&nbsp;border=&quot;0&quot;&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oh&nbsp;Dear!</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;is&nbsp;not&nbsp;a&nbsp;good&nbsp;example</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;a&nbsp;layout&nbsp;template...</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...etc...</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...etc...</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;table&nbsp;border=&quot;0&quot;&nbsp;cellpadding=&quot;0&quot;&nbsp;cellspacing=&quot;0&quot;&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;top&quot;&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;sidebar&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;topmenu&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-17 lib/wrapper2&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;WRAPPER&nbsp;html&nbsp;+&nbsp;layout;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;END</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;WRAPPER&nbsp;html;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;layout;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;END&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;WRAPPER&nbsp;layout;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;END&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;content&nbsp;WRAPPER&nbsp;layout&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-18 lib/wrapper3&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;content&nbsp;WRAPPER&nbsp;html&nbsp;+&nbsp;layout&nbsp;-%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-19 lib/html&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;html&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;[%&nbsp;author&nbsp;%]:&nbsp;[%&nbsp;template.title&nbsp;%]&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;body&nbsp;bgcolor=&quot;[%&nbsp;bgcol&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;content&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/body&gt;</P>
+<P CLASS="CodeExample">
+&lt;/html&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-20 lib/layout&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;border=&quot;0&quot;&nbsp;width=&quot;100%&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;colspan=&quot;2&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;pagehead&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;top&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;width=&quot;150&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;menu&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;content&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;colspan=&quot;2&quot;&nbsp;align=&quot;center&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;pageinfo&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-21 lib/pagehead&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;h1&gt;[%&nbsp;template.title&nbsp;%]&lt;/h1&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-22 lib/pageinfo&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;Date&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&amp;copy;&nbsp;[%&nbsp;copyr&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;br&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;template.name&nbsp;-%]</P>
+<P CLASS="CodeExample">
+last&nbsp;modified&nbsp;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;Date.format(template.modtime)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;Date&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%-&nbsp;Date.format(template.modtime)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+17:43:35&nbsp;14-Jul-2003</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;table&nbsp;border=&quot;0&quot;&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img&nbsp;src=&quot;/images/icon.png&quot;&nbsp;width=&quot;4&quot;&nbsp;height=&quot;4&quot;&nbsp;/&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;earth.html&quot;&gt;Earth&lt;/a&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img&nbsp;src=&quot;/images/icon.png&quot;&nbsp;width=&quot;4&quot;&nbsp;height=&quot;4&quot;&nbsp;/&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;magrethea.html&quot;&gt;Magrethea&lt;/a&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="Code">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-23 lib/menu&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;border=&quot;0&quot;&gt;</P>
+<P CLASS="CodeExample">
+[%</P>
+<P CLASS="CodeExample">
+&nbsp;PROCESS&nbsp;menuitem</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;text&nbsp;=&nbsp;'Earth'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;link&nbsp;=&nbsp;'earth.html';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;PROCESS&nbsp;menuitem</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;text&nbsp;=&nbsp;'Magrethea'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;link&nbsp;=&nbsp;'magrethea.html';</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;menuitem&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;img&nbsp;src=&quot;/images/icon.png&quot;&nbsp;width=&quot;4&quot;&nbsp;height=&quot;4&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;[%&nbsp;link&nbsp;%]&quot;&gt;[%&nbsp;text&nbsp;%]&lt;/a&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;BLOCK&nbsp;menuitem&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img&nbsp;src=&quot;/images/icon.png&quot;&nbsp;width=&quot;4&quot;&nbsp;height=&quot;4&quot;&nbsp;/&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;[%&nbsp;link&nbsp;%]&quot;&gt;[%&nbsp;text&nbsp;%]&lt;/a&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-24 lib/mylib&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;image&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;img&nbsp;src=&quot;[%&nbsp;src&nbsp;%]&quot;&nbsp;alt=&quot;[%&nbsp;alt&nbsp;%]&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;width=&quot;[%&nbsp;width&nbsp;%]&quot;&nbsp;height=&quot;[%&nbsp;height&nbsp;%]&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;link&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;a&nbsp;href=&quot;[%&nbsp;link&nbsp;%]&quot;&gt;[%&nbsp;text&nbsp;%]&lt;/a&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;icon;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;image</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'/images/icon.png'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'dot&nbsp;icon'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width&nbsp;&nbsp;=&nbsp;4&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height&nbsp;=&nbsp;4&nbsp;;</P>
+<P CLASS="CodeExample">
+END</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-25 lib/menu2&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;mylib&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;border=&quot;0&quot;&gt;</P>
+<P CLASS="CodeExample">
+[%</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;PROCESS&nbsp;menuitem</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;=&nbsp;'Earth'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;'earth.html';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;PROCESS&nbsp;menuitem</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;=&nbsp;'Magrethea'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;'magrethea.html';</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;menuitem&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;icon&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;link&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+expose_blocks</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;mylib/icon&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;mylib/icon&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-26 lib/menu3&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;mylib&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;menu&nbsp;=&nbsp;[</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;text&nbsp;=&nbsp;'Earth'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;'earth.html'&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;text&nbsp;=&nbsp;'Magrethea'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;'magrethea.html'&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;]</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;border=&quot;0&quot;&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;item&nbsp;IN&nbsp;menu&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;icon&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;link&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;=&nbsp;item.text</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;item.link</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;menu&nbsp;=&nbsp;[</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;text&nbsp;=&nbsp;'Earth'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;'earth.html'&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;text&nbsp;=&nbsp;'Magrethea'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;'magrethea.html'&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;]</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;table&nbsp;border=&quot;0&quot;&gt;</P>
+<P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;item&nbsp;IN&nbsp;menu&nbsp;%]</P>
+<P CLASS="Code">
+&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;icon&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;link&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;=&nbsp;item.text</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;item.link</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="Code">
+&lt;/tr&gt;</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;table&nbsp;border=&quot;0&quot;&gt;</P>
+<P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;item&nbsp;IN&nbsp;menu;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;menuitem</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;=&nbsp;item.text</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;item.link;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;END</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;table&nbsp;border=&quot;0&quot;&gt;</P>
+<P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;menu;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;menuitem;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;END</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;table&nbsp;border=&quot;0&quot;&gt;</P>
+<P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;menuitem&nbsp;FOREACH&nbsp;menu&nbsp;%]</P>
+<P CLASS="Code">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-27 lib/menu4&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;mylib&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;menu&nbsp;=&nbsp;[</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;text&nbsp;=&nbsp;'Earth'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;'earth.html'&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;text&nbsp;=&nbsp;'Magrethea'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;'magrethea.html'&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;]</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;border=&quot;0&quot;&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;menuitem&nbsp;FOREACH&nbsp;menu&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;menuitem&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;icon&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;link&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-28 lib/quote&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;blockquote&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;quote&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;/blockquote&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;--&nbsp;[%&nbsp;author&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;INCLUDE&nbsp;quote</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author&nbsp;=&nbsp;'Douglas&nbsp;Adams'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quote&nbsp;&nbsp;=&nbsp;'I&nbsp;love&nbsp;deadlines.&nbsp;I&nbsp;like&nbsp;the</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;whooshing&nbsp;sound&nbsp;they&nbsp;make&nbsp;as&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;they&nbsp;fly&nbsp;by.'</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;quote</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author&nbsp;=&nbsp;'Douglas&nbsp;Adams'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quote&nbsp;&nbsp;=&nbsp;'I&nbsp;love&nbsp;deadlines.&nbsp;I&nbsp;like&nbsp;the</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;whooshing&nbsp;sound&nbsp;they&nbsp;make&nbsp;as&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;they&nbsp;fly&nbsp;by.'</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-29 lib/site&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;site&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;author&nbsp;=&nbsp;'Arthur&nbsp;Dent'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;bgcol&nbsp;&nbsp;=&nbsp;'#FF6600'&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;orange</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;year&nbsp;&nbsp;&nbsp;=&nbsp;2003</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;site.copyr&nbsp;=&nbsp;&quot;Copyright&nbsp;$site.year&nbsp;$site.author&quot;</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;site&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author&nbsp;=&nbsp;'Arthur&nbsp;Dent'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bgcol&nbsp;&nbsp;=&nbsp;'#FF6600'&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;orange</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;year&nbsp;&nbsp;&nbsp;=&nbsp;2003</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;this&nbsp;doesn't&nbsp;work&nbsp;because&nbsp;site.year&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;and&nbsp;site.author&nbsp;are&nbsp;undefined&nbsp;at&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;this&nbsp;point</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copyr&nbsp;&nbsp;=&nbsp;&quot;Copyright&nbsp;$site.year&nbsp;$site.author&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-30 lib/configs&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;site</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;col</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;url</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-31 lib/col&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;site.rgb&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;white&nbsp;&nbsp;=&nbsp;'#FFFFFF'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;black&nbsp;&nbsp;=&nbsp;'#000000'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;orange&nbsp;=&nbsp;'#FF6600'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;site.col&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;back&nbsp;=&nbsp;site.rgb.orange</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;=&nbsp;site.rgb.white</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-32 lib/url&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;url&nbsp;=&nbsp;'http://tt2.org/ttbook'</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;site.url&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;&nbsp;&nbsp;=&nbsp;url</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;home&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$url/index.html&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;help&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$url/help.html&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;images&nbsp;=&nbsp;&quot;$url/images&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;site</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;col</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;url2</P>
+<P CLASS="Code">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;site</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;col;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;IF&nbsp;developing;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;url2;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;ELSE;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;url;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;END</P>
+<P CLASS="Code">
+-%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;site&nbsp;=&nbsp;{&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;&nbsp;=&nbsp;&quot;Arthur&nbsp;Dent's&nbsp;Web&nbsp;Site&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author&nbsp;=&nbsp;'Arthur&nbsp;Dent'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;...etc...</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;page&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;&nbsp;=&nbsp;template.title</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author&nbsp;=&nbsp;template.author&nbsp;or&nbsp;site.author</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;Site&nbsp;=&nbsp;{&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;...etc...</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;Page&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;...etc...</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;User&nbsp;=&nbsp;{&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;...etc...</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-33 lib/menudef&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;site.menu&nbsp;=&nbsp;[</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;text&nbsp;=&nbsp;'Earth'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;'earth.html'&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;text&nbsp;=&nbsp;'Magrethea'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;'magrethea.html'&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;]</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;site</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;col</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;url</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;menudef</P>
+<P CLASS="Code">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;2-34 lib/menu5&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;mylib&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;border=&quot;0&quot;&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;FOREACH&nbsp;item&nbsp;IN&nbsp;menu;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;menuitem</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;=&nbsp;item.text</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;item.link;</P>
+<P CLASS="CodeExample">
+END</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;menuitem&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;icon&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;link&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;INCLUDE&nbsp;menu5</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu&nbsp;=&nbsp;site.menu</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;INCLUDE&nbsp;menu5</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu&nbsp;=&nbsp;[</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;text&nbsp;=&nbsp;'Milliways'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;'milliways.html'&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;text&nbsp;=&nbsp;'Hotblack&nbsp;Desiato'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;'desiato.html'&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PERL&nbsp;%]</P>
+<P CLASS="Code">
+$stash-&gt;set(&nbsp;help&nbsp;=&gt;&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$entry&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&quot;$entry:&nbsp;mostly&nbsp;harmless&quot;;</P>
+<P CLASS="Code">
+}&nbsp;);</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;help('Earth')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"></body></html>

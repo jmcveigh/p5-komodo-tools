@@ -1,0 +1,985 @@
+<html><head><title>getting started code examples</title><style>
+
+P.ExampleTitle {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 6.000000pt;
+	margin-bottom: 6.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 0.000000pt;
+	font-size: 9.000000pt;
+	font-weight: medium;
+	font-style: Italic;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Birka";
+}
+
+P.CodeExample {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-weight: bold;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "TheSansMonoCondensed";
+}
+
+P.Code {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Courier";
+}
+
+</style><body><P CLASS="ExampleTitle">
+Example&nbsp;1-1 A&nbsp;form&nbsp;letter&nbsp;template,&nbsp;destruction.tt&nbsp;</p>
+<P CLASS="CodeExample">
+People&nbsp;of&nbsp;[%&nbsp;planet&nbsp;%],&nbsp;your&nbsp;attention&nbsp;please.&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+This&nbsp;is&nbsp;[%&nbsp;captain&nbsp;%]&nbsp;of&nbsp;the</P>
+<P CLASS="CodeExample">
+Galactic&nbsp;Hyperspace&nbsp;Planning&nbsp;Council.&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+As&nbsp;you&nbsp;will&nbsp;no&nbsp;doubt&nbsp;be&nbsp;aware,&nbsp;the&nbsp;plans&nbsp;</P>
+<P CLASS="CodeExample">
+for&nbsp;development&nbsp;of&nbsp;the&nbsp;outlying&nbsp;regions</P>
+<P CLASS="CodeExample">
+of&nbsp;the&nbsp;Galaxy&nbsp;require&nbsp;the&nbsp;building&nbsp;of&nbsp;a&nbsp;</P>
+<P CLASS="CodeExample">
+hyperspatial&nbsp;express&nbsp;route&nbsp;through&nbsp;your&nbsp;</P>
+<P CLASS="CodeExample">
+star&nbsp;system,&nbsp;and&nbsp;regrettably&nbsp;your&nbsp;planet</P>
+<P CLASS="CodeExample">
+is&nbsp;one&nbsp;of&nbsp;those&nbsp;scheduled&nbsp;for&nbsp;destruction.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+The&nbsp;process&nbsp;will&nbsp;take&nbsp;slightly&nbsp;less&nbsp;than</P>
+<P CLASS="CodeExample">
+[%&nbsp;time&nbsp;%].</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+Thank&nbsp;you.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;tpage&nbsp;--define&nbsp;planet=Earth&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--define&nbsp;captain=&quot;Prostetnic&nbsp;Vogon&nbsp;Jeltz&quot;&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--define&nbsp;time=&quot;two&nbsp;of&nbsp;your&nbsp;earth&nbsp;minutes&quot;&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;destruction.tt</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;1-2 Form&nbsp;letter&nbsp;generated&nbsp;by&nbsp;template&nbsp;in&nbsp;Example&nbsp;1-1&nbsp;</P>
+<P CLASS="CodeExample">
+People&nbsp;of&nbsp;Earth,&nbsp;your&nbsp;attention&nbsp;please.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+This&nbsp;is&nbsp;Prostetnic&nbsp;Vogon&nbsp;Jeltz&nbsp;of&nbsp;the&nbsp;</P>
+<P CLASS="CodeExample">
+Galactic&nbsp;Hyperspace&nbsp;Planning&nbsp;Council.&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+As&nbsp;you&nbsp;will&nbsp;no&nbsp;doubt&nbsp;be&nbsp;aware,&nbsp;the&nbsp;plans&nbsp;</P>
+<P CLASS="CodeExample">
+for&nbsp;development&nbsp;of&nbsp;the&nbsp;outlying&nbsp;regions</P>
+<P CLASS="CodeExample">
+of&nbsp;the&nbsp;Galaxy&nbsp;require&nbsp;the&nbsp;building&nbsp;of&nbsp;a&nbsp;</P>
+<P CLASS="CodeExample">
+hyperspatial&nbsp;express&nbsp;route&nbsp;through&nbsp;your&nbsp;</P>
+<P CLASS="CodeExample">
+star&nbsp;system,&nbsp;and&nbsp;regrettably&nbsp;your&nbsp;planet</P>
+<P CLASS="CodeExample">
+is&nbsp;one&nbsp;of&nbsp;those&nbsp;scheduled&nbsp;for&nbsp;destruction.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+The&nbsp;process&nbsp;will&nbsp;take&nbsp;slightly&nbsp;less&nbsp;than</P>
+<P CLASS="CodeExample">
+two&nbsp;of&nbsp;your&nbsp;earth&nbsp;minutes.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+Thank&nbsp;you.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;1-3 Loops,&nbsp;conditions,&nbsp;and&nbsp;processing&nbsp;instructions&nbsp;in&nbsp;a&nbsp;template&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;order&nbsp;IN&nbsp;council.demolition.orders&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;header&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;[%&nbsp;IF&nbsp;order.destruction&nbsp;%]&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As&nbsp;you&nbsp;will&nbsp;no&nbsp;doubt&nbsp;be&nbsp;aware,&nbsp;the&nbsp;plans&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;development&nbsp;of&nbsp;the&nbsp;outlying&nbsp;regions</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;Galaxy&nbsp;require&nbsp;the&nbsp;building&nbsp;of&nbsp;a</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hyperspatial&nbsp;express&nbsp;route&nbsp;through&nbsp;your&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;star&nbsp;system,&nbsp;and&nbsp;regrettably&nbsp;your&nbsp;planet</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;one&nbsp;of&nbsp;those&nbsp;scheduled&nbsp;for&nbsp;destruction.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;[%&nbsp;ELSE&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our&nbsp;representatives&nbsp;will&nbsp;be&nbsp;visiting&nbsp;your</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;star&nbsp;system&nbsp;within&nbsp;the&nbsp;next&nbsp;few&nbsp;weeks,&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;would&nbsp;like&nbsp;to&nbsp;invite&nbsp;you&nbsp;to&nbsp;a&nbsp;reading&nbsp;of</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vogon&nbsp;Poetry.&nbsp;Attendance&nbsp;is&nbsp;mandatory.&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resistance&nbsp;is&nbsp;useless!</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;%]&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;footer&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;poetry/excerpt</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;today.day&nbsp;=&nbsp;&nbsp;=&nbsp;'Vogonsday'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$person-&gt;{surname}&nbsp;&nbsp;&nbsp;#&nbsp;Perl</P>
+<P CLASS="Code">
+person.surname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Template&nbsp;Toolkit</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$person-&gt;surname(&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp;#&nbsp;Perl</P>
+<P CLASS="Code">
+person.surname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Template&nbsp;Toolkit</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;perl&nbsp;Makefile.PL</P>
+<P CLASS="Code">
+$&nbsp;make</P>
+<P CLASS="Code">
+$&nbsp;make&nbsp;test</P>
+<P CLASS="Code">
+$&nbsp;make&nbsp;install</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+The&nbsp;following&nbsp;options&nbsp;can&nbsp;be&nbsp;specified&nbsp;as&nbsp;command-line&nbsp;</P>
+<P CLASS="Code">
+arguments&nbsp;to&nbsp;'perl&nbsp;Makefile.PL'.&nbsp;&nbsp;e.g.,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;perl&nbsp;Makefile.PL&nbsp;TT_PREFIX=/my/tt2/dir&nbsp;TT_ACCEPT=y</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;TT_PREFIX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;installation&nbsp;prefix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(/usr/local/tt2)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;TT_IMAGES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;images&nbsp;URL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(/tt2/images)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;TT_DOCS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;build&nbsp;HTML&nbsp;docs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(y)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;TT_SPLASH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;Splash!&nbsp;for&nbsp;docs&nbsp;&nbsp;&nbsp;&nbsp;(y)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;TT_THEME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Splash!&nbsp;theme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(default)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;TT_EXAMPLES&nbsp;&nbsp;&nbsp;&nbsp;build&nbsp;HTML&nbsp;examples&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(y)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;TT_EXTRAS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;install&nbsp;optional&nbsp;extras&nbsp;(y)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;TT_XS_ENABLE&nbsp;&nbsp;&nbsp;Enable&nbsp;XS&nbsp;Stash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(y)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;TT_XS_DEFAULT&nbsp;&nbsp;Use&nbsp;XS&nbsp;Stash&nbsp;by&nbsp;default&nbsp;(y)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;TT_DBI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;run&nbsp;DBI&nbsp;tests&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(y&nbsp;if&nbsp;DBI&nbsp;installed)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;TT_LATEX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;install&nbsp;LaTeX&nbsp;filter&nbsp;&nbsp;&nbsp;&nbsp;(y&nbsp;if&nbsp;LaTeX&nbsp;found)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;TT_LATEX_PATH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;to&nbsp;latex&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(system&nbsp;dependant)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;TT_PDFLATEX_PATH&nbsp;&nbsp;&nbsp;path&nbsp;to&nbsp;pdflatex&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;TT_DVIPS_PATH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;to&nbsp;dvips&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;TT_QUIET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;messages&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(n)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;TT_ACCEPT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;accept&nbsp;defaults&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(n)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+By&nbsp;default,&nbsp;the&nbsp;Makefile.PL&nbsp;runs&nbsp;in&nbsp;interactive&nbsp;mode,&nbsp;</P>
+<P CLASS="Code">
+prompting&nbsp;for&nbsp;confirmation&nbsp;of&nbsp;the&nbsp;various&nbsp;configuration</P>
+<P CLASS="Code">
+options.&nbsp;&nbsp;Setting&nbsp;the&nbsp;TT_ACCEPT&nbsp;option&nbsp;causes&nbsp;the&nbsp;default</P>
+<P CLASS="Code">
+value&nbsp;(possibly&nbsp;modified&nbsp;by&nbsp;other&nbsp;command&nbsp;line&nbsp;options)</P>
+<P CLASS="Code">
+to&nbsp;be&nbsp;accepted.&nbsp;&nbsp;The&nbsp;TT_QUIET&nbsp;option&nbsp;can&nbsp;also&nbsp;be&nbsp;set&nbsp;to</P>
+<P CLASS="Code">
+suppress&nbsp;the&nbsp;prompt&nbsp;messages.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;perldoc&nbsp;Template&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;should&nbsp;always&nbsp;work</P>
+<P CLASS="Code">
+$&nbsp;man&nbsp;Template&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;does&nbsp;not&nbsp;work&nbsp;everywhere</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;1-4 Apache&nbsp;configuration&nbsp;directives&nbsp;to&nbsp;view&nbsp;Template&nbsp;Toolkit&nbsp;documentation&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;TT2</P>
+<P CLASS="CodeExample">
+Alias&nbsp;/tt2/images/&nbsp;&nbsp;&nbsp;/usr/local/tt2/images/</P>
+<P CLASS="CodeExample">
+Alias&nbsp;/tt2/docs/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/local/tt2/docs/html/</P>
+<P CLASS="CodeExample">
+Alias&nbsp;/tt2/examples/&nbsp;/usr/local/tt2/examples/html/</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;Directory&nbsp;/usr/local/tt2/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;Options&nbsp;Indexes</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;AllowOverride&nbsp;None</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;Order&nbsp;allow,deny</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;Allow&nbsp;from&nbsp;all</P>
+<P CLASS="CodeExample">
+&lt;/Directory&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;tpage&nbsp;infile</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;tpage&nbsp;infile&nbsp;&gt;&nbsp;outfile</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;tpage&nbsp;nosuchfile</P>
+<P CLASS="Code">
+file&nbsp;error&nbsp;-&nbsp;nosuchfile:&nbsp;not&nbsp;found&nbsp;at&nbsp;/usr/bin/tpage&nbsp;line&nbsp;60.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;tpage&nbsp;--define&nbsp;planet=Earth&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--define&nbsp;captain=&quot;Prostetnic&nbsp;Vogon&nbsp;Jeltz&quot;&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--define&nbsp;time=&quot;two&nbsp;of&nbsp;your&nbsp;earth&nbsp;minutes&quot;&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;destruction.tt</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;mktemplate&nbsp;|&nbsp;tpage</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;tpage</P>
+<P CLASS="Code">
+[%&nbsp;subject&nbsp;=&nbsp;'cat'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;object&nbsp;&nbsp;=&nbsp;'mat'</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+The&nbsp;[%&nbsp;subject&nbsp;%]&nbsp;sat&nbsp;on&nbsp;the&nbsp;[%&nbsp;object&nbsp;%].</P>
+<P CLASS="Code">
+^D</P>
+<P CLASS="Code">
+The&nbsp;cat&nbsp;sat&nbsp;on&nbsp;the&nbsp;mat.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;ttree&nbsp;-s&nbsp;templates&nbsp;-d&nbsp;output&nbsp;-v</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+ttree&nbsp;2.63&nbsp;(Template&nbsp;Toolkit&nbsp;version&nbsp;2.10)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Source:&nbsp;templates</P>
+<P CLASS="Code">
+&nbsp;Destination:&nbsp;output</P>
+<P CLASS="Code">
+Include&nbsp;Path:&nbsp;[&nbsp;&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ignore:&nbsp;[&nbsp;&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copy:&nbsp;[&nbsp;&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accept:&nbsp;[&nbsp;*&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;+&nbsp;dog</P>
+<P CLASS="Code">
+&nbsp;&nbsp;+&nbsp;cat</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+ttree&nbsp;2.63&nbsp;(Template&nbsp;Toolkit&nbsp;version&nbsp;2.10)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Source:&nbsp;templates</P>
+<P CLASS="Code">
+&nbsp;Destination:&nbsp;output</P>
+<P CLASS="Code">
+Include&nbsp;Path:&nbsp;[&nbsp;&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ignore:&nbsp;[&nbsp;&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copy:&nbsp;[&nbsp;&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accept:&nbsp;[&nbsp;*&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;-&nbsp;dog&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(not&nbsp;modified)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;-&nbsp;cat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(not&nbsp;modified)</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$&nbsp;ttree&nbsp;-a</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;ttree&nbsp;-s&nbsp;templates&nbsp;-d&nbsp;output&nbsp;-v&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--pre_process=header&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--post_process=footer</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;ttree&nbsp;-f&nbsp;/home/dent/web/ttree.cfg</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;1-5 A&nbsp;sample&nbsp;ttree&nbsp;configuration&nbsp;file,&nbsp;ttree.cfg&nbsp;</P>
+<P CLASS="CodeExample">
+src&nbsp;&nbsp;=&nbsp;/home/dent/web/templates</P>
+<P CLASS="CodeExample">
+dest&nbsp;=&nbsp;/home/dent/web/html</P>
+<P CLASS="CodeExample">
+lib&nbsp;&nbsp;=&nbsp;/home/dent/web/lib</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+pre_process&nbsp;&nbsp;=&nbsp;header</P>
+<P CLASS="CodeExample">
+post_process&nbsp;=&nbsp;footer</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+verbose</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;1-6 A&nbsp;Perl&nbsp;program&nbsp;for&nbsp;processing&nbsp;the&nbsp;Vogon&nbsp;form&nbsp;letter&nbsp;template&nbsp;</P>
+<P CLASS="CodeExample">
+#!/usr/bin/perl</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;warnings;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;Template-&gt;new(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+my&nbsp;$input&nbsp;=&nbsp;'destruction.tt';</P>
+<P CLASS="CodeExample">
+my&nbsp;$vars&nbsp;&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;planet&nbsp;&nbsp;=&gt;&nbsp;'Earth',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;captain&nbsp;=&gt;&nbsp;'Prostetnic&nbsp;Vogon&nbsp;Jeltz',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;time&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'two&nbsp;of&nbsp;your&nbsp;earth&nbsp;minutes',</P>
+<P CLASS="CodeExample">
+};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($input,&nbsp;$vars)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+use&nbsp;strict;</P>
+<P CLASS="Code">
+use&nbsp;warnings;</P>
+<P CLASS="Code">
+use&nbsp;Template;</P>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$input&nbsp;=&nbsp;'destruction.tt2';</P>
+<P CLASS="Code">
+my&nbsp;$vars&nbsp;&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;planet&nbsp;&nbsp;=&gt;&nbsp;'Earth',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;captain&nbsp;=&gt;&nbsp;'Prostetnic&nbsp;Vogon&nbsp;Jeltz',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;time&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'two&nbsp;of&nbsp;your&nbsp;earth&nbsp;minutes',</P>
+<P CLASS="Code">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$tt-&gt;process($input,&nbsp;$vars)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;1-7 Specifying&nbsp;options&nbsp;when&nbsp;processing&nbsp;templates,&nbsp;ttperl3.pl&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new({</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;PRE_PROCESS&nbsp;&nbsp;=&gt;&nbsp;'header',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;POST_PROCESS&nbsp;=&gt;&nbsp;'footer',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE_PATH&nbsp;=&gt;&nbsp;[</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'/home/dent/web/templates',&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;src</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'/home/dent/web/lib',&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;lib</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;],</P>
+<P CLASS="CodeExample">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;1-8 httpd.conf&nbsp;directives&nbsp;to&nbsp;set&nbsp;options&nbsp;with&nbsp;Apache::Template&nbsp;</P>
+<P CLASS="CodeExample">
+PerlModule&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apache::Template</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+TT2IncludePath&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/home/dent/web/templates</P>
+<P CLASS="CodeExample">
+TT2IncludePath&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/home/dent/web/lib</P>
+<P CLASS="CodeExample">
+TT2PreProcess&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</P>
+<P CLASS="CodeExample">
+TT2PostProcess&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;footer</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+TT2Params&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri&nbsp;env&nbsp;params&nbsp;cookies</P>
+<P CLASS="CodeExample">
+TT2Headers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modified&nbsp;length</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;Files&nbsp;*.tt2&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;SetHandler&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;perl-script</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;PerlHandler&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apache::Template</P>
+<P CLASS="CodeExample">
+&lt;/Files&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+PerlModule&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apache::Template</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+TT2IncludePath&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/home/dent/web/templates</P>
+<P CLASS="Code">
+TT2IncludePath&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/home/dent/web/lib</P>
+<P CLASS="Code">
+TT2PreProcess&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header</P>
+<P CLASS="Code">
+TT2PostProcess&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;footer</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+TT2Params&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri&nbsp;env&nbsp;params&nbsp;cookies</P>
+<P CLASS="Code">
+TT2Headers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modified&nbsp;length</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;Files&nbsp;*.tt2&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;SetHandler&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;perl-script</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;PerlHandler&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apache::Template</P>
+<P CLASS="Code">
+&lt;/Files&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;Location&nbsp;/tt2/&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;SetHandler&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;perl-script</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;PerlHandler&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apache::Template</P>
+<P CLASS="Code">
+&lt;/Location&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;TAGS&nbsp;star&nbsp;%]</P>
+<P CLASS="Code">
+People&nbsp;of&nbsp;[*&nbsp;planet&nbsp;*],&nbsp;your&nbsp;attention&nbsp;please.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;TAGS&nbsp;{&nbsp;}&nbsp;%]</P>
+<P CLASS="Code">
+People&nbsp;of&nbsp;{planet},&nbsp;your&nbsp;attention&nbsp;please.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;TAGS&nbsp;&lt;tt:&nbsp;&gt;&nbsp;%]</P>
+<P CLASS="Code">
+&lt;p&gt;People&nbsp;of&nbsp;&lt;tt:planet&gt;,&nbsp;your&nbsp;attention&nbsp;please.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;planet&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;planet&nbsp;=&nbsp;'Magrethea'&nbsp;%]</P>
+<P CLASS="Code">
+People&nbsp;of&nbsp;[%&nbsp;planet&nbsp;%&nbsp;],&nbsp;your&nbsp;attention&nbsp;please.</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;1-9 Perl&nbsp;program&nbsp;to&nbsp;process&nbsp;friends.tt&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;Template-&gt;new(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+my&nbsp;$input&nbsp;=&nbsp;'friends.tt';</P>
+<P CLASS="CodeExample">
+my&nbsp;$vars&nbsp;&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;friends&nbsp;=&gt;&nbsp;[&nbsp;'Ford&nbsp;Prefect',&nbsp;'Slartibartfast'&nbsp;],</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;terms&nbsp;&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sass&nbsp;&nbsp;=&gt;&nbsp;'know,&nbsp;be&nbsp;aware&nbsp;of,&nbsp;meet,&nbsp;have&nbsp;sex&nbsp;with',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hoopy&nbsp;=&gt;&nbsp;'really&nbsp;together&nbsp;guy',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frood&nbsp;=&gt;&nbsp;'really,&nbsp;amazingly&nbsp;together&nbsp;guy',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="CodeExample">
+];</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($input,&nbsp;$vars)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;1-10 The&nbsp;friends.tt&nbsp;template&nbsp;</P>
+<P CLASS="CodeExample">
+Your&nbsp;friends&nbsp;are:</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;friend&nbsp;IN&nbsp;friends&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;*&nbsp;[%&nbsp;friend&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+You&nbsp;know&nbsp;the&nbsp;following&nbsp;terms:</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;term&nbsp;IN&nbsp;terms.keys.sort&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;[%&nbsp;term&nbsp;%]:&nbsp;[%&nbsp;terms.$term&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Your&nbsp;friends&nbsp;are:</P>
+<P CLASS="Code">
+&nbsp;*&nbsp;Ford&nbsp;Prefect</P>
+<P CLASS="Code">
+&nbsp;*&nbsp;Slartibartfast</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+You&nbsp;know&nbsp;the&nbsp;following&nbsp;terms:</P>
+<P CLASS="Code">
+&nbsp;frood:&nbsp;really,&nbsp;amazingly&nbsp;together&nbsp;guy</P>
+<P CLASS="Code">
+&nbsp;hoopy:&nbsp;really&nbsp;together&nbsp;guy</P>
+<P CLASS="Code">
+&nbsp;sass:&nbsp;know,&nbsp;be&nbsp;aware&nbsp;of,&nbsp;meet,&nbsp;have&nbsp;sex&nbsp;with</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;friends&nbsp;=&nbsp;[&nbsp;'Ford&nbsp;Prefect',&nbsp;'Slartibartfast'&nbsp;]&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;friends.0&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Ford&nbsp;Prefect</P>
+<P CLASS="Code">
+[%&nbsp;friends.1&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Slartibartfast</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;index&nbsp;=&nbsp;1&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;friends.$index&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Slartibartfast</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;&nbsp;terms&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sass&nbsp;&nbsp;=&nbsp;'know,&nbsp;be&nbsp;aware&nbsp;of,&nbsp;meet,&nbsp;have&nbsp;sex&nbsp;with'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hoopy&nbsp;=&nbsp;'really&nbsp;together&nbsp;guy'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frood&nbsp;=&nbsp;'really,&nbsp;amazingly&nbsp;together&nbsp;guy'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;&nbsp;terms&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sass&nbsp;&nbsp;=&gt;&nbsp;'know,&nbsp;be&nbsp;aware&nbsp;of,&nbsp;meet,&nbsp;have&nbsp;sex&nbsp;with',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hoopy&nbsp;=&gt;&nbsp;'really&nbsp;together&nbsp;guy',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frood&nbsp;=&gt;&nbsp;'really,&nbsp;amazingly&nbsp;together&nbsp;guy',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;terms.hoopy&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;really&nbsp;together&nbsp;guy</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;key&nbsp;=&nbsp;'frood'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;terms.$key&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;really,&nbsp;amazingly&nbsp;together&nbsp;guy</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;arthur&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'Arthur&nbsp;Dent',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;planet&nbsp;&nbsp;=&nbsp;'Earth',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;friends&nbsp;=&nbsp;[</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;name&nbsp;=&nbsp;'Ford&nbsp;Prefect'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;home&nbsp;=&nbsp;'Betelgeuse'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;=&nbsp;'frood'&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;name&nbsp;=&nbsp;'Slartibartfast'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;home&nbsp;=&nbsp;'Magrethea'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;=&nbsp;'hoopy'&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;terms&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sass&nbsp;&nbsp;=&nbsp;'know,&nbsp;be&nbsp;aware&nbsp;of,&nbsp;meet,&nbsp;have&nbsp;sex&nbsp;with'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hoopy&nbsp;=&nbsp;'really&nbsp;together&nbsp;guy'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frood&nbsp;=&nbsp;'really,&nbsp;amazingly&nbsp;together&nbsp;guy'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;arthur.friends.1.name&nbsp;%]&nbsp;#&nbsp;Slartibartfast</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;TT</P>
+<P CLASS="Code">
+arthur.friends.1.name</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;Perl</P>
+<P CLASS="Code">
+$vars-&gt;{arthur}-&gt;{friends}-&gt;[1]-&gt;{name}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;arthur.terms.${arthur.friends.1.type}&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;friend&nbsp;=&nbsp;arthur.friends.1&nbsp;-%]</P>
+<P CLASS="Code">
+[%&nbsp;friend.name&nbsp;%]&nbsp;is&nbsp;a&nbsp;[%&nbsp;arthur.terms.${friend.type}&nbsp;%].</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Slartibartfast&nbsp;is&nbsp;a&nbsp;really&nbsp;together&nbsp;guy.</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;1-11 Dynamic&nbsp;data&nbsp;in&nbsp;template&nbsp;variables&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;Acme::Planet;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;not&nbsp;a&nbsp;real&nbsp;module&nbsp;(yet)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$vars&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;help&nbsp;=&gt;&nbsp;sub&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$entry&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&quot;$entry:&nbsp;mostly&nbsp;harmless&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;planet&nbsp;=&gt;&nbsp;Acme::Planet-&gt;new(&nbsp;name&nbsp;=&gt;&nbsp;'Earth'&nbsp;),</P>
+<P CLASS="CodeExample">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+The&nbsp;guide&nbsp;has&nbsp;this&nbsp;to&nbsp;say&nbsp;about&nbsp;[%&nbsp;planet.name&nbsp;%].</P>
+<P CLASS="Code">
+&nbsp;&nbsp;[%&nbsp;help(planet.name)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+The&nbsp;guide&nbsp;has&nbsp;this&nbsp;to&nbsp;say&nbsp;about&nbsp;Earth.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;Earth:&nbsp;mostly&nbsp;harmless</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;name&nbsp;=&nbsp;'Slartibartfast'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;name&nbsp;%]'s&nbsp;name&nbsp;is&nbsp;[%&nbsp;name.length&nbsp;%]&nbsp;characters&nbsp;long.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Slartibartfast's&nbsp;name&nbsp;is&nbsp;14&nbsp;characters&nbsp;long.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;friends&nbsp;=&nbsp;[&nbsp;'Andy',&nbsp;'Darren',&nbsp;'Dave']&nbsp;%]</P>
+<P CLASS="Code">
+Your&nbsp;friends&nbsp;are&nbsp;[%&nbsp;friends.join(',&nbsp;')&nbsp;%].</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Your&nbsp;friends&nbsp;are&nbsp;Andy,&nbsp;Darren,&nbsp;Dave.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;last&nbsp;=&nbsp;friends.pop&nbsp;%]</P>
+<P CLASS="Code">
+Your&nbsp;friends&nbsp;are&nbsp;[%&nbsp;friends.join(',&nbsp;')&nbsp;%]&nbsp;and&nbsp;[%&nbsp;last&nbsp;%].</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Your&nbsp;friends&nbsp;are&nbsp;Andy,&nbsp;Darren&nbsp;and&nbsp;Dave.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+You&nbsp;know&nbsp;the&nbsp;following&nbsp;terms:</P>
+<P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;term&nbsp;IN&nbsp;terms.keys.sort&nbsp;-%]</P>
+<P CLASS="Code">
+&nbsp;[%&nbsp;term&nbsp;%]:&nbsp;[%&nbsp;terms.$term&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+terms.keys.sort</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;terms.keys.sort.join(',&nbsp;')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+frood,&nbsp;hoopy,&nbsp;sass</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;name&nbsp;=&nbsp;'Arthur&nbsp;Dent'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;planet&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'Earth'&nbsp;}&nbsp;%]</P>
+<P CLASS="Code">
+Welcome&nbsp;[%&nbsp;name&nbsp;%]&nbsp;of&nbsp;[%&nbsp;planet.name&nbsp;%].</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;SET&nbsp;name&nbsp;=&nbsp;'Arthur&nbsp;Dent'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;SET&nbsp;planet&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'Earth'&nbsp;}&nbsp;%]</P>
+<P CLASS="Code">
+Welcome&nbsp;[%&nbsp;GET&nbsp;name&nbsp;%]&nbsp;of&nbsp;[%&nbsp;GET&nbsp;planet.name&nbsp;%].</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;header&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;INCLUDE&nbsp;header</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;'Vogon&nbsp;Poetry'</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%INCLUDE&nbsp;header&nbsp;title='Vogon&nbsp;Poetry'%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;INCLUDE&nbsp;header&nbsp;title='Vogon&nbsp;Poetry'&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;INCLUDE&nbsp;header</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;'Vogon&nbsp;Poetry'</P>
+<P CLASS="Code">
+%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;item&nbsp;IN&nbsp;list&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;block&nbsp;of&nbsp;template&nbsp;content...</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;...can&nbsp;contain&nbsp;directives...</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;...and&nbsp;reference&nbsp;the&nbsp;[%&nbsp;item&nbsp;%]&nbsp;variable...</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+You&nbsp;know&nbsp;the&nbsp;following&nbsp;terms:</P>
+<P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;term&nbsp;IN&nbsp;terms.keys.sort&nbsp;-%]</P>
+<P CLASS="Code">
+&nbsp;[%&nbsp;term&nbsp;%]:&nbsp;[%&nbsp;terms.$term&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&nbsp;[%&nbsp;term&nbsp;%]:&nbsp;[%&nbsp;terms.$term&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+You&nbsp;know&nbsp;the&nbsp;following&nbsp;terms:</P>
+<P CLASS="Code">
+&nbsp;frood:&nbsp;really,&nbsp;amazingly&nbsp;together&nbsp;guy</P>
+<P CLASS="Code">
+&nbsp;hoopy:&nbsp;really&nbsp;together&nbsp;guy</P>
+<P CLASS="Code">
+&nbsp;sass:&nbsp;know,&nbsp;be&nbsp;aware&nbsp;of,&nbsp;meet,&nbsp;have&nbsp;sex&nbsp;with</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;IF&nbsp;order.destruction&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;As&nbsp;you&nbsp;will&nbsp;no&nbsp;doubt&nbsp;be&nbsp;aware...</P>
+<P CLASS="Code">
+[%&nbsp;ELSE&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;Our&nbsp;representatives&nbsp;will&nbsp;be...</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FILTER&nbsp;html&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;Home&nbsp;&gt;&nbsp;Dent&nbsp;&gt;&nbsp;Friends&nbsp;&gt;&nbsp;Slartibartfast</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Home&nbsp;&amp;gt;&nbsp;Dent&nbsp;&amp;gt;&nbsp;Friends&nbsp;&amp;gt;&nbsp;Slartibartfast</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;CGI&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;name&nbsp;&nbsp;&nbsp;=&nbsp;CGI.param('name')&nbsp;&nbsp;&nbsp;or&nbsp;'Arthur&nbsp;Dent'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;planet&nbsp;=&nbsp;CGI.param('planet')&nbsp;or&nbsp;'Earth'&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;Welcome&nbsp;[%&nbsp;name&nbsp;%]&nbsp;of&nbsp;planet&nbsp;[%&nbsp;planet&nbsp;%].</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;MACRO&nbsp;header(title,&nbsp;author)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;name&nbsp;=&nbsp;&nbsp;=&nbsp;'Arthur&nbsp;Dent';</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;arthur/header</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;&quot;Arthur&nbsp;Dent:&nbsp;$title&quot;;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ELSE;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;guest/header</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;&quot;Guest&nbsp;User:&nbsp;$title&quot;;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;header('Arthur&nbsp;Dent',&nbsp;'My&nbsp;Home&nbsp;Page')&nbsp;%]</P>
+
+<hr width="50%" align="left"></body></html>

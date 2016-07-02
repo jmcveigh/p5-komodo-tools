@@ -1,0 +1,4097 @@
+<html><head><title>advanced static webpage techniques code examples</title><style>/* STYLES COPIED FROM FRAME GENERATED HTML */
+
+P.ExampleTitle {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 6.000000pt;
+	margin-bottom: 6.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 0.000000pt;
+	font-size: 9.000000pt;
+	font-weight: medium;
+	font-style: Italic;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Birka";
+}
+
+P.CodeExample {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-weight: bold;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "TheSansMonoCondensed";
+}
+
+P.Code {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Courier";
+}
+
+
+
+
+
+</style><body><P CLASS="Code">
+$&nbsp;mkdir&nbsp;/home/dent/web/ttbook</P>
+<P CLASS="Code">
+$&nbsp;cd&nbsp;/home/dent/web/ttbook</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;mkdir&nbsp;bin&nbsp;etc&nbsp;templates&nbsp;html&nbsp;images</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;mkdir&nbsp;templates/src&nbsp;templates/lib</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-1 etc/httpd.conf&nbsp;</P>
+<P CLASS="CodeExample">
+Alias&nbsp;/ttbook/images/&nbsp;&nbsp;&nbsp;/home/dent/web/ttbook/images/</P>
+<P CLASS="CodeExample">
+Alias&nbsp;/ttbook/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/home/dent/web/ttbook/html/</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;Directory&nbsp;/home/dent/web/ttbook/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;Options&nbsp;MultiViews&nbsp;Indexes&nbsp;FollowSymLinks&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;AllowOverride&nbsp;None</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;Order&nbsp;allow,deny</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;Allow&nbsp;from&nbsp;all</P>
+<P CLASS="CodeExample">
+&lt;/Directory&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-2 Addition&nbsp;to&nbsp;Apache&nbsp;httpd.conf&nbsp;configuration&nbsp;file&nbsp;</P>
+<P CLASS="CodeExample">
+Include&nbsp;/home/dent/web/ttbook/etc/httpd.conf</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;/usr/local/apache/bin/apachectl&nbsp;restart</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;cd&nbsp;/home/dent/public_html</P>
+<P CLASS="Code">
+$&nbsp;ln&nbsp;-s&nbsp;/home/dent/web/ttbook/html&nbsp;ttbook</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;Directory&nbsp;/home/*/public_html&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;...</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Options&nbsp;FollowSymLinks</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;...</P>
+<P CLASS="Code">
+&lt;/Directory&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;cd&nbsp;/home/dent/web/ttbook/html</P>
+<P CLASS="Code">
+$&nbsp;ln&nbsp;-s&nbsp;../images&nbsp;images</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-3 etc/ttree.cfg&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;directories</P>
+<P CLASS="CodeExample">
+src&nbsp;&nbsp;=&nbsp;/home/dent/web/ttbook/templates/src</P>
+<P CLASS="CodeExample">
+lib&nbsp;&nbsp;=&nbsp;/home/dent/web/ttbook/templates/lib</P>
+<P CLASS="CodeExample">
+dest&nbsp;=&nbsp;/home/dent/web/ttbook/html</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;copy&nbsp;images&nbsp;and&nbsp;other&nbsp;binary&nbsp;files</P>
+<P CLASS="CodeExample">
+copy&nbsp;=&nbsp;&#92;.(png|gif|jpg|pdf)$</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;ignore&nbsp;CVS,&nbsp;RCS,&nbsp;and&nbsp;Emacs&nbsp;temporary&nbsp;files</P>
+<P CLASS="CodeExample">
+ignore&nbsp;=&nbsp;&#92;b(CVS|RCS)&#92;b</P>
+<P CLASS="CodeExample">
+ignore&nbsp;=&nbsp;^#</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;misc&nbsp;options</P>
+<P CLASS="CodeExample">
+verbose</P>
+<P CLASS="CodeExample">
+recurse&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+recursion</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;TT&nbsp;options</P>
+<P CLASS="CodeExample">
+pre_process&nbsp;=&nbsp;config/main</P>
+<P CLASS="CodeExample">
+wrapper&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;site/wrapper</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;define&nbsp;some&nbsp;location&nbsp;variables</P>
+<P CLASS="CodeExample">
+define&nbsp;rootdir&nbsp;=&nbsp;/home/dent/web/ttbook</P>
+<P CLASS="CodeExample">
+define&nbsp;rooturl&nbsp;=&nbsp;/ttbook</P>
+<P CLASS="CodeExample">
+define&nbsp;debug&nbsp;&nbsp;&nbsp;=&nbsp;0</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;directories</P>
+<P CLASS="Code">
+src&nbsp;&nbsp;=&nbsp;/home/dent/web/ttbook/templates/src</P>
+<P CLASS="Code">
+lib&nbsp;&nbsp;=&nbsp;/home/dent/web/ttbook/templates/lib</P>
+<P CLASS="Code">
+dest&nbsp;=&nbsp;/home/dent/web/ttbook/html</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;copy&nbsp;images&nbsp;and&nbsp;other&nbsp;binary&nbsp;files</P>
+<P CLASS="Code">
+copy&nbsp;=&nbsp;&#92;.(png|gif|jpg|pdf)$</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;ignore&nbsp;CVS,&nbsp;RCS,&nbsp;and&nbsp;Emacs&nbsp;temporary&nbsp;files</P>
+<P CLASS="Code">
+ignore&nbsp;=&nbsp;&#92;b(CVS|RCS)&#92;b</P>
+<P CLASS="Code">
+ignore&nbsp;=&nbsp;^#</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;misc&nbsp;options</P>
+<P CLASS="Code">
+verbose</P>
+<P CLASS="Code">
+recurse&nbsp;&nbsp;</P>
+<P CLASS="Code">
+recursion</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;TT&nbsp;options</P>
+<P CLASS="Code">
+pre_process&nbsp;=&nbsp;config/main</P>
+<P CLASS="Code">
+wrapper&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;site/wrapper</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;define&nbsp;some&nbsp;location&nbsp;variables</P>
+<P CLASS="Code">
+define&nbsp;rootdir&nbsp;=&nbsp;/home/dent/web/ttbook</P>
+<P CLASS="Code">
+define&nbsp;rooturl&nbsp;=&nbsp;/ttbook/index.html</P>
+<P CLASS="Code">
+define&nbsp;debug&nbsp;&nbsp;&nbsp;=&nbsp;0</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-4 templates/lib/config/main&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;message&nbsp;=&nbsp;'Hello&nbsp;World'&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-5 templates/lib/site/wrapper&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;!DOCTYPE&nbsp;HTML&nbsp;PUBLIC&nbsp;&quot;-//W3C//DTD&nbsp;HTML&nbsp;4.01&nbsp;Transitional//EN&quot;&gt;</P>
+<P CLASS="CodeExample">
+&lt;html&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;[%&nbsp;template.title&nbsp;%]&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;body&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;content&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/body&gt;</P>
+<P CLASS="CodeExample">
+&lt;/html&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;ttree&nbsp;-f&nbsp;/home/dent/web/ttbook/etc/ttree.cfg</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;cd&nbsp;&#126;/web/ttbook</P>
+<P CLASS="Code">
+$&nbsp;ttree&nbsp;-f&nbsp;./etc/ttree.cfg&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;OK</P>
+<P CLASS="Code">
+$&nbsp;cd&nbsp;src</P>
+<P CLASS="Code">
+$&nbsp;ttree&nbsp;-f&nbsp;../etc/ttree.cfg&nbsp;&nbsp;&nbsp;#&nbsp;OK</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-6 bin/build&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;ttree&nbsp;-f&nbsp;/home/abw/web/ttbook/etc/ttree.cfg&nbsp;$@</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;bin/build&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;build&nbsp;any&nbsp;modified&nbsp;pages</P>
+<P CLASS="Code">
+$&nbsp;bin/build&nbsp;-a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;build&nbsp;all&nbsp;pages</P>
+<P CLASS="Code">
+$&nbsp;bin/build&nbsp;index.html&nbsp;&nbsp;#&nbsp;build&nbsp;just&nbsp;this&nbsp;page</P>
+<P CLASS="Code">
+$&nbsp;bin/build&nbsp;-h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;show&nbsp;help</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-7 templates/src/index.html&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;META&nbsp;title&nbsp;=&nbsp;'Template&nbsp;Toolkit&nbsp;Test'&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;This&nbsp;is&nbsp;the&nbsp;index&nbsp;page.&nbsp;&nbsp;Testing!&nbsp;&nbsp;Testing!</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;br&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;The&nbsp;message&nbsp;is&nbsp;'[%&nbsp;message&nbsp;%]'.</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;bin/build&nbsp;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+ttree&nbsp;2.63&nbsp;(Template&nbsp;Toolkit&nbsp;version&nbsp;2.10)</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Source:&nbsp;/home/dent/web/ttbook/templates/src</P>
+<P CLASS="Code">
+&nbsp;Destination:&nbsp;/home/dent/web/ttbook/html</P>
+<P CLASS="Code">
+Include&nbsp;Path:&nbsp;[&nbsp;/home/dent/web/ttbook/templates/lib&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ignore:&nbsp;[&nbsp;&#92;b(CVS|RCS)&#92;b,&nbsp;^#&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copy:&nbsp;[&nbsp;&#92;.(png|gif|jpg|pdf)$&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accept:&nbsp;[&nbsp;*&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;+&nbsp;index.html</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-8 html/index.html&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;!DOCTYPE&nbsp;HTML&nbsp;PUBLIC&nbsp;&quot;-//W3C//DTD&nbsp;HTML&nbsp;4.01&nbsp;Transitional//EN&quot;&gt;</P>
+<P CLASS="CodeExample">
+&lt;html&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Template&nbsp;Toolkit&nbsp;Test&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;body&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;is&nbsp;the&nbsp;index&nbsp;page.&nbsp;&nbsp;Testing!&nbsp;&nbsp;Testing!</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;message&nbsp;is&nbsp;'Hello&nbsp;World'.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/body&gt;</P>
+<P CLASS="CodeExample">
+&lt;/html&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;cd&nbsp;/home/dent/web/ttbook</P>
+<P CLASS="Code">
+$&nbsp;mkdir&nbsp;skeleton</P>
+<P CLASS="Code">
+$&nbsp;mkdir&nbsp;skeleton/bin&nbsp;skeleton/etc</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;cp&nbsp;bin/build&nbsp;skeleton/bin</P>
+<P CLASS="Code">
+$&nbsp;cp&nbsp;etc/ttree.cfg&nbsp;skeleton/etc</P>
+<P CLASS="Code">
+$&nbsp;cp&nbsp;etc/httpd.conf&nbsp;skeleton/etc</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;perl&nbsp;-pi&nbsp;-e&nbsp;'s{/home/dent/web/ttbook}{[%&nbsp;dir&nbsp;%]}g;&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s{/ttbook}{[%&nbsp;url&nbsp;%]}g;&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s{(debug&#92;s*=)&#92;s*0}{$1&nbsp;[%&nbsp;debug&nbsp;%]}'&nbsp;&#92;</P>
+<P CLASS="Code">
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;skeleton/*/*</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-9 skeleton/bin/build&nbsp;</P>
+<P CLASS="CodeExample">
+ttree&nbsp;-f&nbsp;[%&nbsp;dir&nbsp;%]/etc/ttree.cfg&nbsp;$*</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;11-10 skeleton/etc/ttree.cfg&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;directories</P>
+<P CLASS="CodeExample">
+src&nbsp;&nbsp;=&nbsp;[%&nbsp;dir&nbsp;%]/templates/src</P>
+<P CLASS="CodeExample">
+lib&nbsp;&nbsp;=&nbsp;[%&nbsp;dir&nbsp;%]/templates/lib</P>
+<P CLASS="CodeExample">
+dest&nbsp;=&nbsp;[%&nbsp;dir&nbsp;%]/html</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;copy&nbsp;images&nbsp;and&nbsp;other&nbsp;binary&nbsp;files</P>
+<P CLASS="CodeExample">
+copy&nbsp;=&nbsp;&#92;.(png|gif|jpg|pdf)$</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;ignore&nbsp;CVS,&nbsp;RCS,&nbsp;and&nbsp;Emacs&nbsp;temporary&nbsp;files</P>
+<P CLASS="CodeExample">
+ignore&nbsp;=&nbsp;&#92;b(CVS|RCS)&#92;b</P>
+<P CLASS="CodeExample">
+ignore&nbsp;=&nbsp;^#</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;misc&nbsp;options</P>
+<P CLASS="CodeExample">
+verbose</P>
+<P CLASS="CodeExample">
+recurse&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+recursion</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;TT&nbsp;options</P>
+<P CLASS="CodeExample">
+pre_process&nbsp;=&nbsp;config/main</P>
+<P CLASS="CodeExample">
+wrapper&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;site/wrapper</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;define&nbsp;some&nbsp;location&nbsp;variables</P>
+<P CLASS="CodeExample">
+define&nbsp;rootdir&nbsp;=&nbsp;[%&nbsp;dir&nbsp;%]</P>
+<P CLASS="CodeExample">
+define&nbsp;rooturl&nbsp;=&nbsp;[%&nbsp;url&nbsp;%]</P>
+<P CLASS="CodeExample">
+define&nbsp;debug&nbsp;&nbsp;&nbsp;=&nbsp;[%&nbsp;debug&nbsp;%]</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;11-11 skeleton/etc/httpd.conf&nbsp;</P>
+<P CLASS="CodeExample">
+Alias&nbsp;[%&nbsp;url&nbsp;%]/images/&nbsp;&nbsp;&nbsp;[%&nbsp;dir&nbsp;%]/images/</P>
+<P CLASS="CodeExample">
+Alias&nbsp;[%&nbsp;url&nbsp;%]/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;dir&nbsp;%]/html/</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;Directory&nbsp;[%&nbsp;dir&nbsp;%]/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;Options&nbsp;MultiViews&nbsp;Indexes&nbsp;FollowSymLinks&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;AllowOverride&nbsp;None</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;Order&nbsp;allow,deny</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;Allow&nbsp;from&nbsp;all</P>
+<P CLASS="CodeExample">
+&lt;/Directory&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-12 bin/configure&nbsp;</P>
+<P CLASS="CodeExample">
+#!/usr/bin/perl&nbsp;-w&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;-*-&nbsp;perl&nbsp;-*-</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;configure</P>
+<P CLASS="CodeExample">
+#&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;This&nbsp;script&nbsp;determines&nbsp;the&nbsp;correct&nbsp;root&nbsp;directory&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;for&nbsp;the&nbsp;project&nbsp;(the&nbsp;parent&nbsp;of&nbsp;the&nbsp;'bin'&nbsp;directory&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;in&nbsp;which&nbsp;it&nbsp;is&nbsp;located),&nbsp;prompts&nbsp;for&nbsp;some&nbsp;configuration&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;values&nbsp;if&nbsp;not&nbsp;set&nbsp;via&nbsp;command-line&nbsp;options,&nbsp;and&nbsp;then</P>
+<P CLASS="CodeExample">
+#&nbsp;calls&nbsp;ttree&nbsp;to&nbsp;process&nbsp;all&nbsp;files&nbsp;under&nbsp;the&nbsp;skeleton</P>
+<P CLASS="CodeExample">
+#&nbsp;directory,&nbsp;storing&nbsp;output&nbsp;relative&nbsp;to&nbsp;the&nbsp;project&nbsp;root</P>
+<P CLASS="CodeExample">
+#&nbsp;directory&nbsp;(e.g.,&nbsp;skeleton/bin/build&nbsp;=&gt;&nbsp;bin/build).</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Copyright&nbsp;2003&nbsp;Andy&nbsp;Wardley.&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;This&nbsp;is&nbsp;free&nbsp;software&nbsp;distributed&nbsp;under&nbsp;the&nbsp;same&nbsp;terms&nbsp;as&nbsp;Perl.</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;warnings;</P>
+<P CLASS="CodeExample">
+use&nbsp;FindBin&nbsp;qw(&nbsp;$Bin&nbsp;);</P>
+<P CLASS="CodeExample">
+use&nbsp;Getopt::Std;</P>
+<P CLASS="CodeExample">
+local&nbsp;$|=1;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;defaults</P>
+<P CLASS="CodeExample">
+my&nbsp;$URL&nbsp;&nbsp;=&nbsp;'/ttbook';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;get&nbsp;options</P>
+<P CLASS="CodeExample">
+our&nbsp;($opt_d,&nbsp;$opt_u,&nbsp;$opt_y,&nbsp;$opt_h);</P>
+<P CLASS="CodeExample">
+getopts('yhdu:');</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;display&nbsp;usage&nbsp;and&nbsp;exit&nbsp;on&nbsp;-h</P>
+<P CLASS="CodeExample">
+die&nbsp;&lt;&lt;END_USAGE&nbsp;if&nbsp;$opt_h;</P>
+<P CLASS="CodeExample">
+usage:&nbsp;configure&nbsp;[options]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+options:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;-u&nbsp;url&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;for&nbsp;HTML&nbsp;pages&nbsp;&nbsp;(default:&nbsp;$URL)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;-d&nbsp;debug&nbsp;&nbsp;set&nbsp;debug&nbsp;flag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(default:&nbsp;0)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;-y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accept&nbsp;defaults</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;-h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;help</P>
+<P CLASS="CodeExample">
+END_USAGE</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;work&nbsp;out&nbsp;where&nbsp;we&nbsp;are&nbsp;in&nbsp;the&nbsp;filesystem</P>
+<P CLASS="CodeExample">
+my&nbsp;@dirs&nbsp;=&nbsp;File::Spec-&gt;splitdir($Bin);&nbsp;</P>
+<P CLASS="CodeExample">
+pop&nbsp;@dirs;&nbsp;&nbsp;#&nbsp;remove&nbsp;'bin'</P>
+<P CLASS="CodeExample">
+my&nbsp;$dir&nbsp;&nbsp;=&nbsp;File::Spec-&gt;catdir(@dirs);</P>
+<P CLASS="CodeExample">
+my&nbsp;$skel&nbsp;=&nbsp;File::Spec-&gt;catfile($dir,&nbsp;'skeleton');</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;prompt&nbsp;for&nbsp;root&nbsp;URL</P>
+<P CLASS="CodeExample">
+my&nbsp;$url&nbsp;&nbsp;=&nbsp;prompt('root&nbsp;page&nbsp;URL',&nbsp;$opt_u&nbsp;||&nbsp;$URL);</P>
+<P CLASS="CodeExample">
+my&nbsp;$dbg&nbsp;&nbsp;=&nbsp;prompt('enable&nbsp;debugging?',&nbsp;$opt_d&nbsp;?&nbsp;'yes'&nbsp;:&nbsp;'no')&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&#126;&nbsp;/^y(es)?/&nbsp;?&nbsp;1&nbsp;:&nbsp;0;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;hand&nbsp;over&nbsp;to&nbsp;ttree</P>
+<P CLASS="CodeExample">
+my&nbsp;@args&nbsp;=&nbsp;(&nbsp;'ttree',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'-r',&nbsp;'-p',&nbsp;'-v',&nbsp;'-a',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'-s',&nbsp;$skel,&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'-d',&nbsp;$dir,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'--ignore',&nbsp;'&#92;b(CVS|RCS)&#92;b',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'--define',&nbsp;&quot;dir=$dir&quot;,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'--define',&nbsp;&quot;url=$url&quot;,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'--define',&nbsp;&quot;debug=$dbg&quot;,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@ARGV&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+system(@args)&nbsp;=&nbsp;&nbsp;=&nbsp;0</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die&nbsp;&quot;ttree&nbsp;failed:&nbsp;$?&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;prompt($message,&nbsp;$default)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Prompt&nbsp;user&nbsp;to&nbsp;input&nbsp;value&nbsp;or&nbsp;accept&nbsp;default.</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;prompt&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($msg,&nbsp;$def)&nbsp;=&nbsp;@_;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$ans&nbsp;=&nbsp;'';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$def&nbsp;=&nbsp;''&nbsp;unless&nbsp;defined&nbsp;$def;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;&quot;$msg&nbsp;[$def]&nbsp;&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($opt_y)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;accept&nbsp;default</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;&quot;$def&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;read&nbsp;user&nbsp;input</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chomp($ans&nbsp;=&nbsp;&lt;STDIN&gt;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;length($ans)&nbsp;?&nbsp;$ans&nbsp;:&nbsp;$def;</P>
+<P CLASS="CodeExample">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;bin/configure&nbsp;</P>
+<P CLASS="Code">
+root&nbsp;page&nbsp;URL&nbsp;[/ttbook]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+enable&nbsp;debugging?&nbsp;[no]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+ttree&nbsp;2.63&nbsp;(Template&nbsp;Toolkit&nbsp;version&nbsp;2.10)</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Source:&nbsp;/home/dent/web/ttbook/skeleton</P>
+<P CLASS="Code">
+&nbsp;Destination:&nbsp;/home/dent/web/ttbook</P>
+<P CLASS="Code">
+Include&nbsp;Path:&nbsp;[&nbsp;&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ignore:&nbsp;[&nbsp;&#92;b(CVS|RCS)&#92;b&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copy:&nbsp;[&nbsp;&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accept:&nbsp;[&nbsp;*&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;+&nbsp;bin/build</P>
+<P CLASS="Code">
+&nbsp;&nbsp;+&nbsp;etc/ttree.cfg</P>
+<P CLASS="Code">
+&nbsp;&nbsp;+&nbsp;etc/httpd.conf</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;bin/configure&nbsp;-u&nbsp;/newtturl&nbsp;-y&nbsp;</P>
+<P CLASS="Code">
+$&nbsp;bin/build&nbsp;-a</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-13 etc/httpd.conf&nbsp;</P>
+<P CLASS="CodeExample">
+Alias&nbsp;/newtturl/images/&nbsp;&nbsp;&nbsp;/home/abw/web/ttbook/images/</P>
+<P CLASS="CodeExample">
+Alias&nbsp;/newtturl/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/home/abw/web/ttbook/html/</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;Directory&nbsp;/home/abw/web/ttbook/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;Options&nbsp;MultiViews&nbsp;Indexes&nbsp;FollowSymLinks&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;AllowOverride&nbsp;None</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;Order&nbsp;allow,deny</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;Allow&nbsp;from&nbsp;all</P>
+<P CLASS="CodeExample">
+&lt;/Directory&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-14 templates/lib/config/main&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;PROCESS&nbsp;config/page</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/site</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/url</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/col</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/images</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-15 templates/lib/config/page&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;USE&nbsp;Date;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;define&nbsp;page&nbsp;data&nbsp;structure</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;page&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;template.name</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;template.title</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;template.about</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;template.type&nbsp;or&nbsp;'html'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;template.date&nbsp;or&nbsp;Date.format(template.modtime)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-16 templates/lib/config/site&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;site&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'Template&nbsp;Toolkit&nbsp;Web&nbsp;Site'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;server&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'http://template-toolkit.org'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;admin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'webmaster@template-toolkit.org'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copyright&nbsp;=&nbsp;'1996-2003&nbsp;Andy&nbsp;Wardley'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-17 templates/lib/config/url&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;site.url&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;rooturl</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;home&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$rooturl/index.html&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;images&nbsp;&nbsp;=&nbsp;&quot;$rooturl/images&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;logo&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$rooturl/images/logo&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;css&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$rooturl/css&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-18 templates/lib/config/col&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;rgb&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;white&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'#FFFFFF'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;black&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'#000000'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;red&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'#ED2328'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;orange&nbsp;&nbsp;&nbsp;=&nbsp;'#F08900'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;skyblue&nbsp;&nbsp;=&nbsp;'#00AAF0'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;paleblue&nbsp;=&nbsp;'#80C0F0'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;midblue&nbsp;&nbsp;=&nbsp;'#6080C0'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;darkblue&nbsp;=&nbsp;'#202060'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;misty&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'#C0C0F0'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ltgrey&nbsp;&nbsp;&nbsp;=&nbsp;'#E0E0E0'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vltgrey&nbsp;&nbsp;=&nbsp;'#F0F0F0'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;site.rgb&nbsp;=&nbsp;rgb</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;site.col&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;back&nbsp;&nbsp;=&nbsp;rgb.white</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;&nbsp;=&nbsp;rgb.black</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;&nbsp;=&nbsp;rgb.skyblue</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vlink&nbsp;=&nbsp;rgb.midblue</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alink&nbsp;=&nbsp;rgb.red</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mlink&nbsp;=&nbsp;rgb.orange</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line&nbsp;&nbsp;=&nbsp;rgb.skyblue</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head&nbsp;&nbsp;=&nbsp;rgb.darkblue</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-19 templates/lib/config/images&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;site.image&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;logo&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;large&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$site.url.logo/tt2_180x60.gif&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;TT2&nbsp;Logo&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width&nbsp;&nbsp;=&nbsp;180</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height&nbsp;=&nbsp;60</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;small&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$site.url.logo/tt2_120x40.gif&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;TT2&nbsp;Logo&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width&nbsp;&nbsp;=&nbsp;120</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height&nbsp;=&nbsp;40</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$site.url.logo/ttdotorg.gif&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;template-toolkit.org&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width&nbsp;&nbsp;=&nbsp;180</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height&nbsp;=&nbsp;24</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;site.logo&nbsp;=&nbsp;site.image.logo.large</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-20 template/lib/site/wrapper&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;content&nbsp;WRAPPER&nbsp;site/html&nbsp;+&nbsp;site/layout&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-21 templates/lib/site/html&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;!DOCTYPE&nbsp;HTML&nbsp;PUBLIC&nbsp;&quot;-//W3C//DTD&nbsp;HTML&nbsp;4.01&nbsp;Transitional//EN&quot;&gt;</P>
+<P CLASS="CodeExample">
+&lt;html&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&lt;head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;title&gt;[%&nbsp;page.title&nbsp;%]&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;link&nbsp;rel=&quot;stylesheet&quot;&nbsp;href=&quot;[%&nbsp;site.url.css&nbsp;%]/tt2.css&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;meta&nbsp;http-equiv=&quot;Content-Type&quot;&nbsp;content=&quot;text/html;&nbsp;charset=iso-8859-1&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;meta&nbsp;name=&quot;robots&quot;&nbsp;content=&quot;all&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&lt;/head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&lt;body&nbsp;bgcolor=&quot;[%&nbsp;site.col.back&nbsp;%]&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text=&quot;[%&nbsp;site.col.text&nbsp;%]&quot;&nbsp;link=&quot;[%&nbsp;site.col.link&nbsp;%]&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vlink=&quot;[%&nbsp;site.col.vlink&nbsp;%]&quot;&nbsp;alink=&quot;[%&nbsp;site.col.alink&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;content&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&lt;/body&gt;</P>
+<P CLASS="CodeExample">
+&lt;/html&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-22 templates/lib/site/layout&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;width=&quot;100%&quot;&nbsp;border=&quot;0&quot;&nbsp;cellpadding=&quot;0&quot;&nbsp;cellspacing=&quot;5&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;middle&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;width=&quot;[%&nbsp;site.logo.width&nbsp;+&nbsp;10&nbsp;%]&quot;&nbsp;align=&quot;center&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;site/logo&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;site/header&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;[%&nbsp;PROCESS&nbsp;misc/line&nbsp;%]&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;top&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;center&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;site/menu&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;content&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;[%&nbsp;PROCESS&nbsp;misc/line&nbsp;%]&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;bottom&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;center&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;site/footer&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-23 templates/lib/site/logo&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;a&nbsp;href=&quot;[%&nbsp;site.url.home&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;INCLUDE&nbsp;misc/image&nbsp;image=site.logo&nbsp;|&nbsp;trim&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;/a&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-24 templates/lib/misc/image&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;img&nbsp;src=&quot;[%&nbsp;image.src&nbsp;%]&quot;&nbsp;alt=&quot;[%&nbsp;image.alt&nbsp;%]&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width=&quot;[%&nbsp;image.width&nbsp;%]&quot;&nbsp;height=&quot;[%&nbsp;image.height&nbsp;%]&quot;&nbsp;border=&quot;0&quot;&nbsp;/&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-25 templates/lib/misc/line&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;hr&nbsp;/&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-26 templates/lib/site/header&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;h1&nbsp;class=&quot;title&quot;&gt;[%&nbsp;page.title&nbsp;%]&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;IF&nbsp;page.about&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;div&nbsp;class=&quot;info&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;page.about&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;/div&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-27 templates/lib/site/menu&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;menu&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index&nbsp;=&nbsp;'Home'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;=&nbsp;'About'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;news&nbsp;&nbsp;=&nbsp;'News'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;order&nbsp;=&nbsp;['index'&nbsp;'about'&nbsp;'news'];</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;item&nbsp;IN&nbsp;order;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&lt;a&nbsp;href=&quot;[%&nbsp;site.url.root&nbsp;%]/[%&nbsp;item&nbsp;%].html&quot;&gt;[%&nbsp;menu.$item&nbsp;%]&lt;/a&gt;</P>
+<P CLASS="CodeExample">
+&lt;br&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;END&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-28 templates/lib/site/footer&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;p&nbsp;class=&quot;info&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&amp;copy;&nbsp;Copyright&nbsp;[%&nbsp;site.copyright&nbsp;%].</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;All&nbsp;Rights&nbsp;Reserved.</P>
+<P CLASS="CodeExample">
+&nbsp;&lt;br&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;page.file&nbsp;%]&nbsp;last&nbsp;modified&nbsp;[%&nbsp;page.date&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-29 templates/src/index.htm</P>
+<P CLASS="CodeExample">
+[%&nbsp;META&nbsp;title&nbsp;=&nbsp;'Template&nbsp;Toolkit&nbsp;Home'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;=&nbsp;'Home&nbsp;page&nbsp;for&nbsp;the&nbsp;Template&nbsp;Toolkit'</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;Welcome&nbsp;to&nbsp;the&nbsp;Template&nbsp;Toolkit&nbsp;web&nbsp;site.</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;This&nbsp;page&nbsp;would&nbsp;have&nbsp;more&nbsp;content&nbsp;but&nbsp;the&nbsp;editor</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;is&nbsp;currently&nbsp;out&nbsp;enjoying&nbsp;an&nbsp;extended&nbsp;lunch&nbsp;break.</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;We&nbsp;expect&nbsp;him&nbsp;back&nbsp;before&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;year.</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;bin/build</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-30 templates/src/css/tt2.css&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;META&nbsp;type&nbsp;=&nbsp;'text'&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;font&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;=&nbsp;'Verdana,&nbsp;Arial,&nbsp;Helvetica,&nbsp;sans-serif'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mono&nbsp;=&nbsp;'&quot;Courier&nbsp;New&quot;,&nbsp;Courier,&nbsp;monospace'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+body&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;font-family:&nbsp;[%&nbsp;font.text&nbsp;%];</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;font-size:&nbsp;12px;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+.info&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;font-size:&nbsp;10px;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+.title&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;font-family:&nbsp;[%&nbsp;font.text&nbsp;%];</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;font-size:&nbsp;24px;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;line-height:&nbsp;30px;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;font-weight:&nbsp;bold;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;[%&nbsp;site.col.text&nbsp;%];</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;margin-top:&nbsp;0px;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;margin-bottom:&nbsp;2px;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+a&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;font-family:&nbsp;[%&nbsp;font.text&nbsp;%];</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;font-size:&nbsp;12px;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;line-height:&nbsp;14px;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;text-decoration:&nbsp;none;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;[%&nbsp;site.col.link&nbsp;%];</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+a:hover&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;[%&nbsp;site.col.alink&nbsp;%];</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+a.menu&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;white-space:nowrap;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+a.menu:hover&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;[%&nbsp;site.col.alink&nbsp;%];</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+a.menuselect&nbsp;{&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;font-weight:&nbsp;bold;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;[%&nbsp;site.col.mlink&nbsp;%];</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;white-space:nowrap;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+a.menuselect:hover&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;font-weight:&nbsp;bold;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;[%&nbsp;site.col.alink&nbsp;%];</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+...etc...</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-31 templates/lib/site/wrapper&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;SWITCH&nbsp;page.type;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CASE&nbsp;'text';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CASE&nbsp;'html';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;WRAPPER&nbsp;site/html&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;site/layout;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CASE;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;THROW&nbsp;page.type&nbsp;&quot;Invalid&nbsp;page&nbsp;type:&nbsp;$page.type&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-32 templates/lib/config/col&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;site.col&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line&nbsp;&nbsp;=&nbsp;rgb.skyblue</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head&nbsp;&nbsp;=&nbsp;rgb.darkblue</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;edge&nbsp;=&nbsp;rgb.skyblue</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;back&nbsp;=&nbsp;rgb.white</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head&nbsp;=&nbsp;rgb.misty</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cell&nbsp;=&nbsp;rgb.ltgrey</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-33 templates/lib/table/edge&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;border=&quot;0&quot;&nbsp;cellspacing=&quot;1&quot;&nbsp;cellpadding=&quot;0&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bgcolor=&quot;[%&nbsp;site.col.table.edge&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&nbsp;border=&quot;0&quot;&nbsp;bgcolor=&quot;[%&nbsp;site.col.table.back&nbsp;%]&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cellspacing=&quot;2&quot;&nbsp;cellpadding=&quot;4&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;content&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;WRAPPER&nbsp;table/edge&nbsp;%]</P>
+<P CLASS="Code">
+&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&lt;th&gt;Forename&lt;/th&gt;</P>
+<P CLASS="Code">
+&nbsp;&lt;td&gt;Arthur&lt;/td&gt;</P>
+<P CLASS="Code">
+&lt;/tr&gt;</P>
+<P CLASS="Code">
+&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&lt;th&gt;Surname&lt;/th&gt;</P>
+<P CLASS="Code">
+&nbsp;&lt;td&gt;Dent&lt;/td&gt;</P>
+<P CLASS="Code">
+&lt;/tr&gt;</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-34 templates/lib/table/row&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;tr&nbsp;valign=&quot;top&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;content&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;/tr&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-35 templates/lib/table/head&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;td&nbsp;bgcolor=&quot;[%&nbsp;site.col.table.head&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;b&gt;[%&nbsp;content&nbsp;%]:&lt;/b&gt;</P>
+<P CLASS="CodeExample">
+&lt;/td&gt;</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;11-36 templates/lib/table/cell&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;td&nbsp;bgcolor=&quot;[%&nbsp;site.col.table.cell&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;content&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;/td&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-37 templates/src/debug/table.html&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;h2&gt;Table&nbsp;1&lt;/h2&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;WRAPPER&nbsp;table/edge&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Forename&lt;/th&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Arthur&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Surname&lt;/th&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Dent&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;h2&gt;Table&nbsp;2&lt;/h2&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;WRAPPER&nbsp;table/edge&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;table/row&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Forename&lt;/th&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Arthur&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;table/row&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Surname&lt;/th&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Dent&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;h2&gt;Table&nbsp;3&lt;/h2&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;WRAPPER&nbsp;table/edge;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;table/row;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;table/head&nbsp;content='Forename';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;table/cell&nbsp;content='Arthur';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;table/row;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;table/head&nbsp;content='Surname';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;table/cell&nbsp;content='Dent';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;END&nbsp;</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-38 templates/lib/debug/hash&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;WRAPPER&nbsp;table/edge;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;key&nbsp;=&nbsp;hash.keys;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;val&nbsp;=&nbsp;hash.$key;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;table/row;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;table/head&nbsp;content=key;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;table/cell;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;val.keys;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;debug/hash&nbsp;hash=val;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ELSE;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;val;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-39 templates/src/debug/site.html&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;META&nbsp;title&nbsp;=&nbsp;'Debug&nbsp;Site'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;=&nbsp;'Debugging&nbsp;page&nbsp;for&nbsp;the&nbsp;site&nbsp;data'</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;INCLUDE&nbsp;debug/hash&nbsp;hash=site&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-40 Additions&nbsp;to&nbsp;templates/lib/config/main&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;PROCESS&nbsp;config/page</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/site</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/url</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/col</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/images</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/map&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;add&nbsp;this&nbsp;line</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-41 templates/lib/config/map&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;#&nbsp;define&nbsp;map&nbsp;of&nbsp;pages&nbsp;in&nbsp;site</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;map&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;'template-toolkit.org'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu&nbsp;=&nbsp;[&nbsp;'index',&nbsp;'about',&nbsp;'news',&nbsp;'docs'&nbsp;]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'Home'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'About'&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;news&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'News'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;'Documentation'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu&nbsp;=&nbsp;[&nbsp;'index',&nbsp;'faq',&nbsp;'manual'&nbsp;]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index&nbsp;&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'Introduction'&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faq&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'FAQ'&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;manual&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;'Manual'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu&nbsp;=&nbsp;[&nbsp;'index',&nbsp;'syntax',&nbsp;'directives'&nbsp;]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page&nbsp;=&nbsp;{&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'Introduction'&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;syntax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'Syntax'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;directives&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'Directives'&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;debug;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;add&nbsp;debugging&nbsp;pages</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.page.debug&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;'Debug'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu&nbsp;=&nbsp;[&nbsp;'site'&nbsp;'table']</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;site&nbsp;&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'Site'&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'Table'&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;add&nbsp;debug&nbsp;item&nbsp;to&nbsp;main&nbsp;menu</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.menu.push('debug');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;save&nbsp;map&nbsp;in&nbsp;site</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;site.map&nbsp;=&nbsp;map;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;expand&nbsp;map&nbsp;recursively...</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;config/expand;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+map&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+syntax&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'Syntax'&nbsp;}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+manual&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;'Manual'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;menu&nbsp;=&nbsp;[&nbsp;'index',&nbsp;'syntax',&nbsp;'directives'&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;page&nbsp;=&nbsp;{&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'Introduction'&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;syntax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'Syntax'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;directives&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'Directives'&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+docs&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;'Documentation'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;menu&nbsp;=&nbsp;[&nbsp;'index',&nbsp;'faq',&nbsp;'manual'&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;page&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index&nbsp;&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'Introduction'&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faq&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'FAQ'&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;manual&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;[&nbsp;the&nbsp;manual&nbsp;node&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-42 xml/sitemap.xml&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;map&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;name&gt;template-toolkit.org&lt;/name&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;menu&gt;index&lt;/menu&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;menu&gt;about&lt;/menu&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;menu&gt;news&lt;/menu&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;menu&gt;docs&lt;/menu&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;page&nbsp;id=&quot;index&quot;&nbsp;name=&quot;Home&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;page&nbsp;id=&quot;about&quot;&nbsp;name=&quot;About&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;page&nbsp;id=&quot;news&quot;&nbsp;&nbsp;name=&quot;News&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;page&nbsp;id=&quot;docs&quot;&nbsp;&nbsp;name=&quot;Documentation&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;menu&gt;index&lt;/menu&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;menu&gt;faq&lt;/menu&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;menu&gt;manual&lt;/menu&gt;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;page&nbsp;id=&quot;index&quot;&nbsp;&nbsp;name=&quot;Introduction&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;page&nbsp;id=&quot;faq&quot;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;FAQ&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;page&nbsp;id=&quot;manual&quot;&nbsp;name=&quot;Manual&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;menu&gt;index&lt;/menu&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;menu&gt;syntax&lt;/menu&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;menu&gt;directives&lt;/menu&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;page&nbsp;id=&quot;index&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Introduction&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;page&nbsp;id=&quot;syntax&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Syntax&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;page&nbsp;id=&quot;directives&quot;&nbsp;name=&quot;Directives&quot;&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/page&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/page&gt;</P>
+<P CLASS="CodeExample">
+&lt;/map&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-43 templates/lib/config/mapx&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;USE&nbsp;map&nbsp;=&nbsp;XML.Simple(</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$rootdir/xml/sitemap.xml&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KeyAttr&nbsp;=&nbsp;['id']</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;debug;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;as&nbsp;before</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+IF&nbsp;debug;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;add&nbsp;debugging&nbsp;pages</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;map.page.debug&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;'Debug'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu&nbsp;=&nbsp;[&nbsp;'site'&nbsp;'table']</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;site&nbsp;&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'Site'&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table&nbsp;=&nbsp;{&nbsp;name&nbsp;=&nbsp;'Table'&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;add&nbsp;debug&nbsp;item&nbsp;to&nbsp;main&nbsp;menu</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;map.menu.push('debug');</P>
+<P CLASS="Code">
+END;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;save&nbsp;map&nbsp;in&nbsp;site</P>
+<P CLASS="Code">
+site.map&nbsp;=&nbsp;map;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;expand&nbsp;map&nbsp;recursively...</P>
+<P CLASS="Code">
+PROCESS&nbsp;config/expand;</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-44 templates/lib/config/expand&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;#&nbsp;page.trail&nbsp;tracks&nbsp;path&nbsp;to&nbsp;the&nbsp;current&nbsp;page</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;DEFAULT&nbsp;page.trail&nbsp;=&nbsp;[&nbsp;];</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;list&nbsp;of&nbsp;menu&nbsp;items&nbsp;we're&nbsp;constructing</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;map.items&nbsp;=&nbsp;[&nbsp;];</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;walk&nbsp;through&nbsp;item&nbsp;names&nbsp;in&nbsp;map.menu</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;id&nbsp;IN&nbsp;map.menu;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;fetch&nbsp;page&nbsp;from&nbsp;map.page</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;THROW&nbsp;map&nbsp;&quot;Invalid&nbsp;menu&nbsp;item&nbsp;in&nbsp;$map.name:&nbsp;$id&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UNLESS&nbsp;(item&nbsp;=&nbsp;map.page.$id);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;add&nbsp;location&nbsp;data</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.id&nbsp;&nbsp;&nbsp;=&nbsp;id;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.path&nbsp;=&nbsp;path&nbsp;?&nbsp;&quot;$path/$id&quot;&nbsp;:&nbsp;id;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.file&nbsp;=&nbsp;item.page&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&nbsp;&quot;${item.path}/index.html&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&quot;${item.path}.html&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.url&nbsp;&nbsp;=&nbsp;&quot;$site.url.root/$item.file&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;is&nbsp;this&nbsp;item&nbsp;on&nbsp;the&nbsp;path&nbsp;to&nbsp;the&nbsp;current&nbsp;page?</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.hot&nbsp;&nbsp;=&nbsp;page.file.match(&quot;^$item.path&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.subs&nbsp;=&nbsp;item.hot&nbsp;and&nbsp;item.menu;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.here&nbsp;=&nbsp;(item.file&nbsp;=&nbsp;&nbsp;=&nbsp;page.file);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;set&nbsp;next/last&nbsp;if&nbsp;this&nbsp;is&nbsp;the&nbsp;actual&nbsp;page</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;item.here;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page.prev&nbsp;=&nbsp;map.page.${loop.last};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page.next&nbsp;=&nbsp;map.page.${loop.next};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;add&nbsp;item&nbsp;to&nbsp;map&nbsp;items&nbsp;list</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.items.push(item);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;also&nbsp;to&nbsp;the&nbsp;trail&nbsp;if&nbsp;the&nbsp;page&nbsp;is&nbsp;hot</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page.trail.push(item)&nbsp;IF&nbsp;item.hot;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;expand&nbsp;any&nbsp;submenu&nbsp;for&nbsp;this&nbsp;item</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;item.subs;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;config/expand</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map&nbsp;&nbsp;=&nbsp;item</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;=&nbsp;item.path;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+DEFAULT&nbsp;page.trail&nbsp;=&nbsp;[&nbsp;];</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+map.items&nbsp;=&nbsp;[&nbsp;];</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+FOREACH&nbsp;id&nbsp;IN&nbsp;map.menu;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;fetch&nbsp;page&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;THROW&nbsp;map&nbsp;&quot;Invalid&nbsp;menu&nbsp;item&nbsp;in&nbsp;$map.name:&nbsp;$id&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UNLESS&nbsp;(item&nbsp;=&nbsp;map.page.$id);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+END</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;add&nbsp;location&nbsp;data</P>
+<P CLASS="Code">
+item.id&nbsp;&nbsp;&nbsp;=&nbsp;id;</P>
+<P CLASS="Code">
+item.path&nbsp;=&nbsp;path&nbsp;?&nbsp;&quot;$path/$id&quot;&nbsp;:&nbsp;id;</P>
+<P CLASS="Code">
+item.file&nbsp;=&nbsp;item.page&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&nbsp;&quot;${item.path}/index.html&quot;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&quot;${item.path}.html&quot;;</P>
+<P CLASS="Code">
+item.url&nbsp;&nbsp;=&nbsp;&quot;$site.url.root/$item.file&quot;;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;is&nbsp;this&nbsp;item&nbsp;on&nbsp;the&nbsp;path&nbsp;to&nbsp;the&nbsp;current&nbsp;page?</P>
+<P CLASS="Code">
+item.hot&nbsp;&nbsp;=&nbsp;page.file.match(&quot;^$item.path&quot;);</P>
+<P CLASS="Code">
+item.subs&nbsp;=&nbsp;item.hot&nbsp;and&nbsp;item.menu;</P>
+<P CLASS="Code">
+item.here&nbsp;=&nbsp;(item.file&nbsp;=&nbsp;&nbsp;=&nbsp;page.file);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;set&nbsp;next/last&nbsp;if&nbsp;this&nbsp;is&nbsp;the&nbsp;actual&nbsp;page</P>
+<P CLASS="Code">
+IF&nbsp;item.here;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;page.prev&nbsp;=&nbsp;map.page.${loop.last};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;page.next&nbsp;=&nbsp;map.page.${loop.next};</P>
+<P CLASS="Code">
+END;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;add&nbsp;item&nbsp;to&nbsp;list</P>
+<P CLASS="Code">
+map.items.push(item);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;also&nbsp;to&nbsp;the&nbsp;trail&nbsp;if&nbsp;the&nbsp;page&nbsp;is&nbsp;hot</P>
+<P CLASS="Code">
+page.trail.push(item)&nbsp;IF&nbsp;item.hot;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;expand&nbsp;any&nbsp;submenu&nbsp;for&nbsp;this&nbsp;item</P>
+<P CLASS="Code">
+IF&nbsp;item.subs;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;config/expand</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map&nbsp;&nbsp;=&nbsp;item</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;=&nbsp;item.path;</P>
+<P CLASS="Code">
+END;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-45 templates/lib/menu/nest&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;DEFAULT&nbsp;pad&nbsp;=&nbsp;'';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;item&nbsp;=&nbsp;menu.items;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pad;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;menu/text</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.name</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.url</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.hot&nbsp;?&nbsp;'menuselect'&nbsp;:&nbsp;'menu'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;item.subs;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&lt;br&nbsp;/&gt;&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;menu/nest&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu&nbsp;=&nbsp;item&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pad&nbsp;&nbsp;=&nbsp;pad&nbsp;?&nbsp;&quot;&amp;nbsp;&amp;nbsp;&amp;nbsp;$pad&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&quot;&amp;nbsp;-&amp;nbsp;&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&lt;br&nbsp;/&gt;&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+FOREACH&nbsp;item&nbsp;=&nbsp;menu.items;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+END</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+pad;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+INCLUDE&nbsp;menu/text</P>
+<P CLASS="Code">
+&nbsp;&nbsp;link&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.name</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.url</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.hot&nbsp;?&nbsp;'menuselect'&nbsp;:&nbsp;'menu'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-46 templates/lib/menu/text&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;a&nbsp;href=&quot;[%&nbsp;link.url&nbsp;%]&quot;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;&quot;&nbsp;class=&#92;&quot;$link.class&#92;&quot;&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;link.class&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&gt;[%-&nbsp;link.text&nbsp;-%]&lt;/a&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+IF&nbsp;item.subs;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;&lt;br&nbsp;/&gt;&#92;n&quot;;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;menu/nest&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu&nbsp;=&nbsp;item&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pad&nbsp;&nbsp;=&nbsp;pad&nbsp;?&nbsp;&quot;&amp;nbsp;&amp;nbsp;&amp;nbsp;$pad&quot;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&quot;&amp;nbsp;-&amp;nbsp;&quot;;</P>
+<P CLASS="Code">
+END;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-47 Changes&nbsp;made&nbsp;to&nbsp;templates/lib/site/menu&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;border=&quot;0&quot;&nbsp;cellpadding=&quot;0&quot;&nbsp;cellspacing=&quot;0&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;left&quot;&nbsp;class=&quot;menutitle&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Site&nbsp;Menu</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;[%&nbsp;PROCESS&nbsp;misc/line&nbsp;%]&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;top&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;left&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;INCLUDE&nbsp;menu/nest</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu&nbsp;=&nbsp;site.map&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-48 templates/lib/menu/stack&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;pending&nbsp;=&nbsp;[&nbsp;menu&nbsp;];</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;WHILE&nbsp;pending.size;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu&nbsp;=&nbsp;pending.shift;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&lt;p&gt;&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;item&nbsp;=&nbsp;menu.items;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;menu/text</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.name</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.url</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.hot&nbsp;?&nbsp;'menuselect'&nbsp;:&nbsp;'menu'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&lt;br&nbsp;/&gt;&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pending.push(item)&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;item.subs;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&lt;/p&gt;&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+pending&nbsp;=&nbsp;[&nbsp;menu&nbsp;];</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+WHILE&nbsp;pending.size;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;menu&nbsp;=&nbsp;pending.shift;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+END;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+FOREACH&nbsp;item&nbsp;=&nbsp;menu.items;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;menu/text</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.name</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.url</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.hot&nbsp;?&nbsp;'menuselect'&nbsp;:&nbsp;'menu'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;&lt;br&nbsp;/&gt;&#92;n&quot;;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;pending.push(item)&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;item.subs;</P>
+<P CLASS="Code">
+END;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-49 Changes&nbsp;to&nbsp;templates/lib/site/menu&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;top&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;left&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;INCLUDE&nbsp;menu/stack</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu&nbsp;=&nbsp;site.map&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-50 templates/lib/menu/trail&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;border=&quot;0&quot;&nbsp;cellpadding=&quot;0&quot;&nbsp;cellspacing=&quot;2&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;middle&quot;&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;item&nbsp;IN&nbsp;trail&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;class=&quot;info&quot;&gt;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;[%&nbsp;PROCESS&nbsp;menu/text</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.name</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.url</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'menu'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%]&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-51 Adding&nbsp;the&nbsp;bread-crumb&nbsp;trail&nbsp;to&nbsp;templates/lib/site/layout&nbsp;</P>
+<P CLASS="CodeExample">
+.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;width=&quot;100%&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;site/header&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;!--&nbsp;new&nbsp;section&nbsp;added&nbsp;--&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;center&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;site/name&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;site/navigate&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;!--&nbsp;end&nbsp;of&nbsp;new&nbsp;section&nbsp;--&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;[%&nbsp;PROCESS&nbsp;misc/line&nbsp;%]&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-52 templates/lib/site/name&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;a&nbsp;href=&quot;[%&nbsp;site.url.home&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;INCLUDE&nbsp;misc/image&nbsp;image=site.image.name&nbsp;|&nbsp;trim&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;/a&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-53 templates/lib/site/navigate&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;menu/trail&nbsp;trail=page.trail&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-54 templates/lib/menu/prevnext&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;border=&quot;0&quot;&nbsp;cellpadding=&quot;2&quot;&nbsp;cellspacing=&quot;2&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;middle&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;IF&nbsp;page.prev&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;right&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;menu/text</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;&nbsp;=&nbsp;page.prev.name</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;&nbsp;=&nbsp;page.prev.url</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;=&nbsp;'menu'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;IF&nbsp;page.next&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;|&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;IF&nbsp;page.next&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;left&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;PROCESS&nbsp;menu/text&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;&nbsp;=&nbsp;page.next.name</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;&nbsp;=&nbsp;page.next.url</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;=&nbsp;'menu'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-55 Adding&nbsp;menu/prevnext&nbsp;to&nbsp;templates/lib/site/navigate&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;width=&quot;100%&quot;&nbsp;border=&quot;0&quot;&nbsp;cellpadding=&quot;0&quot;&nbsp;cellspacing=&quot;0&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;middle&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;left&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;menu/trail&nbsp;trail=page.trail&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;right&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;menu/prevnext&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-56 Adding&nbsp;section&nbsp;headers&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;META&nbsp;title&nbsp;=&nbsp;'About&nbsp;the&nbsp;Template&nbsp;Toolkit'&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;=&nbsp;'A&nbsp;brief&nbsp;overview&nbsp;of&nbsp;and&nbsp;introduction&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;the&nbsp;Template&nbsp;Toolkit'</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;INCLUDE&nbsp;section/header&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;'Overview'</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;The&nbsp;&lt;b&gt;Template&nbsp;Toolkit&lt;/b&gt;&nbsp;is&nbsp;a&nbsp;fast,&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;powerful,&nbsp;and&nbsp;easily&nbsp;extensible&nbsp;template&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;processing&nbsp;system&nbsp;written&nbsp;in&nbsp;&lt;b&gt;Perl&lt;/b&gt;...</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;INCLUDE&nbsp;section/header&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;'Mailing&nbsp;Lists'</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;A&nbsp;number&nbsp;of&nbsp;mailing&nbsp;lists&nbsp;are&nbsp;provided&nbsp;for&nbsp;discussing</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;the&nbsp;Template&nbsp;Toolkit...</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-57 templates/lib/section/header&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;misc/line&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;h1&gt;[%&nbsp;title&nbsp;%]&lt;/h1&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;MACRO&nbsp;Section(title)&nbsp;INCLUDE&nbsp;section/header&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-58 Using&nbsp;a&nbsp;section&nbsp;macro&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;META&nbsp;title&nbsp;=&nbsp;'About&nbsp;the&nbsp;Template&nbsp;Toolkit'&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;=&nbsp;'A&nbsp;brief&nbsp;overview&nbsp;of&nbsp;and&nbsp;introduction&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;the&nbsp;Template&nbsp;Toolkit'</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;Section('Overview')&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;The&nbsp;&lt;b&gt;Template&nbsp;Toolkit&lt;/b&gt;&nbsp;is&nbsp;a&nbsp;fast,&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;powerful,&nbsp;and&nbsp;easily&nbsp;extensible&nbsp;template&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;processing&nbsp;system&nbsp;written&nbsp;in&nbsp;&lt;b&gt;Perl&lt;/b&gt;...</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;Section('Mailing&nbsp;Lists')&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;A&nbsp;number&nbsp;of&nbsp;mailing&nbsp;lists&nbsp;are&nbsp;provided&nbsp;for&nbsp;discussing</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;the&nbsp;Template&nbsp;Toolkit...</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-59 templates/lib/section/wrapper&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;h1&gt;[%&nbsp;title&nbsp;%]&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;content&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;misc/line&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-60 Using&nbsp;a&nbsp;section&nbsp;wrapper&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;META&nbsp;title&nbsp;=&nbsp;'About&nbsp;the&nbsp;Template&nbsp;Toolkit'&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;=&nbsp;'A&nbsp;brief&nbsp;overview&nbsp;of&nbsp;and&nbsp;introduction&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;the&nbsp;Template&nbsp;Toolkit'</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;WRAPPER&nbsp;section/wrapper&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;'Overview'</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;The&nbsp;&lt;b&gt;Template&nbsp;Toolkit&lt;/b&gt;&nbsp;is&nbsp;a&nbsp;fast,&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;powerful,&nbsp;and&nbsp;easily&nbsp;extensible&nbsp;template&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;processing&nbsp;system&nbsp;written&nbsp;in&nbsp;&lt;b&gt;Perl&lt;/b&gt;...</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;WRAPPER&nbsp;section/wrapper&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;'Mailing&nbsp;Lists'</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;A&nbsp;number&nbsp;of&nbsp;mailing&nbsp;lists&nbsp;are&nbsp;provided&nbsp;for&nbsp;discussing</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;the&nbsp;Template&nbsp;Toolkit...</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-61 Sections&nbsp;and&nbsp;subsections&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;META&nbsp;title&nbsp;=&nbsp;'About&nbsp;the&nbsp;Template&nbsp;Toolkit'&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;=&nbsp;'A&nbsp;brief&nbsp;overview&nbsp;of&nbsp;and&nbsp;introduction&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;the&nbsp;Template&nbsp;Toolkit'</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;MACRO&nbsp;Section(title)&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;page/section;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;MACRO&nbsp;Subsection(title)&nbsp;INCLUDE&nbsp;page/subsection&nbsp;</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;Section('Overview')&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;The&nbsp;&lt;b&gt;Template&nbsp;Toolkit&lt;/b&gt;&nbsp;is&nbsp;a&nbsp;fast,&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;powerful,&nbsp;and&nbsp;easily&nbsp;extensible&nbsp;template&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;processing&nbsp;system&nbsp;written&nbsp;in&nbsp;&lt;b&gt;Perl&lt;/b&gt;...</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;Subsection('Features'&nbsp;)&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;li&gt;Fast,&nbsp;powerful,&nbsp;and&nbsp;extensible...&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;li&gt;Powerful&nbsp;presentation&nbsp;language...&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;li&gt;And&nbsp;so&nbsp;on...&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+&lt;/ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;Section('Mailing&nbsp;Lists')&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;A&nbsp;number&nbsp;of&nbsp;mailing&nbsp;lists&nbsp;are&nbsp;provided&nbsp;for&nbsp;discussing</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;the&nbsp;Template&nbsp;Toolkit.</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;Subsection('templates')&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;The&nbsp;&lt;b&gt;templates&lt;/b&gt;&nbsp;mailing&nbsp;list&nbsp;exists&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;for&nbsp;reporting&nbsp;information,&nbsp;asking&nbsp;questions,&nbsp;and</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;discussing&nbsp;development&nbsp;or&nbsp;any&nbsp;other&nbsp;topic&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;relevant&nbsp;to&nbsp;the&nbsp;Template&nbsp;Toolkit.</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;Subsection('templates-announce')&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;The&nbsp;&lt;b&gt;templates-announce&lt;/b&gt;&nbsp;mailing&nbsp;list</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;is&nbsp;a&nbsp;low-volume&nbsp;list&nbsp;used&nbsp;for&nbsp;announcing&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;new&nbsp;versions&nbsp;of&nbsp;the&nbsp;Template&nbsp;Toolkit</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;or&nbsp;other&nbsp;related&nbsp;information.&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-62 templates/lib/page/section&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;width=&quot;100%&quot;&nbsp;border=&quot;0&quot;&nbsp;cellpadding=&quot;0&quot;&nbsp;cellspacing=&quot;4&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;left&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;name=&quot;[%&nbsp;id&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&nbsp;class=&quot;section&quot;&gt;[%&nbsp;title&nbsp;%]&lt;/h2&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;right&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;UNLESS&nbsp;no_top&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;#top&quot;&nbsp;class=&quot;navlink&quot;&gt;Top&lt;/a&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;11-63 templates/lib/page/subsection&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;a&nbsp;name=&quot;[%&nbsp;id&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&lt;h3&nbsp;class=&quot;subsection&quot;&gt;[%&nbsp;title&nbsp;%]&lt;/h3&gt;</P>
+<P CLASS="CodeExample">
+&lt;/a&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;INCLUDE&nbsp;page/subsection</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;'Testing&nbsp;123'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;=&nbsp;'testing'</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;a&nbsp;name=&quot;testing&quot;&gt;</P>
+<P CLASS="Code">
+&lt;h3&nbsp;class=&quot;subsection&quot;&gt;Testing&nbsp;123&lt;/h3&gt;</P>
+<P CLASS="Code">
+&lt;/a&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-64 templates/lib/config/macros&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;page.items&nbsp;=&nbsp;[&nbsp;];</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;MACRO&nbsp;Section(title)&nbsp;BLOCK;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;&nbsp;&nbsp;=&nbsp;title.replace('&#92;W+',&nbsp;'_');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;&nbsp;=&nbsp;&quot;#$id&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;=&nbsp;title</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;items&nbsp;=&nbsp;[&nbsp;]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CALL&nbsp;page.items.push(item);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;page/section;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;MACRO&nbsp;Subsection(title)&nbsp;BLOCK;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;&nbsp;&nbsp;=&nbsp;title.replace('&#92;W+',&nbsp;'_');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item&nbsp;=&nbsp;{&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;=&nbsp;&quot;#$id&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;title&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CALL&nbsp;page.items.last.items.push(item);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;page/subsection;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+page.items&nbsp;=&nbsp;[&nbsp;];</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+MACRO&nbsp;Section(title)&nbsp;BLOCK;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;macro&nbsp;body</P>
+<P CLASS="Code">
+END;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+id&nbsp;=&nbsp;title.replace('&#92;W+',&nbsp;'_');</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+item&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;&nbsp;=&nbsp;&quot;#$id&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;=&nbsp;title</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;items&nbsp;=&nbsp;[&nbsp;]</P>
+<P CLASS="Code">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+CALL&nbsp;page.items.push(item);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+PROCESS&nbsp;page/section;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+item&nbsp;=&nbsp;{&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;=&nbsp;&quot;#$id&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;title&nbsp;</P>
+<P CLASS="Code">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+CALL&nbsp;page.items.last.items.push(item);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-65 Addition&nbsp;to&nbsp;config/main&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;PROCESS&nbsp;config/page</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/site</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/url</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/col</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/images</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/map</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/macros&nbsp;&nbsp;&nbsp;#&nbsp;add&nbsp;this&nbsp;line</P>
+<P CLASS="CodeExample">
+-%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-66 Page&nbsp;layout&nbsp;wrapper&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;META&nbsp;title&nbsp;=&nbsp;'About&nbsp;the&nbsp;Template&nbsp;Toolkit'&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;=&nbsp;'A&nbsp;brief&nbsp;overview&nbsp;of&nbsp;and&nbsp;introduction&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;the&nbsp;Template&nbsp;Toolkit'</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;WRAPPER&nbsp;page/tocpage&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;Section('Overview')&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;...</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;Subsection('Features'&nbsp;)&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;...</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;Section('Mailing&nbsp;Lists')&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;...</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;Subsection('templates')&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;...</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;Subsection('templates-announce')&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;...</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-67 templates/lib/page/tocpage&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;h2&gt;Contents&lt;/h2&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;ul&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;section&nbsp;IN&nbsp;page.items&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;li&gt;&lt;a&nbsp;href=&quot;[%&nbsp;section.url&nbsp;%]&quot;&gt;[%&nbsp;section.name&nbsp;%]&lt;/a&gt;&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;subs&nbsp;IF&nbsp;section.items.size&nbsp;-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;/ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;subs&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;ul&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;sub&nbsp;IN&nbsp;section.items&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;li&gt;&lt;a&nbsp;href=&quot;[%&nbsp;sub.url&nbsp;%]&quot;&gt;[%&nbsp;sub.name&nbsp;%]&lt;/a&gt;&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;/ul&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;content&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;ul&gt;</P>
+<P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;section&nbsp;IN&nbsp;page.items&nbsp;-%]</P>
+<P CLASS="Code">
+&lt;li&gt;&lt;a&nbsp;href=&quot;[%&nbsp;section.url&nbsp;%]&quot;&gt;[%&nbsp;section.name&nbsp;%]&lt;/a&gt;&lt;/li&gt;</P>
+<P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;subs&nbsp;IF&nbsp;section.items.size&nbsp;-%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="Code">
+&lt;/ul&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;BLOCK&nbsp;subs&nbsp;-%]</P>
+<P CLASS="Code">
+&lt;ul&gt;</P>
+<P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;sub&nbsp;IN&nbsp;section.items&nbsp;-%]</P>
+<P CLASS="Code">
+&lt;li&gt;&lt;a&nbsp;href=&quot;[%&nbsp;sub.url&nbsp;%]&quot;&gt;[%&nbsp;sub.name&nbsp;%]&lt;/a&gt;&lt;/li&gt;</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="Code">
+&lt;/ul&gt;</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;content&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-68 Table&nbsp;of&nbsp;contents&nbsp;generated&nbsp;using&nbsp;menu/nest&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;section&nbsp;IN&nbsp;page.items;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SET&nbsp;section.subs&nbsp;=&nbsp;1&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;section.items.size;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;END</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;h2&gt;Contents&lt;/h2&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;INCLUDE&nbsp;menu/nest&nbsp;menu=page&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;content&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;section&nbsp;IN&nbsp;page.items;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SET&nbsp;section.subs&nbsp;=&nbsp;1&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;section.items.size;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;END</P>
+<P CLASS="Code">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;h2&gt;Contents&lt;/h2&gt;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;INCLUDE&nbsp;menu/nest&nbsp;menu=page&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-69 Adding&nbsp;a&nbsp;tocpage&nbsp;page&nbsp;type&nbsp;to&nbsp;site/wrapper&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;SWITCH&nbsp;page.type;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CASE&nbsp;'text';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CASE&nbsp;'html';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;WRAPPER&nbsp;site/html&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;site/layout;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CASE&nbsp;'tocpage';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;WRAPPER&nbsp;site/html&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;site/layout</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;page/tocpage;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CASE;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;THROW&nbsp;page.type&nbsp;&quot;Invalid&nbsp;page&nbsp;type:&nbsp;$page.type&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;META&nbsp;type&nbsp;&nbsp;=&nbsp;'tocpage'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;'About&nbsp;the&nbsp;Template&nbsp;Toolkit'&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;=&nbsp;'A&nbsp;brief&nbsp;overview&nbsp;of&nbsp;and&nbsp;introduction&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;the&nbsp;Template&nbsp;Toolkit'</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;Section('Overview')&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;...etc...</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-70 XML&nbsp;page&nbsp;template&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;META&nbsp;type&nbsp;&nbsp;=&nbsp;'xml'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;'About&nbsp;the&nbsp;Template&nbsp;Toolkit'&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;=&nbsp;'A&nbsp;brief&nbsp;overview&nbsp;of&nbsp;and&nbsp;introduction&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;the&nbsp;Template&nbsp;Toolkit'</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;page&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;section&nbsp;title=&quot;Overview&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;&lt;b&gt;Template&nbsp;Toolkit&lt;/b&gt;&nbsp;is&nbsp;a&nbsp;fast,&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;powerful,&nbsp;and&nbsp;easily&nbsp;extensible&nbsp;template&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;processing&nbsp;system&nbsp;written&nbsp;in&nbsp;&lt;b&gt;Perl&lt;/b&gt;...</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;subsection&nbsp;title=&quot;Features&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Fast,&nbsp;powerful,&nbsp;and&nbsp;so&nbsp;on...&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/subsection&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/section&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;section&nbsp;title=&quot;Mailing&nbsp;Lists&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;number&nbsp;of&nbsp;mailing&nbsp;lists&nbsp;are&nbsp;provided&nbsp;for&nbsp;discussing</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;Template&nbsp;Toolkit.</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;subsection&nbsp;title=&quot;templates&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;&lt;b&gt;templates&lt;/b&gt;&nbsp;mailing&nbsp;list...</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/subsection&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;subsection&nbsp;title=&quot;templates-announce&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;&lt;b&gt;templates-announce&lt;/b&gt;&nbsp;mailing&nbsp;list...</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/subsection&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/section&gt;</P>
+<P CLASS="CodeExample">
+&lt;/page&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-71 Adding&nbsp;an&nbsp;XML&nbsp;page&nbsp;type&nbsp;to&nbsp;site/wrapper&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;SWITCH&nbsp;page.type;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CASE&nbsp;'text';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CASE&nbsp;'html';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;WRAPPER&nbsp;site/html&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;site/layout;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CASE&nbsp;'tocpage';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;WRAPPER&nbsp;site/html&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;site/layout</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;page/tocpage;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CASE&nbsp;'xml';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;WRAPPER&nbsp;site/html&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;site/layout</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;site/xmlpage;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CASE;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;THROW&nbsp;page.type&nbsp;&quot;Invalid&nbsp;page&nbsp;type:&nbsp;$page.type&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-72 templates/lib/site/xmlpage&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;USE&nbsp;xmldoc&nbsp;&nbsp;=&nbsp;XML.XPath(&nbsp;text&nbsp;=&nbsp;content&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;USE&nbsp;xmlview&nbsp;=&nbsp;view(</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prefix&nbsp;&nbsp;&nbsp;=&nbsp;'xmlpage/'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;notfound&nbsp;=&nbsp;'xmltag'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;xnode&nbsp;=&nbsp;xmldoc.findnodes('/page');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlview.print(xnode);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+USE&nbsp;xmldoc&nbsp;&nbsp;=&nbsp;XML.XPath(&nbsp;text&nbsp;=&nbsp;content&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+USE&nbsp;xmlview&nbsp;=&nbsp;view(</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prefix&nbsp;&nbsp;&nbsp;=&nbsp;'xmlpage/'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;notfound&nbsp;=&nbsp;'xmltag'</P>
+<P CLASS="Code">
+);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+FOREACH&nbsp;xnode&nbsp;=&nbsp;xmldoc.findnodes('/page');</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;xmlview.print(xnode);</P>
+<P CLASS="Code">
+END;</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-73 templates/lib/xmlpage/page&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;item.content(view)&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;page/tocpage&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-74 templates/lib/xmlpage/section&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;Section(&nbsp;item.getAttribute('title')&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;item.content(view)&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-75 templates/lib/xmlpage/subsection&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;Subsection(&nbsp;item.getAttribute('title')&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;item.content(view)&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-76 templates/lib/xmlpage/xmltag&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;item.starttag;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;item.content(view);&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;item.endtag&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-77 templates/lib/xmlpage/text&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;item&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;cd&nbsp;/home/dent/web/ttbook</P>
+<P CLASS="Code">
+$&nbsp;mkdir&nbsp;templates/skin</P>
+<P CLASS="Code">
+$&nbsp;mkdir&nbsp;templates/skin/droplet</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-78 Adding&nbsp;a&nbsp;lib&nbsp;option&nbsp;to&nbsp;etc/ttree.cfg&nbsp;</P>
+<P CLASS="CodeExample">
+src&nbsp;&nbsp;=&nbsp;/home/dent/web/ttbook/templates/src</P>
+<P CLASS="CodeExample">
+#&nbsp;add&nbsp;lib&nbsp;option&nbsp;for&nbsp;new&nbsp;skin</P>
+<P CLASS="CodeExample">
+lib&nbsp;&nbsp;=&nbsp;/home/dent/web/ttbook/templates/skin/droplet&nbsp;</P>
+<P CLASS="CodeExample">
+lib&nbsp;&nbsp;=&nbsp;/home/dent/web/ttbook/templates/lib</P>
+<P CLASS="CodeExample">
+dest&nbsp;=&nbsp;/home/dent/web/ttbook/html</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-79 Adding&nbsp;config/skin&nbsp;to&nbsp;config/main&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;PROCESS&nbsp;config/page</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/site</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/url</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/col</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/images</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/map</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/macros</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;config/skin&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;add&nbsp;this&nbsp;line</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-80 templates/skin/droplet/config/skin&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;site.url.icon&nbsp;=&nbsp;&quot;$site.url.images/icon&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;site.col.icon&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on&nbsp;&nbsp;&nbsp;=&nbsp;'orange'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;&nbsp;=&nbsp;'blue'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;roll&nbsp;=&nbsp;'red'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dead&nbsp;=&nbsp;'gray'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;site.image.icon&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;large&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$site.url.icon/large&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$site.url.icon/large/blue/dot.png&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'dot&nbsp;icon'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width&nbsp;&nbsp;=&nbsp;36</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height&nbsp;=&nbsp;36</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;small&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$site.url.icon/small&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$site.url.icon/small/blue/dot.png&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'dot&nbsp;icon'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width&nbsp;&nbsp;=&nbsp;24</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height&nbsp;=&nbsp;24</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tiny&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$site.url.icon/tiny&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$site.url.icon/tiny/blue/dot.png&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'dot&nbsp;icon'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width&nbsp;&nbsp;=&nbsp;18</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height&nbsp;=&nbsp;18</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-81 templates/lib/config/skin&nbsp;</P>
+<P CLASS="CodeExample">
+[%#&nbsp;hook&nbsp;for&nbsp;skins&nbsp;to&nbsp;perform&nbsp;any&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;#&nbsp;additional&nbsp;extra&nbsp;configuration</P>
+<P CLASS="CodeExample">
+-%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-82 templates/skin/droplet/misc/line&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;border=&quot;0&quot;&nbsp;width=&quot;100%&quot;&nbsp;cellpadding=&quot;0&quot;&nbsp;cellspacing=&quot;0&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;height=&quot;1&quot;&nbsp;bgcolor=&quot;[%&nbsp;site.col.line&nbsp;%]&quot;&gt;&lt;img&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width=&quot;1&quot;&nbsp;height=&quot;1&quot;&nbsp;/&gt;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-83 templates/skin/droplet/misc/icon&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;#&nbsp;misc/icon&nbsp;-&nbsp;generate&nbsp;image&nbsp;tag&nbsp;for&nbsp;icon</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;DEFAULT&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size&nbsp;=&nbsp;'small'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon&nbsp;=&nbsp;'dot'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col&nbsp;&nbsp;=&nbsp;'blue';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;(image&nbsp;=&nbsp;site.image.icon.$size);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;misc/image&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;image.src&nbsp;&nbsp;=&nbsp;&quot;$image.url/$col/${icon}.png&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;image.alt&nbsp;&nbsp;=&nbsp;&quot;$icon&nbsp;icon&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;ELSE;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;THROW&nbsp;logo&nbsp;&quot;invalid&nbsp;icon&nbsp;size:&nbsp;$size&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+-%]</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-84 templates/skin/droplet/menu/nest&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;DEFAULT&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global.linkno&nbsp;=&nbsp;0</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon&nbsp;=&nbsp;site.image.icon.tiny;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;colroll&nbsp;=&nbsp;site.col.icon.roll;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;menu/table;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;item&nbsp;=&nbsp;menu.items;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;linkno&nbsp;&nbsp;=&nbsp;(global.linkno&nbsp;=&nbsp;global.linkno&nbsp;+&nbsp;1);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colicon&nbsp;=&nbsp;item.hot&nbsp;?&nbsp;site.col.icon.on</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;site.col.icon.off;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;menu/link</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;menu_$linkno&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.name</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.url</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$icon.url/$colicon/right.png&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rollover&nbsp;=&nbsp;&quot;$icon.url/$colroll/right.png&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;icon.width</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.hot&nbsp;?&nbsp;'menuselect'&nbsp;:&nbsp;'menu'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;menu/submenu&nbsp;menu=item</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;item.subs;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-85 templates/skin/droplet/menu/table&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;border=&quot;0&quot;&nbsp;cellpadding=&quot;0&quot;&nbsp;cellspacing=&quot;2&quot;&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;content&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;11-86</P>
+<P CLASS="ExampleTitle">
+templates/skin/droplet/menu/row&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;tr&nbsp;valign=&quot;middle&quot;&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;content&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;/tr&gt;</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;11-87</P>
+<P CLASS="ExampleTitle">
+templates/skin/droplet/menu/blank&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&gt;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&gt;&amp;nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&lt;/tr&gt;</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;11-88</P>
+<P CLASS="ExampleTitle">
+templates/skin/droplet/menu/line&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&nbsp;colspan=&quot;2&quot;&gt;[%-&nbsp;PROCESS&nbsp;misc/line&nbsp;-%]&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&lt;/tr&gt;</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;11-89</P>
+<P CLASS="ExampleTitle">
+templates/skin/droplet/menu/name&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;menu/blank&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&nbsp;colspan=&quot;2&quot;&nbsp;class=&quot;menutitle&quot;&gt;[%&nbsp;menu.name&nbsp;%]&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;menu/line&nbsp;-%]</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;11-90</P>
+<P CLASS="ExampleTitle">
+templates/skin/droplet/menu/link&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;tr&nbsp;valign=&quot;middle&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&nbsp;align=&quot;middle&quot;&nbsp;width=&quot;[%&nbsp;item.size&nbsp;%]&quot;&nbsp;height=&quot;[%&nbsp;item.size&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;PROCESS&nbsp;menu/icon&nbsp;-%]&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&nbsp;align=&quot;left&quot;&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;PROCESS&nbsp;menu/text&nbsp;-%]&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&lt;/tr&gt;</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;11-91</P>
+<P CLASS="ExampleTitle">
+templates/skin/droplet/menu/submenu&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;menu/nest&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;11-92</P>
+<P CLASS="ExampleTitle">
+templates/skin/droplet/menu/icon&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;a&nbsp;href=&quot;[%&nbsp;link.url&nbsp;%]&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;IF&nbsp;link.target&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;target=&quot;[%&nbsp;link.target&nbsp;%]&quot;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;IF&nbsp;link.rollover&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;onmouseover=&quot;[%&nbsp;link.name&nbsp;%].src&nbsp;=&nbsp;'[%&nbsp;link.rollover&nbsp;%]';&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;onmouseout=&quot;[%&nbsp;link.name&nbsp;%].src&nbsp;=&nbsp;'[%&nbsp;link.icon&nbsp;%]';&quot;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&gt;&lt;img&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;name=&quot;[%&nbsp;link.name&nbsp;%]&quot;&nbsp;src=&quot;[%&nbsp;link.icon&nbsp;%]&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;width=&quot;[%&nbsp;link.size&nbsp;%]&quot;&nbsp;height=&quot;[%&nbsp;link.size&nbsp;%]&quot;&nbsp;border=&quot;0&quot;&nbsp;/&gt;&lt;/a&gt;</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;11-93</P>
+<P CLASS="ExampleTitle">
+templates/skin/droplet/menu/text&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;a&nbsp;href=&quot;[%&nbsp;link.url&nbsp;%]&quot;</P>
+<P CLASS="CodeExample">
+[%&nbsp;IF&nbsp;link.class&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;class=&quot;[%&nbsp;link.class&nbsp;%]&quot;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;IF&nbsp;link.target&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;target=&quot;[%&nbsp;link.target&nbsp;%]&quot;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;IF&nbsp;link.rollover&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;onmouseover=&quot;[%&nbsp;link.name&nbsp;%].src&nbsp;=&nbsp;'[%&nbsp;link.rollover&nbsp;%]';&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;onmouseout=&quot;[%&nbsp;link.name&nbsp;%].src&nbsp;=&nbsp;'[%&nbsp;link.icon&nbsp;%]';&quot;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;link.text&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;/a&gt;</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-94</P>
+<P CLASS="ExampleTitle">
+templates/skin/droplet/menu/stack&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;DEFAULT&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global.linkno&nbsp;=&nbsp;0</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon&nbsp;=&nbsp;site.image.icon.tiny;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;pending&nbsp;=&nbsp;[&nbsp;menu&nbsp;];</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;colroll&nbsp;=&nbsp;site.col.icon.roll;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;menu/table;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHILE&nbsp;pending.size;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu&nbsp;=&nbsp;pending.shift;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;item&nbsp;=&nbsp;menu.items;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;linkno&nbsp;&nbsp;=&nbsp;(global.linkno&nbsp;=&nbsp;global.linkno&nbsp;+&nbsp;1);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colicon&nbsp;=&nbsp;item.hot&nbsp;?&nbsp;site.col.icon.on</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;site.col.icon.off;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;menu/link</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;item_$linkno&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.name</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.url</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$icon.url/$colicon/right.png&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rollover&nbsp;=&nbsp;&quot;$icon.url/$colroll/right.png&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;icon.width</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.hot&nbsp;?&nbsp;'menuselect'&nbsp;:&nbsp;'menu'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pending.push(item)&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;item.subs;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;menu/name&nbsp;menu=pending.first&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;pending.size;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;11-95</P>
+<P CLASS="ExampleTitle">
+templates/skin/droplet/menu/trail&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;DEFAULT&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon&nbsp;&nbsp;=&nbsp;site.image.icon.tiny;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page.linkno&nbsp;=&nbsp;0;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;colicon&nbsp;=&nbsp;site.col.icon.off;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;colroll&nbsp;=&nbsp;site.col.icon.roll;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;menu/table</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;menu/row;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;item&nbsp;IN&nbsp;trail;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;menu/trail/crumb&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;trail_$loop.count&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.name</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;item.url</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$icon.url/$colicon/right.png&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rollover&nbsp;=&nbsp;&quot;$icon.url/$colroll/right.png&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;icon.width</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'menu'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;BLOCK&nbsp;menu/trail/crumb&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&nbsp;align=&quot;middle&quot;&nbsp;width=&quot;[%&nbsp;item.size&nbsp;%]&quot;&nbsp;height=&quot;[%&nbsp;item.size&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;PROCESS&nbsp;menu/icon&nbsp;-%]&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;td&nbsp;align=&quot;left&quot;&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;PROCESS&nbsp;menu/text&nbsp;-%]&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;END&nbsp;-%]</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;11-96</P>
+<P CLASS="ExampleTitle">
+templates/skin/droplet/menu/prevnext&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;size&nbsp;&nbsp;=&nbsp;'tiny'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;icon&nbsp;&nbsp;=&nbsp;site.image.icon.$size</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;width&nbsp;=&nbsp;icon.width;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;colicon&nbsp;=&nbsp;site.col.icon.off;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;colroll&nbsp;=&nbsp;site.col.icon.roll;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;WRAPPER&nbsp;menu/table</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;menu/row;</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;#&nbsp;is&nbsp;there&nbsp;a&nbsp;previous&nbsp;page?</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;IF&nbsp;page.prev;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;prev&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;page.prev.name</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;page.prev.url</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$icon.url/$colicon/left.png&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rollover&nbsp;=&nbsp;&quot;$icon.url/$colroll/left.png&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;icon.width</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'menu'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;right&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;PROCESS&nbsp;menu/text&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;width=&quot;[%&nbsp;width&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;PROCESS&nbsp;menu/icon&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;ELSE&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;width=&quot;[%&nbsp;width&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;INCLUDE&nbsp;misc/icon&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size&nbsp;=&nbsp;'tiny'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col&nbsp;&nbsp;=&nbsp;site.col.icon.dead&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon&nbsp;=&nbsp;'left'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;width=&quot;[%&nbsp;width&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;INCLUDE&nbsp;misc/icon&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col&nbsp;&nbsp;=&nbsp;site.col.icon.on&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon&nbsp;=&nbsp;'dot'&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size&nbsp;=&nbsp;'tiny'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;#&nbsp;is&nbsp;there&nbsp;a&nbsp;next&nbsp;page?</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;IF&nbsp;page.next;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;next&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;page.next.name</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;page.next.url</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;$icon.url/blue/right.png&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rollover&nbsp;=&nbsp;&quot;$icon.url/red/right.png&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;icon.width</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'menu'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;width=&quot;[%&nbsp;width&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;PROCESS&nbsp;menu/icon&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;left&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;PROCESS&nbsp;menu/text&nbsp;&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;ELSE&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;width=&quot;[%&nbsp;width&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;INCLUDE&nbsp;misc/icon&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col&nbsp;&nbsp;=&nbsp;site.col.icon.dead&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon&nbsp;=&nbsp;'right'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size&nbsp;=&nbsp;'tiny'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;&nbsp;&nbsp;#&nbsp;WRAPPER&nbsp;%]</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;11-97</P>
+<P CLASS="ExampleTitle">
+templates/skin/droplet/page/section&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;size&nbsp;=&nbsp;'small';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;imgsize&nbsp;=&nbsp;site.image.icon.$size;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;width=&quot;100%&quot;&nbsp;border=&quot;0&quot;&nbsp;cellpadding=&quot;0&quot;&nbsp;cellspacing=&quot;4&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;middle&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;width=&quot;[%&nbsp;imgsize.width&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;PROCESS&nbsp;misc/icon&nbsp;%]&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;left&quot;&nbsp;width=&quot;100%&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;name=&quot;[%&nbsp;id&nbsp;%]&quot;&gt;&lt;b&nbsp;class=&quot;section&quot;&gt;[%&nbsp;title&nbsp;%]&lt;/b&gt;&lt;/a&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;right&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;UNLESS&nbsp;no_top&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;#top&quot;&gt;[%</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;misc/icon&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size&nbsp;=&nbsp;'small'&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon&nbsp;=&nbsp;'up'&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col&nbsp;&nbsp;=&nbsp;site.col.icon.off&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%]&lt;/a&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;colspan=&quot;2&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;PROCESS&nbsp;misc/line&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;top&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;colspan=&quot;2&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;content&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;11-98</P>
+<P CLASS="ExampleTitle">
+templates/skin/droplet/page/subsection&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;size&nbsp;=&nbsp;'tiny';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;imgsize&nbsp;=&nbsp;site.image.icon.$size;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;width=&quot;100%&quot;&nbsp;border=&quot;0&quot;&nbsp;cellpadding=&quot;0&quot;&nbsp;cellspacing=&quot;4&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;middle&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;width=&quot;[%&nbsp;imgsize.width&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;PROCESS&nbsp;misc/icon&nbsp;%]&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;align=&quot;left&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;name=&quot;[%&nbsp;id&nbsp;%]&quot;&gt;&lt;b&nbsp;class=&quot;subsection&quot;&gt;[%&nbsp;title&nbsp;%]&lt;/b&gt;&lt;/a&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&nbsp;valign=&quot;top&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;content&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"></body></html>

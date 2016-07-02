@@ -1,0 +1,1296 @@
+<html><head><title>accessing databases code examples</title><style>
+
+P.ExampleTitle {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 6.000000pt;
+	margin-bottom: 6.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 0.000000pt;
+	font-size: 9.000000pt;
+	font-weight: medium;
+	font-style: Italic;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Birka";
+}
+
+P.CodeExample {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-weight: bold;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "TheSansMonoCondensed";
+}
+
+P.Code {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Courier";
+}
+
+
+
+
+
+</style><body><P CLASS="ExampleTitle">
+Example&nbsp;9-1 Listing&nbsp;products&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;DBI('dbi:mysql:products',&nbsp;'username',&nbsp;'password')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;CodeExample&nbsp;&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;&nbsp;Stock</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;FOREACH&nbsp;product&nbsp;=&nbsp;DBI.query('select&nbsp;ProductID,&nbsp;Name,&nbsp;Price,&nbsp;Stock&nbsp;from&nbsp;products')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;product.ProductID&nbsp;|&nbsp;format('%05d')&nbsp;%]&nbsp;[%&nbsp;product.Name&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;$[%&nbsp;product.Price&nbsp;|&nbsp;format('%6.2f')&nbsp;%]&nbsp;[%&nbsp;product.Stock&nbsp;|&nbsp;format('%5d')&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Code&nbsp;&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;&nbsp;Stock</P>
+<P CLASS="Code">
+00050&nbsp;Basic&nbsp;Widget&nbsp;$&nbsp;49.99&nbsp;&nbsp;2500</P>
+<P CLASS="Code">
+00051&nbsp;Cheap&nbsp;Widget&nbsp;$&nbsp;29.99&nbsp;&nbsp;5000</P>
+<P CLASS="Code">
+00101&nbsp;Super&nbsp;Widget&nbsp;$&nbsp;99.99&nbsp;&nbsp;1000</P>
+<P CLASS="Code">
+00102&nbsp;Ultra&nbsp;Widget&nbsp;$149.99&nbsp;&nbsp;&nbsp;500</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;9-2 Listing&nbsp;products&nbsp;by&nbsp;supplier&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;DBI('dbi:mysql:products',&nbsp;'username',&nbsp;'password')</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;suppliers&nbsp;=&nbsp;DBI.prepare('select&nbsp;SupplierID,&nbsp;Name&nbsp;from&nbsp;suppliers')</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;products&nbsp;=&nbsp;DBI.prepare('select&nbsp;ProductID,&nbsp;Name,&nbsp;Price,&nbsp;Stock&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;&nbsp;&nbsp;products</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;&nbsp;SupplierID&nbsp;=&nbsp;?')&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;supplier&nbsp;=&nbsp;suppliers.execute&nbsp;-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;supplier.Name&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;FOREACH&nbsp;product&nbsp;=&nbsp;products.execute(supplier.SupplierID)&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;product.Name&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Costcutter&nbsp;Widgets&nbsp;Inc.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Basic&nbsp;Widget</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Cheap&nbsp;Widget</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+Quality&nbsp;Widgets&nbsp;Inc.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Super&nbsp;Widget</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Ultra&nbsp;Widget</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+CREATE&nbsp;TABLE&nbsp;access_log&nbsp;(</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;INTEGER&nbsp;PRIMARY&nbsp;KEY,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;hostaddr&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;hostname&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;logname&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;req_time&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;request&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;uri&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;method&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;http_version&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;status&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;bytes_sent&nbsp;VARCHAR</P>
+<P CLASS="Code">
+);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;9-3 Parsing&nbsp;log&nbsp;file&nbsp;entries&nbsp;</P>
+<P CLASS="CodeExample">
+#!/usr/bin/perl&nbsp;-w</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+$|++;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;DBI;</P>
+<P CLASS="CodeExample">
+use&nbsp;Net::Nslookup&nbsp;qw(nslookup);</P>
+<P CLASS="CodeExample">
+use&nbsp;Regexp::Common&nbsp;qw(net);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$dsn&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+my&nbsp;$dbh&nbsp;=&nbsp;DBI-&gt;connect($dsn)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;&quot;Can't&nbsp;connect&nbsp;to&nbsp;'$dsn':&nbsp;$DBI::err&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$count&nbsp;=&nbsp;0;</P>
+<P CLASS="CodeExample">
+my&nbsp;$INSERT&nbsp;=&lt;&lt;'SQL';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;INSERT&nbsp;INTO&nbsp;access_log</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(hostaddr,&nbsp;hostname,&nbsp;logname,&nbsp;req_time,&nbsp;request,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri,&nbsp;method,&nbsp;http_version,&nbsp;status,&nbsp;bytes_sent)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;VALUES</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(?,&nbsp;?,&nbsp;?,&nbsp;?,&nbsp;?,&nbsp;?,&nbsp;?,&nbsp;?,&nbsp;?,&nbsp;?)</P>
+<P CLASS="CodeExample">
+SQL</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+while&nbsp;(&lt;&gt;)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($hostaddr,&nbsp;$logname,&nbsp;$remote_user,&nbsp;$req_time,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$request,&nbsp;$status,&nbsp;$bytes_sent)&nbsp;=&nbsp;/^(&#92;S+)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;host&nbsp;address</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#92;s+</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&#92;S+)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;remote&nbsp;logname</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#92;s+</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&#92;S+)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;username</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#92;s+</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#92;[(.+?)&#92;]&nbsp;&nbsp;&nbsp;#&nbsp;request&nbsp;time</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#92;s+</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;(.+?)&quot;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;request</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#92;s+</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([&#92;d-]+)&nbsp;&nbsp;&nbsp;#&nbsp;status</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#92;s+</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([&#92;d-]+)&nbsp;&nbsp;&nbsp;#&nbsp;bytes&nbsp;sent</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/x;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;next&nbsp;unless&nbsp;$hostaddr;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($method,&nbsp;$uri,&nbsp;$http_version)&nbsp;=&nbsp;split&nbsp;/&#92;s+/,&nbsp;$request;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$hostname;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($hostaddr&nbsp;=&#126;&nbsp;/$RE{net}{IPv4}/o)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$hostname&nbsp;=&nbsp;nslookup(host&nbsp;=&gt;&nbsp;$hostaddr,&nbsp;type&nbsp;=&gt;&nbsp;'PTR');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$hostname&nbsp;=&nbsp;$hostaddr;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$dbh-&gt;do($INSERT,&nbsp;undef,&nbsp;$hostaddr,&nbsp;$hostname,&nbsp;$logname,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$req_time,&nbsp;$request,&nbsp;$uri,&nbsp;$method,&nbsp;$http_version,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$status,&nbsp;$bytes_sent)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;warn&nbsp;&quot;Error&nbsp;inserting&nbsp;line&nbsp;$.:&nbsp;&quot;&nbsp;.&nbsp;$dbh-&gt;errstr;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$count++;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;'.'&nbsp;if&nbsp;(($count&nbsp;%&nbsp;10)&nbsp;=&nbsp;&nbsp;=&nbsp;0);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;&quot;&#92;n&quot;&nbsp;if&nbsp;(($count&nbsp;%&nbsp;700)&nbsp;=&nbsp;&nbsp;=&nbsp;0);</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$dbh-&gt;commit;&nbsp;&nbsp;&nbsp;#&nbsp;commit&nbsp;any&nbsp;outstanding&nbsp;lines</P>
+<P CLASS="CodeExample">
+$dbh-&gt;disconnect;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;logparse.pl&nbsp;dbi:SQLite:dbname=access_log&nbsp;&lt;&nbsp;/home/www/logs/access_log</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;DBI('dbi:SQLite:dbname=access_log')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;DBI&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;DBI.connect('dbi:SQLite:dbname=access_log')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;log_entries&nbsp;=&nbsp;DBI.query('SELECT&nbsp;*&nbsp;FROM&nbsp;access_log')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;9-4 Counting&nbsp;visitors&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;#&nbsp;Get&nbsp;a&nbsp;count&nbsp;of&nbsp;visits&nbsp;per&nbsp;address</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;visitors&nbsp;=&nbsp;{&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;FOREACH&nbsp;log_entry&nbsp;IN&nbsp;log_entries;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;visitors.${log_entry.hostaddr}&nbsp;=&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visitors.${log_entry.hostaddr}&nbsp;+&nbsp;1;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;END</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;MACRO&nbsp;times(count)&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&quot;1&nbsp;time&quot;&nbsp;or&nbsp;&quot;2&nbsp;times&quot;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;count&nbsp;=&nbsp;&nbsp;=&nbsp;1;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$count&nbsp;time&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;ELSE;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$count&nbsp;times&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;visitor&nbsp;IN&nbsp;visitors.keys&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;visitor&nbsp;%]&nbsp;visited&nbsp;[%&nbsp;times(visitors.$visitor)&nbsp;-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+134.174.141.2&nbsp;visited&nbsp;4&nbsp;times</P>
+<P CLASS="Code">
+128.103.1.1&nbsp;visited&nbsp;1&nbsp;time</P>
+<P CLASS="Code">
+206.33.106.134&nbsp;visited&nbsp;2&nbsp;times</P>
+<P CLASS="Code">
+4.2.2.1&nbsp;visited&nbsp;3&nbsp;times</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;9-5 Generating&nbsp;graphs&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;USE&nbsp;graph&nbsp;=&nbsp;GD.Graph.pie(400,&nbsp;300);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;FILTER&nbsp;null;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;=&nbsp;[</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Array&nbsp;of&nbsp;addresses</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Array&nbsp;of&nbsp;visits</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;];</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;visitor&nbsp;IN&nbsp;visitors.keys;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.0.push(visitor);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.1.push(visitors.$visitor);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;dclrs&nbsp;=&nbsp;[&nbsp;'green'&nbsp;'blue'&nbsp;'red'&nbsp;'cyan'&nbsp;];</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;graph.set(</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;&nbsp;&nbsp;=&nbsp;'Visits&nbsp;per&nbsp;address'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transparent&nbsp;=&nbsp;0,</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cycle_clrs&nbsp;&nbsp;=&nbsp;1</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dclrs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;dclrs</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;plot&nbsp;data&nbsp;as&nbsp;a&nbsp;PNG,&nbsp;and&nbsp;send&nbsp;it&nbsp;to&nbsp;stdout</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;(recall&nbsp;the&nbsp;argument&nbsp;to&nbsp;the&nbsp;stdout&nbsp;filter</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;indicates&nbsp;that&nbsp;bindmode&nbsp;should&nbsp;be&nbsp;set).</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;graph.plot(data).png&nbsp;|&nbsp;stdout(1);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;9-6 Using&nbsp;RDBMS-specific&nbsp;functions&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;query&nbsp;=&nbsp;DBI.query('SELECT&nbsp;sum(bytes_sent)&nbsp;as&nbsp;bytes_sent,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hostaddr&nbsp;FROM&nbsp;access_log&nbsp;group&nbsp;by</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hostaddr');&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;hb&nbsp;=&nbsp;query&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;We&nbsp;sent&nbsp;[%&nbsp;hb.bytes_sent&nbsp;%]&nbsp;bytes&nbsp;to&nbsp;[%&nbsp;hb.hostaddr&nbsp;%].</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;9-7 Counting&nbsp;results&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;log_entries&nbsp;=&nbsp;DBI.query('SELECT&nbsp;hostaddr</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;access_log</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GROUP&nbsp;BY&nbsp;hostaddr');</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+There&nbsp;are&nbsp;[%&nbsp;log_entries.size&nbsp;%]&nbsp;unique&nbsp;addresses&nbsp;in&nbsp;the&nbsp;log.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;9-8 Producing&nbsp;a&nbsp;report&nbsp;as&nbsp;a&nbsp;CSV&nbsp;file&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;log_entries&nbsp;=&nbsp;DBI.query('SELECT&nbsp;*&nbsp;FROM&nbsp;access_log');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;FOREACH&nbsp;entry&nbsp;IN&nbsp;log_entries;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;field&nbsp;IN&nbsp;entry.keys;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;field&nbsp;=&nbsp;entry.$field;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;field.match('[,&nbsp;]')&nbsp;?&nbsp;&quot;&#92;&quot;$field&#92;&quot;&quot;&nbsp;:&nbsp;field;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;,&quot;&nbsp;UNLESS&nbsp;loop.last;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;END</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;9-9 Producing&nbsp;a&nbsp;report&nbsp;as&nbsp;XML&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;?xml&nbsp;version=&quot;1.0&quot;&nbsp;standalone=&quot;yes&quot;?&gt;</P>
+<P CLASS="CodeExample">
+&lt;access-log&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;log_entries&nbsp;=&nbsp;DBI.query('SELECT&nbsp;*&nbsp;FROM&nbsp;access_log')&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;FOREACH&nbsp;entry&nbsp;IN&nbsp;log_entries&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;log-entry&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;FOREACH&nbsp;field&nbsp;IN&nbsp;entry.keys&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;[%&nbsp;field&nbsp;%]&gt;[%&nbsp;entry.$field&nbsp;|&nbsp;html&nbsp;%]&lt;/[%&nbsp;field&nbsp;%]&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;%]&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/log-entry&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;/access-log&gt;</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+CREATE&nbsp;TABLE&nbsp;listing&nbsp;(</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;listing&nbsp;INTEGER&nbsp;PRIMARY&nbsp;KEY,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;location&nbsp;INTEGER,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;realtor&nbsp;INTEGER,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;price&nbsp;INTEGER,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;rooms&nbsp;INTEGER,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;bedrooms&nbsp;INTEGER,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;baths&nbsp;INTEGER,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;body&nbsp;VARCHAR</P>
+<P CLASS="Code">
+);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+CREATE&nbsp;TABLE&nbsp;realtor&nbsp;(</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;realtor&nbsp;INTEGER&nbsp;PRIMARY&nbsp;KEY,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;phone&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;VARCHAR</P>
+<P CLASS="Code">
+);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+CREATE&nbsp;TABLE&nbsp;location&nbsp;(</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;location&nbsp;INTEGER&nbsp;PRIMARY&nbsp;KEY,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;city&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;state&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;postalcode&nbsp;VARCHAR</P>
+<P CLASS="Code">
+);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;9-10 Class::DBI&nbsp;</P>
+<P CLASS="CodeExample">
+package&nbsp;TTBook::RealEstate::DBI;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;vars&nbsp;qw($VERSION);</P>
+<P CLASS="CodeExample">
+use&nbsp;base&nbsp;qw(Class::DBI);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+TTBook::RealEstate::DBI-&gt;set_db('Main',&nbsp;'dbi:SQLite:dbname=realestate.db');</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+package&nbsp;TTBook::RealEstate::Listing;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+use&nbsp;strict;</P>
+<P CLASS="Code">
+use&nbsp;base&nbsp;qw(TTBook::RealEstate::DBI);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;DB&nbsp;Table</P>
+<P CLASS="Code">
+TTBook::RealEstate::Listing-&gt;table('listing');</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;Column&nbsp;groups</P>
+<P CLASS="Code">
+TTBook::RealEstate::Listing-&gt;columns(All&nbsp;=&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;qw(listing&nbsp;rooms&nbsp;body&nbsp;price&nbsp;bedrooms&nbsp;baths&nbsp;location&nbsp;realtor));</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;Relationships&nbsp;with&nbsp;other&nbsp;objects</P>
+<P CLASS="Code">
+TTBook::RealEstate::Listing-&gt;has_a(location&nbsp;=&gt;&nbsp;'TTBook::RealEstate::Location');</P>
+<P CLASS="Code">
+TTBook::RealEstate::Listing-&gt;has_a(realtor&nbsp;=&gt;&nbsp;'TTBook::RealEstate::Realtor');</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+package&nbsp;TTBook::RealEstate::Realtor;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+use&nbsp;strict;</P>
+<P CLASS="Code">
+use&nbsp;base&nbsp;qw(TTBook::RealEstate::DBI);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;DB&nbsp;Table</P>
+<P CLASS="Code">
+TTBook::RealEstate::Realtor-&gt;table('realtor');</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;Columns</P>
+<P CLASS="Code">
+TTBook::RealEstate::Realtor-&gt;columns(All&nbsp;=&gt;&nbsp;qw(realtor&nbsp;name&nbsp;phone));</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+package&nbsp;TTBook::RealEstate::Location;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+use&nbsp;strict;</P>
+<P CLASS="Code">
+use&nbsp;base&nbsp;qw(TTBook::RealEstate::DBI);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;DB&nbsp;Table</P>
+<P CLASS="Code">
+TTBook::RealEstate::Location-&gt;table('location');</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;Columns</P>
+<P CLASS="Code">
+TTBook::RealEstate::Location-&gt;columns(All&nbsp;=&gt;&nbsp;qw(location&nbsp;city&nbsp;state&nbsp;postalcode));</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;9-11 listing.cgi&nbsp;</P>
+<P CLASS="CodeExample">
+#!/usr/bin/perl</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;warnings;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;CGI;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template;</P>
+<P CLASS="CodeExample">
+use&nbsp;TTBook::RealEstate::Listing;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$q&nbsp;=&nbsp;CGI-&gt;new(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+my&nbsp;$listing_id&nbsp;=&nbsp;$q-&gt;param('listing_id');</P>
+<P CLASS="CodeExample">
+my&nbsp;$template&nbsp;=&nbsp;$listing_id&nbsp;?&nbsp;'listing.tt2'&nbsp;:&nbsp;'form.tt2';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new(&nbsp;&nbsp;)&nbsp;||&nbsp;die&nbsp;Template-&gt;error;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$listing&nbsp;=&nbsp;TTBook::RealEstate::Listing-&gt;retrieve($listing_id);</P>
+<P CLASS="CodeExample">
+$template&nbsp;=&nbsp;'notfound.tt2'&nbsp;unless&nbsp;$listing;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$vars&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;'listing'&nbsp;=&gt;&nbsp;$listing,</P>
+<P CLASS="CodeExample">
+};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+print&nbsp;$q-&gt;header('text/html');</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($template,&nbsp;$vars)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;9-12 listing.tt2&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;wrap;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;realtor&nbsp;=&nbsp;listing.realtor;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;location&nbsp;=&nbsp;listing.location;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&lt;h1&gt;Look&nbsp;at&nbsp;this&nbsp;beautiful&nbsp;home&nbsp;in&nbsp;[%&nbsp;location.city&nbsp;%]!&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;summary.tt2</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;listing.price</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;rooms&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;listing.rooms</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;bedrooms&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;listing.bedrooms</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;baths&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;listing.baths</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;listing.body&nbsp;|&nbsp;wrap&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;For&nbsp;more&nbsp;information,&nbsp;contact&nbsp;[%&nbsp;realtor.name&nbsp;%]&nbsp;at</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;realtor.phone&nbsp;%].</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;9-13 summary.tt2&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;Number.Format&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;table&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Price&gt;&lt;/th&gt;&lt;td&gt;[%&nbsp;price&nbsp;|&nbsp;format_price(0)&nbsp;%]&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Rooms&lt;/th&gt;&lt;td&gt;[%&nbsp;rooms&nbsp;%]&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Bedrooms&lt;/th&gt;&lt;td&gt;[%&nbsp;bedrooms&nbsp;%]&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Baths&lt;/th&gt;&lt;td&gt;[%&nbsp;baths&nbsp;%]&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+package&nbsp;TTBook::RealEstate::DBI;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+use&nbsp;strict;</P>
+<P CLASS="Code">
+use&nbsp;vars&nbsp;qw($VERSION);</P>
+<P CLASS="Code">
+use&nbsp;base&nbsp;qw(Class::DBI::SQLite);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+TTBook::RealEstate::DBI-&gt;set_db('Main',&nbsp;'dbi:SQLite:dbname=realestate.db');</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+package&nbsp;TTBook::RealEstate::Listing;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+use&nbsp;strict;</P>
+<P CLASS="Code">
+use&nbsp;base&nbsp;qw(TTBook::RealEstate::DBI);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+TTBook::RealEstate::Listing-&gt;set_up_table('listing');</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;Relationships&nbsp;with&nbsp;other&nbsp;objects</P>
+<P CLASS="Code">
+TTBook::RealEstate::Listing-&gt;has_a(location&nbsp;=&gt;&nbsp;'TTBook::RealEstate::Location');</P>
+<P CLASS="Code">
+TTBook::RealEstate::Listing-&gt;has_a(realtor&nbsp;=&gt;&nbsp;'TTBook::RealEstate::Realtor');</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+CREATE&nbsp;TABLE&nbsp;postal_code&nbsp;(</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;code&nbsp;VARCHAR&nbsp;PRIMARY&nbsp;KEY,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;city&nbsp;VARCHAR</P>
+<P CLASS="Code">
+);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;%args&nbsp;=&nbsp;(&nbsp;dbh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;$dbh,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table_name&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'postal_codes',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key_column&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'city',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value_column&nbsp;=&gt;&nbsp;'code'&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+my&nbsp;$t2h&nbsp;=&nbsp;DBIx::Table2Hash-&gt;new(%args)</P>
+<P CLASS="Code">
+my&nbsp;$data&nbsp;=&nbsp;$t2h-&gt;select;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;args&nbsp;=&nbsp;{&nbsp;dbh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;dbh</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table_name&nbsp;&nbsp;&nbsp;=&nbsp;'postal_code'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key_column&nbsp;&nbsp;&nbsp;=&nbsp;'city'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value_column&nbsp;=&nbsp;'code'&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;USE&nbsp;t2h&nbsp;=&nbsp;Table2Hash(args);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;codes&nbsp;=&nbsp;t2h.select&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+The&nbsp;postal&nbsp;code&nbsp;for&nbsp;Plymouth&nbsp;is&nbsp;[%&nbsp;codes.Plymouth&nbsp;%].</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;ey&nbsp;=&nbsp;&quot;East&nbsp;Yarmouth&quot;&nbsp;-%]</P>
+<P CLASS="Code">
+The&nbsp;postal&nbsp;code&nbsp;for&nbsp;East&nbsp;Yarmouth&nbsp;is&nbsp;[%&nbsp;codes.$ey&nbsp;%].</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;codes&nbsp;=&nbsp;Table2Hash.select_hashref&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;city&nbsp;=&nbsp;codes.keys&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;city&nbsp;%]&nbsp;has&nbsp;postal&nbsp;code&nbsp;[%&nbsp;codes.$city.code&nbsp;%].</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;DBI('dbi:SQLite:dbname=postal_codes.db');</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;USE&nbsp;Table2Hash(dbh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;DBI.dbh</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table_name&nbsp;&nbsp;&nbsp;=&nbsp;'postal_code'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key_column&nbsp;&nbsp;&nbsp;=&nbsp;'city'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value_column&nbsp;=&nbsp;'code');</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;codes&nbsp;=&nbsp;Table2Hash.select;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;9-14 TTBook::Template::Plugin::Table2Hash&nbsp;</P>
+<P CLASS="CodeExample">
+package&nbsp;TTBook::Template::Plugin::Table2Hash;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;vars&nbsp;qw($VERSION);</P>
+<P CLASS="CodeExample">
+use&nbsp;base&nbsp;qw(Template::Plugin);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;DBIx::Table2Hash;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$VERSION&nbsp;=&nbsp;1.00;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;new&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($class,&nbsp;$context,&nbsp;$args)&nbsp;=&nbsp;@_;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$dbix&nbsp;=&nbsp;DBIx::Table2Hash-&gt;new(%$args);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;bless&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_CONTEXT&nbsp;=&gt;&nbsp;$context,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_T2H&nbsp;=&gt;&nbsp;$dbix,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_ARGS&nbsp;=&gt;&nbsp;$args,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;=&gt;&nbsp;$class;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;select&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$args)&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;{_T2H}-&gt;select(%$args);</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;select_hashref&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$args)&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;{_T2H}-&gt;select_hashref(%$args);</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;select_tree&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$args)&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;{_T2H}-&gt;select_tree(%$args);</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+1;</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+CREATE&nbsp;TABLE&nbsp;access_log&nbsp;(</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;INTEGER&nbsp;PRIMARY&nbsp;KEY,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;hostaddr&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;hostname&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;logname&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;req_time&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;request&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;uri&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;method&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;http_version&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;status&nbsp;VARCHAR,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;bytes_sent&nbsp;VARCHAR</P>
+<P CLASS="Code">
+);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;9-15 Searching&nbsp;with&nbsp;the&nbsp;AccessLogSearch&nbsp;plugin&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&nbsp;#&nbsp;Our&nbsp;search&nbsp;plugin&nbsp;is&nbsp;called&nbsp;AccessLogSearch</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;USE&nbsp;als&nbsp;=&nbsp;AccessLogSearch('dbi:SQLite:dbname=access_log');</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;search.terms&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;uri&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'*/index.htm?'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;status&nbsp;=&nbsp;404,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;fields&nbsp;=&nbsp;[&nbsp;'hostname'&nbsp;'uri'&nbsp;'status'&nbsp;];</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;results&nbsp;=&nbsp;als.query(fields,&nbsp;search.terms);</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+Found&nbsp;[%&nbsp;results.size&nbsp;%]&nbsp;results&nbsp;for&nbsp;your&nbsp;search&nbsp;terms!</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;result&nbsp;IN&nbsp;results&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;...</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+package&nbsp;TTBook::Template::Plugin::AccessLogSearch;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+use&nbsp;strict;</P>
+<P CLASS="Code">
+use&nbsp;vars&nbsp;qw($VERSION&nbsp;$DEBUG);</P>
+<P CLASS="Code">
+use&nbsp;base&nbsp;qw(Template::Plugin::DBI);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$VERSION&nbsp;=&nbsp;1.00;</P>
+<P CLASS="Code">
+$DEBUG&nbsp;=&nbsp;0&nbsp;unless&nbsp;defined&nbsp;$DEBUG;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+use&nbsp;SQL::Abstract;</P>
+<P CLASS="Code">
+use&nbsp;Template::Plugin::DBI;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;new&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$class&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;$class-&gt;SUPER::new(@_);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$sql&nbsp;=&nbsp;SQL::Abstract-&gt;new;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$self-&gt;{&nbsp;_SQL&nbsp;}&nbsp;=&nbsp;$sql;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self;</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;#&nbsp;How&nbsp;many&nbsp;hits&nbsp;from&nbsp;Harvard's&nbsp;medical&nbsp;library&nbsp;this&nbsp;month?</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;results&nbsp;=&nbsp;als.query('hostname'&nbsp;'status'&nbsp;'uri'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hostaddr&nbsp;=&nbsp;'134.174.151.*'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;req_time&nbsp;=&nbsp;'%Aug%2003%);</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;query&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;@fields)&nbsp;=&nbsp;@_;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$terms&nbsp;=&nbsp;ref($fields[-1])&nbsp;eq&nbsp;'HASH'&nbsp;?&nbsp;pop(@fields)&nbsp;:&nbsp;{&nbsp;&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($sql,&nbsp;@bind,&nbsp;$sth,&nbsp;$result,&nbsp;@results);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+@fields&nbsp;=&nbsp;('*')&nbsp;unless&nbsp;@fields;</P>
+<P CLASS="Code">
+@fields&nbsp;=&nbsp;@{$fields[0]}&nbsp;if&nbsp;ref($fields[0])&nbsp;eq&nbsp;'ARRAY';</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$self-&gt;expand($terms);</P>
+<P CLASS="Code">
+($sql,&nbsp;@bind)&nbsp;=&nbsp;$self-&gt;{&nbsp;_SQL&nbsp;}-&gt;select('access_log',&nbsp;&#92;@fields,&nbsp;$terms);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+if&nbsp;($DEBUG)&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;@local_bind&nbsp;=&nbsp;@bind;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;(my&nbsp;$local_sql&nbsp;=&nbsp;$sql)&nbsp;=&#126;&nbsp;s/&#92;?/'&quot;'&nbsp;.&nbsp;shift(@local_bind)&nbsp;.&nbsp;'&quot;'/eg;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;debug(&quot;Generated&nbsp;SQL:&nbsp;'$local_sql'&quot;)</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+return&nbsp;$self-&gt;SUPER::query($sql,&nbsp;@bind);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;expand&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$terms)&nbsp;=&nbsp;@_;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;my&nbsp;$term&nbsp;(keys&nbsp;%$terms)&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$like&nbsp;=&nbsp;0;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;($terms-&gt;{$term})&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s/*/%/g&nbsp;&amp;&amp;&nbsp;$like++;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s/&#92;?/_/g&nbsp;&amp;&amp;&nbsp;$like++;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$terms-&gt;{$term}&nbsp;=&nbsp;$like&nbsp;?&nbsp;{&nbsp;'LIKE'&nbsp;=&gt;&nbsp;$terms-&gt;{$term}&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;{&nbsp;'='&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;$terms-&gt;{$term}&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$terms;</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;9-16 TTBook::Template::Plugin::AccessLogSearch&nbsp;</P>
+<P CLASS="CodeExample">
+package&nbsp;TTBook::Template::Plugin::AccessLogSearch;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;vars&nbsp;qw($VERSION&nbsp;$DEBUG);</P>
+<P CLASS="CodeExample">
+use&nbsp;base&nbsp;qw(Template::Plugin::DBI);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$VERSION&nbsp;=&nbsp;1.00;</P>
+<P CLASS="CodeExample">
+$DEBUG&nbsp;=&nbsp;0&nbsp;unless&nbsp;defined&nbsp;$DEBUG;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;SQL::Abstract;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template::Plugin::DBI;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;----------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;new($context,&nbsp;@args)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Pass&nbsp;@args&nbsp;directly&nbsp;to&nbsp;the&nbsp;superclass.</P>
+<P CLASS="CodeExample">
+#&nbsp;----------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+sub&nbsp;new&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$class&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;$class-&gt;SUPER::new(@_);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$sql&nbsp;=&nbsp;SQL::Abstract-&gt;new;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;{&nbsp;_SQL&nbsp;}&nbsp;=&nbsp;$sql;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;----------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;query(@fields,&nbsp;&#92;%terms)</P>
+<P CLASS="CodeExample">
+#&nbsp;----------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+sub&nbsp;query&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;@fields)&nbsp;=&nbsp;@_;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$terms&nbsp;=&nbsp;ref($fields[-1])&nbsp;eq&nbsp;'HASH'&nbsp;?&nbsp;pop(@fields)&nbsp;:&nbsp;{&nbsp;&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($sql,&nbsp;@bind,&nbsp;$sth,&nbsp;$result,&nbsp;@results);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;@fields&nbsp;=&nbsp;('*')&nbsp;unless&nbsp;@fields;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;@fields&nbsp;=&nbsp;@{$fields[0]}&nbsp;if&nbsp;ref($fields[0])&nbsp;eq&nbsp;'ARRAY';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;expand($terms);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;($sql,&nbsp;@bind)&nbsp;=&nbsp;$self-&gt;{&nbsp;_SQL&nbsp;}-&gt;select('access_log',&nbsp;&#92;@fields,&nbsp;$terms);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($DEBUG)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;@local_bind&nbsp;=&nbsp;@bind;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(my&nbsp;$local_sql&nbsp;=&nbsp;$sql)&nbsp;=&#126;&nbsp;s/&#92;?/'&quot;'&nbsp;.&nbsp;shift(@local_bind)&nbsp;.&nbsp;'&quot;'/eg;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;debug(&quot;Generated&nbsp;SQL:&nbsp;'$local_sql'&quot;)&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;SUPER::query($sql,&nbsp;@bind);</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;----------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;expand(&#92;%terms)</P>
+<P CLASS="CodeExample">
+#</P>
+<P CLASS="CodeExample">
+#&nbsp;Expand&nbsp;*&nbsp;and&nbsp;?&nbsp;wildcards&nbsp;into&nbsp;SQL&nbsp;wildcards&nbsp;%&nbsp;and&nbsp;_.&nbsp;&nbsp;Expects&nbsp;a</P>
+<P CLASS="CodeExample">
+#&nbsp;reference&nbsp;to&nbsp;a&nbsp;hash,&nbsp;and&nbsp;operates&nbsp;on&nbsp;each&nbsp;value.&nbsp;&nbsp;If&nbsp;a&nbsp;value&nbsp;is</P>
+<P CLASS="CodeExample">
+#&nbsp;expanded,&nbsp;use&nbsp;LIKE&nbsp;instead&nbsp;of&nbsp;=.</P>
+<P CLASS="CodeExample">
+#&nbsp;----------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+sub&nbsp;expand&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$terms)&nbsp;=&nbsp;@_;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;my&nbsp;$term&nbsp;(keys&nbsp;%$terms)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$like&nbsp;=&nbsp;0;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;($terms-&gt;{$term})&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s/*/%/g&nbsp;&amp;&amp;&nbsp;$like++;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s/&#92;?/_/g&nbsp;&amp;&amp;&nbsp;$like++;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$terms-&gt;{$term}&nbsp;=&nbsp;$like&nbsp;?&nbsp;{&nbsp;'LIKE'&nbsp;=&gt;&nbsp;$terms-&gt;{$term}&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;{&nbsp;'='&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;$terms-&gt;{$term}&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$terms;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+1;</P>
+</BODY>
+</HTML>
+</body></html>

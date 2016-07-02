@@ -1,0 +1,971 @@
+<html><head><title>xml code examples</title><style>
+
+P.ExampleTitle {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 6.000000pt;
+	margin-bottom: 6.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 0.000000pt;
+	font-size: 9.000000pt;
+	font-weight: medium;
+	font-style: Italic;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Birka";
+}
+
+P.CodeExample {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-weight: bold;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "TheSansMonoCondensed";
+}
+
+P.Code {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Courier";
+}
+
+
+
+
+
+</style><body><P CLASS="ExampleTitle">
+Example&nbsp;10-1 Stock&nbsp;control&nbsp;data&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;inventory&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;product&nbsp;id=&quot;0050&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;Basic&nbsp;Widget&lt;/name&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;price&gt;49.99&lt;/price&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;stock&gt;2500&lt;/stock&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/product&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;product&nbsp;id=&quot;0051&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;Cheap&nbsp;Widget&lt;/name&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;price&gt;29.99&lt;/price&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;stock&gt;5000&lt;/stock&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/product&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;product&nbsp;id=&quot;0101&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;Super&nbsp;Widget&lt;/name&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;price&gt;99.99&lt;/price&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;stock&gt;1000&lt;/stock&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/product&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;product&nbsp;id=&quot;0102&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;Ultra&nbsp;Widget&lt;/name&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;price&gt;149.99&lt;/price&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;stock&gt;500&lt;/stock&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/product&gt;</P>
+<P CLASS="CodeExample">
+&lt;/inventory&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;10-2 Template&nbsp;to&nbsp;create&nbsp;a&nbsp;stock&nbsp;report&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;inventory&nbsp;=&nbsp;XML.Simple('products.xml')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;product&nbsp;=&nbsp;inventory.product.keys.sort;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;current&nbsp;=&nbsp;inventory.product.$product&nbsp;-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;current.id&nbsp;%]&nbsp;[%&nbsp;product&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%-&nbsp;current.stock&nbsp;|&nbsp;format('%5d')&nbsp;%]&nbsp;units&nbsp;@&nbsp;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;current.price&nbsp;|&nbsp;format('%6.2f')&nbsp;-%]&nbsp;=&nbsp;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;current.stock&nbsp;*&nbsp;current.price&nbsp;|&nbsp;format('%10.2f')&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%-&nbsp;total&nbsp;=&nbsp;total&nbsp;+&nbsp;current.stock&nbsp;*&nbsp;current.price&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total&nbsp;value:&nbsp;[%&nbsp;total&nbsp;|&nbsp;format('%10.2f')%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;10-3 Generated&nbsp;stock&nbsp;report&nbsp;</P>
+<P CLASS="CodeExample">
+0050&nbsp;Basic&nbsp;Widget&nbsp;2500&nbsp;units&nbsp;@&nbsp;&nbsp;49.99&nbsp;=&nbsp;&nbsp;124975.00</P>
+<P CLASS="CodeExample">
+0051&nbsp;Cheap&nbsp;Widget&nbsp;5000&nbsp;units&nbsp;@&nbsp;&nbsp;29.99&nbsp;=&nbsp;&nbsp;149950.00</P>
+<P CLASS="CodeExample">
+0101&nbsp;Super&nbsp;Widget&nbsp;1000&nbsp;units&nbsp;@&nbsp;&nbsp;99.99&nbsp;=&nbsp;&nbsp;&nbsp;99990.00</P>
+<P CLASS="CodeExample">
+0102&nbsp;Ultra&nbsp;Widget&nbsp;&nbsp;500&nbsp;units&nbsp;@&nbsp;149.99&nbsp;=&nbsp;&nbsp;&nbsp;74995.00</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total&nbsp;value:&nbsp;&nbsp;449910.00</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;!ELEMENT&nbsp;show&nbsp;(name,&nbsp;creator,&nbsp;seasons)&gt;</P>
+<P CLASS="Code">
+&lt;!ELEMENT&nbsp;name&nbsp;(#PCDATA)&gt;</P>
+<P CLASS="Code">
+&lt;!ELEMENT&nbsp;creator&nbsp;(#PCDATA)&gt;</P>
+<P CLASS="Code">
+&lt;!ELEMENT&nbsp;seasons&nbsp;(season+)&gt;</P>
+<P CLASS="Code">
+&lt;!ELEMENT&nbsp;season&nbsp;(cast,&nbsp;episodes)&gt;</P>
+<P CLASS="Code">
+&lt;!ATTLIST&nbsp;season&nbsp;number&nbsp;CDATA&gt;</P>
+<P CLASS="Code">
+&lt;!ATTLIST&nbsp;season&nbsp;year&nbsp;CDATA&gt;</P>
+<P CLASS="Code">
+&lt;!ELEMENT&nbsp;cast&nbsp;(regular+)&gt;</P>
+<P CLASS="Code">
+&lt;!ELEMENT&nbsp;regular&nbsp;(character,&nbsp;actor)&gt;</P>
+<P CLASS="Code">
+&lt;!ELEMENT&nbsp;character&nbsp;(#PCDATA)&gt;</P>
+<P CLASS="Code">
+&lt;!ELEMENT&nbsp;actor&nbsp;(#PCDATA)&gt;</P>
+<P CLASS="Code">
+&lt;!ELEMENT&nbsp;episodes&nbsp;(episode+)&gt;</P>
+<P CLASS="Code">
+&lt;!ELEMENT&nbsp;episode&nbsp;(name,&nbsp;summary)&gt;</P>
+<P CLASS="Code">
+&lt;!ATTLIST&nbsp;episode&nbsp;number&nbsp;CDATA&gt;</P>
+<P CLASS="Code">
+&lt;!ATTLIST&nbsp;episode&nbsp;date&nbsp;CDATA&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;10-4 Sample&nbsp;template&nbsp;to&nbsp;create&nbsp;an&nbsp;XML&nbsp;document&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;show&nbsp;=&nbsp;TVShow(name)&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;?xml&nbsp;version=&quot;1.0&quot;?&gt;</P>
+<P CLASS="CodeExample">
+&lt;show&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;name&gt;[%&nbsp;show.name&nbsp;|&nbsp;html&nbsp;%]&lt;/name&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;creator&gt;[%&nbsp;show.creator&nbsp;|&nbsp;html&nbsp;%]&lt;/creator&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;seasons&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;FOREACH&nbsp;season&nbsp;=&nbsp;show.seasons&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;season&nbsp;number=&quot;[%&nbsp;loop.count&nbsp;%]&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;year=&quot;[%&nbsp;season.year&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;cast&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;FOREACH&nbsp;part&nbsp;=&nbsp;season.regulars&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;regular&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;character&gt;[%&nbsp;part.character&nbsp;|&nbsp;html&nbsp;%]&lt;/character&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;actor&gt;[%&nbsp;part.actor&nbsp;|&nbsp;html&nbsp;%]&lt;/actor&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/regular&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/cast&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;episodes&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;FOREACH&nbsp;episode&nbsp;=&nbsp;season.episodes&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;episode&nbsp;number=&quot;[%&nbsp;loop.count&nbsp;%]&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date=&quot;[%&nbsp;episode.date&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;[%&nbsp;episode.name&nbsp;|&nbsp;html&nbsp;%]&lt;/name&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;summary&gt;[%&nbsp;episode.summary&nbsp;|&nbsp;html&nbsp;%]&lt;/summary&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/episode&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/episodes&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/season&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/seasons&gt;</P>
+<P CLASS="CodeExample">
+&lt;/show&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;tpage&nbsp;--define&nbsp;name='Buffy&nbsp;the&nbsp;Vampire&nbsp;Slayer'&nbsp;show.tt&nbsp;&gt;&nbsp;show.xml</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;10-5 XML&nbsp;document&nbsp;describing&nbsp;Buffy&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;?xml&nbsp;version=&quot;1.0&quot;?&gt;</P>
+<P CLASS="CodeExample">
+&lt;show&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;name&gt;Buffy&nbsp;the&nbsp;Vampire&nbsp;Slayer&lt;/name&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;creator&gt;Joss&nbsp;Whedon&lt;/creator&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;seasons&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;season&nbsp;number=&quot;1&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;year=&quot;1997&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;cast&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;regular&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;character&gt;Buffy&nbsp;Summers&lt;/character&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;actor&gt;Sarah&nbsp;Michelle&nbsp;Gellar&lt;/actor&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/regular&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;regular&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;character&gt;Xander&nbsp;Harris&lt;/character&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;actor&gt;Nicholas&nbsp;Brendon&lt;/actor&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/regular&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/cast&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;episodes&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;episode&nbsp;number=&quot;1&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date=&quot;00:00:00&nbsp;10-03-1997&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;Welcome&nbsp;to&nbsp;the&nbsp;Hellmouth&lt;/name&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;summary&gt;Buffy&nbsp;Summers&nbsp;moves&nbsp;to&nbsp;Sunnydale&lt;/summary&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/episode&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;episode&nbsp;number=&quot;2&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date=&quot;00:00:00&nbsp;17-03-1997&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;The&nbsp;Harvest&lt;/name&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;summary&gt;The&nbsp;Master&nbsp;plans&nbsp;to&nbsp;escape&nbsp;by&nbsp;harvesting&nbsp;people&lt;/summary&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/episode&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+...</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/episodes&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/season&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+...</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/seasons&gt;</P>
+<P CLASS="CodeExample">
+&lt;/show&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;10-6 Example&nbsp;RSS&nbsp;file&nbsp;from&nbsp;CPAN&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;rss&nbsp;version=&quot;0.91&quot;&gt;</P>
+<P CLASS="CodeExample">
+&lt;channel&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;title&gt;search.cpan.org&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;link&gt;http://search.cpan.org&lt;/link&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;description&gt;The&nbsp;CPAN&nbsp;search&nbsp;site&lt;/description&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;language&gt;en&lt;/language&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;image&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;searchDOTcpan&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;url&gt;http://search.cpan.org/s/img/cpanrdf.gif&lt;/url&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;link&gt;http://search.cpan.org&lt;/link&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;width&gt;88&lt;/width&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;height&gt;31&lt;/height&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;description&gt;All&nbsp;Modules,&nbsp;All&nbsp;the&nbsp;time&lt;/description&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/image&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;item&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;DateTime-Format-Builder-0.62&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;link&gt;http://search.cpan.org/author/SPOON/DateTime-Format-Builder-0.62&lt;/link&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/item&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;item&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;VCS-Lite-0.04&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;link&gt;http://search.cpan.org/author/IVORW/VCS-Lite-0.04&lt;/link&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/item&gt;</P>
+<P CLASS="CodeExample">
+&lt;/channel&gt;</P>
+<P CLASS="CodeExample">
+&lt;/rss&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;rss&nbsp;=&nbsp;XML.RSS(rssfile)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;rss.channel.title&nbsp;-%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%-&nbsp;FOREACH&nbsp;item&nbsp;=&nbsp;rss.items&nbsp;%]</P>
+<P CLASS="Code">
+*&nbsp;[%&nbsp;item.title&nbsp;-%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;10-7 Template&nbsp;to&nbsp;build&nbsp;HTML&nbsp;from&nbsp;an&nbsp;RSS&nbsp;file&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;rss&nbsp;=&nbsp;XML.RSS(rssfile)&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;html&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;[%&nbsp;rss.channel.title&nbsp;|&nbsp;html&nbsp;%]&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;body&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;[%&nbsp;rss.channel.title&nbsp;|&nbsp;html%]&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&lt;a&nbsp;href=&quot;[%&nbsp;rss.image.link&nbsp;|&nbsp;html&nbsp;%]&quot;&gt;&lt;img&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src=&quot;[%&nbsp;rss.image.url&nbsp;|&nbsp;html&nbsp;%]&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title=&quot;[%&nbsp;rss.image.title&nbsp;|&nbsp;html&nbsp;%]&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt=&quot;[%&nbsp;rss.image.title&nbsp;|&nbsp;html&nbsp;%]&quot;&nbsp;/&gt;&lt;/a&gt;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;FOREACH&nbsp;item&nbsp;=&nbsp;rss.items&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;[%&nbsp;item.link&nbsp;|&nbsp;html&nbsp;%]&quot;&gt;[%&nbsp;item.title&nbsp;|html&nbsp;%]&lt;/a&gt;&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/body&gt;</P>
+<P CLASS="CodeExample">
+&lt;/html&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;10-8 Creating&nbsp;HTML&nbsp;from&nbsp;XML&nbsp;using&nbsp;Template::Plugin::XML::DOM&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;date&nbsp;(format&nbsp;=&nbsp;'%d&nbsp;%b&nbsp;%Y')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;dom&nbsp;=&nbsp;XML.DOM;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;show&nbsp;=&nbsp;dom.parse('show.xml');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;show.getElementsByTagName('name').0.getFirstChild.getNodeValue&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&lt;html&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;[%&nbsp;name&nbsp;|&nbsp;html&nbsp;%]&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;body&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;FOREACH&nbsp;season&nbsp;=&nbsp;show.getElementsByTagName('season');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;=&nbsp;season.getAttribute('number')&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;#season[%&nbsp;number&nbsp;%]&quot;&gt;Season&nbsp;[%&nbsp;number&nbsp;%]&lt;/a&gt;&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;[%&nbsp;name&nbsp;|&nbsp;html&nbsp;%]&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Created&nbsp;by&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;show.getElementsByTagName('creator').getFirstChild.getNodeValue&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;html</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;FOREACH&nbsp;season&nbsp;=&nbsp;show.getElementsByTagName('season');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;=&nbsp;season.getAttribute('number')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;&lt;a&nbsp;name=&quot;season[%&nbsp;number&nbsp;%]&quot;&gt;Season&nbsp;[%&nbsp;number&nbsp;%]&lt;/a&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;([%&nbsp;season.getAttribute('year')&nbsp;%])&lt;/h2&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;Regular&nbsp;Cast&lt;/h3&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;FOREACH&nbsp;part&nbsp;=&nbsp;season.getElementsByTagName('regular',&nbsp;1)&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;b&gt;[%&nbsp;part.getElementsByTagName('actor').getFirstChild.getNodeValue&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;html&nbsp;%]&lt;/b&gt;&nbsp;as</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i&gt;[%&nbsp;part.getElementsByTagName('character').getFirstChild.getNodeValue&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;html&nbsp;%]&lt;/i&gt;&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;Episodes&lt;/h3&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;FOREACH&nbsp;episode&nbsp;=&nbsp;season.getElementsByTagName('episode',1)&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h4&gt;[%&nbsp;episode.getAttribute('number')&nbsp;%]&nbsp;-&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;episode.getElementsByTagName('name').getFirstChild.getNodeValue&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;html&nbsp;%]&lt;/h4&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i&gt;First&nbsp;broadcast&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;date.format(episode.getAttribute('date'))&nbsp;%]&lt;/i&gt;&lt;br&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;episode.getElementsByTagName('summary',1).getFirstChild.getNodeValue&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;html&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/body&gt;</P>
+<P CLASS="CodeExample">
+&lt;/html&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;dom&nbsp;=&nbsp;XML.DOM;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;show&nbsp;=&nbsp;dom.parse('show.xml')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+name&nbsp;=&nbsp;show.getElementsByTagName('name').0.getFirstChild.getNodeValue</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;10-9 HTML&nbsp;created&nbsp;from&nbsp;XML&nbsp;using&nbsp;Template::Plugin::XML::DOM&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;html&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Buffy&nbsp;the&nbsp;Vampire&nbsp;Slayer&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;body&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;#season1&quot;&gt;Season&nbsp;1&lt;/a&gt;&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Buffy&nbsp;the&nbsp;Vampire&nbsp;Slayer&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Created&nbsp;by&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Joss&nbsp;Whedon</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;&lt;a&nbsp;name=&quot;season1&quot;&gt;Season&nbsp;1&lt;/a&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1997)&lt;/h2&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;Regular&nbsp;Cast&lt;/h3&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;b&gt;Sarah&nbsp;Michelle&nbsp;Gellar&lt;/b&gt;&nbsp;as</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i&gt;Buffy&nbsp;Summers&lt;/i&gt;&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;b&gt;Nicholas&nbsp;Brendon&lt;/b&gt;&nbsp;as</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i&gt;Xander&nbsp;Harris&lt;/i&gt;&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;Episodes&lt;/h3&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h4&gt;1&nbsp;-&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome&nbsp;to&nbsp;the&nbsp;Hellmouth&lt;/h4&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i&gt;First&nbsp;broadcast&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;Mar&nbsp;1997&lt;/i&gt;&lt;br&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buffy&nbsp;Summers&nbsp;moves&nbsp;to&nbsp;Sunnydale</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h4&gt;2&nbsp;-&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;Harvest&lt;/h4&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i&gt;First&nbsp;broadcast&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;17&nbsp;Mar&nbsp;1997&lt;/i&gt;&lt;br&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;Master&nbsp;plans&nbsp;to&nbsp;escape&nbsp;by&nbsp;harvesting&nbsp;people</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/body&gt;&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;/html&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+/html/head/title/text(&nbsp;&nbsp;)</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;html&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;head&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Welcome&nbsp;to&nbsp;Foo.com&lt;/title&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;/head&gt;</P>
+<P CLASS="Code">
+&lt;/html&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;10-10 Creating&nbsp;HTML&nbsp;from&nbsp;XML&nbsp;using&nbsp;Template::Plugin::XML::XPath&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;date&nbsp;(format&nbsp;=&nbsp;'%d&nbsp;%b&nbsp;%Y')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;show&nbsp;=&nbsp;XML.XPath('show.xml')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;name&nbsp;=&nbsp;show.findvalue('/show/name/text(&nbsp;&nbsp;)')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;html&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;[%&nbsp;name&nbsp;|&nbsp;html&nbsp;%]&lt;/title&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/head&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;body&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;FOREACH&nbsp;season&nbsp;=&nbsp;show.findnodes('/show/seasons/season');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;=&nbsp;season.findvalue('@number')&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;#season[%&nbsp;number&nbsp;%]&quot;&gt;Season&nbsp;[%&nbsp;number&nbsp;%]&lt;/a&gt;&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;[%&nbsp;name&nbsp;|&nbsp;html&nbsp;%]&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Created&nbsp;by&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;show.findvalue('show/creator/text(&nbsp;&nbsp;)')&nbsp;|&nbsp;html&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;FOREACH&nbsp;season&nbsp;=&nbsp;show.findnodes('/show/seasons/season');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;=&nbsp;season.findvalue('@number')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;&lt;a&nbsp;name=&quot;season[%&nbsp;number&nbsp;%]&quot;&gt;Season&nbsp;[%&nbsp;number&nbsp;%]&lt;/a&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([%&nbsp;season.findvalue('@year')&nbsp;%])&lt;/h2&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;Regular&nbsp;Cast&lt;/h3&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;FOREACH&nbsp;part&nbsp;=&nbsp;season.findnodes('cast/regular')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;b&gt;[%&nbsp;part.findvalue('actor/text(&nbsp;&nbsp;)')&nbsp;|&nbsp;html&nbsp;%]&lt;/b&gt;&nbsp;as</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i&gt;[%&nbsp;part.findvalue('character/text(&nbsp;&nbsp;)')&nbsp;|&nbsp;html&nbsp;%]&lt;/i&gt;&lt;/li&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;Episodes&lt;/h3&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;FOREACH&nbsp;episode&nbsp;=&nbsp;season.findnodes('episodes/episode')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h4&gt;[%&nbsp;episode.findvalue('@number')&nbsp;%]&nbsp;-&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;episode.findvalue('name/text(&nbsp;&nbsp;)')&nbsp;|&nbsp;html&nbsp;%]&lt;/h4&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i&gt;First&nbsp;broadcast&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;date.format(episode.findvalue('@date'))&nbsp;%]&lt;/i&gt;&lt;br&nbsp;/&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;episode.findvalue('summary/text(&nbsp;&nbsp;)')&nbsp;|&nbsp;html&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/body&gt;</P>
+<P CLASS="CodeExample">
+&lt;/html&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;show&nbsp;=&nbsp;XML.XPath('show.xml')&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;name&nbsp;=&nbsp;show.findvalue('/show/name/text(&nbsp;&nbsp;)')&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;season&nbsp;=&nbsp;show.findnodes('/show/seasons/season')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;episode&nbsp;=&nbsp;season.findnodes('episodes/episode')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;10-11 A&nbsp;narrative-centric&nbsp;XML&nbsp;document&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;faq&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;qna&nbsp;id=&quot;q1&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;question&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;What&nbsp;is&nbsp;the&nbsp;ultimate&nbsp;answer&nbsp;to&nbsp;life,&nbsp;the&nbsp;universe&nbsp;and&nbsp;everything?</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/question&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;answer&nbsp;author=&quot;Deep&nbsp;Thought&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;para&gt;42&lt;/para&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;note&gt;The&nbsp;problem&nbsp;may&nbsp;well&nbsp;be&nbsp;that&nbsp;you&nbsp;don't&nbsp;&lt;i&gt;actually&lt;/i&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;know&nbsp;what&nbsp;the&nbsp;question&nbsp;is!&lt;/note&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/answer&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/qna&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;qna&nbsp;id=&quot;q2&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;question&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Where&nbsp;shall&nbsp;we&nbsp;have&nbsp;lunch?</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/question&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;answer&nbsp;author=&quot;Milliways&nbsp;Marketing&nbsp;Dept.&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;para&gt;Have&nbsp;you&nbsp;considered&nbsp;&lt;froody&gt;Milliways&lt;/froody&gt;,&nbsp;the&nbsp;restaurant</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;universe.&lt;/para&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;quote&gt;If&nbsp;you've&nbsp;done&nbsp;six&nbsp;impossible&nbsp;things&nbsp;today&nbsp;then&nbsp;why</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not&nbsp;top&nbsp;it&nbsp;off&nbsp;with&nbsp;dinner&nbsp;at&nbsp;Milliways?&lt;/quote&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/answer&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/qna&gt;</P>
+<P CLASS="CodeExample">
+&lt;/faq&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;10-12 faq_view1&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;VIEW&nbsp;faq_html&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;notfound='passthru';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;BLOCK&nbsp;text;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;item;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;END&nbsp;;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;BLOCK&nbsp;passthru;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;item.starttag;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;item.content(view);&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;item.endtag;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+END&nbsp;</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;doc=XML.XPath(file&nbsp;=&gt;&nbsp;'faq.xml');</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;node&nbsp;=&nbsp;doc.findnodes('/faq');</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;faq_html.print(node)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;10-13 A&nbsp;more&nbsp;complex&nbsp;view&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;VIEW&nbsp;faq_html&nbsp;notfound='xmlstring'&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;faq&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;h1&gt;Frequently&nbsp;Asked&nbsp;Questions&lt;/h1&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;item.content(view)&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%-&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;question&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;h2&gt;[%&nbsp;item.content(view)&nbsp;%]&lt;/h2&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;answer&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;item.content(view)&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;p&gt;Answer&nbsp;by&nbsp;[%&nbsp;item.getAttribute('author')&nbsp;%]&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;para&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;p&gt;[%&nbsp;item.content(view)&nbsp;%]&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;note&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;p&gt;Note:&nbsp;[%&nbsp;item.content(view)&nbsp;%]&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;quote&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;blockquote&gt;&lt;i&gt;[%&nbsp;item.content(view)&nbsp;%]&lt;/i&gt;&lt;/blockquote&gt;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;qna;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;item.content(view);&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;BLOCK&nbsp;text;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;item;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;BLOCK&nbsp;xmlstring;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;item.starttag;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;item.content(view);&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;item.endtag;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;END</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;doc&nbsp;=&nbsp;XML.XPath(file&nbsp;=&gt;&nbsp;'faq.xml');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;node&nbsp;=&nbsp;doc.findnodes('/faq');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;faq_html.print(node)&nbsp;</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;BLOCK&nbsp;froody&nbsp;-%]</P>
+<P CLASS="Code">
+&lt;font&nbsp;size=&quot;20&quot;&nbsp;color=&quot;red&quot;&gt;&lt;i&gt;[%&nbsp;item.content(view)&nbsp;%]&lt;/i&gt;&lt;/font&gt;</P>
+<P CLASS="Code">
+[%-&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"></body></html>

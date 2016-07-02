@@ -1,0 +1,2723 @@
+<html><head><title>template language code examples</title><style>
+
+P.ExampleTitle {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 6.000000pt;
+	margin-bottom: 6.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 0.000000pt;
+	font-size: 9.000000pt;
+	font-weight: medium;
+	font-style: Italic;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Birka";
+}
+
+P.CodeExample {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-weight: bold;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "TheSansMonoCondensed";
+}
+
+P.Code {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Courier";
+}
+
+</style>
+<body>
+<P CLASS="ExampleTitle">Example&nbsp;3-1 badfile&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;#&nbsp;this&nbsp;is&nbsp;an&nbsp;invalid&nbsp;directive</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;#&nbsp;and&nbsp;will&nbsp;raise&nbsp;a&nbsp;parse&nbsp;error</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;PROCESS&nbsp;</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$&nbsp;tpage&nbsp;badfile&nbsp;</P>
+<P CLASS="Code">
+file&nbsp;error&nbsp;-&nbsp;parse&nbsp;error&nbsp;-&nbsp;badfile&nbsp;line&nbsp;1-4:&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;unexpected&nbsp;end&nbsp;of&nbsp;directive</P>
+<P CLASS="Code">
+&nbsp;&nbsp;[%&nbsp;#&nbsp;this&nbsp;is&nbsp;an&nbsp;invalid&nbsp;directive</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;and&nbsp;will&nbsp;raise&nbsp;a&nbsp;parse&nbsp;error</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;at&nbsp;/usr/bin/tpage&nbsp;line&nbsp;60.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;TAGS&nbsp;star&nbsp;%]</P>
+<P CLASS="Code">
+People&nbsp;of&nbsp;[*&nbsp;planet&nbsp;*],&nbsp;your&nbsp;attention&nbsp;please.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;TAGS&nbsp;{&nbsp;}&nbsp;%]</P>
+<P CLASS="Code">
+People&nbsp;of&nbsp;{planet},&nbsp;your&nbsp;attention&nbsp;please.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;TAGS&nbsp;star;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;#&nbsp;don't&nbsp;do&nbsp;this...&nbsp;it&nbsp;doesn't&nbsp;work</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;PROCESS&nbsp;header</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;TAGS&nbsp;star&nbsp;-%]</P>
+<P CLASS="Code">
+[*&nbsp;PROCESS&nbsp;header&nbsp;-*]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;TAG_STYLE&nbsp;=&gt;&nbsp;'star',</P>
+<P CLASS="Code">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;START_TAG&nbsp;=&gt;&nbsp;quotemeta('[*'),</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;END_TAG&nbsp;&nbsp;&nbsp;=&gt;&nbsp;quotemeta('*]'),</P>
+<P CLASS="Code">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;START_TAG&nbsp;=&gt;&nbsp;'&lt;(?i:tt):',&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;END_TAG&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'/?&gt;',</P>
+<P CLASS="Code">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;tt:pi=3.142/&gt;</P>
+<P CLASS="Code">
+&lt;tt:e=2.718&gt;</P>
+<P CLASS="Code">
+pi:&nbsp;&lt;TT:pi&gt;</P>
+<P CLASS="Code">
+&nbsp;e:&nbsp;&lt;TT:e/&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;INTERPOLATE&nbsp;=&gt;&nbsp;1,</P>
+<P CLASS="Code">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;using&nbsp;explicit&nbsp;directives</P>
+<P CLASS="Code">
+&lt;a&nbsp;href=&quot;[%&nbsp;path&nbsp;%]&quot;&gt;[%&nbsp;page.title&nbsp;%]&lt;/a&gt;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;using&nbsp;interpolated&nbsp;variables</P>
+<P CLASS="Code">
+&lt;a&nbsp;href=&quot;$path&quot;&gt;$page.title&lt;/a&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;img&nbsp;src=&quot;/images/${icon.file}.png&quot;&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;incorrect&nbsp;usage</P>
+<P CLASS="Code">
+&lt;img&nbsp;src=&quot;/images/$icon.file.png&quot;&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;img&nbsp;src=&quot;/images/${icon.file(extension='png')}&quot;&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+...costing&nbsp;less&nbsp;than&nbsp;one&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;Altairian&nbsp;dollar&nbsp;(&#92;$1.00&nbsp;ALD)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;per&nbsp;day...</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;&nbsp;#&nbsp;Calculate&nbsp;whether&nbsp;year&nbsp;is&nbsp;a&nbsp;leap&nbsp;year</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;if&nbsp;it's&nbsp;evenly&nbsp;divisible&nbsp;by&nbsp;4...</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;(year&nbsp;%&nbsp;4)&nbsp;=&nbsp;&nbsp;=&nbsp;0;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;if&nbsp;it&nbsp;is&nbsp;not&nbsp;a&nbsp;century&nbsp;year...</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;(year&nbsp;%&nbsp;100)&nbsp;=&nbsp;&nbsp;=&nbsp;0;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is_leap&nbsp;=&nbsp;1;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;it's&nbsp;a&nbsp;leap&nbsp;year</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;century&nbsp;year&nbsp;and&nbsp;divisible&nbsp;by&nbsp;400&nbsp;...</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ELSIF&nbsp;(year&nbsp;%&nbsp;400)&nbsp;=&nbsp;&nbsp;=&nbsp;0;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is_leap&nbsp;=&nbsp;1;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;it's&nbsp;a&nbsp;leap&nbsp;year</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%#&nbsp;this&nbsp;is&nbsp;broken,&nbsp;so&nbsp;disable&nbsp;it...</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;skateboarding;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kickflip(&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotation&nbsp;&nbsp;=&nbsp;180,&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction&nbsp;=&nbsp;'backside'&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;#&nbsp;this&nbsp;is&nbsp;working&nbsp;again!</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;skateboarding;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kickflip(&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotation&nbsp;&nbsp;=&nbsp;180,&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction&nbsp;=&nbsp;'backside'&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Foo</P>
+<P CLASS="Code">
+[%&nbsp;a&nbsp;=&nbsp;10&nbsp;%]</P>
+<P CLASS="Code">
+Bar</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Foo</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+Bar</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Foo</P>
+<P CLASS="Code">
+[%-&nbsp;'Bar'&nbsp;%]</P>
+<P CLASS="Code">
+Baz</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Foo[%&nbsp;'Bar'&nbsp;%]</P>
+<P CLASS="Code">
+Baz</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+FooBar</P>
+<P CLASS="Code">
+Baz</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Foo</P>
+<P CLASS="Code">
+[%&nbsp;'Bar'&nbsp;-%]</P>
+<P CLASS="Code">
+Baz</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Foo</P>
+<P CLASS="Code">
+[%&nbsp;'Bar'&nbsp;%]Baz</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Foo</P>
+<P CLASS="Code">
+BarBaz</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Foo</P>
+<P CLASS="Code">
+[%-&nbsp;'Bar'&nbsp;-%]</P>
+<P CLASS="Code">
+Baz</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;PRE_CHOMP&nbsp;&nbsp;=&gt;&nbsp;1,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;POST_CHOMP&nbsp;=&gt;&nbsp;1,</P>
+<P CLASS="Code">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Foo</P>
+<P CLASS="Code">
+[%&nbsp;'Bar'&nbsp;%]</P>
+<P CLASS="Code">
+Baz</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Foo</P>
+<P CLASS="Code">
+[%-&nbsp;'Bar'&nbsp;-%]</P>
+<P CLASS="Code">
+Baz</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Foo</P>
+<P CLASS="Code">
+[%+&nbsp;'Bar'&nbsp;+%]</P>
+<P CLASS="Code">
+Baz</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+use&nbsp;Template;</P>
+<P CLASS="Code">
+use&nbsp;Template::Constants&nbsp;qw(&nbsp;:chomp&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;PRE_CHOMP&nbsp;&nbsp;=&gt;&nbsp;CHOMP_COLLAPSE,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;POST_CHOMP&nbsp;=&gt;&nbsp;CHOMP_COLLAPSE,</P>
+<P CLASS="Code">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Foo</P>
+<P CLASS="Code">
+[%&nbsp;'Bar'&nbsp;%]</P>
+<P CLASS="Code">
+Baz</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Foo&nbsp;[%&nbsp;'Bar'&nbsp;%]&nbsp;Baz</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Foo&nbsp;Bar&nbsp;Baz</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;3-2 printer1&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;IF&nbsp;title&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;IF&nbsp;printer_friendly&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;INCLUDE&nbsp;headers/printer_friendly&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;ELSE&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;INCLUDE&nbsp;headers/standard&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">Example&nbsp;3-3 printer2&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;IF&nbsp;title;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;IF&nbsp;printer_friendly;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;headers/printer_friendly;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;ELSE;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE&nbsp;headers/standard;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+END</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;3-4 person1&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;person&nbsp;IN&nbsp;company.employees;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&quot;*&nbsp;&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;person.name;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&quot;&#92;n&nbsp;&nbsp;&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;person.email;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&quot;&#92;n&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+END</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;company&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;employees&nbsp;=&nbsp;[</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;name&nbsp;=&nbsp;'Tom'&nbsp;email&nbsp;=&nbsp;'tom@tt2.org'&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;name&nbsp;=&nbsp;'Dick'&nbsp;email&nbsp;=&nbsp;'dick@tt2.org'&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;name&nbsp;=&nbsp;'Larry'&nbsp;email&nbsp;=&nbsp;'larry@tt2.org'&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+*&nbsp;Tom</P>
+<P CLASS="Code">
+&nbsp;&nbsp;tom@tt2.org</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+*&nbsp;Dick</P>
+<P CLASS="Code">
+&nbsp;&nbsp;dick@tt2.org</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+*&nbsp;Larry</P>
+<P CLASS="Code">
+&nbsp;&nbsp;larry@tt2.org</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;config&nbsp;IF&nbsp;something&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;IF&nbsp;something;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROCESS&nbsp;config;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;END&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;3-5 person2&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;person&nbsp;IN&nbsp;company.employees;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&quot;*&nbsp;$person.name&#92;n&nbsp;&nbsp;$person.email&#92;n&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+END</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;3-6 person3&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&quot;*&nbsp;$person.name&#92;n&nbsp;&nbsp;$person.email&#92;n&#92;n&quot;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;FOREACH&nbsp;person&nbsp;IN&nbsp;company.employees</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;3-7 person4&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;info</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;FOREACH&nbsp;person&nbsp;IN&nbsp;company.employees</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;info&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;*&nbsp;[%&nbsp;person.name&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;[%&nbsp;person.email&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;headtext&nbsp;=&nbsp;PROCESS&nbsp;header&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;&quot;Hello&nbsp;World&quot;&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;people&nbsp;=&nbsp;PROCESS&nbsp;userinfo&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;user&nbsp;=&nbsp;userlist&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;quote&nbsp;=&nbsp;BLOCK&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;'Where,'&nbsp;said&nbsp;Ford&nbsp;Prefect&nbsp;quietly,&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;'does&nbsp;it&nbsp;say&nbsp;teleport?'</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;'Well,&nbsp;just&nbsp;over&nbsp;here&nbsp;in&nbsp;fact,'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;said&nbsp;Arthur,&nbsp;pointing&nbsp;at&nbsp;a&nbsp;dark</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;control&nbsp;box&nbsp;in&nbsp;the&nbsp;rear&nbsp;of&nbsp;the&nbsp;cabin.</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;'Just&nbsp;under&nbsp;the&nbsp;word&nbsp;&quot;emergency&quot;,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;above&nbsp;the&nbsp;word&nbsp;&quot;system&quot;&nbsp;and&nbsp;beside</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;the&nbsp;sign&nbsp;saying&nbsp;&quot;out&nbsp;of&nbsp;order&quot;.'</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;#&nbsp;WRONG</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;description&nbsp;=&nbsp;&nbsp;'Mostly&nbsp;Harmless'&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;planet&nbsp;=&nbsp;&nbsp;=&nbsp;'Earth'&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;#&nbsp;RIGHT</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;IF&nbsp;planet&nbsp;=&nbsp;&nbsp;=&nbsp;'Earth';</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description&nbsp;=&nbsp;'Mostly&nbsp;Harmless';</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;END&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;#&nbsp;WRONG</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;description&nbsp;=&nbsp;BLOCK;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;planet&nbsp;=&nbsp;&nbsp;=&nbsp;'Earth';</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Mostly&nbsp;Harmless';</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;END</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;#&nbsp;RIGHT</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;SET&nbsp;description&nbsp;=&nbsp;&nbsp;'Mostly&nbsp;Harmless'&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;planet&nbsp;=&nbsp;&nbsp;=&nbsp;'Earth'&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;header&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;'header'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;&quot;header&quot;&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;header.tt&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;file&nbsp;=&nbsp;'header'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;ext&nbsp;&nbsp;=&nbsp;'tt'&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;&quot;${file}.$ext&quot;&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;header.tt</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;no/need_2_quote/this.txt&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;'My&nbsp;Documents/q&amp;a.txt'&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;file&nbsp;=&nbsp;'header'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;&quot;$file&quot;&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;header</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;$file&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;header</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+foo</P>
+<P CLASS="Code">
+foo123</P>
+<P CLASS="Code">
+foo_bar</P>
+<P CLASS="Code">
+foo_bar_123&nbsp;&nbsp;</P>
+<P CLASS="Code">
+FooBar123&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+Foo_Bar_123</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;answer&nbsp;=&nbsp;42&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;author&nbsp;=&nbsp;'Douglas&nbsp;Adams'&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+The&nbsp;answer&nbsp;to&nbsp;the&nbsp;Ultimate&nbsp;Question&nbsp;of&nbsp;Life,&nbsp;the</P>
+<P CLASS="Code">
+Universe&nbsp;and&nbsp;Everything&nbsp;is&nbsp;[%&nbsp;answer&nbsp;%].</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;[%&nbsp;author&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;SET&nbsp;author&nbsp;=&nbsp;'Douglas&nbsp;Adams'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;GET&nbsp;author&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;author&nbsp;=&nbsp;'Douglas&nbsp;Adams'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;author&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+The&nbsp;answer&nbsp;to&nbsp;the&nbsp;Ultimate&nbsp;Question&nbsp;of&nbsp;Life,&nbsp;the</P>
+<P CLASS="Code">
+Universe&nbsp;and&nbsp;Everything&nbsp;is&nbsp;42.</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Douglas&nbsp;Adams</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;answer&nbsp;=&nbsp;42</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;author&nbsp;=&nbsp;'Douglas&nbsp;Adams'&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;answer&nbsp;=&nbsp;42&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;implicit&nbsp;SET..</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;author&nbsp;=&nbsp;'Douglas&nbsp;Adams';&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;...continued</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;answer;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;implicit&nbsp;GET</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;author;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;implicit&nbsp;GET</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;answer&nbsp;=&nbsp;42</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;pi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;3.14</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;author&nbsp;=&nbsp;'Douglas&nbsp;Adams'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;book&nbsp;&nbsp;&nbsp;=&nbsp;&quot;The&nbsp;Hitch&nbsp;Hiker's&nbsp;Guide&nbsp;to&nbsp;the&nbsp;Galaxy&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;advice&nbsp;=&nbsp;&quot;Don't&nbsp;Panic&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;about&nbsp;&nbsp;=&nbsp;&quot;On&nbsp;thursday&nbsp;lunchtime&nbsp;the&nbsp;Earth&nbsp;gets</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unexpectedly&nbsp;demolished&nbsp;to&nbsp;make&nbsp;way&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;a&nbsp;new&nbsp;hyperspace&nbsp;bypass...&quot;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;price&nbsp;=&nbsp;'$4.20'&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;summary&nbsp;=&nbsp;&quot;$book&nbsp;by&nbsp;$author&quot;&nbsp;%]</P>
+<P CLASS="Code">
+Summary:&nbsp;[%&nbsp;summary&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Summary:&nbsp;The&nbsp;Hitch&nbsp;Hiker's&nbsp;Guide&nbsp;to&nbsp;the&nbsp;Galaxy&nbsp;by&nbsp;Douglas&nbsp;Adams</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;summary&nbsp;=&nbsp;&quot;$book.title&nbsp;by&nbsp;$book.author&quot;&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;webpage&nbsp;=&nbsp;&quot;h2hg/chapter_${chapter.number}.html&quot;&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;greeting&nbsp;=&nbsp;&quot;Hello&nbsp;${your.name}.&quot;&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;GOOD</P>
+<P CLASS="Code">
+[%&nbsp;greeting&nbsp;=&nbsp;&quot;Hello&nbsp;$your.name.&quot;&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;BAD&nbsp;-&nbsp;parse&nbsp;error!</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;language&nbsp;=&nbsp;'Perl'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;pledge&nbsp;&nbsp;&nbsp;=&nbsp;&quot;Will&nbsp;hack&nbsp;$language&nbsp;for&nbsp;&#92;$&#92;$&#92;$&quot;&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+I&nbsp;pledge:&nbsp;[%&nbsp;pledge&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+I&nbsp;pledge:&nbsp;Will&nbsp;hack&nbsp;Perl&nbsp;for&nbsp;$$$</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;advice&nbsp;&nbsp;=&nbsp;'Don&#92;'t&nbsp;Panic'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;suggest&nbsp;=&nbsp;&quot;Read&nbsp;&#92;&quot;$book&#92;&quot;&nbsp;by&nbsp;${author}.&quot;</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+1)&nbsp;[%&nbsp;advice&nbsp;&nbsp;%]</P>
+<P CLASS="Code">
+2)&nbsp;[%&nbsp;suggest&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+1)&nbsp;Don't&nbsp;Panic</P>
+<P CLASS="Code">
+2)&nbsp;Read&nbsp;&quot;The&nbsp;Hitch&nbsp;Hiker's&nbsp;Guide&nbsp;to&nbsp;the&nbsp;Galaxy&quot;&nbsp;by&nbsp;Douglas&nbsp;Adams.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;blockquote&nbsp;=&nbsp;&quot;$advice&#92;n&#92;t--&nbsp;$author&quot;&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Don't&nbsp;Panic</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Douglas&nbsp;Adams</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;dospath&nbsp;=&nbsp;&quot;C:&#92;&#92;dos&#92;&#92;path&quot;&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$vars&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;primes&nbsp;=&gt;&nbsp;[&nbsp;2,&nbsp;3,&nbsp;5,&nbsp;7,&nbsp;11,&nbsp;13&nbsp;],</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;terms&nbsp;&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sass&nbsp;&nbsp;=&gt;&nbsp;'know,&nbsp;be&nbsp;aware&nbsp;of,&nbsp;meet,&nbsp;have&nbsp;sex&nbsp;with',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hoopy&nbsp;=&gt;&nbsp;'really&nbsp;together&nbsp;guy',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frood&nbsp;=&gt;&nbsp;'really,&nbsp;amazingly&nbsp;together&nbsp;guy',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+};</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$tt-&gt;process($input,&nbsp;$vars)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;primes&nbsp;=&nbsp;[2,3,5,7,11,13]&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;primes&nbsp;=&nbsp;[&nbsp;2&nbsp;3&nbsp;5&nbsp;7&nbsp;11&nbsp;13&nbsp;]&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;primes&nbsp;=&nbsp;[&nbsp;2,&nbsp;3,&nbsp;5,&nbsp;7,&nbsp;11,&nbsp;13&nbsp;]&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;primes&nbsp;=&nbsp;[&nbsp;2,&nbsp;3&nbsp;5,&nbsp;7&nbsp;11,&nbsp;13&nbsp;]&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;two&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;2</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;three&nbsp;&nbsp;=&nbsp;3</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;primes&nbsp;=&nbsp;[&nbsp;two,&nbsp;three,&nbsp;5,&nbsp;7,&nbsp;11,&nbsp;13&nbsp;]</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;one_to_four&nbsp;=&nbsp;[&nbsp;1..4&nbsp;]&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;start&nbsp;=&nbsp;1</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;end&nbsp;&nbsp;&nbsp;=&nbsp;4</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;items&nbsp;=&nbsp;[&nbsp;start&nbsp;..&nbsp;end&nbsp;]</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;primes.0&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;2</P>
+<P CLASS="Code">
+[%&nbsp;primes.3&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;7</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;&nbsp;terms&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sass&nbsp;&nbsp;=&nbsp;'know,&nbsp;be&nbsp;aware&nbsp;of,&nbsp;meet,&nbsp;have&nbsp;sex&nbsp;with'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hoopy&nbsp;=&nbsp;'really&nbsp;together&nbsp;guy'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frood&nbsp;=&nbsp;'really,&nbsp;amazingly&nbsp;together&nbsp;guy'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;&nbsp;terms&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sass&nbsp;&nbsp;=&gt;&nbsp;'know,&nbsp;be&nbsp;aware&nbsp;of,&nbsp;meet,&nbsp;have&nbsp;sex&nbsp;with',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hoopy&nbsp;=&gt;&nbsp;'really&nbsp;together&nbsp;guy',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frood&nbsp;=&gt;&nbsp;'really,&nbsp;amazingly&nbsp;together&nbsp;guy',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;terms.hoopy&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;really&nbsp;together&nbsp;guy</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;foo.bar.baz&nbsp;=&nbsp;'hello&nbsp;world'&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;primes&nbsp;=&nbsp;[2,&nbsp;3,&nbsp;5,&nbsp;7,&nbsp;11,&nbsp;13]&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;primes.3&nbsp;%]&nbsp;&nbsp;#&nbsp;7</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;terms&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sass&nbsp;&nbsp;=&nbsp;'know,&nbsp;be&nbsp;aware&nbsp;of,&nbsp;meet,&nbsp;have&nbsp;sex&nbsp;with'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hoopy&nbsp;=&nbsp;'really&nbsp;together&nbsp;guy'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frood&nbsp;=&nbsp;'really,&nbsp;amazingly&nbsp;together&nbsp;guy'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+[%&nbsp;terms.hoopy&nbsp;%]</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;arthur&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'Arthur&nbsp;Dent',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;planet&nbsp;&nbsp;=&nbsp;'Earth',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;friends&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ford&nbsp;&nbsp;=&nbsp;{&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;'Ford&nbsp;Prefect'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;home&nbsp;=&nbsp;'Betelgeuse'&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slarti&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;'Slartibartfast'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;home&nbsp;=&nbsp;'Magrethea'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;arthur.friends.ford.name&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;Ford&nbsp;Prefect</P>
+<P CLASS="Code">
+[%&nbsp;arthur.friends.slarti.home&nbsp;%]&nbsp;#&nbsp;Magrethea</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;fullname&nbsp;=&nbsp;&quot;$honorific&nbsp;$firstname&nbsp;$surname&quot;&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Dear&nbsp;$honorific&nbsp;$firstname&nbsp;$surname,</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;&nbsp;terms&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sass&nbsp;&nbsp;=&nbsp;'know,&nbsp;be&nbsp;aware&nbsp;of,&nbsp;meet,&nbsp;have&nbsp;sex&nbsp;with'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hoopy&nbsp;=&nbsp;'really&nbsp;together&nbsp;guy'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frood&nbsp;=&nbsp;'really,&nbsp;amazingly&nbsp;together&nbsp;guy'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+[%&nbsp;key&nbsp;=&nbsp;'frood'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;terms.$key&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;really,&nbsp;amazingly&nbsp;together&nbsp;guy</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;ford&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;'Ford&nbsp;Prefect'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;=&nbsp;'frood'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;ford.name&nbsp;%]&nbsp;is&nbsp;a&nbsp;[%&nbsp;terms.${ford.type}&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;stuff&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;_private&nbsp;=&nbsp;&quot;You&nbsp;won't&nbsp;see&nbsp;me&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;&nbsp;=&nbsp;&quot;You&nbsp;will&nbsp;see&nbsp;me&quot;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+[%&nbsp;stuff.public&nbsp;&nbsp;&nbsp;%]&nbsp;#&nbsp;You&nbsp;will&nbsp;see&nbsp;me</P>
+<P CLASS="Code">
+[%&nbsp;stuff._private&nbsp;%]&nbsp;#&nbsp;[nothing]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;var&nbsp;=&nbsp;&quot;_private&quot;;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;stuff.$var&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;[nothing]</P>
+<P CLASS="Code">
+%]</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+use&nbsp;CGI;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+my&nbsp;$vars&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;prime_number&nbsp;=&gt;&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;return&nbsp;a&nbsp;random&nbsp;prime&nbsp;number&nbsp;from&nbsp;first&nbsp;6</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;@primes&nbsp;=&nbsp;(2,&nbsp;3,&nbsp;5,&nbsp;7,&nbsp;11,&nbsp;13);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$primes[&nbsp;rand&nbsp;@primes&nbsp;];</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;cgi&nbsp;=&gt;&nbsp;CGI-&gt;new(&nbsp;&nbsp;),</P>
+<P CLASS="Code">
+};</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$tt-&gt;process($input,&nbsp;$vars)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;prime&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;calls&nbsp;subroutine&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;more&nbsp;=&nbsp;&quot;$prime&nbsp;$prime&nbsp;$prime&quot;&nbsp;%]&nbsp;&nbsp;#&nbsp;three&nbsp;calls</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+This&nbsp;CGI&nbsp;script&nbsp;is&nbsp;running&nbsp;on&nbsp;[%&nbsp;cgi.server_name&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;cgi.param('docid')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$vars&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;join&nbsp;=&gt;&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;join(',&nbsp;',&nbsp;@_);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+};</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$tt-&gt;process($input,&nbsp;$vars)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;3-8 join&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;ten&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;10</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;thirty&nbsp;=&nbsp;30;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;join(ten,&nbsp;20,&nbsp;thirty,&nbsp;'40')&nbsp;</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+10,&nbsp;20,&nbsp;30,&nbsp;40</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;arthur&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'Arthur&nbsp;Dent',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;planet&nbsp;&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;'Earth',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info&nbsp;=&nbsp;'Mostly&nbsp;Harmless'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;arthur(6).planet(7).name(42)&nbsp;%]&nbsp;&nbsp;#&nbsp;Earth</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$vars&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;join&nbsp;=&gt;&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;look&nbsp;for&nbsp;hash&nbsp;ref&nbsp;as&nbsp;last&nbsp;argument</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$params&nbsp;=&nbsp;ref&nbsp;$_[-1]&nbsp;eq&nbsp;'HASH'&nbsp;?&nbsp;pop&nbsp;:&nbsp;{&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$joint&nbsp;&nbsp;=&nbsp;$params-&gt;{&nbsp;joint&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$joint&nbsp;=&nbsp;',&nbsp;'&nbsp;unless&nbsp;defined&nbsp;$joint;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;join($joint,&nbsp;@_);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+};</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$tt-&gt;process($input,&nbsp;$vars)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;3-9 joint&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;ten&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;10</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;thirty&nbsp;=&nbsp;30;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;join(ten,&nbsp;20,&nbsp;thirty,&nbsp;'40',&nbsp;joint&nbsp;=&nbsp;'+')&nbsp;</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+10+20+30+40</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;join(joint='+',&nbsp;ten,&nbsp;20,&nbsp;thirty,&nbsp;'40')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;join(ten,&nbsp;20,&nbsp;joint='+',&nbsp;thirty,&nbsp;'40')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;join(ten,&nbsp;20,&nbsp;thirty,&nbsp;'40',&nbsp;joint='+')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+(10,&nbsp;20,&nbsp;30,&nbsp;40,&nbsp;{&nbsp;joint&nbsp;=&gt;&nbsp;'+'&nbsp;})</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;look&nbsp;for&nbsp;hash&nbsp;ref&nbsp;as&nbsp;last&nbsp;argument</P>
+<P CLASS="Code">
+my&nbsp;$params&nbsp;=&nbsp;ref&nbsp;$_[-1]&nbsp;eq&nbsp;'HASH'&nbsp;?&nbsp;pop&nbsp;:&nbsp;{&nbsp;};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$joint&nbsp;&nbsp;=&nbsp;$params-&gt;{&nbsp;joint&nbsp;};</P>
+<P CLASS="Code">
+$joint&nbsp;=&nbsp;',&nbsp;'&nbsp;unless&nbsp;defined&nbsp;$joint;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+return&nbsp;join($joint,&nbsp;@_);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;meaning_of_life&nbsp;=&nbsp;42&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;meaning_of_life(&quot;Monday&quot;)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+42</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$vars&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;zero&nbsp;=&gt;&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;one&nbsp;=&gt;&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[&nbsp;$obj1,&nbsp;$obj2,&nbsp;$obj3&nbsp;],</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;zero.one.2.three&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$vars&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;zero&nbsp;=&gt;&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;one&nbsp;=&gt;&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;=&gt;&nbsp;$obj1,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;=&gt;&nbsp;$obj2,&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;=&gt;&nbsp;$obj3,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;zero.one.2.three&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$vars&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;moregood&nbsp;=&gt;&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[&nbsp;3.14,&nbsp;2.718&nbsp;];</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;lessgood&nbsp;=&gt;&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(&nbsp;3.14,&nbsp;2.718&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;both&nbsp;work&nbsp;as&nbsp;expected</P>
+<P CLASS="Code">
+[%&nbsp;moregood.0&nbsp;%]&nbsp;[%&nbsp;moregood.1&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;lessgood.0&nbsp;%]&nbsp;[%&nbsp;lessgood.1&nbsp;&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+return&nbsp;(undef,&nbsp;...);&nbsp;&nbsp;&nbsp;#&nbsp;NOT&nbsp;OK:&nbsp;undef&nbsp;indicates&nbsp;error!</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+return&nbsp;[undef,&nbsp;...];&nbsp;&nbsp;&nbsp;#&nbsp;OK,&nbsp;returns&nbsp;list&nbsp;reference</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$vars&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;barf&nbsp;=&gt;&nbsp;sub&nbsp;{&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die&nbsp;&quot;a&nbsp;sick&nbsp;error&nbsp;has&nbsp;occurred&#92;n&quot;;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+I&nbsp;think&nbsp;I'm&nbsp;going&nbsp;to&nbsp;[%&nbsp;barf&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+undef&nbsp;error&nbsp;-&nbsp;a&nbsp;sick&nbsp;error&nbsp;has&nbsp;occurred</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+use&nbsp;Template::Exception;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+my&nbsp;$vars&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;barf&nbsp;=&gt;&nbsp;sub&nbsp;{&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die&nbsp;Template::Exception-&gt;new(&nbsp;sick&nbsp;=&gt;&nbsp;'feel&nbsp;ill'&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sick&nbsp;error&nbsp;-&nbsp;feel&nbsp;ill</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;TRY;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;barf;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;CATCH&nbsp;sick;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;Eeew!&nbsp;&nbsp;We&nbsp;just&nbsp;caught&nbsp;a&nbsp;sick&nbsp;error&nbsp;($error.info)&quot;;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;END</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Eeew!&nbsp;&nbsp;We&nbsp;just&nbsp;caught&nbsp;a&nbsp;sick&nbsp;error&nbsp;(feel&nbsp;ill)</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+die&nbsp;(Template::Exception-&gt;new('stop'));</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;STOP&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;META&nbsp;title&nbsp;&nbsp;=&nbsp;'My&nbsp;Test&nbsp;Page'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author&nbsp;=&nbsp;'Arthur&nbsp;Dent'</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;html&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&lt;head&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;[%&nbsp;template.title&nbsp;%]&lt;/title&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&lt;/head&gt;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&lt;body&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;[%&nbsp;template.title&nbsp;%]&lt;/h1&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;by&nbsp;[%&nbsp;template.author&nbsp;%]&lt;/h2&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$tt-&gt;process('foo')</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;),&nbsp;&quot;&#92;n&quot;;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;template.name&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;foo</P>
+<P CLASS="Code">
+[%&nbsp;component.name&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;foo</P>
+<P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;footer&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;template.name&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;foo</P>
+<P CLASS="Code">
+[%&nbsp;component.name&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;footer</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;item&nbsp;IN&nbsp;items&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;IF&nbsp;loop.first&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;[%&nbsp;item&nbsp;%]&nbsp;([%&nbsp;loop.count&nbsp;%]&nbsp;of&nbsp;[%&nbsp;loop.size&nbsp;%])&lt;/li&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;IF&nbsp;loop.last&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;TRY&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;...some&nbsp;template&nbsp;code&nbsp;that&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;may&nbsp;throw&nbsp;an&nbsp;error...</P>
+<P CLASS="Code">
+[%&nbsp;CATCH&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;An&nbsp;error&nbsp;occurred:&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;error.type&nbsp;%]&nbsp;-&nbsp;[%&nbsp;error.info&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;TRY;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;THROW&nbsp;food&nbsp;'cheese&nbsp;roll';</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;CATCH;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;food&nbsp;error&nbsp;-&nbsp;cheese&nbsp;roll</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;END&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;3-10 content&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;scared&nbsp;=&nbsp;'afeared'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;beats&nbsp;&nbsp;=&nbsp;'noises'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;vibes&nbsp;&nbsp;=&nbsp;'sweet&nbsp;airs'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;chill&nbsp;&nbsp;=&nbsp;'give&nbsp;delight'</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;WRAPPER&nbsp;box&nbsp;border=1&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;Be&nbsp;not&nbsp;[%&nbsp;scared&nbsp;%];&nbsp;the&nbsp;isle&nbsp;is&nbsp;full&nbsp;of&nbsp;[%&nbsp;beats&nbsp;%],</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;Sounds&nbsp;and&nbsp;[%&nbsp;vibes&nbsp;%],&nbsp;that&nbsp;[%&nbsp;chill&nbsp;%]&nbsp;and&nbsp;hurt&nbsp;not.</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;box&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;table&nbsp;border=&quot;[%&nbsp;border&nbsp;%]&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;content&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="CodeExample">
+&lt;/table&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;scared&nbsp;=&nbsp;'afeared'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;beats&nbsp;&nbsp;=&nbsp;'noises'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;vibes&nbsp;&nbsp;=&nbsp;'sweet&nbsp;airs'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;chill&nbsp;&nbsp;=&nbsp;'give&nbsp;delight'</P>
+<P CLASS="Code">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;WRAPPER&nbsp;box&nbsp;border=1&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Be&nbsp;not&nbsp;[%&nbsp;scared&nbsp;%];&nbsp;the&nbsp;isle&nbsp;is&nbsp;full&nbsp;of&nbsp;[%&nbsp;beats&nbsp;%],</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Sounds&nbsp;and&nbsp;[%&nbsp;vibes&nbsp;%],&nbsp;that&nbsp;[%&nbsp;chill&nbsp;%]&nbsp;and&nbsp;hurt&nbsp;not.</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;BLOCK&nbsp;box&nbsp;%]</P>
+<P CLASS="Code">
+&lt;table&nbsp;border=&quot;[%&nbsp;border&nbsp;%]&quot;&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%-&nbsp;content&nbsp;-%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="Code">
+&lt;/table&gt;</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;table&nbsp;border=&quot;1&quot;&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;tr&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Be&nbsp;not&nbsp;afeared;&nbsp;the&nbsp;isle&nbsp;is&nbsp;full&nbsp;of&nbsp;noises,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Sounds&nbsp;and&nbsp;sweet&nbsp;airs,&nbsp;that&nbsp;give&nbsp;delight&nbsp;and&nbsp;hurt&nbsp;not.</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&lt;/tr&gt;</P>
+<P CLASS="Code">
+&lt;/table&gt;</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;global.copyright&nbsp;=&nbsp;'&amp;copy;&nbsp;2003&nbsp;Arthur&nbsp;Dent'&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;3-11 view&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;VIEW&nbsp;people_view;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;BLOCK&nbsp;hash;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;$item.name&nbsp;is&nbsp;from&nbsp;$item.home&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;BLOCK&nbsp;list;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;view.print(person)&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;person&nbsp;IN&nbsp;item;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;BLOCK&nbsp;text;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;item;&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+END;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;people&nbsp;=&nbsp;[&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;{&nbsp;name&nbsp;=&nbsp;'Arthur&nbsp;Dent',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;home&nbsp;=&nbsp;'Earth'&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;{&nbsp;name&nbsp;=&nbsp;'Ford&nbsp;Prefect',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;home&nbsp;=&nbsp;'Betelgeuse'&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;'Slartibartfast&nbsp;from&nbsp;Magrethea'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;]&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;people_view.print(people)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+BLOCK&nbsp;hash;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&quot;$item.name&nbsp;is&nbsp;from&nbsp;$item.home&#92;n&quot;;</P>
+<P CLASS="Code">
+END;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+BLOCK&nbsp;list;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;view.print(person)&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;FOREACH&nbsp;person&nbsp;IN&nbsp;item;</P>
+<P CLASS="Code">
+END;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+BLOCK&nbsp;text;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;item;&nbsp;</P>
+<P CLASS="Code">
+END;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;people_view.print(people)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Arthur&nbsp;Dent&nbsp;is&nbsp;from&nbsp;Earth</P>
+<P CLASS="Code">
+Ford&nbsp;Prefect&nbsp;is&nbsp;from&nbsp;Betelgeuse</P>
+<P CLASS="Code">
+Slartibartfast&nbsp;is&nbsp;from&nbsp;Magrethea</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;BLOCK&nbsp;change_name&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;name&nbsp;=&nbsp;'bar'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;name&nbsp;=&nbsp;'foo'&nbsp;%]&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;INCLUDE&nbsp;change_name&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;name&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;foo</P>
+<P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;change_name&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;name&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;bar</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;BLOCK&nbsp;all_change&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;x&nbsp;=&nbsp;20&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;changes&nbsp;copy</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;y.z&nbsp;=&nbsp;'zulu'&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;changes&nbsp;original</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;x&nbsp;=&nbsp;10</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;y&nbsp;=&nbsp;{&nbsp;z&nbsp;=&gt;&nbsp;'zebra'&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+[%&nbsp;INCLUDE&nbsp;all_change&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;x&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;still&nbsp;'10'</P>
+<P CLASS="Code">
+[%&nbsp;y.z&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;now&nbsp;'zulu'</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;BLOCK&nbsp;new_stuff&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;#&nbsp;define&nbsp;a&nbsp;new&nbsp;'y'&nbsp;hash&nbsp;array&nbsp;in&nbsp;local&nbsp;context</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;=&nbsp;{&nbsp;z&nbsp;=&gt;&nbsp;'zulu'&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;x&nbsp;=&nbsp;10&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;INCLUDE&nbsp;new_stuff&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;x&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;outputs&nbsp;'10'</P>
+<P CLASS="Code">
+[%&nbsp;y&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;outputs&nbsp;nothing,&nbsp;y&nbsp;is&nbsp;undefined</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;BLOCK&nbsp;new_stuff&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;y.z&nbsp;=&nbsp;'zulu'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;CONSTANTS&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;version&nbsp;=&gt;&nbsp;3.14,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;release&nbsp;=&gt;&nbsp;'skyrocket',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;back&nbsp;=&gt;&nbsp;'#ffffff',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fore&nbsp;=&gt;&nbsp;'#000000',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myobj&nbsp;=&gt;&nbsp;My::Object-&gt;new(&nbsp;&nbsp;),</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mysub&nbsp;=&gt;&nbsp;sub&nbsp;{&nbsp;...&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;joint&nbsp;=&gt;&nbsp;',&nbsp;',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Version&nbsp;[%&nbsp;constants.version&nbsp;%]&nbsp;([%&nbsp;constants.release&nbsp;%])</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+Background:&nbsp;[%&nbsp;constants.col.back&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;constants.mysub(10,&nbsp;20)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;constants.myobj(30,&nbsp;40)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;constants.col.keys.sort.join(',&nbsp;')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;literal&nbsp;argument</P>
+<P CLASS="Code">
+[%&nbsp;constants.col.keys.sort.join(',&nbsp;')&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;constant&nbsp;argument</P>
+<P CLASS="Code">
+[%&nbsp;constants.col.keys.sort.join(constants.joint)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;ERROR:&nbsp;runtime&nbsp;variable&nbsp;argument!</P>
+<P CLASS="Code">
+[%&nbsp;constants.col.keys.sort.join(joint)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;CONSTANTS&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;version&nbsp;=&gt;&nbsp;3.14,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;...etc...</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;CONSTANTS_NAMESPACE&nbsp;=&gt;&nbsp;'const',</P>
+<P CLASS="Code">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;const.version&nbsp;%]</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;string.length&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;list.join&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;hash.size&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;hash.keys.sort.join(',&nbsp;')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;3-12 beer&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;beers&nbsp;&nbsp;&nbsp;=&nbsp;[&nbsp;'Bass'&nbsp;'Guinness'&nbsp;&quot;Murphy's&quot;&nbsp;]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;bottles&nbsp;=&nbsp;'bottles';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;WHILE&nbsp;(n&nbsp;=&nbsp;beers.size)&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;[%&nbsp;n&nbsp;%]&nbsp;[%&nbsp;bottles&nbsp;%]&nbsp;of&nbsp;beer&nbsp;in&nbsp;my&nbsp;list,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;[%&nbsp;n&nbsp;%]&nbsp;[%&nbsp;bottles&nbsp;%]&nbsp;of&nbsp;beer,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;Take&nbsp;one&nbsp;down,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;Pass&nbsp;it&nbsp;around,</P>
+<P CLASS="CodeExample">
+[%</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;beer&nbsp;=&nbsp;beers.pop</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;bottles&nbsp;=&nbsp;beers.max&nbsp;?&nbsp;'bottles'&nbsp;:&nbsp;'bottle'&nbsp;&nbsp;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;(a&nbsp;bottle&nbsp;of&nbsp;[%&nbsp;beer&nbsp;%]&nbsp;is&nbsp;hastily&nbsp;drunk)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;[%&nbsp;beers.size&nbsp;or&nbsp;'no'&nbsp;%]&nbsp;[%&nbsp;bottles&nbsp;%]&nbsp;of&nbsp;beer&nbsp;in&nbsp;my&nbsp;list.</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+3&nbsp;bottles&nbsp;of&nbsp;beer&nbsp;in&nbsp;my&nbsp;list,</P>
+<P CLASS="Code">
+3&nbsp;bottles&nbsp;of&nbsp;beer,</P>
+<P CLASS="Code">
+Take&nbsp;one&nbsp;down,</P>
+<P CLASS="Code">
+Pass&nbsp;it&nbsp;around,</P>
+<P CLASS="Code">
+(a&nbsp;bottle&nbsp;of&nbsp;Murphy's&nbsp;is&nbsp;hastily&nbsp;drunk)</P>
+<P CLASS="Code">
+2&nbsp;bottles&nbsp;of&nbsp;beer&nbsp;in&nbsp;my&nbsp;list.</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+2&nbsp;bottles&nbsp;of&nbsp;beer&nbsp;in&nbsp;my&nbsp;list,</P>
+<P CLASS="Code">
+2&nbsp;bottles&nbsp;of&nbsp;beer,</P>
+<P CLASS="Code">
+Take&nbsp;one&nbsp;down,</P>
+<P CLASS="Code">
+Pass&nbsp;it&nbsp;around,</P>
+<P CLASS="Code">
+(a&nbsp;bottle&nbsp;of&nbsp;Guinness&nbsp;is&nbsp;hastily&nbsp;drunk)</P>
+<P CLASS="Code">
+1&nbsp;bottle&nbsp;of&nbsp;beer&nbsp;in&nbsp;my&nbsp;list.</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+1&nbsp;bottle&nbsp;of&nbsp;beer&nbsp;in&nbsp;my&nbsp;list,</P>
+<P CLASS="Code">
+1&nbsp;bottle&nbsp;of&nbsp;beer,</P>
+<P CLASS="Code">
+Take&nbsp;one&nbsp;down,</P>
+<P CLASS="Code">
+Pass&nbsp;it&nbsp;around,</P>
+<P CLASS="Code">
+(a&nbsp;bottle&nbsp;of&nbsp;Bass&nbsp;is&nbsp;hastily&nbsp;drunk)</P>
+<P CLASS="Code">
+no&nbsp;bottles&nbsp;of&nbsp;beer&nbsp;in&nbsp;my&nbsp;list.</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;ccard_no&nbsp;=&nbsp;&quot;1234567824683579&quot;;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;ccard_no.chunk(4).join</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+1234&nbsp;5678&nbsp;2468&nbsp;3579</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;number&nbsp;=&nbsp;1234567;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;number.chunk(-3).join(',')</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+1,234,567</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+foo&nbsp;[%&nbsp;foo.defined&nbsp;?&nbsp;'is'&nbsp;:&nbsp;'is&nbsp;not'&nbsp;%]&nbsp;defined</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;name&nbsp;=&nbsp;'Slartibartfast'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;user&nbsp;=&nbsp;name.hash&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;user.value&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Slartibartfast</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;IF&nbsp;password.length&nbsp;&lt;&nbsp;8&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;Your&nbsp;password&nbsp;is&nbsp;too&nbsp;short,&nbsp;please&nbsp;try&nbsp;again.</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;things&nbsp;=&nbsp;thing.list&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;item&nbsp;=&nbsp;'foo';</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;mysub(item.list)&nbsp;&nbsp;#&nbsp;same&nbsp;as&nbsp;mysub([item])</P>
+<P CLASS="Code">
+%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;-&nbsp;item&nbsp;is&nbsp;a&nbsp;scalar</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;item&nbsp;=&nbsp;['foo'];</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;mysub(item.list)&nbsp;&nbsp;#&nbsp;same&nbsp;as&nbsp;mysub(item)</P>
+<P CLASS="Code">
+%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;-&nbsp;item&nbsp;is&nbsp;already&nbsp;a&nbsp;list</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;3-13 serial&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;serial&nbsp;IN&nbsp;['ABC-1234',&nbsp;'FOOD-4567',&nbsp;'WXYZ-789'];</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;IF&nbsp;serial.match('^&#92;w{3}-&#92;d{4}$');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;GOOD&nbsp;serial&nbsp;number:&nbsp;$serial&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;ELSE;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;BAD&nbsp;serial&nbsp;number:&nbsp;$serial&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+END</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+GOOD&nbsp;serial&nbsp;number:&nbsp;ABC-1234</P>
+<P CLASS="Code">
+BAD&nbsp;serial&nbsp;number:&nbsp;FOOD-4567</P>
+<P CLASS="Code">
+BAD&nbsp;serial&nbsp;number:&nbsp;WXYZ-789</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;name&nbsp;=&nbsp;'Arthur&nbsp;Dent'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;matches&nbsp;=&nbsp;name.match('(&#92;w+)&nbsp;(&#92;w+)')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;matches.1&nbsp;%],&nbsp;[%&nbsp;matches.join('')&nbsp;%]&nbsp;&nbsp;#&nbsp;&nbsp;Dent,&nbsp;ArthurDent</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;IF&nbsp;(matches&nbsp;=&nbsp;name.match('(&#92;w+)&nbsp;(&#92;w+)'))&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;pattern&nbsp;matches:&nbsp;[%&nbsp;matches.join(',&nbsp;')&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;ELSE&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;pattern&nbsp;does&nbsp;not&nbsp;match</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;matched&nbsp;=&nbsp;name.match('(?i)arthur&nbsp;dent')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;matched&nbsp;=&nbsp;name.match(</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'(?x)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&#92;w+)&nbsp;&nbsp;&nbsp;#&nbsp;match&nbsp;first&nbsp;name</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#92;s+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;some&nbsp;whitespace</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&#92;w+)&nbsp;&nbsp;&nbsp;#&nbsp;match&nbsp;second&nbsp;name</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;)</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;name&nbsp;=&nbsp;'foo&nbsp;'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;name.repeat(3)&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;foo&nbsp;foo&nbsp;foo</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;name&nbsp;=&nbsp;'foo,&nbsp;bar&nbsp;&amp;&nbsp;baz'&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;name.replace('&#92;W+',&nbsp;'_')&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;foo_bar_baz</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;path&nbsp;&nbsp;=&nbsp;'/here:/there:/every/where';&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;paths&nbsp;=&nbsp;path.split(':');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;paths.join;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;/here&nbsp;/there&nbsp;/every/where</P>
+<P CLASS="Code">
+%]</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;mylistobj.size&nbsp;%]&nbsp;&nbsp;#&nbsp;object&nbsp;method&nbsp;or&nbsp;list&nbsp;virtual&nbsp;method</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;list&nbsp;&nbsp;=&nbsp;[10,&nbsp;20&nbsp;30]&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;list.first&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;10</P>
+<P CLASS="Code">
+[%&nbsp;list.join(',&nbsp;')&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;10,&nbsp;20,&nbsp;30</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;list.first(2).join(',&nbsp;')&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;10,&nbsp;20</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;txtfiles&nbsp;=&nbsp;files.grep('&#92;.txt$')&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;list&nbsp;&nbsp;=&nbsp;[10,&nbsp;20&nbsp;30]&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;list.join&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;10&nbsp;20&nbsp;30</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;list.join(',&nbsp;')&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;10,&nbsp;20,&nbsp;30</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;list&nbsp;&nbsp;=&nbsp;[10,&nbsp;20&nbsp;30]&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;list.last&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;30</P>
+<P CLASS="Code">
+[%&nbsp;list.join(',&nbsp;')&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;10,&nbsp;20,&nbsp;30</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;list.last(2).join(',&nbsp;')&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;20,&nbsp;30</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;list&nbsp;&nbsp;=&nbsp;[10,&nbsp;20&nbsp;30]&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;list.max&nbsp;%]&nbsp;&nbsp;#&nbsp;2</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;list_a&nbsp;=&nbsp;[&nbsp;1&nbsp;2&nbsp;3&nbsp;];</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;list_b&nbsp;=&nbsp;[&nbsp;4&nbsp;5&nbsp;6&nbsp;];</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;list_c&nbsp;=&nbsp;[&nbsp;7&nbsp;8&nbsp;9&nbsp;];</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;list_d&nbsp;=&nbsp;list_a.merge(list_b,&nbsp;list_c);</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;list_a.join(',&nbsp;')&nbsp;%]&nbsp;&nbsp;#&nbsp;1,&nbsp;2,&nbsp;3</P>
+<P CLASS="Code">
+[%&nbsp;list_b.join(',&nbsp;')&nbsp;%]&nbsp;&nbsp;#&nbsp;4,&nbsp;5,&nbsp;6</P>
+<P CLASS="Code">
+[%&nbsp;list_c.join(',&nbsp;')&nbsp;%]&nbsp;&nbsp;#&nbsp;7,&nbsp;8,&nbsp;9</P>
+<P CLASS="Code">
+[%&nbsp;list_d.join(',&nbsp;')&nbsp;%]&nbsp;&nbsp;#&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;5,&nbsp;6,&nbsp;7,&nbsp;8,&nbsp;9</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;list&nbsp;=&nbsp;[10,&nbsp;20&nbsp;30]&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;list.pop&nbsp;&nbsp;%]&nbsp;&nbsp;#&nbsp;30</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;list&nbsp;&nbsp;=&nbsp;[10,&nbsp;20&nbsp;30]&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;list.reverse.join(',&nbsp;')&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;30,&nbsp;20,&nbsp;10</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;list&nbsp;=&nbsp;[10,&nbsp;20&nbsp;30]&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;list.shift&nbsp;%]&nbsp;&nbsp;#&nbsp;10</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;list&nbsp;=&nbsp;[10,&nbsp;20&nbsp;30]&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;list.size&nbsp;%]&nbsp;&nbsp;#&nbsp;3</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;list&nbsp;=&nbsp;[10,&nbsp;20&nbsp;30]&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;list.slice(0,&nbsp;1).join(',&nbsp;')&nbsp;%]&nbsp;&nbsp;&nbsp;#&nbsp;10,&nbsp;20</P>
+<P CLASS="Code">
+[%&nbsp;list.join(',&nbsp;')&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;10,&nbsp;20,&nbsp;30</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;list.slice(-2,&nbsp;-1).join(',&nbsp;')&nbsp;%]&nbsp;#&nbsp;20,&nbsp;30</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;list&nbsp;=&nbsp;['foo',&nbsp;'bar',&nbsp;'baz']&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;list.sort.join(',&nbsp;')&nbsp;%]&nbsp;&nbsp;#&nbsp;bar&nbsp;baz&nbsp;foo</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;list&nbsp;=&nbsp;['0.1',&nbsp;'1',&nbsp;'02',&nbsp;'3',&nbsp;'010',&nbsp;'11']&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;list.sort.join(',&nbsp;')&nbsp;&nbsp;%]&nbsp;&nbsp;#&nbsp;0.1,&nbsp;010,&nbsp;02,&nbsp;1,&nbsp;11,&nbsp;3</P>
+<P CLASS="Code">
+[%&nbsp;list.nsort.join(',&nbsp;')&nbsp;%]&nbsp;&nbsp;#&nbsp;0.1,&nbsp;1,&nbsp;02,&nbsp;3,&nbsp;010,&nbsp;11</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;3-14 products&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;products&nbsp;=&nbsp;[</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;id&nbsp;=&nbsp;'xyz789',&nbsp;name&nbsp;=&nbsp;'Foo&nbsp;Widget'&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;id&nbsp;=&nbsp;'def456',&nbsp;name&nbsp;=&nbsp;'Bar&nbsp;Widget'&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;id&nbsp;=&nbsp;'abc123',&nbsp;name&nbsp;=&nbsp;'Baz&nbsp;Widget'&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;]</P>
+<P CLASS="CodeExample">
+-%]</P>
+<P CLASS="CodeExample">
+Products&nbsp;sorted&nbsp;by&nbsp;id:</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;product&nbsp;IN&nbsp;products.sort('id')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;*&nbsp;[%&nbsp;product.id&nbsp;%]&nbsp;[%&nbsp;product.name&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+Products&nbsp;sorted&nbsp;by&nbsp;name:</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;product&nbsp;IN&nbsp;products.sort('name')&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;*&nbsp;[%&nbsp;product.id&nbsp;%]&nbsp;[%&nbsp;product.name&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Products&nbsp;sorted&nbsp;by&nbsp;id:</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;*&nbsp;abc123&nbsp;Baz&nbsp;Widget</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;*&nbsp;def456&nbsp;Bar&nbsp;Widget</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;*&nbsp;xyz789&nbsp;Foo&nbsp;Widget</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+Products&nbsp;sorted&nbsp;by&nbsp;name:</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;*&nbsp;def456&nbsp;Bar&nbsp;Widget</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;*&nbsp;abc123&nbsp;Baz&nbsp;Widget</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;*&nbsp;xyz789&nbsp;Foo&nbsp;Widget</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;primes&nbsp;=&nbsp;[2,&nbsp;3,&nbsp;5,&nbsp;7,&nbsp;11,&nbsp;13];&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;others&nbsp;=&nbsp;primes.splice(2);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;primes.join(',&nbsp;');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;2,&nbsp;3</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;others.join(',&nbsp;');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;5,&nbsp;7,&nbsp;11,&nbsp;13</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;primes&nbsp;=&nbsp;[2,&nbsp;3,&nbsp;5,&nbsp;7,&nbsp;11,&nbsp;13];&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;others&nbsp;=&nbsp;primes.splice(-2);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;primes.join(',&nbsp;');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;2,&nbsp;3,&nbsp;5,&nbsp;7</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;others.join(',&nbsp;');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;11,&nbsp;13</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;primes&nbsp;=&nbsp;[2,&nbsp;3,&nbsp;5,&nbsp;7,&nbsp;11,&nbsp;13];&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;others&nbsp;=&nbsp;primes.splice(2,&nbsp;3);&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;primes.join(',&nbsp;');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;2,&nbsp;3,&nbsp;13</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;others.join(',&nbsp;');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;5,&nbsp;7,&nbsp;11</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;primes1&nbsp;=&nbsp;[2,&nbsp;3,&nbsp;5,&nbsp;7,&nbsp;11];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;primes2&nbsp;=&nbsp;[13,&nbsp;17,&nbsp;19];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;#&nbsp;pass&nbsp;reference&nbsp;to&nbsp;list</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;primes3&nbsp;=&nbsp;primes1.splice(1,&nbsp;2,&nbsp;primes2);&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;primes1.join(',&nbsp;');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;2,&nbsp;13,&nbsp;17,&nbsp;19,&nbsp;7,&nbsp;11</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;primes2.join(',&nbsp;');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;13,&nbsp;17,&nbsp;19</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;primes3.join(',&nbsp;');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;3,&nbsp;5</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;#&nbsp;pass&nbsp;list&nbsp;of&nbsp;items</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;primes4&nbsp;=&nbsp;primes1.splice(1,&nbsp;3,&nbsp;3,&nbsp;5);&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;primes1.join(',&nbsp;');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;2,&nbsp;3,&nbsp;5,&nbsp;7,&nbsp;11</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;primes4.join(',&nbsp;');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;13,&nbsp;17,&nbsp;19</P>
+<P CLASS="Code">
+%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;mylist&nbsp;=&nbsp;[&nbsp;1&nbsp;2&nbsp;3&nbsp;2&nbsp;3&nbsp;4&nbsp;1&nbsp;4&nbsp;3&nbsp;4&nbsp;5&nbsp;];</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;numbers&nbsp;=&nbsp;mylist.unique;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;numbers.join(',&nbsp;');&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;5</P>
+<P CLASS="Code">
+%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;numbers&nbsp;=&nbsp;[&nbsp;2.718,&nbsp;3.142&nbsp;];&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;numbers.unshift(1.414);&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;numbers.join(',&nbsp;');&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;1.414,&nbsp;2.718,&nbsp;3.142</P>
+<P CLASS="Code">
+%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;numbers&nbsp;=&nbsp;[&nbsp;1.414,&nbsp;2.718&nbsp;];&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;numbers.push(3.142);&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;numbers.join(',&nbsp;');&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;1.414,&nbsp;2.718,&nbsp;3.142</P>
+<P CLASS="Code">
+%]</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;myhashobj.keys&nbsp;%]&nbsp;&nbsp;#&nbsp;object&nbsp;method&nbsp;or&nbsp;hash&nbsp;virtual&nbsp;method</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+foo&nbsp;[%&nbsp;hash.defined('foo')&nbsp;?&nbsp;'is'&nbsp;:&nbsp;'is&nbsp;not'&nbsp;%]&nbsp;defined</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;3-15 each&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;product&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'ABC-123'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;=&nbsp;'ABC&nbsp;Widget&nbsp;#123',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;price&nbsp;=&nbsp;7.99,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;keyvals&nbsp;=&nbsp;product.each;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;WHILE&nbsp;(keyvals.size);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key&nbsp;=&nbsp;keyvals.shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;val&nbsp;=&nbsp;keyvals.shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$key&nbsp;=&gt;&nbsp;$val&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;END</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+id&nbsp;=&gt;&nbsp;ABC-123</P>
+<P CLASS="Code">
+price&nbsp;=&gt;&nbsp;7.99</P>
+<P CLASS="Code">
+name&nbsp;=&gt;&nbsp;ABC&nbsp;Widget&nbsp;#123</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+foo&nbsp;[%&nbsp;hash.exists('foo')&nbsp;?&nbsp;'does'&nbsp;:&nbsp;'does&nbsp;not'&nbsp;%]&nbsp;exist</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;hash1&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foo&nbsp;=&nbsp;'Foo'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bar&nbsp;=&nbsp;'Bar'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;hash2&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wiz&nbsp;=&nbsp;'Wiz'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;woz&nbsp;=&nbsp;'Woz'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;hash1.import(hash2)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;hash1.wiz&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Wiz</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;user&nbsp;=&nbsp;{&nbsp;id&nbsp;=&nbsp;'dent'&nbsp;name&nbsp;=&nbsp;'Arthur&nbsp;Dent'&nbsp;}&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;import(user)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;id&nbsp;%]:&nbsp;[%&nbsp;name&nbsp;%]&nbsp;#&nbsp;dent:&nbsp;Arthur&nbsp;Dent</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;hash.item('foo')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;hash.foo&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;size&nbsp;=&nbsp;font.item('size')&nbsp;%]&nbsp;&nbsp;#&nbsp;hash&nbsp;item</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;size&nbsp;=&nbsp;font.size&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;hash&nbsp;item&nbsp;or&nbsp;vmethod</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;product&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'widget2k'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;=&nbsp;&quot;Widget&nbsp;2000&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;=&nbsp;&quot;Ultra-fast&nbsp;dynamic&nbsp;widget&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;price&nbsp;=&nbsp;4.99</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;key&nbsp;=&nbsp;product.keys&nbsp;-%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;key&nbsp;%]&nbsp;=&gt;&nbsp;[%&nbsp;product.$key&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+about&nbsp;=&gt;&nbsp;Ultra-fast&nbsp;dynamic&nbsp;widget</P>
+<P CLASS="Code">
+id&nbsp;=&gt;&nbsp;widget2k</P>
+<P CLASS="Code">
+price&nbsp;=&gt;&nbsp;4.99</P>
+<P CLASS="Code">
+name&nbsp;=&gt;&nbsp;Widget&nbsp;2000</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;hash&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;one&nbsp;&nbsp;&nbsp;=&nbsp;1</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;two&nbsp;&nbsp;&nbsp;=&nbsp;2</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;three&nbsp;=&nbsp;3</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;key&nbsp;IN&nbsp;hash.list('keys')&nbsp;-%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;key&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+one</P>
+<P CLASS="Code">
+three</P>
+<P CLASS="Code">
+two</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;key&nbsp;IN&nbsp;hash.list('values')&nbsp;-%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;key&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+1</P>
+<P CLASS="Code">
+3</P>
+<P CLASS="Code">
+2</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;key&nbsp;IN&nbsp;hash.list('each')&nbsp;-%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;key&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+one</P>
+<P CLASS="Code">
+1</P>
+<P CLASS="Code">
+three</P>
+<P CLASS="Code">
+3</P>
+<P CLASS="Code">
+two</P>
+<P CLASS="Code">
+2</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;keyval&nbsp;IN&nbsp;hash.list&nbsp;-%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;keyval.key&nbsp;%]&nbsp;=&gt;&nbsp;[%&nbsp;keyval.value&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+one&nbsp;=&gt;&nbsp;1</P>
+<P CLASS="Code">
+three&nbsp;=&gt;&nbsp;3</P>
+<P CLASS="Code">
+two&nbsp;=&gt;&nbsp;2</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;term&nbsp;IN&nbsp;terms.sort&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;term&nbsp;%]&nbsp;means&nbsp;'[%&nbsp;terms.$term&nbsp;%]',</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;keys&nbsp;=&nbsp;product.keys;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;vals&nbsp;=&nbsp;product.vals;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;WHILE&nbsp;keys.size;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key&nbsp;=&nbsp;keys.shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;val&nbsp;=&nbsp;vals.shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$key&nbsp;=&gt;&nbsp;$val&#92;n&quot;;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;END</P>
+<P CLASS="Code">
+%]</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;load&nbsp;Template::Stash&nbsp;to&nbsp;make&nbsp;method&nbsp;tables&nbsp;visible</P>
+<P CLASS="Code">
+use&nbsp;Template::Stash;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;define&nbsp;list&nbsp;method&nbsp;to&nbsp;return&nbsp;a&nbsp;new&nbsp;list&nbsp;of&nbsp;palindromic&nbsp;strings&nbsp;only</P>
+<P CLASS="Code">
+$Template::Stash::LIST_OPS-&gt;{&nbsp;palindromes&nbsp;}&nbsp;=&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$list&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[&nbsp;grep&nbsp;{&nbsp;$_&nbsp;eq&nbsp;reverse($_)&nbsp;}&nbsp;@$list&nbsp;];</P>
+<P CLASS="Code">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;locate&nbsp;the&nbsp;context</P>
+<P CLASS="Code">
+use&nbsp;Template;</P>
+<P CLASS="Code">
+my&nbsp;$template&nbsp;=&nbsp;Template-&gt;new(&nbsp;&nbsp;);</P>
+<P CLASS="Code">
+my&nbsp;$context&nbsp;&nbsp;=&nbsp;$tt-&gt;context(&nbsp;&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;define&nbsp;list&nbsp;method&nbsp;to&nbsp;return&nbsp;a&nbsp;new&nbsp;list&nbsp;of&nbsp;palindromic&nbsp;strings&nbsp;only</P>
+<P CLASS="Code">
+$context-&gt;define_vmethod('list',&nbsp;'palindromes',&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$list&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[&nbsp;grep&nbsp;{&nbsp;$_&nbsp;eq&nbsp;reverse($_)&nbsp;}&nbsp;@$list&nbsp;];</P>
+<P CLASS="Code">
+};</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;load&nbsp;Template::Stash&nbsp;to&nbsp;make&nbsp;method&nbsp;tables&nbsp;visible</P>
+<P CLASS="Code">
+use&nbsp;Template::Stash;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;define&nbsp;list&nbsp;method&nbsp;to&nbsp;return&nbsp;new&nbsp;list&nbsp;of&nbsp;odd&nbsp;numbers&nbsp;only</P>
+<P CLASS="Code">
+$Template::Stash::LIST_OPS-&gt;{&nbsp;odd&nbsp;}&nbsp;=&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$list&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[&nbsp;grep&nbsp;{&nbsp;$_&nbsp;%&nbsp;2&nbsp;}&nbsp;@$list&nbsp;];</P>
+<P CLASS="Code">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;primes&nbsp;=&nbsp;[&nbsp;2,&nbsp;3,&nbsp;5,&nbsp;7,&nbsp;9&nbsp;]&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;primes.odd.join(',&nbsp;')&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;3,&nbsp;5,&nbsp;7,&nbsp;9</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$Template::Stash::SCALAR_OPS-&gt;{&nbsp;int&nbsp;}&nbsp;=&nbsp;sub&nbsp;{&nbsp;int($_[0])&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+use&nbsp;Digest::MD5&nbsp;qw(md5_hex);</P>
+<P CLASS="Code">
+$Template::Stash::SCALAR_OPS-&gt;{&nbsp;md5&nbsp;}&nbsp;=&nbsp;sub&nbsp;{&nbsp;md5_hex($_[0])&nbsp;};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$Template::Stash::LIST_OPS-&gt;{&nbsp;rand&nbsp;}&nbsp;=&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$list&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$list-&gt;[rand&nbsp;@$list];</P>
+<P CLASS="Code">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$Template::Stash::HASH_OPS-&gt;{&nbsp;delete&nbsp;}&nbsp;=&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($hash,&nbsp;$key)&nbsp;=&nbsp;@_;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;delete&nbsp;$hash-&gt;{&nbsp;$key&nbsp;}&nbsp;if&nbsp;(defined&nbsp;$key);</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;hash.delete('key')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;hash.delete('ccard_no').md5&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$template&nbsp;=&nbsp;Template-&gt;new(&nbsp;&nbsp;);</P>
+<P CLASS="Code">
+my&nbsp;$context&nbsp;&nbsp;=&nbsp;$tt-&gt;context(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$context-&gt;define_vmethod('list',&nbsp;'odd',&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$list&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[&nbsp;grep&nbsp;{&nbsp;$_&nbsp;%&nbsp;2&nbsp;}&nbsp;@$list&nbsp;];</P>
+<P CLASS="Code">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$context-&gt;define_vmethod(hash&nbsp;=&gt;&nbsp;dump&nbsp;=&gt;&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$hash&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;'{&nbsp;'&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;join(&nbsp;',&nbsp;',&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map&nbsp;{&nbsp;&quot;$_&nbsp;=&gt;&nbsp;'$hash-&gt;{$_}'&quot;&nbsp;}&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sort&nbsp;keys&nbsp;%$hash&nbsp;)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;'&nbsp;}';</P>
+<P CLASS="Code">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PERL&nbsp;%]</P>
+<P CLASS="Code">
+$context-&gt;define_vmethod(hash&nbsp;=&gt;&nbsp;dump&nbsp;=&gt;&nbsp;sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$hash&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;'{&nbsp;'&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;join(&nbsp;',&nbsp;',&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map&nbsp;{&nbsp;&quot;$_&nbsp;=&gt;&nbsp;'$hash-&gt;{$_}'&quot;&nbsp;}&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sort&nbsp;keys&nbsp;%$hash&nbsp;)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;'&nbsp;}';</P>
+<P CLASS="Code">
+});</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"></body></html>

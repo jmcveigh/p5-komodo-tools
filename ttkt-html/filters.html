@@ -1,0 +1,973 @@
+<html><head><title>filters code examples</title><style>
+
+P.ExampleTitle {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 6.000000pt;
+	margin-bottom: 6.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 0.000000pt;
+	font-size: 9.000000pt;
+	font-weight: medium;
+	font-style: Italic;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Birka";
+}
+
+P.CodeExample {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-weight: bold;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "TheSansMonoCondensed";
+}
+
+P.Code {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Courier";
+}
+
+
+
+
+
+</style><body><P CLASS="ExampleTitle">
+Example&nbsp;5-1 Filtering&nbsp;Javascript&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;p&gt;Here&nbsp;is&nbsp;what&nbsp;the&nbsp;JavaScript&nbsp;should&nbsp;look&nbsp;like:&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&lt;pre&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;html&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;script&nbsp;language=&quot;JavaScript&quot;&nbsp;type=&quot;text/javascript&quot;&gt;</P>
+<P CLASS="CodeExample">
+&lt;!--</P>
+<P CLASS="CodeExample">
+document.writeln(&quot;Hello,&nbsp;world&quot;);</P>
+<P CLASS="CodeExample">
+//--&gt;</P>
+<P CLASS="CodeExample">
+&lt;/script&gt;&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;/pre&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;p&gt;Here&nbsp;is&nbsp;what&nbsp;the&nbsp;JavaScript&nbsp;should&nbsp;look&nbsp;like:&lt;/p&gt;</P>
+<P CLASS="Code">
+&lt;pre&gt;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&amp;lt;script&nbsp;language=&amp;quot;JavaScript&amp;quot;&nbsp;type=&amp;quot;text/javascript&amp;quot;&amp;gt;</P>
+<P CLASS="Code">
+&amp;lt;!--</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;document.writeln(&amp;quot;Hello,&nbsp;world&amp;quot;);</P>
+<P CLASS="Code">
+//--&amp;gt;</P>
+<P CLASS="Code">
+&amp;lt;/script&amp;gt;</P>
+<P CLASS="Code">
+&lt;/pre&gt;</P>
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-2 Formatting&nbsp;numbers&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;pi&nbsp;=&nbsp;3.1415926536;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;pi&nbsp;FILTER&nbsp;format('%0.3f')&nbsp;</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+3.142</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-3 Filtering&nbsp;using&nbsp;the&nbsp;pipe&nbsp;symbol&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;pi&nbsp;=&nbsp;3.1415926536;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;pi&nbsp;|&nbsp;format('%0.3f')&nbsp;</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-4 Using&nbsp;the&nbsp;format&nbsp;filter&nbsp;to&nbsp;add&nbsp;comments&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;text&nbsp;=&nbsp;&quot;The&nbsp;white&nbsp;zone&nbsp;is&nbsp;for&nbsp;loading&nbsp;and&nbsp;unloading&nbsp;only.&quot;&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;format(&quot;&lt;!--&nbsp;%s&nbsp;--&gt;&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;text;</P>
+<P CLASS="CodeExample">
+END&nbsp;</P>
+<P CLASS="CodeExample">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;!--&nbsp;The&nbsp;white&nbsp;zone&nbsp;is&nbsp;for&nbsp;loading&nbsp;and&nbsp;unloading&nbsp;only.&nbsp;--&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FILTER&nbsp;html&nbsp;%]&nbsp;...&nbsp;[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;text&nbsp;FILTER&nbsp;html&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;text&nbsp;|&nbsp;truncate(30)&nbsp;|&nbsp;format(&quot;&lt;!--&nbsp;%s&nbsp;--&gt;&quot;)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FILTER&nbsp;indent(&quot;&gt;&nbsp;&quot;)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;INSERT&nbsp;&quot;mail.txt&quot;&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;INSERT&nbsp;&quot;mail.txt&quot;&nbsp;|&nbsp;indent(&quot;&gt;&nbsp;&quot;)&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-5 The&nbsp;collapse&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;collapse&nbsp;%]</P>
+<P CLASS="CodeExample">
+You'll&nbsp;&nbsp;&nbsp;love</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;it,&nbsp;&nbsp;&nbsp;it's&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp;way</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;life.</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+You'll&nbsp;love&nbsp;it,&nbsp;it's&nbsp;a&nbsp;way&nbsp;of&nbsp;life.</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$vars&nbsp;&nbsp;=&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;fragment&nbsp;=&gt;&nbsp;&quot;The&nbsp;cat&nbsp;sat&nbsp;on&nbsp;the&nbsp;[%&nbsp;place&nbsp;%]&quot;,</P>
+<P CLASS="Code">
+};</P>
+<P CLASS="Code">
+$tt-&gt;process($file,&nbsp;$vars);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error();</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;fragment&nbsp;|&nbsp;eval&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+The&nbsp;cat&nbsp;sat&nbsp;on&nbsp;the&nbsp;[%&nbsp;place&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-6 The&nbsp;format&nbsp;filter&nbsp;used&nbsp;to&nbsp;comment&nbsp;out&nbsp;code&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;format(&quot;&lt;!--&nbsp;%s&nbsp;--&gt;&quot;)&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;script&nbsp;language=&quot;VBScript&quot;&nbsp;type=&quot;text/vbscript&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;evil&nbsp;vbscript&nbsp;here...</P>
+<P CLASS="CodeExample">
+&lt;/script&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&nbsp;language=&quot;VBScript&quot;&nbsp;type=&quot;text/vbscript&quot;&gt;&nbsp;--&gt;</P>
+<P CLASS="Code">
+&lt;!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;evil&nbsp;vbscript&nbsp;here...&nbsp;--&gt;</P>
+<P CLASS="Code">
+&lt;!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;&nbsp;--&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-7 Left-&nbsp;and&nbsp;right-justified&nbsp;text&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;string&nbsp;=&nbsp;&quot;Hello,&nbsp;I&nbsp;must&nbsp;be&nbsp;going.&quot;&nbsp;%]</P>
+<P CLASS="CodeExample">
+Space&nbsp;padded,&nbsp;right&nbsp;justified:&nbsp;'[%&nbsp;string&nbsp;|&nbsp;format(&quot;%&nbsp;32s&quot;)&nbsp;%]'</P>
+<P CLASS="CodeExample">
+Space&nbsp;padded,&nbsp;left&nbsp;justified:&nbsp;'[%&nbsp;string&nbsp;|&nbsp;format(&quot;%-&nbsp;32s&quot;)&nbsp;%]'</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Space&nbsp;padded,&nbsp;right&nbsp;justified:&nbsp;'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello,&nbsp;I&nbsp;must&nbsp;be&nbsp;going.'</P>
+<P CLASS="Code">
+Space&nbsp;padded,&nbsp;left&nbsp;justified:&nbsp;'Hello,&nbsp;I&nbsp;must&nbsp;be&nbsp;going.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-8 Number&nbsp;formats&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;num&nbsp;=&nbsp;42&nbsp;%]</P>
+<P CLASS="CodeExample">
+Unfiltered:&nbsp;[%&nbsp;num&nbsp;%]</P>
+<P CLASS="CodeExample">
+Decimal:&nbsp;[%&nbsp;num&nbsp;|&nbsp;format(&quot;%d&quot;)&nbsp;%]</P>
+<P CLASS="CodeExample">
+Binary:&nbsp;[%&nbsp;num&nbsp;|&nbsp;format(&quot;%b&quot;)&nbsp;%]</P>
+<P CLASS="CodeExample">
+Hex:&nbsp;[%&nbsp;num&nbsp;|&nbsp;format(&quot;%x&quot;)&nbsp;%]</P>
+<P CLASS="CodeExample">
+Hex,&nbsp;0x-padded:&nbsp;[%&nbsp;num&nbsp;|&nbsp;format(&quot;%#x&quot;)&nbsp;%]</P>
+<P CLASS="CodeExample">
+Octal:&nbsp;[%&nbsp;num&nbsp;|&nbsp;format(&quot;%o&quot;)&nbsp;%]</P>
+<P CLASS="CodeExample">
+Octal,&nbsp;0-padded:&nbsp;[%&nbsp;num&nbsp;|&nbsp;format(&quot;%#o&quot;)&nbsp;%]</P>
+<P CLASS="CodeExample">
+Floating&nbsp;point:&nbsp;[%&nbsp;num&nbsp;|&nbsp;format(&quot;%f&quot;)&nbsp;%]</P>
+<P CLASS="CodeExample">
+Scientific&nbsp;Notation:&nbsp;[%&nbsp;num&nbsp;|&nbsp;format(&quot;%e&quot;)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Unfiltered:&nbsp;42</P>
+<P CLASS="Code">
+Decimal:&nbsp;42</P>
+<P CLASS="Code">
+Binary:&nbsp;101010</P>
+<P CLASS="Code">
+Hex:&nbsp;2a</P>
+<P CLASS="Code">
+Hex,&nbsp;0x-padded:&nbsp;0x2a</P>
+<P CLASS="Code">
+Octal:&nbsp;52</P>
+<P CLASS="Code">
+Octal,&nbsp;0-padded:&nbsp;052</P>
+<P CLASS="Code">
+Floating&nbsp;point:&nbsp;42.000000</P>
+<P CLASS="Code">
+Scientific&nbsp;Notation:&nbsp;4.200000e+01</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-9 Controlling&nbsp;the&nbsp;number&nbsp;of&nbsp;decimal&nbsp;places&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;pi&nbsp;=&nbsp;3.1415926536&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;pi&nbsp;|&nbsp;format('%3.1f')&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;pi&nbsp;|&nbsp;format('%4.2f')&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;pi&nbsp;|&nbsp;format('%5.3f')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+3.1</P>
+<P CLASS="Code">
+3.14</P>
+<P CLASS="Code">
+3.142</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-10 Variable&nbsp;interpolation&nbsp;in&nbsp;format&nbsp;definitions&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;pi&nbsp;=&nbsp;3.1415926536&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;dp&nbsp;=&nbsp;[&nbsp;1&nbsp;..&nbsp;10&nbsp;]&nbsp;-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;pi&nbsp;|&nbsp;format(&quot;%.${dp}f&quot;)&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+3.1</P>
+<P CLASS="Code">
+3.14</P>
+<P CLASS="Code">
+3.142</P>
+<P CLASS="Code">
+3.1416</P>
+<P CLASS="Code">
+3.14159</P>
+<P CLASS="Code">
+3.141593</P>
+<P CLASS="Code">
+3.1415927</P>
+<P CLASS="Code">
+3.14159265</P>
+<P CLASS="Code">
+3.141592654</P>
+<P CLASS="Code">
+3.1415926536</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-11 Using&nbsp;the&nbsp;html&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+&lt;p&gt;Creating&nbsp;an&nbsp;HTML&nbsp;anchor&nbsp;is&nbsp;simple:&lt;/p&gt;</P>
+<P CLASS="CodeExample">
+&lt;pre&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;html&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;a&nbsp;href=&quot;http://www.template-toolkit.org/docs/&quot;&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;Read&nbsp;the&nbsp;documentation!</P>
+<P CLASS="CodeExample">
+&lt;/a&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&lt;/pre&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;p&gt;Creating&nbsp;an&nbsp;HTML&nbsp;anchor&nbsp;is&nbsp;simple:&lt;/p&gt;</P>
+<P CLASS="Code">
+&lt;pre&gt;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&amp;lt;a&nbsp;href=&amp;quot;http://www.template-toolkit.org/docs/&amp;quot;&amp;gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Read&nbsp;the&nbsp;documentation!</P>
+<P CLASS="Code">
+&nbsp;&amp;lt;/a&amp;gt;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&lt;/pre&gt;</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-12 Using&nbsp;the&nbsp;html_break&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;html_break&nbsp;%]</P>
+<P CLASS="CodeExample">
+The&nbsp;cat&nbsp;sat&nbsp;on&nbsp;the&nbsp;mat.</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+Mary&nbsp;had&nbsp;a&nbsp;little&nbsp;lamb.</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+The&nbsp;cat&nbsp;sat&nbsp;on&nbsp;the&nbsp;mat.</P>
+<P CLASS="Code">
+&lt;br&nbsp;/&gt;</P>
+<P CLASS="Code">
+&lt;br&nbsp;/&gt;</P>
+<P CLASS="Code">
+Mary&nbsp;had&nbsp;a&nbsp;little&nbsp;lamb.</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-13 Using&nbsp;the&nbsp;html_entity&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;price&nbsp;=&nbsp;'&#163;19.99'&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&lt;p&gt;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;The&nbsp;book&nbsp;cost&nbsp;[%&nbsp;price&nbsp;|&nbsp;html_entity&nbsp;%].</P>
+<P CLASS="CodeExample">
+&lt;/p&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;p&gt;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;The&nbsp;book&nbsp;cost&nbsp;&#163;19.99.</P>
+<P CLASS="Code">
+&lt;/p&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-14 Using&nbsp;the&nbsp;html_line_break&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;html_line_break&nbsp;-%]</P>
+<P CLASS="CodeExample">
+The&nbsp;cat&nbsp;sat&nbsp;on&nbsp;the&nbsp;mat.</P>
+<P CLASS="CodeExample">
+Mary&nbsp;had&nbsp;a&nbsp;little&nbsp;lamb.</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+The&nbsp;cat&nbsp;sat&nbsp;on&nbsp;the&nbsp;mat.&lt;br&nbsp;/&gt;</P>
+<P CLASS="Code">
+Mary&nbsp;had&nbsp;a&nbsp;little&nbsp;lamb.&lt;br&nbsp;/&gt;</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-15 Using&nbsp;the&nbsp;html_para&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;html_para&nbsp;-%]</P>
+<P CLASS="CodeExample">
+The&nbsp;cat&nbsp;sat&nbsp;on&nbsp;the&nbsp;mat.</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+Mary&nbsp;had&nbsp;a&nbsp;little&nbsp;lamb.</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;p&gt;</P>
+<P CLASS="Code">
+The&nbsp;cat&nbsp;sat&nbsp;on&nbsp;the&nbsp;mat.</P>
+<P CLASS="Code">
+&lt;/p&gt;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&lt;p&gt;</P>
+<P CLASS="Code">
+Mary&nbsp;had&nbsp;a&nbsp;little&nbsp;lamb.</P>
+<P CLASS="Code">
+&lt;/p&gt;</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-16 Creating&nbsp;bullet&nbsp;points&nbsp;with&nbsp;the&nbsp;indent&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;indent(&quot;&nbsp;&nbsp;*&nbsp;&quot;)&nbsp;-%]</P>
+<P CLASS="CodeExample">
+Item&nbsp;one</P>
+<P CLASS="CodeExample">
+Item&nbsp;two</P>
+<P CLASS="CodeExample">
+Item&nbsp;three</P>
+<P CLASS="CodeExample">
+[%-&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+*&nbsp;Item&nbsp;one</P>
+<P CLASS="Code">
+*&nbsp;Item&nbsp;two</P>
+<P CLASS="Code">
+*&nbsp;Item&nbsp;three</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-17 Quoting&nbsp;emails&nbsp;with&nbsp;the&nbsp;indent&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;quote&nbsp;=&nbsp;&quot;&gt;&nbsp;&quot;&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;indent(quote)&nbsp;-%]</P>
+<P CLASS="CodeExample">
+Dear&nbsp;Darren,&nbsp;Dave,&nbsp;and&nbsp;Andy,</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+You&nbsp;guys&nbsp;rock.&nbsp;The&nbsp;Template&nbsp;Toolkit&nbsp;book&nbsp;is&nbsp;fantastic.</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+Thanks&nbsp;for&nbsp;writing&nbsp;it.</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+A&nbsp;Fan</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&gt;&nbsp;Dear&nbsp;Darren,&nbsp;Dave,&nbsp;and&nbsp;Andy,</P>
+<P CLASS="Code">
+&gt;&nbsp;</P>
+<P CLASS="Code">
+&gt;&nbsp;You&nbsp;guys&nbsp;rock.&nbsp;The&nbsp;Template&nbsp;Toolkit&nbsp;book&nbsp;is&nbsp;fantastic.</P>
+<P CLASS="Code">
+&gt;&nbsp;</P>
+<P CLASS="Code">
+&gt;&nbsp;Thanks&nbsp;for&nbsp;writing&nbsp;it.</P>
+<P CLASS="Code">
+&gt;&nbsp;</P>
+<P CLASS="Code">
+&gt;&nbsp;A&nbsp;Fan</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-18 Adding&nbsp;the&nbsp;template&nbsp;name&nbsp;to&nbsp;debug&nbsp;output&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;debug_msg&nbsp;|&nbsp;indent(&quot;[$template.name]&nbsp;&quot;)&nbsp;|&nbsp;stderr&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[src/header]&nbsp;Some&nbsp;useful&nbsp;debug&nbsp;info&nbsp;(which&nbsp;goes&nbsp;to&nbsp;stderr)</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-19 Default&nbsp;indent&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;indent&nbsp;-%]</P>
+<P CLASS="CodeExample">
+A&nbsp;sample&nbsp;piece&nbsp;of&nbsp;text</P>
+<P CLASS="CodeExample">
+that&nbsp;will&nbsp;be&nbsp;indented</P>
+<P CLASS="CodeExample">
+[%-&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+This&nbsp;isn't&nbsp;indented</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;sample&nbsp;piece&nbsp;of&nbsp;text</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;will&nbsp;be&nbsp;indented</P>
+<P CLASS="Code">
+This&nbsp;isn't&nbsp;indented</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-20 Using&nbsp;the&nbsp;latex&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;latex(&quot;pdf&quot;)&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&#92;documentclass{article}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&#92;begin{document}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&#92;title{A&nbsp;Sample&nbsp;TT2&nbsp;&#92;LaTeX&#92;&nbsp;Source&nbsp;File}</P>
+<P CLASS="CodeExample">
+&#92;author{Craig&nbsp;Barratt}</P>
+<P CLASS="CodeExample">
+&#92;maketitle</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&#92;section{Introduction}</P>
+<P CLASS="CodeExample">
+This&nbsp;is&nbsp;some&nbsp;text.</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&#92;end{document}</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-21 Using&nbsp;the&nbsp;latex&nbsp;filter&nbsp;in&nbsp;a&nbsp;CGI&nbsp;program&nbsp;</P>
+<P CLASS="CodeExample">
+Content-Type:&nbsp;application/pdf</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;latex(&quot;pdf&quot;)&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&#92;documentclass{article}</P>
+<P CLASS="CodeExample">
+&#92;begin{document}</P>
+<P CLASS="CodeExample">
+...</P>
+<P CLASS="CodeExample">
+&#92;end{document}</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-22 Redirecting&nbsp;output&nbsp;from&nbsp;the&nbsp;latex&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;output&nbsp;=&nbsp;FILTER&nbsp;latex(&quot;pdf&quot;)&nbsp;-%]</P>
+<P CLASS="CodeExample">
+&#92;documentclass{article}</P>
+<P CLASS="CodeExample">
+&#92;begin{document}</P>
+<P CLASS="CodeExample">
+...</P>
+<P CLASS="CodeExample">
+&#92;end{document}</P>
+<P CLASS="CodeExample">
+[%&nbsp;END;&nbsp;output&nbsp;|&nbsp;redirect(&quot;document.pdf&quot;,&nbsp;1)&nbsp;-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-23 Using&nbsp;the&nbsp;lcfirst&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&quot;FIREHOSE&quot;&nbsp;FILTER&nbsp;lcfirst&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+fIREHOSE</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-24 Combining&nbsp;the&nbsp;lower&nbsp;and&nbsp;ucfirst&nbsp;filters&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;sentence&nbsp;=&nbsp;&quot;sOmE&nbsp;tExT&nbsp;iN&nbsp;rAnDoM&nbsp;cAsE&quot;&nbsp;-%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;sentence&nbsp;|&nbsp;lower&nbsp;|&nbsp;ucfirst&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Some&nbsp;text&nbsp;in&nbsp;random&nbsp;case</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-25 The&nbsp;sentence_case&nbsp;macro&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;MACRO&nbsp;sentence_case(str)&nbsp;str&nbsp;|&nbsp;lower&nbsp;|&nbsp;ucfirst&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-26 Using&nbsp;the&nbsp;lower&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&quot;Hello&nbsp;World&quot;&nbsp;|&nbsp;lower&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+hello&nbsp;world</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-27 Using&nbsp;the&nbsp;null&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;null;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;USE&nbsp;im&nbsp;=&nbsp;GD.Image(100,100);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;black&nbsp;=&nbsp;im.colorAllocate(0,&nbsp;&nbsp;&nbsp;0,&nbsp;0);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;red&nbsp;&nbsp;&nbsp;=&nbsp;im.colorAllocate(255,0,&nbsp;&nbsp;0);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;blue&nbsp;&nbsp;=&nbsp;im.colorAllocate(0,&nbsp;&nbsp;0,&nbsp;&nbsp;255);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;im.arc(50,50,95,75,0,360,blue);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;im.fill(50,50,red);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;im.png&nbsp;|&nbsp;stdout(1);</P>
+<P CLASS="CodeExample">
+END;</P>
+<P CLASS="CodeExample">
+-%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-28 Using&nbsp;the&nbsp;perl&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;my_perl_code&nbsp;|&nbsp;perl&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-29 Using&nbsp;a&nbsp;PERL&nbsp;block&nbsp;in&nbsp;place&nbsp;of&nbsp;the&nbsp;perl&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PERL&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;my_perl_code&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;5-30 Using&nbsp;the&nbsp;perl&nbsp;filter&nbsp;in&nbsp;block&nbsp;form&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;perl&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;my_perl_code&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-31 Using&nbsp;the&nbsp;redirect&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;translate(&quot;src&quot;&nbsp;=&nbsp;&quot;en&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;FOREACH&nbsp;language&nbsp;=&nbsp;languages;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;=&nbsp;&quot;index.html.$language&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;TRY;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;|&nbsp;$translate(&quot;dest&quot;&nbsp;=&gt;&nbsp;language)&nbsp;|&nbsp;redirect(file);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;&nbsp;=&nbsp;&quot;&nbsp;+&nbsp;Successfully&nbsp;translated&nbsp;$file&nbsp;to&nbsp;$language.&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;CATCH&nbsp;file;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;=&nbsp;&quot;&nbsp;-&nbsp;Cannot&nbsp;open&nbsp;$file:&nbsp;$error&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;CATCH;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;=&nbsp;&quot;&nbsp;-&nbsp;Error:&nbsp;$error&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;emsg&nbsp;|&nbsp;stderr;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;END;</P>
+<P CLASS="CodeExample">
+&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-32 Using&nbsp;the&nbsp;remove&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;string&nbsp;=&nbsp;&quot;Hello,&nbsp;I&nbsp;must&nbsp;be&nbsp;going.&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;string&nbsp;|&nbsp;remove(&quot;e&quot;)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Hllo,&nbsp;I&nbsp;must&nbsp;b&nbsp;going.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-33 Using&nbsp;the&nbsp;remove&nbsp;filter&nbsp;with&nbsp;a&nbsp;regular&nbsp;expression&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;string&nbsp;=&nbsp;&quot;Hello,&nbsp;I&nbsp;must&nbsp;be&nbsp;going.&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;string&nbsp;|&nbsp;remove(&quot;(?x)&nbsp;&nbsp;&nbsp;#&nbsp;whitespace&nbsp;is&nbsp;not&nbsp;important</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(?&lt;=H)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;an&nbsp;'H'</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;strip&nbsp;the&nbsp;'e'!</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(?=ll)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;followed&nbsp;by&nbsp;'ll'</P>
+<P CLASS="CodeExample">
+&quot;)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Hllo,&nbsp;I&nbsp;must&nbsp;be&nbsp;going.</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-34 Using&nbsp;the&nbsp;repeat&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FILTER&nbsp;repeat(5)&nbsp;%]</P>
+<P CLASS="CodeExample">
+All&nbsp;work&nbsp;and&nbsp;no&nbsp;play&nbsp;make&nbsp;Jack&nbsp;a&nbsp;dull&nbsp;boy.</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+All&nbsp;work&nbsp;and&nbsp;no&nbsp;play&nbsp;make&nbsp;Jack&nbsp;a&nbsp;dull&nbsp;boy.</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+All&nbsp;work&nbsp;and&nbsp;no&nbsp;play&nbsp;make&nbsp;Jack&nbsp;a&nbsp;dull&nbsp;boy.</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+All&nbsp;work&nbsp;and&nbsp;no&nbsp;play&nbsp;make&nbsp;Jack&nbsp;a&nbsp;dull&nbsp;boy.</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+All&nbsp;work&nbsp;and&nbsp;no&nbsp;play&nbsp;make&nbsp;Jack&nbsp;a&nbsp;dull&nbsp;boy.</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+All&nbsp;work&nbsp;and&nbsp;no&nbsp;play&nbsp;make&nbsp;Jack&nbsp;a&nbsp;dull&nbsp;boy.</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-35 Using&nbsp;the&nbsp;replace&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;string&nbsp;=&nbsp;&quot;Hello,&nbsp;I&nbsp;must&nbsp;be&nbsp;going.&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;string&nbsp;|&nbsp;replace(&quot;e&quot;,&nbsp;&quot;u&quot;)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Hullo,&nbsp;I&nbsp;must&nbsp;bu&nbsp;going.</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-36 Using&nbsp;the&nbsp;stderr&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;something/cool&nbsp;|&nbsp;stderr(binmode=1)&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-37 Using&nbsp;the&nbsp;stdout&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;something/cool</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;FILTER&nbsp;stdout(binmode=1)&nbsp;#&nbsp;recommended&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;PROCESS&nbsp;something/cool</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;FILTER&nbsp;stdout(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;alternate&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-38 Using&nbsp;the&nbsp;trim&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;text&nbsp;=&nbsp;&quot;&nbsp;&nbsp;some&nbsp;text&nbsp;with&nbsp;leading&nbsp;and&nbsp;trailing&nbsp;spaces&nbsp;&nbsp;&nbsp;&quot;&nbsp;%]</P>
+<P CLASS="CodeExample">
++[%&nbsp;text&nbsp;|&nbsp;trim&nbsp;%]+</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
++some&nbsp;text&nbsp;with&nbsp;leading&nbsp;and&nbsp;trailing&nbsp;spaces+</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-39 Extra&nbsp;newlines&nbsp;when&nbsp;processing&nbsp;blocks&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;foo&nbsp;%]</P>
+<P CLASS="CodeExample">
+between</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+before-[%&nbsp;PROCESS&nbsp;foo&nbsp;%]-after</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+before-</P>
+<P CLASS="Code">
+between</P>
+<P CLASS="Code">
+-after</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-40 Using&nbsp;the&nbsp;trim&nbsp;filter&nbsp;to&nbsp;remove&nbsp;the&nbsp;extra&nbsp;newlines&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;foo&nbsp;%]</P>
+<P CLASS="CodeExample">
+between</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+before-[%&nbsp;PROCESS&nbsp;foo&nbsp;|&nbsp;trim&nbsp;%]-after</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+before-between-after</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-41 Using&nbsp;the&nbsp;truncate&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;FOREACH&nbsp;result&nbsp;=&nbsp;results&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;*&nbsp;[%&nbsp;result.description&nbsp;|&nbsp;truncate(24)&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;[%&nbsp;result.link&nbsp;%]&quot;&gt;Read&nbsp;more&lt;/a&gt;</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-42 Hanging&nbsp;HTML&nbsp;tags&nbsp;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;result.description&nbsp;=&nbsp;&quot;Hello,&nbsp;&lt;blink&gt;world&lt;/blink&gt;!&quot;&nbsp;%]</P>
+<P CLASS="CodeExample">
+Description:&nbsp;[%&nbsp;result.description&nbsp;|&nbsp;truncate(20)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Description:&nbsp;Hello,&nbsp;&lt;blink&gt;wor...</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-43 Using&nbsp;the&nbsp;remove&nbsp;filter&nbsp;to&nbsp;fix&nbsp;the&nbsp;hanging&nbsp;HTML&nbsp;tags&nbsp;</P>
+<P CLASS="CodeExample">
+[%-&nbsp;result.description&nbsp;=&nbsp;&quot;Hello,&nbsp;&lt;blink&gt;world&lt;/blink&gt;!&quot;&nbsp;%]</P>
+<P CLASS="CodeExample">
+Description:&nbsp;[%&nbsp;result.description&nbsp;|&nbsp;remove(&quot;&lt;[^&gt;]*?&gt;&quot;)&nbsp;|&nbsp;truncate(20)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Description:&nbsp;Hello,&nbsp;world!</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-44 Using&nbsp;the&nbsp;ucfirst&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;&quot;hello&quot;&nbsp;|&nbsp;ucfirst&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Hello</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-45 Using&nbsp;the&nbsp;upper&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;'do&nbsp;not&nbsp;leave&nbsp;it&nbsp;is&nbsp;not&nbsp;real'&nbsp;|&nbsp;upper&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+DO&nbsp;NOT&nbsp;LEAVE&nbsp;IT&nbsp;IS&nbsp;NOT&nbsp;REAL</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-46 Using&nbsp;the&nbsp;uri&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;filename&nbsp;=&nbsp;'C:&#92;My&nbsp;Documents&#92;My&nbsp;Web&nbsp;Page.html'&nbsp;%]</P>
+<P CLASS="CodeExample">
+Visit&nbsp;&lt;a&nbsp;href=&quot;[%&nbsp;filename&nbsp;|&nbsp;uri&nbsp;%]&quot;&gt;My&nbsp;Web&nbsp;Page&lt;/a&gt;!</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Visit&nbsp;&lt;a&nbsp;href=&quot;C:%5CMy%20Documents%5CMy%20Web%20Page.html&quot;&gt;My&nbsp;Web&nbsp;Page&lt;/a&gt;!</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;5-47 Using&nbsp;the&nbsp;uri&nbsp;filter&nbsp;with&nbsp;the&nbsp;html&nbsp;filter&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;url&nbsp;=&nbsp;&quot;this&nbsp;page.cgi&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;prev&nbsp;=&nbsp;&quot;$url?page=1&amp;search=1&quot;&nbsp;|&nbsp;uri&nbsp;|&nbsp;html;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;next&nbsp;=&nbsp;&quot;$url?page=3&amp;search=1&quot;&nbsp;|&nbsp;uri&nbsp;|&nbsp;html;</P>
+<P CLASS="CodeExample">
+%]</P>
+<P CLASS="CodeExample">
+&lt;a&nbsp;href=&quot;[%&nbsp;prev&nbsp;%]&quot;&gt;Previous&lt;/a&gt;</P>
+<P CLASS="CodeExample">
+&lt;a&nbsp;href=&quot;[%&nbsp;next&nbsp;%]&quot;&gt;Next&lt;/a&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;a&nbsp;href=&quot;this%20page.cgi?page=1&amp;amp;search=1&quot;&gt;Previous&lt;/a&gt;</P>
+<P CLASS="Code">
+&lt;a&nbsp;href=&quot;this%20page.cgi?page=3&amp;amp;search=1&quot;&gt;Next&lt;/a&gt;</P>
+<br>
+<hr width="50%" align="left"></body></html>

@@ -1,0 +1,2615 @@
+<html><head><title>anatomny of ttkt-html code examples</title><style>/* STYLES COPIED FROM FRAME GENERATED HTML */
+
+P.ExampleTitle {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 6.000000pt;
+	margin-bottom: 6.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 0.000000pt;
+	font-size: 9.000000pt;
+	font-weight: medium;
+	font-style: Italic;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Birka";
+}
+
+P.CodeExample {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-weight: bold;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "TheSansMonoCondensed";
+}
+
+P.Code {
+	display: block;
+	text-align: left;
+	text-indent: 0.000000pt;
+	margin-top: 0.000000pt;
+	margin-bottom: 0.000000pt;
+	margin-right: 0.000000pt;
+	margin-left: 18.000000pt;
+	font-size: 8.000000pt;
+	font-style: Regular;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: baseline;
+	text-transform: none;
+	font-family: "Courier";
+}
+
+
+
+
+
+</style><body><P CLASS="ExampleTitle">
+Example&nbsp;7-1 Template::process&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;process($name,&nbsp;&#92;%vars,&nbsp;$output,&nbsp;&#92;%options)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$content&nbsp;=&nbsp;SERVICE-&gt;process($name,&nbsp;$vars);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;type($output)&nbsp;=&nbsp;&nbsp;=&nbsp;'code':</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;$output($content);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;elsif&nbsp;type($output)&nbsp;=&nbsp;&nbsp;=&nbsp;'filehandle':</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;$output&nbsp;$content;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;elsif&nbsp;type($output)&nbsp;=&nbsp;&nbsp;=&nbsp;'scalar&nbsp;reference':</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$output&nbsp;=&nbsp;$content;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;elsif&nbsp;type($output)&nbsp;=&nbsp;&nbsp;=&nbsp;'array&nbsp;reference':</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;push&nbsp;@$output,&nbsp;$content;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;elsif&nbsp;$output-&gt;can('print'):</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output-&gt;print($content);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;else:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;open&nbsp;OUT,&nbsp;$output;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;$options-&gt;{'binmode'}:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;binmode&nbsp;OUT;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;OUT&nbsp;$content;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-2 Apache::Template::handler&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;handler($r)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;SERVICE-&gt;template($r);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$params&nbsp;=&nbsp;SERVICE-&gt;params($r);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$content&nbsp;=&nbsp;SERVICE-&gt;process($r);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;SERVICE-&gt;headers($r,&nbsp;$template,&nbsp;$content);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$r-&gt;print($content);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;OK;</P>
+<P CLASS="CodeExample">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-3 Template::Service::process&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;process($template,&nbsp;&#92;%vars)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;=&nbsp;'';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$compiled_template&nbsp;=&nbsp;CONTEXT-&gt;template($template);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$vars-&gt;{'template'}&nbsp;=&nbsp;$compiled_template;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;eval&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;$name&nbsp;in&nbsp;PRE_PROCESS:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;+=&nbsp;CONTEXT-&gt;process($name,&nbsp;$vars);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@process&nbsp;=&nbsp;PROCESS&nbsp;||&nbsp;$compiled_template;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;$name&nbsp;in&nbsp;@process:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;+=&nbsp;CONTEXT-&gt;process($name,&nbsp;$vars);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@wrapper&nbsp;=&nbsp;reverse&nbsp;WRAPPER;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;$name&nbsp;in&nbsp;@wrapper:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;+=&nbsp;CONTEXT-&gt;process($name,&nbsp;$vars);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;$name&nbsp;in&nbsp;POST_PROCESS:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;+=&nbsp;CONTEXT-&gt;process($name,&nbsp;$vars);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;$EVAL_ERROR:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;=&nbsp;CONTEXT-&gt;process(ERROR);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$output;</P>
+<P CLASS="CodeExample">
+}</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-4 Template::Context::template&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;template($name)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;undef;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;$p&nbsp;in&nbsp;LOAD_TEMPLATES:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$template&nbsp;=&nbsp;$p-&gt;fetch($name);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last&nbsp;if&nbsp;$template;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;throw('file',&nbsp;&quot;$name&nbsp;not&nbsp;found&quot;)&nbsp;unless&nbsp;$template;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$template;</P>
+<P CLASS="CodeExample">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-5 Template::Context::process&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;process(&#92;@names,&nbsp;&#92;%vars)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;$name&nbsp;in&nbsp;$names:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;push&nbsp;@templates,&nbsp;$self-&gt;template($name);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;STASH-&gt;update($vars);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;eval&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;$template&nbsp;in&nbsp;@templates:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;+=&nbsp;&amp;$template($self);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;$EVAL_ERROR:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;throw($EVAL_ERROR);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$output;</P>
+<P CLASS="CodeExample">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;copyright&nbsp;+&nbsp;footer&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$context-&gt;process([&nbsp;'copyright',&nbsp;'footer'&nbsp;]);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-6 Template::Context::plugin&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;plugin($name,&nbsp;&#92;@args)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$plugin&nbsp;=&nbsp;undef;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;$p&nbsp;in&nbsp;@LOAD_PLUGINS:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$plugin&nbsp;=&nbsp;$p-&gt;fetch($name,&nbsp;$args);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last&nbsp;if&nbsp;$plugin;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;throw('plugin',&nbsp;&quot;$name&nbsp;not&nbsp;found&quot;)&nbsp;unless&nbsp;$plugin;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$plugin;</P>
+<P CLASS="CodeExample">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-7 Template::Context::filter&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;filter($name,&nbsp;&#92;@args,&nbsp;$alias)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$filter&nbsp;=&nbsp;undef;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$filter&nbsp;=&nbsp;$self-&gt;filter_cache-&gt;$name;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$filter&nbsp;if&nbsp;$filter;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;$p&nbsp;in&nbsp;@LOAD_FILTERS:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$filter&nbsp;=&nbsp;$p-&gt;fetch($name,&nbsp;$args);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last&nbsp;if&nbsp;$filter;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;undef&nbsp;unless&nbsp;$filter;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;filter_cache-&gt;$alias&nbsp;=&nbsp;$filter;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$filter;</P>
+<P CLASS="CodeExample">
+}</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-8 Template::Provider::fetch&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;fetch($name)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;$name&nbsp;=&#126;&nbsp;/^&#92;//:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;ABSOLUTE:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$data,&nbsp;$error&nbsp;=&nbsp;$self-&gt;_fetch(name);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$data&nbsp;=&nbsp;undef;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$error&nbsp;=&nbsp;'ABSOLUTE&nbsp;paths&nbsp;not&nbsp;allowed';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;elsif&nbsp;$name&nbsp;=&#126;&nbsp;/^&#92;.+&#92;//:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;RELATIVE:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$data,&nbsp;$error&nbsp;=&nbsp;$self-&gt;_fetch($name);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$data&nbsp;=&nbsp;undef;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$error&nbsp;=&nbsp;'RELATIVE&nbsp;paths&nbsp;not&nbsp;allowed';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;else:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$data,&nbsp;$error&nbsp;=&nbsp;$self-&gt;_fetch_path($name);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$data,&nbsp;$error;</P>
+<P CLASS="CodeExample">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-9 Template::Provider::_fetch&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;_fetch($name)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$compiled_filename&nbsp;=&nbsp;$self-&gt;_compiled_filename;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;CACHE_SIZE:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$cached&nbsp;=&nbsp;$self-&gt;template_cache-&gt;$name</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;$cached:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;_refresh($cached);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$doc&nbsp;=&nbsp;$cached;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$filedata&nbsp;=&nbsp;$self-&gt;_load($name);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$doc&nbsp;=&nbsp;$self-&gt;_compile($filedata,&nbsp;$compiled_filename);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;else:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;$compiled_filename:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$doc&nbsp;=&nbsp;$self-&gt;_load_compiled($compiled_template);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;store($name,&nbsp;$doc);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$filedata&nbsp;=&nbsp;$self-&gt;_load($name);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$doc&nbsp;=&nbsp;$self-&gt;_compile($filedata,&nbsp;$compiled_filename);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;store($name,&nbsp;$doc);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$doc;</P>
+<P CLASS="CodeExample">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-10 Template::Provider::_compile&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;_compile($filedata,&nbsp;$compiled_filename)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$parsed&nbsp;=&nbsp;PARSER-&gt;parse($filedata-&gt;{'text'},&nbsp;$filedata);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$parsed-&gt;{'name'}&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;$filedata-&gt;{'name'};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$parsed-&gt;{'modtime'}&nbsp;=&nbsp;$filedata-&gt;{'time'};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;$compiled_filename:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOCUMENT-&gt;write_perl_file($parsed,&nbsp;$compiled_filename);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;DOCUMENT-&gt;new($parsed);</P>
+<P CLASS="CodeExample">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-11 Template::Parser::parse&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;parse($text,&nbsp;$info)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;@tokens&nbsp;=&nbsp;$self-&gt;split_text($text);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$block&nbsp;=&nbsp;$self-&gt;_parse(@tokens,&nbsp;$info);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BLOCK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;$block</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEFBLOCKS&nbsp;=&nbsp;$self-&gt;DEFBLOCK</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;METADATA&nbsp;&nbsp;=&nbsp;$self-&gt;METADATA</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-12 An&nbsp;example&nbsp;template&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;%]</P>
+<P CLASS="CodeExample">
+A&nbsp;city&nbsp;is&nbsp;like&nbsp;a&nbsp;large,&nbsp;complex&nbsp;rabbit.</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-13 Code&nbsp;implementing&nbsp;an&nbsp;anonymous&nbsp;block&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;BLOCK</P>
+<P CLASS="CodeExample">
+$output&nbsp;.=&nbsp;&nbsp;do&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$output&nbsp;&nbsp;=&nbsp;'';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$error;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;eval&nbsp;{&nbsp;BLOCK:&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&nbsp;&quot;&#92;nA&nbsp;city&nbsp;is&nbsp;like&nbsp;a&nbsp;large,&nbsp;complex&nbsp;rabbit.&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($@)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$error&nbsp;=&nbsp;$context-&gt;catch($@,&nbsp;&#92;$output);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die&nbsp;$error&nbsp;unless&nbsp;$error-&gt;type&nbsp;eq&nbsp;'return';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$output;</P>
+<P CLASS="CodeExample">
+};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-14 A&nbsp;malformed&nbsp;template&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;BLOCK&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-15 Template::Document::process&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;process($context)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;=&nbsp;'';</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;eval&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$block&nbsp;=&nbsp;$self-&gt;block;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;=&nbsp;&amp;$block($context);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;$EVAL_ERROR:</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die&nbsp;$context-&gt;catch($EVAL_ERROR);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$output;</P>
+<P CLASS="CodeExample">
+}</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;my_compiled_template&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&quot;This&nbsp;is&nbsp;a&nbsp;compiled&nbsp;template.&#92;n&quot;;</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;my_todo_template&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;die&nbsp;&quot;This&nbsp;template&nbsp;not&nbsp;yet&nbsp;implemented&#92;n&quot;;</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;my_solilique_template&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;die&nbsp;(Template::Exception-&gt;new('yorrick',&nbsp;'Fellow&nbsp;of&nbsp;infinite&nbsp;jest'));</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;my_process_template&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$context&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$output&nbsp;=&nbsp;$context-&gt;process('header',&nbsp;{&nbsp;title&nbsp;=&gt;&nbsp;'Hello&nbsp;World'&nbsp;})</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&quot;&#92;nsome&nbsp;content&#92;n&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;$context-&gt;process('footer');</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;header</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;=&nbsp;'Hello&nbsp;World'</P>
+<P CLASS="Code">
+%]</P>
+<P CLASS="Code">
+some&nbsp;content</P>
+<P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;footer&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;title&gt;[%&nbsp;title&nbsp;%]&lt;/title&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$context&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$stash&nbsp;=&nbsp;$context-&gt;stash(&nbsp;&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;'&lt;title&gt;'&nbsp;.&nbsp;$stash-&gt;get('title')&nbsp;.&nbsp;'&lt;/title&gt;';</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;title('The&nbsp;Cat&nbsp;Sat&nbsp;on&nbsp;the&nbsp;Mat')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$stash-&gt;get([&nbsp;'title'&nbsp;=&gt;&nbsp;[&nbsp;'The&nbsp;Cat&nbsp;Sat&nbsp;on&nbsp;the&nbsp;Mat'&nbsp;]&nbsp;]);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;foo(1,&nbsp;2).bar(3,&nbsp;4).baz(5)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$stash-&gt;get([&nbsp;foo&nbsp;=&gt;&nbsp;[1,2],&nbsp;bar&nbsp;=&gt;&nbsp;[3,4],&nbsp;baz&nbsp;=&gt;&nbsp;[5]&nbsp;]);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;foo.bar&nbsp;%]</P>
+<P CLASS="Code">
+$stash-&gt;get([&nbsp;'foo',&nbsp;0,&nbsp;'bar',&nbsp;0&nbsp;]);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;x&nbsp;=&nbsp;10&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+$stash-&gt;set('x',&nbsp;10);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;x.y&nbsp;=&nbsp;10&nbsp;%]</P>
+<P CLASS="Code">
+$stash-&gt;set([&nbsp;'x',&nbsp;0,&nbsp;'y',&nbsp;0&nbsp;],&nbsp;10);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;WRAPPER&nbsp;foo&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;blah&nbsp;blah&nbsp;[%&nbsp;x&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$context-&gt;include('foo',&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;=&gt;&nbsp;&quot;&#92;n&nbsp;&nbsp;&nbsp;blah&nbsp;blah&nbsp;&quot;&nbsp;.&nbsp;$stash-&gt;get('x')&nbsp;.&nbsp;&quot;&#92;n&quot;,</P>
+<P CLASS="Code">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;foo&nbsp;=&nbsp;Bar(10)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$stash-&gt;set('foo',&nbsp;$context-&gt;plugin('Bar',&nbsp;[10]));</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[%&nbsp;FILTER&nbsp;bar(20)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;blah&nbsp;blah&nbsp;blah</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+my&nbsp;$filter&nbsp;=&nbsp;$context-&gt;filter('bar',&nbsp;[20]);</P>
+<P CLASS="Code">
+&amp;$filter(&quot;&#92;n&nbsp;&nbsp;&nbsp;blah&nbsp;blah&nbsp;blah&#92;n&quot;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;IF&nbsp;msg&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;Message:&nbsp;[%&nbsp;msg&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%];</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+if&nbsp;($stash-&gt;get('msg'))&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&quot;&#92;n&nbsp;&nbsp;&nbsp;Message:&nbsp;&#92;n&quot;;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;$stash-&gt;get('msg');</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&quot;&#92;n&quot;;</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-16 debug.pl&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template::Parser;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template::Directive;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$Template::Parser::DEBUG&nbsp;=&nbsp;1;</P>
+<P CLASS="CodeExample">
+$Template::Directive::PRETTY&nbsp;=&nbsp;1;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+$tt-&gt;process(*DATA,&nbsp;{&nbsp;cat&nbsp;=&gt;&nbsp;'dog',&nbsp;mat&nbsp;=&gt;&nbsp;'log'&nbsp;})</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+_&nbsp;_DATA_&nbsp;_</P>
+<P CLASS="CodeExample">
+The&nbsp;[%&nbsp;cat&nbsp;%]&nbsp;sat&nbsp;on&nbsp;the&nbsp;[%&nbsp;mat&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+The&nbsp;dog&nbsp;sat&nbsp;on&nbsp;the&nbsp;log</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-17 Compiled&nbsp;main&nbsp;template&nbsp;document&nbsp;block&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$context&nbsp;=&nbsp;shift&nbsp;||&nbsp;die&nbsp;&quot;template&nbsp;sub&nbsp;called&nbsp;without&nbsp;context&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$stash&nbsp;&nbsp;&nbsp;=&nbsp;$context-&gt;stash;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$output&nbsp;&nbsp;=&nbsp;'';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$error;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;eval&nbsp;{&nbsp;BLOCK:&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&nbsp;&quot;The&nbsp;&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&nbsp;$stash-&gt;get('cat');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&nbsp;&quot;&nbsp;sat&nbsp;on&nbsp;the&nbsp;&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&nbsp;$stash-&gt;get('mat');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&nbsp;&quot;&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($@)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$error&nbsp;=&nbsp;$context-&gt;catch($@,&nbsp;&#92;$output);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die&nbsp;$error&nbsp;unless&nbsp;$error-&gt;type&nbsp;eq&nbsp;'return';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$output;</P>
+<P CLASS="CodeExample">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-18 A&nbsp;compiled&nbsp;document&nbsp;</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+#&nbsp;Compiled&nbsp;template&nbsp;generated&nbsp;by&nbsp;the&nbsp;Template&nbsp;Toolkit&nbsp;version&nbsp;2.09c</P>
+<P CLASS="CodeExample">
+#------------------------------------------------------------------------</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+Template::Document-&gt;new({</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;METADATA&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'modtime'&nbsp;=&gt;&nbsp;'1054300677',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'name'&nbsp;=&gt;&nbsp;'cat.tt2',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;BLOCK&nbsp;=&gt;&nbsp;sub&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$context&nbsp;=&nbsp;shift&nbsp;||&nbsp;die&nbsp;&quot;template&nbsp;sub&nbsp;called&nbsp;without&nbsp;context&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$stash&nbsp;&nbsp;&nbsp;=&nbsp;$context-&gt;stash;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$output&nbsp;&nbsp;=&nbsp;'';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$error;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;eval&nbsp;{&nbsp;BLOCK:&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&nbsp;&quot;The&nbsp;&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&nbsp;$stash-&gt;get('cat');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&nbsp;&quot;&nbsp;sat&nbsp;on&nbsp;the&nbsp;&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&nbsp;$stash-&gt;get('mat');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&nbsp;&quot;&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($@)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$error&nbsp;=&nbsp;$context-&gt;catch($@,&nbsp;&#92;$output);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die&nbsp;$error&nbsp;unless&nbsp;$error-&gt;type&nbsp;eq&nbsp;'return';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$output;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;DEFBLOCKS&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="CodeExample">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-19 debug-constants.pl&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template::Parser;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template::Directive;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$Template::Parser::DEBUG&nbsp;=&nbsp;1;</P>
+<P CLASS="CodeExample">
+$Template::Directive::PRETTY&nbsp;=&nbsp;1;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new(</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;CONSTANTS&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cat&nbsp;=&gt;&nbsp;'dog',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="CodeExample">
+);</P>
+<P CLASS="CodeExample">
+$tt-&gt;process(*DATA,&nbsp;{&nbsp;mat&nbsp;=&gt;&nbsp;'log'&nbsp;})</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+_&nbsp;_DATA_&nbsp;_</P>
+<P CLASS="CodeExample">
+The&nbsp;[%&nbsp;constants.cat&nbsp;%]&nbsp;sat&nbsp;on&nbsp;the&nbsp;[%&nbsp;mat&nbsp;%]</P>
+<P CLASS="ExampleTitle">
+Example&nbsp;7-20 Compiled&nbsp;main&nbsp;template&nbsp;document&nbsp;block&nbsp;(with&nbsp;constant&nbsp;folding)&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$context&nbsp;=&nbsp;shift&nbsp;||&nbsp;die&nbsp;&quot;template&nbsp;sub&nbsp;called&nbsp;without&nbsp;context&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$stash&nbsp;&nbsp;&nbsp;=&nbsp;$context-&gt;stash;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$output&nbsp;&nbsp;=&nbsp;'';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$error;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;eval&nbsp;{&nbsp;BLOCK:&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&nbsp;&quot;The&nbsp;&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&nbsp;'dog';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&nbsp;&quot;&nbsp;sat&nbsp;on&nbsp;the&nbsp;&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&nbsp;$stash-&gt;get('mat');</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;.=&nbsp;&nbsp;&quot;&#92;n&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($@)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$error&nbsp;=&nbsp;$context-&gt;catch($@,&nbsp;&#92;$output);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die&nbsp;$error&nbsp;unless&nbsp;$error-&gt;type&nbsp;eq&nbsp;'return';</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$output;</P>
+<P CLASS="CodeExample">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;In&nbsp;Service.pm</P>
+<P CLASS="Code">
+sub&nbsp;_init&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$config)&nbsp;=&nbsp;@_;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Some&nbsp;other&nbsp;configuration</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$context&nbsp;=&nbsp;$self-&gt;{&nbsp;CONTEXT&nbsp;}&nbsp;=&nbsp;$config-&gt;{&nbsp;CONTEXT&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;Template::Config-&gt;context($config)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;$self-&gt;error(Template::Config-&gt;error);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self;</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$context&nbsp;=&nbsp;Template::Context-&gt;new(TOLERANT&nbsp;=&gt;&nbsp;1);</P>
+<P CLASS="Code">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;CONTEXT&nbsp;=&gt;&nbsp;$context,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;TOLERANT&nbsp;=&gt;&nbsp;0</P>
+<P CLASS="Code">
+});</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-21 ttperl.pl&nbsp;</P>
+<P CLASS="CodeExample">
+#!/usr/bin/perl</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;warnings;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;Template-&gt;new(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+my&nbsp;$input&nbsp;=&nbsp;'answer.tt';</P>
+<P CLASS="CodeExample">
+my&nbsp;$vars&nbsp;&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;answer&nbsp;=&gt;&nbsp;42,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;author&nbsp;=&gt;&nbsp;'Douglas&nbsp;Adams',</P>
+<P CLASS="CodeExample">
+};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($input,&nbsp;$vars)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$tt-&gt;process($input,&nbsp;$vars)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-22 answer.tt2&nbsp;</P>
+<P CLASS="CodeExample">
+The&nbsp;answer&nbsp;to&nbsp;the&nbsp;Ultimate&nbsp;Question&nbsp;of&nbsp;Life,&nbsp;the</P>
+<P CLASS="CodeExample">
+Universe&nbsp;and&nbsp;Everything&nbsp;is&nbsp;[%&nbsp;answer&nbsp;%].</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;[%&nbsp;author&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+The&nbsp;answer&nbsp;to&nbsp;the&nbsp;Ultimate&nbsp;Question&nbsp;of&nbsp;Life,&nbsp;the</P>
+<P CLASS="Code">
+Universe&nbsp;and&nbsp;Everything&nbsp;is&nbsp;42.</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Douglas&nbsp;Adams</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$tt-&gt;process($input,&nbsp;$vars,&nbsp;$output,&nbsp;$options)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$tt-&gt;process('H2G2/entry/earth');</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$text&nbsp;=&nbsp;&quot;Hello,&nbsp;[%&nbsp;name&nbsp;%]!&quot;;</P>
+<P CLASS="Code">
+$tt-&gt;process(&#92;$text);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$fh&nbsp;=&nbsp;IO::File-&gt;new(&quot;file.tmpl&quot;)&nbsp;or&nbsp;die&nbsp;$!;</P>
+<P CLASS="Code">
+$tt-&gt;process($fh);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$tt-&gt;process(&#92;*STDIN);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-23 hello.pl&nbsp;</P>
+<P CLASS="CodeExample">
+#!/usr/bin/perl</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;warnings;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process(&#92;*DATA)&nbsp;or&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+_&nbsp;_DATA_&nbsp;_</P>
+<P CLASS="CodeExample">
+Hello,&nbsp;world!</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-24 Template&nbsp;variables&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$vars&nbsp;=&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'Arthur&nbsp;Dent',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;planet&nbsp;&nbsp;=&gt;&nbsp;'Earth',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;friends&nbsp;=&gt;&nbsp;[&nbsp;'Ford&nbsp;Prefect',&nbsp;'Slartibartfast'&nbsp;],</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;people&nbsp;&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Erotica&nbsp;Gallumbits'&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description&nbsp;=&gt;&nbsp;'Triple&nbsp;breasted&nbsp;whore',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;location&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'Erotican&nbsp;6',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Bugblatter&nbsp;Beast'&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description&nbsp;=&gt;&nbsp;'Ravenous&nbsp;(but&nbsp;stupid)',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;location&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'Traal',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Hotblack&nbsp;Desiato'&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description&nbsp;=&gt;&nbsp;'Dead&nbsp;(for&nbsp;tax&nbsp;purposes)',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;location&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'Milliways',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;consult_guide&nbsp;=&gt;&nbsp;sub&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$arg&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&quot;Don't&nbsp;panic,&nbsp;$arg!&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;magrethea&nbsp;=&gt;&nbsp;Acme::Planet-&gt;new(name&nbsp;&nbsp;=&gt;&nbsp;'Magrethea',</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;edges&nbsp;=&gt;&nbsp;'Crinkly'),</P>
+<P CLASS="CodeExample">
+};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($input,&nbsp;$vars)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-25 Redirecting&nbsp;Template&nbsp;output&nbsp;to&nbsp;a&nbsp;file&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new(OUTPUT_PATH&nbsp;=&gt;&nbsp;'/tmp');</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($input,&nbsp;$vars,&nbsp;'output.html')</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-26 Redirecting&nbsp;Template&nbsp;output&nbsp;to&nbsp;a&nbsp;scalar&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$output;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($input,&nbsp;$vars,&nbsp;&#92;$output)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+print&nbsp;$output;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-27 Redirecting&nbsp;Template&nbsp;output&nbsp;to&nbsp;an&nbsp;array&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;@output;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+for&nbsp;my&nbsp;$file&nbsp;(qw(&nbsp;header&nbsp;body&nbsp;footer&nbsp;))&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$tt-&gt;process($file,&nbsp;$vars,&nbsp;&#92;@output)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+print&nbsp;@output;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-28 Redirecting&nbsp;Template&nbsp;output&nbsp;to&nbsp;a&nbsp;filehandle&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;File::Temp&nbsp;qw(tempfile);</P>
+<P CLASS="CodeExample">
+my&nbsp;($fh)&nbsp;=&nbsp;tempfile(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($input,&nbsp;$vars,&nbsp;$fh)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-29 Redirecting&nbsp;Template&nbsp;output&nbsp;to&nbsp;a&nbsp;subroutine&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;process_to_db&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$content&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$dbh-&gt;do(&quot;INSERT&nbsp;INTO&nbsp;content&nbsp;(id,&nbsp;content)&nbsp;VALUES&nbsp;(NULL,&nbsp;?)&quot;,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undef,&nbsp;$content);</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($input,&nbsp;$vars,&nbsp;&#92;&amp;process_to_db)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-30 Redirecting&nbsp;Template&nbsp;output&nbsp;to&nbsp;an&nbsp;object&nbsp;with&nbsp;a&nbsp;print&nbsp;method&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$fh&nbsp;=&nbsp;IO::File-&gt;new(&quot;&gt;$tmpfile&quot;);</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($input,&nbsp;$vars,&nbsp;$fh)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-31 Using&nbsp;the&nbsp;OUTPUT&nbsp;configuration&nbsp;option&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new(OUTPUT&nbsp;=&gt;&nbsp;&#92;$output);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($input,&nbsp;$vars)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-32 &nbsp;process&nbsp;equivalent&nbsp;of&nbsp;OUTPUT</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($input,&nbsp;$vars,&nbsp;&#92;$output)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-33 Setting&nbsp;processing&nbsp;options&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($in,&nbsp;$vars,&nbsp;$out,&nbsp;{&nbsp;binmode&nbsp;=&gt;&nbsp;1&nbsp;})</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-34 Setting&nbsp;binmode&nbsp;on&nbsp;a&nbsp;filehandle&nbsp;</P>
+<P CLASS="CodeExample">
+local&nbsp;*FH;</P>
+<P CLASS="CodeExample">
+open&nbsp;FH,&nbsp;$filename;</P>
+<P CLASS="CodeExample">
+binmode&nbsp;FH;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-35 Setting&nbsp;processing&nbsp;options&nbsp;using&nbsp;a&nbsp;list&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process($in,&nbsp;$vars,&nbsp;$out,&nbsp;binmode&nbsp;=&gt;&nbsp;1)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-36 Reporting&nbsp;process&nbsp;errors&nbsp;</P>
+<P CLASS="CodeExample">
+unless&nbsp;($tt-&gt;process($input,&nbsp;$vars))&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$error&nbsp;=&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;&quot;error&nbsp;type:&nbsp;&quot;,&nbsp;$error-&gt;type(&nbsp;&nbsp;),&nbsp;&quot;&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;&quot;error&nbsp;info:&nbsp;&quot;,&nbsp;$error-&gt;info(&nbsp;&nbsp;),&nbsp;&quot;&#92;n&quot;;</P>
+<P CLASS="CodeExample">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-37 Error-reporting&nbsp;idiom&nbsp;</P>
+<P CLASS="CodeExample">
+$tt-&gt;process('no/such/page',&nbsp;$vars)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-38 Error&nbsp;example&nbsp;</P>
+<P CLASS="CodeExample">
+file&nbsp;error&nbsp;-&nbsp;no/such/page&nbsp;not&nbsp;found</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-39 Template::Config&nbsp;package&nbsp;variables&nbsp;</P>
+<P CLASS="CodeExample">
+$CONTEXT&nbsp;&nbsp;&nbsp;=&nbsp;'Template::Context';</P>
+<P CLASS="CodeExample">
+$FILTERS&nbsp;&nbsp;&nbsp;=&nbsp;'Template::Filters';</P>
+<P CLASS="CodeExample">
+$ITERATOR&nbsp;&nbsp;=&nbsp;'Template::Iterator';</P>
+<P CLASS="CodeExample">
+$PARSER&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'Template::Parser';</P>
+<P CLASS="CodeExample">
+$PLUGINS&nbsp;&nbsp;&nbsp;=&nbsp;'Template::Plugins';</P>
+<P CLASS="CodeExample">
+$PROVIDER&nbsp;&nbsp;=&nbsp;'Template::Provider';</P>
+<P CLASS="CodeExample">
+$SERVICE&nbsp;&nbsp;&nbsp;=&nbsp;'Template::Service';</P>
+<P CLASS="CodeExample">
+$STASH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'Template::Stash';</P>
+<P CLASS="CodeExample">
+$CONSTANTS&nbsp;=&nbsp;'Template::Namespace::Constants';</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-40 Template::Config::provider&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;provider&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$class&nbsp;&nbsp;=&nbsp;shift;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$params&nbsp;=&nbsp;defined($_[0])&nbsp;&amp;&amp;&nbsp;UNIVERSAL::isa($_[0],&nbsp;'HASH')</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&nbsp;shift&nbsp;:&nbsp;{&nbsp;@_&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;undef&nbsp;unless&nbsp;$class-&gt;load($PROVIDER);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$PROVIDER-&gt;new($params)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$class-&gt;error(&quot;failed&nbsp;to&nbsp;create&nbsp;template&nbsp;provider:&nbsp;&quot;,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$PROVIDER-&gt;error);</P>
+<P CLASS="CodeExample">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+use&nbsp;Template::Config;</P>
+<P CLASS="Code">
+$Template::Config::PROVIDER&nbsp;=&nbsp;'TTBook::Template::Provider';</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new(&nbsp;&nbsp;)&nbsp;||&nbsp;die&nbsp;Template-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;Template.pm</P>
+<P CLASS="Code">
+#&nbsp;preload&nbsp;all&nbsp;modules&nbsp;if&nbsp;we're&nbsp;running&nbsp;under&nbsp;mod_perl</P>
+<P CLASS="Code">
+Template::Config-&gt;preload(&nbsp;&nbsp;)&nbsp;if&nbsp;$ENV{&nbsp;MOD_PERL&nbsp;};</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Template::Config-&gt;preload('TTBook::Template::Provider',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'TTBook::Template::Plugin::NNTP');</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$splash&nbsp;=&nbsp;Template::Config-&gt;instdir('templates/splash')</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;Template::Config-&gt;error;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new(INCLUDE_PATH&nbsp;=&gt;&nbsp;[&nbsp;$splash&nbsp;]);</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+use&nbsp;Template::Constants&nbsp;qw(&nbsp;:status&nbsp;);</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+STATUS_OK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;ok</P>
+<P CLASS="Code">
+STATUS_RETURN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;ok,&nbsp;block&nbsp;ended&nbsp;by&nbsp;RETURN</P>
+<P CLASS="Code">
+STATUS_STOP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;ok,&nbsp;stopped&nbsp;by&nbsp;STOP</P>
+<P CLASS="Code">
+STATUS_DONE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;ok,&nbsp;iterator&nbsp;done</P>
+<P CLASS="Code">
+STATUS_DECLINED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;ok,&nbsp;declined&nbsp;to&nbsp;service&nbsp;request</P>
+<P CLASS="Code">
+STATUS_ERROR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;error&nbsp;condition</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-41 Using&nbsp;ERROR&nbsp;constants&nbsp;</P>
+<P CLASS="CodeExample">
+foreach&nbsp;my&nbsp;$provider&nbsp;(@$providers)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;($text,&nbsp;$error)&nbsp;=&nbsp;$provider-&gt;load($name,&nbsp;$prefix);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;next&nbsp;FILE&nbsp;unless&nbsp;$error;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($error&nbsp;=&nbsp;&nbsp;=&nbsp;Template::Constants::STATUS_ERROR)&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;throw($text)&nbsp;if&nbsp;ref&nbsp;$text;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;throw(Template::Constants::ERROR_FILE,&nbsp;$text);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+$self-&gt;throw(Template::Constants::ERROR_FILE,&nbsp;&quot;$file:&nbsp;not&nbsp;found&quot;);</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+ERROR_RETURN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;return&nbsp;a&nbsp;status&nbsp;code</P>
+<P CLASS="Code">
+ERROR_FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;file&nbsp;error:&nbsp;I/O,&nbsp;parse,&nbsp;recursion</P>
+<P CLASS="Code">
+ERROR_VIEW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;view&nbsp;error</P>
+<P CLASS="Code">
+ERROR_UNDEF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;undefined&nbsp;variable&nbsp;value&nbsp;used</P>
+<P CLASS="Code">
+ERROR_PERL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;error&nbsp;in&nbsp;[%&nbsp;PERL&nbsp;%]&nbsp;block</P>
+<P CLASS="Code">
+ERROR_FILTER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;filter&nbsp;error</P>
+<P CLASS="Code">
+ERROR_PLUGIN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;plugin&nbsp;error</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+use&nbsp;Template::Constants&nbsp;qw(&nbsp;:chomp&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new(TRIM&nbsp;=&gt;&nbsp;CHOMP_COLLAPSE);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+CHOMP_NONE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;do&nbsp;not&nbsp;remove&nbsp;whitespace</P>
+<P CLASS="Code">
+CHOMP_ALL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;remove&nbsp;whitespace</P>
+<P CLASS="Code">
+CHOMP_COLLAPSE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;collapse&nbsp;whitespace&nbsp;to&nbsp;a&nbsp;single&nbsp;space</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+DEBUG_OFF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;do&nbsp;nothing</P>
+<P CLASS="Code">
+DEBUG_ON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;basic&nbsp;debugging&nbsp;flag</P>
+<P CLASS="Code">
+DEBUG_UNDEF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;throw&nbsp;undef&nbsp;on&nbsp;undefined&nbsp;variables</P>
+<P CLASS="Code">
+DEBUG_VARS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;general&nbsp;variable&nbsp;debugging</P>
+<P CLASS="Code">
+DEBUG_DIRS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;directive&nbsp;debugging</P>
+<P CLASS="Code">
+DEBUG_STASH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;general&nbsp;stash&nbsp;debugging</P>
+<P CLASS="Code">
+DEBUG_CONTEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;context&nbsp;debugging</P>
+<P CLASS="Code">
+DEBUG_PARSER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;parser&nbsp;debugging</P>
+<P CLASS="Code">
+DEBUG_PROVIDER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;provider&nbsp;debugging</P>
+<P CLASS="Code">
+DEBUG_PLUGINS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;plugins&nbsp;debugging</P>
+<P CLASS="Code">
+DEBUG_FILTERS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;filters&nbsp;debugging</P>
+<P CLASS="Code">
+DEBUG_SERVICE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;context&nbsp;debugging</P>
+<P CLASS="Code">
+DEBUG_ALL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;everything</P>
+<P CLASS="Code">
+DEBUG_CALLER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;add&nbsp;caller&nbsp;file/line&nbsp;info</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-42 Using&nbsp;constants&nbsp;from&nbsp;Perl&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template::Constants&nbsp;qw(&nbsp;:debug&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$debug&nbsp;=&nbsp;DEBUG_SERVICE&nbsp;|&nbsp;DEBUG_CONTEXT&nbsp;|&nbsp;DEBUG_PROVIDER;</P>
+<P CLASS="CodeExample">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new(DEBUG&nbsp;=&gt;&nbsp;$debug);</P>
+<P CLASS="CodeExample">
+$tt-&gt;process(&quot;test.tt2&quot;)&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[Template::Provider]&nbsp;creating&nbsp;cache&nbsp;of&nbsp;unlimited&nbsp;slots&nbsp;for&nbsp;[&nbsp;.&nbsp;]</P>
+<P CLASS="Code">
+[Template::Service]&nbsp;process(test.tt2,&nbsp;&lt;no&nbsp;params&gt;)</P>
+<P CLASS="Code">
+[Template::Context]&nbsp;template(test.tt2)</P>
+<P CLASS="Code">
+[Template::Context]&nbsp;looking&nbsp;for&nbsp;block&nbsp;[test.tt2]</P>
+<P CLASS="Code">
+[Template::Context]&nbsp;asking&nbsp;providers&nbsp;for&nbsp;[test.tt2]&nbsp;[&nbsp;&nbsp;]</P>
+<P CLASS="Code">
+[Template::Provider]&nbsp;_fetch_path(test.tt2)</P>
+<P CLASS="Code">
+[Template::Provider]&nbsp;searching&nbsp;path:&nbsp;./test.tt2</P>
+<P CLASS="Code">
+[Template::Provider]&nbsp;_load(./test.tt2,&nbsp;test.tt2)</P>
+<P CLASS="Code">
+[Template::Provider]&nbsp;_compile(HASH(0x823cf1c),&nbsp;&lt;no&nbsp;compfile&gt;)</P>
+<P CLASS="Code">
+[Template::Provider]&nbsp;_store(./test.tt2,&nbsp;Template::Document=HASH(0x829f4a8))</P>
+<P CLASS="Code">
+[Template::Provider]&nbsp;adding&nbsp;new&nbsp;cache&nbsp;entry</P>
+<P CLASS="Code">
+[Template::Service]&nbsp;PROCESS:&nbsp;Template::Document=HASH(0x829f4a8)</P>
+<P CLASS="Code">
+[Template::Context]&nbsp;process([&nbsp;Template::Document=HASH(0x829f4a8)&nbsp;],&nbsp;&lt;no&nbsp;params&gt;,&nbsp;&lt;unlocalized&gt;)</P>
+<P CLASS="Code">
+[Template::Context]&nbsp;template(Template::Document=HASH(0x829f4a8))</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$debug&nbsp;=&nbsp;DEBUG_SERVICE&nbsp;|&nbsp;&nbsp;DEBUG_CALLER;</P>
+<P CLASS="Code">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new(DEBUG&nbsp;=&gt;&nbsp;$debug);</P>
+<P CLASS="Code">
+$tt-&gt;process(&quot;test.tt2&quot;)&nbsp;||&nbsp;die&nbsp;$tt-&gt;error(&nbsp;&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+[Template::Provider]&nbsp;creating&nbsp;cache&nbsp;of&nbsp;unlimited&nbsp;slots&nbsp;for&nbsp;[&nbsp;.&nbsp;]&nbsp;at&nbsp;/usr/local/lib/perl5/site_perl/5.6.1/Template/Provider.pm&nbsp;line&nbsp;350</P>
+<P CLASS="Code">
+[Template::Service]&nbsp;process(test.tt2,&nbsp;&lt;no&nbsp;params&gt;)</P>
+<P CLASS="Code">
+[Template::Context]&nbsp;template(test.tt2)&nbsp;at&nbsp;/usr/local/lib/perl5/site_perl/5.6.1/Template/Context.pm&nbsp;line&nbsp;81</P>
+<P CLASS="Code">
+...</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;%opts&nbsp;=&nbsp;(</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE_PATH&nbsp;=&gt;&nbsp;&#92;@paths,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;ANYCASE&nbsp;=&gt;&nbsp;1,</P>
+<P CLASS="Code">
+);</P>
+<P CLASS="Code">
+my&nbsp;$tt1&nbsp;=&nbsp;Template-&gt;new(&#92;%opts);</P>
+<P CLASS="Code">
+my&nbsp;$tt2&nbsp;=&nbsp;Template-&gt;new(%opts);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$tt-&gt;process($template,&nbsp;&#92;%vars)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$tt-&gt;error;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$tt&nbsp;=&nbsp;Template-&gt;new(&#92;%opts)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;Template-&gt;error;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-43 TTBook::Template::Plugin::LDAP&nbsp;</P>
+<P CLASS="CodeExample">
+package&nbsp;TTBook::Template::Plugin::LDAP;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;Net::LDAP;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;new&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$context,&nbsp;$host)&nbsp;=&nbsp;@_;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;error(&quot;Missing&nbsp;required&nbsp;host&quot;)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unless&nbsp;($host);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$ldap&nbsp;=&nbsp;Net::LDAP-&gt;new($host)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;return&nbsp;$self-&gt;error(&quot;Error&nbsp;connecting&nbsp;to&nbsp;$host:&nbsp;$@&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$ldap-&gt;bind;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$ldap;</P>
+<P CLASS="CodeExample">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-44 TTBook::Template::Context::Debugging&nbsp;</P>
+<P CLASS="CodeExample">
+package&nbsp;TTBook::Template::Context::Debugging;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;base&nbsp;qw(Template::Context);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;define_filter&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$name,&nbsp;$filter,&nbsp;$is_dynamic)&nbsp;=&nbsp;@_;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;debug(sprintf&nbsp;&quot;defining&nbsp;%s&nbsp;filter&nbsp;'%s'&quot;,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$is_dynamic&nbsp;?&nbsp;&quot;dynamic&quot;&nbsp;:&nbsp;&quot;static&quot;,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$name);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;SUPER::define_filter($name,&nbsp;$filter,&nbsp;$is_dynamic);</P>
+<P CLASS="CodeExample">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;wrap&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[Template::Context::Debugging]&nbsp;defining&nbsp;static&nbsp;filter&nbsp;'wrap'</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$self-&gt;debug(sprintf&nbsp;&quot;defining&nbsp;%s&nbsp;filter&nbsp;'%s'&quot;,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$is_dynamic&nbsp;?&nbsp;&quot;dynamic&quot;&nbsp;:&nbsp;&quot;static&quot;,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$name)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;$self-&gt;{&nbsp;DEBUG&nbsp;};</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$stash&nbsp;=&nbsp;$context-&gt;stash;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$stash-&gt;set('arp',&nbsp;&quot;with&nbsp;or&nbsp;without&nbsp;is&nbsp;the&nbsp;different&quot;);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;In&nbsp;the&nbsp;template:</P>
+<P CLASS="Code">
+[%&nbsp;arp&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;box&nbsp;quote&nbsp;=&nbsp;'A&nbsp;city&nbsp;is&nbsp;like&nbsp;a&nbsp;large,&nbsp;complex,&nbsp;rabbit'&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$context-&gt;process('box',&nbsp;{&nbsp;'quote'&nbsp;=&gt;&nbsp;'A&nbsp;city&nbsp;is&nbsp;like&nbsp;a&nbsp;large&nbsp;complex&nbsp;rabbit'&nbsp;});</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$doc&nbsp;=&nbsp;$context-&gt;template($name)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$context-&gt;error;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;CGI&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$stash-&gt;set('CGI',&nbsp;$context-&gt;plugin('CGI'));</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;q&nbsp;=&nbsp;CGI('name=darren&amp;title=JAPH')&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$stash-&gt;set('q',&nbsp;$context-&gt;plugin('CGI',&nbsp;[&nbsp;'name=darren&amp;title=JAPH'&nbsp;]));</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;MP3('Got&nbsp;the&nbsp;Time.mp3'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dir&nbsp;=&nbsp;'Joe&nbsp;Jackson/Look&nbsp;Sharp!'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utf8&nbsp;=&nbsp;1)&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$stash-&gt;set('MP3',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$context-&gt;plugin('MP3',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;'Got&nbsp;the&nbsp;Time.mp3',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;'dir'&nbsp;=&gt;&nbsp;'Joe&nbsp;Jackson/Look&nbsp;Sharp!',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'utf8'&nbsp;=&gt;&nbsp;1</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]));</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;'do&nbsp;not&nbsp;leave&nbsp;it&nbsp;is&nbsp;not&nbsp;real'&nbsp;|&nbsp;upper&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$filter&nbsp;=&nbsp;$context-&gt;filter('upper')</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$context-&gt;throw($context-&gt;error);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$output&nbsp;.=&nbsp;'do&nbsp;not&nbsp;leave&nbsp;it&nbsp;is&nbsp;not&nbsp;real';</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&amp;$filter($output);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FILTER&nbsp;format(&quot;%.12f&quot;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;PI&nbsp;=&nbsp;22&nbsp;/&nbsp;7;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;radius&nbsp;=&nbsp;14.5;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;PI&nbsp;*&nbsp;radius&nbsp;*&nbsp;radius;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;END&nbsp;</P>
+<P CLASS="Code">
+%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$filter&nbsp;=&nbsp;$context-&gt;filter('format',&nbsp;[&nbsp;'%.12f'&nbsp;])</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;$context-&gt;throw($context-&gt;error);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$stash-&gt;set('PI',&nbsp;22&nbsp;/&nbsp;7);</P>
+<P CLASS="Code">
+$stash-&gt;set('radius',&nbsp;14.5);</P>
+<P CLASS="Code">
+$output&nbsp;.=&nbsp;&nbsp;$stash-&gt;get('PI')&nbsp;*&nbsp;$stash-&gt;get('radius')&nbsp;*&nbsp;$stash-&gt;get('radius');</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&amp;$filter($output);</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+use&nbsp;Term::ANSIColor&nbsp;qw(colored);</P>
+<P CLASS="Code">
+$context-&gt;define_filter('red',&nbsp;sub&nbsp;{&nbsp;colored($_[0],&nbsp;&quot;red&quot;)&nbsp;},&nbsp;0);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-45 Using&nbsp;Template::Provider&nbsp;for&nbsp;non-Template&nbsp;Toolkit&nbsp;files&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$prov&nbsp;=&nbsp;Template::Provider-&gt;new(ABSOLUTE&nbsp;=&gt;&nbsp;1);</P>
+<P CLASS="CodeExample">
+my&nbsp;$file&nbsp;=&nbsp;&quot;/etc/passwd&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;($doc,&nbsp;$error)&nbsp;=&nbsp;$prov-&gt;fetch($file);</P>
+<P CLASS="CodeExample">
+die&nbsp;&quot;Couldn't&nbsp;load&nbsp;$file&quot;&nbsp;if&nbsp;defined&nbsp;$error;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+printf&nbsp;&quot;%s&nbsp;was&nbsp;last&nbsp;modified&nbsp;on&nbsp;%s.&#92;n&quot;,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$doc-&gt;name(&nbsp;&nbsp;),&nbsp;$doc-&gt;modtime(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+printf&nbsp;&quot;%s&nbsp;was&nbsp;last&nbsp;modified&nbsp;on&nbsp;%s.&#92;n&quot;,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$doc-&gt;name(&nbsp;&nbsp;),&nbsp;localtime($doc-&gt;modtime(&nbsp;&nbsp;));</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+use&nbsp;POSIX&nbsp;qw(strftime);</P>
+<P CLASS="Code">
+my&nbsp;@date&nbsp;=&nbsp;localtime($doc-&gt;modtime(&nbsp;&nbsp;));</P>
+<P CLASS="Code">
+printf&nbsp;&quot;%s&nbsp;was&nbsp;last&nbsp;modified&nbsp;on&nbsp;%s.&#92;n&quot;,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$doc-&gt;name(&nbsp;&nbsp;),&nbsp;strftime(&quot;%Y/%m/%d&quot;,&nbsp;@date);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+/etc/passwd&nbsp;was&nbsp;last&nbsp;modified&nbsp;on&nbsp;2002/10/18.</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+package&nbsp;TTBook::Template::Provider::ExpandPaths;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+use&nbsp;strict;</P>
+<P CLASS="Code">
+use&nbsp;base&nbsp;qw(Template::Provider);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+sub&nbsp;paths&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$orig_paths&nbsp;=&nbsp;$self-&gt;SUPER::paths(&nbsp;&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($path,&nbsp;@paths,&nbsp;%unique);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;$path&nbsp;(@$orig_paths)&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;@chunks&nbsp;=&nbsp;split&nbsp;'/',&nbsp;$path;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(@chunks)&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;push&nbsp;@paths,&nbsp;join&nbsp;'/',&nbsp;@chunks;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pop&nbsp;@chunks;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Remove&nbsp;duplicates&nbsp;from&nbsp;the&nbsp;list</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;@paths&nbsp;=&nbsp;grep&nbsp;{&nbsp;++$names{$_}&nbsp;=&nbsp;&nbsp;=&nbsp;1&nbsp;}&nbsp;grep&nbsp;{&nbsp;length&nbsp;}&nbsp;@paths;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&#92;@paths;</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+('/web/www/html',</P>
+<P CLASS="Code">
+&nbsp;'/web/www',</P>
+<P CLASS="Code">
+&nbsp;'/web',</P>
+<P CLASS="Code">
+&nbsp;'/web/search/html',&nbsp;</P>
+<P CLASS="Code">
+&nbsp;'/web/search')</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$stash&nbsp;=&nbsp;Template::Stash-&gt;new({&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;planet&nbsp;=&gt;&nbsp;'Earth',&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;&nbsp;=&gt;&nbsp;'Mostly&nbsp;harmless'</P>
+<P CLASS="Code">
+&nbsp;});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+&lt;entry&gt;[%&nbsp;planet&nbsp;%]&lt;/entry&gt;</P>
+<P CLASS="Code">
+&lt;about&gt;</P>
+<P CLASS="Code">
+[%&nbsp;about&nbsp;%]</P>
+<P CLASS="Code">
+&lt;/about&gt;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$context&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$stash&nbsp;&nbsp;&nbsp;=&nbsp;$context-&gt;stash(&nbsp;&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;'&lt;entry&gt;'&nbsp;.&nbsp;$stash-&gt;get('planet')&nbsp;.&nbsp;&quot;&lt;/entry&gt;&#92;n&quot;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&quot;&lt;about&gt;&#92;n&quot;&nbsp;&nbsp;.&nbsp;$stash-&gt;get('about')&nbsp;&nbsp;.&nbsp;&quot;&#92;n&lt;/about&gt;&#92;n&quot;;</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$value&nbsp;=&nbsp;$stash-&gt;get('planet');</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;guide.entry(314159).about&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$stash-&gt;get([&nbsp;'guide',&nbsp;0,&nbsp;'entry',&nbsp;[&nbsp;314159&nbsp;],&nbsp;'about',&nbsp;0&nbsp;]);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;hitchhiker.name&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$stash-&gt;get([&nbsp;'hitchhiker',&nbsp;0,&nbsp;'name',&nbsp;0&nbsp;]);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;x&nbsp;=&nbsp;10&nbsp;%]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$stash-&gt;set('x',&nbsp;10);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;x.y&nbsp;=&nbsp;10&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$stash-&gt;set([&nbsp;'x',&nbsp;0,&nbsp;'y',&nbsp;0&nbsp;],&nbsp;10);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$stash-&gt;set('about',&nbsp;'This&nbsp;page&nbsp;intentionally&nbsp;left&nbsp;blank.',&nbsp;1);</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$stash&nbsp;=&nbsp;$stash-&gt;clone(&nbsp;&nbsp;);</P>
+<P CLASS="Code">
+$content-&gt;process($template);</P>
+<P CLASS="Code">
+$stash&nbsp;=&nbsp;$stash-&gt;declone(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;Context.pm&nbsp;(simplified)</P>
+<P CLASS="Code">
+sub&nbsp;filter&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$name,&nbsp;$args)&nbsp;=&nbsp;@_;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($filter,&nbsp;$error);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;my&nbsp;$provider&nbsp;(@{&nbsp;$self-&gt;{&nbsp;LOAD_FILTERS&nbsp;}&nbsp;})&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;($filter,&nbsp;$error)&nbsp;=&nbsp;$provider-&gt;fetch($name,&nbsp;$args,&nbsp;$self);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last&nbsp;unless&nbsp;$error;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$filter;</P>
+<P CLASS="Code">
+}</P>
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+use&nbsp;Text::Soundex&nbsp;qw(soundex);</P>
+<P CLASS="Code">
+use&nbsp;Text::Metaphone&nbsp;qw(Metaphone);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+my&nbsp;$tf&nbsp;=&nbsp;Template::Filters-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;FILTERS&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;soundex&nbsp;=&gt;&nbsp;sub&nbsp;{&nbsp;soundex($_[0])&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metaphone&nbsp;=&gt;&nbsp;sub&nbsp;{&nbsp;Metaphone($_[0])&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;PROCESS&nbsp;page&nbsp;|&nbsp;metaphone&nbsp;%]</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$filters-&gt;store('soundex',&nbsp;sub&nbsp;{&nbsp;soundex($_[0])&nbsp;});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-46 TTBook::Template::Filters::Logging&nbsp;</P>
+<P CLASS="CodeExample">
+package&nbsp;TTBook::Template::Filters::Logging;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;base&nbsp;qw(&nbsp;Template::Filters&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template::Filters;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;Store&nbsp;the&nbsp;filter,&nbsp;and&nbsp;store&nbsp;the&nbsp;time</P>
+<P CLASS="CodeExample">
+sub&nbsp;store&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$name,&nbsp;$filter)&nbsp;=&nbsp;@_;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$now&nbsp;=&nbsp;time;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;SUPER::store($name,&nbsp;$filter);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;{&nbsp;FILTER_TIMESTAMPS&nbsp;}-&gt;{&nbsp;$name&nbsp;}&nbsp;=&nbsp;$now;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;debug(&quot;store($name&nbsp;=&gt;&nbsp;$filter)&nbsp;at&nbsp;$now&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;1;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+#&nbsp;Keeps&nbsp;track&nbsp;of&nbsp;the&nbsp;difference&nbsp;in&nbsp;time&nbsp;between&nbsp;when&nbsp;the&nbsp;filter</P>
+<P CLASS="CodeExample">
+#&nbsp;was&nbsp;stored&nbsp;and&nbsp;when&nbsp;it&nbsp;was&nbsp;first&nbsp;used.</P>
+<P CLASS="CodeExample">
+sub&nbsp;fetch&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$name,&nbsp;$args,&nbsp;$context)&nbsp;=&nbsp;@_;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($filter_sub,&nbsp;$filter_ts,&nbsp;$now);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$filter_sub&nbsp;=&nbsp;$self-&gt;SUPER::fetch($name,&nbsp;$args,&nbsp;$context);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$filter_ts&nbsp;=&nbsp;$self-&gt;{&nbsp;FILTER_TIMESTAMPS&nbsp;}-&gt;{&nbsp;$name&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$now&nbsp;=&nbsp;time;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;debug(&quot;fetch($name)&nbsp;at&nbsp;$now&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$filter_sub;</P>
+<P CLASS="CodeExample">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-47 TTBook::Template::Filters::Counting&nbsp;</P>
+<P CLASS="CodeExample">
+package&nbsp;TTBook::Template::Filters::Counting;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;base&nbsp;qw(&nbsp;Template::Filters&nbsp;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;fetch&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$name,&nbsp;$args,&nbsp;$context)&nbsp;=&nbsp;@_;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$count&nbsp;=&nbsp;$self-&gt;{&nbsp;FILTERS_COUNT&nbsp;}&nbsp;||=&nbsp;{&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$count-&gt;{&nbsp;$name&nbsp;}++;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$self-&gt;debug(&quot;filter&nbsp;$name&nbsp;has&nbsp;been&nbsp;loaded&nbsp;$count-&gt;{$name}&nbsp;times.&quot;);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;SUPER::fetch($name,&nbsp;$args,&nbsp;$context);</P>
+<P CLASS="CodeExample">
+}</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+package&nbsp;MyPlugin;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+sub&nbsp;load&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;called&nbsp;as&nbsp;MyPlugin-&gt;load($context)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($class,&nbsp;$context)&nbsp;=&nbsp;@_;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$class;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;returns&nbsp;'MyPlugin'</P>
+<P CLASS="Code">
+}</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;new&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;called&nbsp;as&nbsp;MyPlugin-&gt;new($context)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($class,&nbsp;$context,&nbsp;@params)&nbsp;=&nbsp;@_;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;bless&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_CONTEXT&nbsp;=&gt;&nbsp;$context,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_PARAMS&nbsp;=&gt;&nbsp;&#92;@params,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;$class;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;returns&nbsp;blessed&nbsp;MyPlugin&nbsp;object</P>
+<P CLASS="Code">
+}</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;new&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($class,&nbsp;$context,&nbsp;$dsn)&nbsp;=&nbsp;@_;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$class-&gt;error('No&nbsp;data&nbsp;source&nbsp;specified')</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unless&nbsp;$dsn;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;bless&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_DSN&nbsp;=&gt;&nbsp;$dsn,</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;$class;</P>
+<P CLASS="Code">
+}</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+...</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+my&nbsp;$something&nbsp;=&nbsp;MyModule-&gt;new(&nbsp;&nbsp;)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;MyModule-&gt;error(&nbsp;&nbsp;);</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$something-&gt;do_something(&nbsp;&nbsp;)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$something-&gt;error(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$class&nbsp;&nbsp;=&nbsp;MyPlugin-&gt;load($context);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;returns&nbsp;'MyPlugin'</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+$object&nbsp;=&nbsp;$class-&gt;new($context,&nbsp;@params)&nbsp;&nbsp;#&nbsp;MyPlugin-&gt;new(...)</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;die&nbsp;$class-&gt;error(&nbsp;&nbsp;);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;MyPlugin-&gt;error(&nbsp;&nbsp;)</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-48 TTBook::Template::Plugin::Printer&nbsp;</P>
+<P CLASS="CodeExample">
+package&nbsp;TTBook::Template::Plugin::Printer;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;strict;</P>
+<P CLASS="CodeExample">
+use&nbsp;vars&nbsp;qw($PRINTER&nbsp;$SERVER);</P>
+<P CLASS="CodeExample">
+use&nbsp;base&nbsp;qw(Template::Plugin);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template::Plugin;</P>
+<P CLASS="CodeExample">
+use&nbsp;Template::Exception;</P>
+<P CLASS="CodeExample">
+use&nbsp;Net::Printer;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+$PRINTER&nbsp;=&nbsp;&quot;jeckyl&quot;;</P>
+<P CLASS="CodeExample">
+$SERVER&nbsp;=&nbsp;&quot;mr-hyde&quot;;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;load&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($class,&nbsp;$context)&nbsp;=&nbsp;@_;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$printer&nbsp;=&nbsp;Net::Printer-&gt;new(printer&nbsp;=&gt;&nbsp;$PRINTER,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;server&nbsp;&nbsp;=&gt;&nbsp;$SERVER);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;bless&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_CONTEXT&nbsp;=&gt;&nbsp;$context,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_PRINTER&nbsp;=&gt;&nbsp;$printer,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;$class;</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;new&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$context)&nbsp;=&nbsp;@_;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+sub&nbsp;print&nbsp;{</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($self,&nbsp;$data)&nbsp;=&nbsp;@_;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($printer,&nbsp;$context)&nbsp;=&nbsp;@$self{&nbsp;qw(&nbsp;_PRINTER&nbsp;_CONTEXT)&nbsp;};</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$result&nbsp;=&nbsp;$printer-&gt;printstring($data);</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;$context-&gt;throw('printer',&nbsp;$result)</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unless&nbsp;(int($result)&nbsp;=&nbsp;&nbsp;=&nbsp;1);</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&quot;&quot;;</P>
+<P CLASS="CodeExample">
+}</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+1;</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-49 The&nbsp;Printer&nbsp;plugin&nbsp;</P>
+<P CLASS="CodeExample">
+[%&nbsp;USE&nbsp;Printer&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;TRY&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;Printer.print(data)&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;CATCH&nbsp;printer&nbsp;%]</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;&nbsp;&nbsp;There&nbsp;was&nbsp;an&nbsp;error&nbsp;printing:&nbsp;[%&nbsp;error&nbsp;%]</P>
+<P CLASS="CodeExample">
+[%&nbsp;END&nbsp;%]</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$tp&nbsp;=&nbsp;Template::Plugins-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;PLUGINS&nbsp;=&gt;&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'css'&nbsp;=&gt;&nbsp;'TTBook::Template::Plugin::CSS',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'javascript'&nbsp;=&gt;&nbsp;'TTBook::Template::Plugin::JS',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;},</P>
+<P CLASS="Code">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;wiki&nbsp;=&nbsp;WWW.Wikipedia&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$tt&nbsp;=&nbsp;Template::Plugins-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;PLUGIN_BASE&nbsp;=&gt;&nbsp;[&nbsp;'TTBook::Template::Plugin',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'MyOrg::Template::Plugin'&nbsp;],</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;LOAD_PERL&nbsp;=&gt;&nbsp;1,</P>
+<P CLASS="Code">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;Monitor&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="ExampleTitle">
+Example&nbsp;7-50 Creating&nbsp;and&nbsp;using&nbsp;parser&nbsp;and&nbsp;grammar&nbsp;objects&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$parser&nbsp;=&nbsp;Template::Parser-&gt;new({</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;ANYCASE&nbsp;=&gt;&nbsp;1,</P>
+<P CLASS="CodeExample">
+&nbsp;&nbsp;GRAMMAR&nbsp;=&gt;&nbsp;[%&nbsp;namespace&nbsp;%]::Template::Grammar-&gt;new(&nbsp;&nbsp;),</P>
+<P CLASS="CodeExample">
+});</P>
+<P CLASS="CodeExample">
+&nbsp;</P>
+<P CLASS="CodeExample">
+my&nbsp;$data&nbsp;=&nbsp;$parser-&gt;parse($template_string);</P>
+<P CLASS="CodeExample">
+my&nbsp;$doc&nbsp;=&nbsp;Template::Document-&gt;new($data);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#------------------------------------------------------------------------</P>
+<P CLASS="Code">
+#&nbsp;anon_block($block)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;BLOCK&nbsp;%]&nbsp;...&nbsp;[%&nbsp;END&nbsp;%]</P>
+<P CLASS="Code">
+#------------------------------------------------------------------------</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+sub&nbsp;anon_block&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;($class,&nbsp;$block)&nbsp;=&nbsp;@_;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;$block&nbsp;=&nbsp;pad($block,&nbsp;2)&nbsp;if&nbsp;$PRETTY;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&lt;&lt;EOF;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;BLOCK</P>
+<P CLASS="Code">
+$OUTPUT&nbsp;do&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;&#92;$output&nbsp;&nbsp;=&nbsp;'';</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;&#92;$error;</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;eval&nbsp;{&nbsp;BLOCK:&nbsp;{</P>
+<P CLASS="Code">
+$block</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;};</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&#92;$@)&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#92;$error&nbsp;=&nbsp;&#92;$context-&gt;catch(&#92;$@,&nbsp;&#92;&#92;&#92;$output);</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die&nbsp;&#92;$error&nbsp;unless&nbsp;&#92;$error-&gt;type&nbsp;eq&nbsp;'return';</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&#92;$output;</P>
+<P CLASS="Code">
+};</P>
+<P CLASS="Code">
+EOF</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$doc&nbsp;=&nbsp;Template::Document-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;BLOCK&nbsp;=&gt;&nbsp;sub&nbsp;{&nbsp;return&nbsp;&quot;Hello!&quot;&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;METADATA&nbsp;=&gt;&nbsp;{&nbsp;name&nbsp;=&gt;&nbsp;&quot;greeting&quot;&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;DEFBLOCKS&nbsp;=&gt;&nbsp;{&nbsp;}</P>
+<P CLASS="Code">
+});</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+print&nbsp;$doc-&gt;name(&nbsp;&nbsp;);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$timer&nbsp;=&nbsp;Template::Document-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;BLOCK&nbsp;=&gt;&nbsp;sub&nbsp;{&nbsp;time&nbsp;},</P>
+<P CLASS="Code">
+});</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+#&nbsp;thneed.tt2</P>
+<P CLASS="Code">
+[%&nbsp;META&nbsp;title&nbsp;=&nbsp;'You&nbsp;need&nbsp;a&nbsp;thneed!'</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author&nbsp;=&nbsp;'The&nbsp;Once-ler'&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+#&nbsp;Perl</P>
+<P CLASS="Code">
+my&nbsp;$doc&nbsp;=&nbsp;$context-&gt;template('thneed.tt2');</P>
+<P CLASS="Code">
+print&nbsp;$doc-&gt;author;</P>
+
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+use&nbsp;Template::Exception;</P>
+<P CLASS="Code">
+...</P>
+<P CLASS="Code">
+die(Template::Exception-&gt;new('bad.things',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Bad&nbsp;things&nbsp;happened.'));</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;USE&nbsp;Something&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;TRY&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;...</P>
+<P CLASS="Code">
+[%&nbsp;CATCH&nbsp;bad.things&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;Error:&nbsp;$error&quot;&nbsp;;</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+Error:&nbsp;bad.things&nbsp;error&nbsp;-&nbsp;Bad&nbsp;things&nbsp;happened.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+die(Template::Exception-&gt;new('bad.things',&nbsp;{&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;module&nbsp;=&gt;&nbsp;'foo.pl',&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errors&nbsp;=&gt;&nbsp;[&nbsp;'bad&nbsp;permissions',&nbsp;'naughty&nbsp;boy'&nbsp;],</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;}));</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;TRY&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;...</P>
+<P CLASS="Code">
+[%&nbsp;CATCH&nbsp;bad.things&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;[%&nbsp;error.info.errors.size&nbsp;or&nbsp;'no';</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error.info.errors.size&nbsp;=&nbsp;&nbsp;=&nbsp;1&nbsp;?&nbsp;'&nbsp;error'&nbsp;:&nbsp;'&nbsp;errors'&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;in&nbsp;[%&nbsp;error.info.module&nbsp;%]:&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;error.info.errors.join(',&nbsp;')&nbsp;%].</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+2&nbsp;errors&nbsp;in&nbsp;foo.pl:</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;bad&nbsp;permissions,&nbsp;naughty&nbsp;boy.</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;foo&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;...&nbsp;do&nbsp;something&nbsp;...</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;die(&quot;I'm&nbsp;sorry,&nbsp;Dave,&nbsp;I&nbsp;can't&nbsp;do&nbsp;that&#92;n&quot;);</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+$context-&gt;throw($e);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;exception&nbsp;object</P>
+<P CLASS="Code">
+$context-&gt;throw('Denied');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;'undef'&nbsp;type</P>
+<P CLASS="Code">
+$context-&gt;throw('bad.things',&nbsp;'Bad&nbsp;things&nbsp;happened.');</P>
+
+
+
+
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+use&nbsp;Template::Iterator;</P>
+<P CLASS="Code">
+my&nbsp;$iter&nbsp;=&nbsp;Template::Iterator-&gt;new(&#92;@data);</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;results&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$iter&nbsp;=&nbsp;Template::Iterator-&gt;new($self-&gt;{&nbsp;_RESULTS&nbsp;});</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$iter;</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;result&nbsp;=&nbsp;search.results&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;...</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+[%&nbsp;FOREACH&nbsp;result&nbsp;=&nbsp;search.results&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Size:&nbsp;&nbsp;&nbsp;[%&nbsp;loop.size&nbsp;&nbsp;#&nbsp;$iter-&gt;size(&nbsp;&nbsp;)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Max:&nbsp;&nbsp;&nbsp;&nbsp;[%&nbsp;loop.max&nbsp;&nbsp;&nbsp;#&nbsp;$iter-&gt;max(&nbsp;&nbsp;)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Index:&nbsp;&nbsp;[%&nbsp;loop.index&nbsp;#&nbsp;$iter-&gt;index(&nbsp;&nbsp;)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Count:&nbsp;&nbsp;[%&nbsp;loop.count&nbsp;#&nbsp;$iter-&gt;count(&nbsp;&nbsp;)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;First:&nbsp;&nbsp;[%&nbsp;loop.first&nbsp;#&nbsp;$iter-&gt;first(&nbsp;&nbsp;)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Last:&nbsp;&nbsp;&nbsp;[%&nbsp;loop.last&nbsp;&nbsp;#&nbsp;$iter-&gt;last(&nbsp;&nbsp;)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Prev:&nbsp;&nbsp;&nbsp;[%&nbsp;loop.prev&nbsp;&nbsp;#&nbsp;$iter-&gt;prev(&nbsp;&nbsp;)&nbsp;%]</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;Next:&nbsp;&nbsp;&nbsp;[%&nbsp;loop.next&nbsp;&nbsp;#&nbsp;$iter-&gt;next(&nbsp;&nbsp;)&nbsp;%]</P>
+<P CLASS="Code">
+[%&nbsp;END&nbsp;%]</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+sub&nbsp;as_list&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$self-&gt;{&nbsp;_RESULTS&nbsp;};</P>
+<P CLASS="Code">
+}</P>
+<P CLASS="Code">
+&nbsp;</P>
+<P CLASS="Code">
+sub&nbsp;results&nbsp;{</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;$self&nbsp;=&nbsp;shift;</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;Template::Iterator-&gt;new($self);</P>
+<P CLASS="Code">
+}</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$iter&nbsp;=&nbsp;Template::Iterator-&gt;new({</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;foo&nbsp;=&gt;&nbsp;'Foo&nbsp;Item',</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;bar&nbsp;=&gt;&nbsp;'Bar&nbsp;Item',</P>
+<P CLASS="Code">
+});</P>
+<br>
+<hr width="50%" align="left"><P CLASS="Code">
+my&nbsp;$iter&nbsp;=&nbsp;Template::Iterator-&gt;new([</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;key&nbsp;=&gt;&nbsp;'bar',&nbsp;value&nbsp;=&gt;&nbsp;'Bar&nbsp;Item'&nbsp;},</P>
+<P CLASS="Code">
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;key&nbsp;=&gt;&nbsp;'foo',&nbsp;value&nbsp;=&gt;&nbsp;'Foo&nbsp;Item'&nbsp;},</P>
+<P CLASS="Code">
+]);</P>
+</BODY>
+</HTML>
+</body></html>
