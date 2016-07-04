@@ -1,7 +1,9 @@
-#!/bin/perl -w
+use common::sense;
 
 package Application {
     use Moose;
+    
+    use common::sense;
 
     use feature 'say';
     use feature 'state';

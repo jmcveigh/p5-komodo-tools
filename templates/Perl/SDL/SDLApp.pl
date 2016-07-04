@@ -1,17 +1,17 @@
-#/bin/perl -w
-use feature 'say';
+use common::sense;
 
-{
-    package Statelike;
+package Statelike {
     use Moose::Role;
     
     requires qw(draw_frame);
 }
 
-{
-    package State_Black;
+package State_Black {    
     use Moose;
     with 'Statelike';
+    
+    use common::sense;
+    
     use namespace::autoclean;
 
     has '_bg' => (
@@ -48,9 +48,11 @@ use feature 'say';
     __PACKAGE__->meta->make_immutable;
 }
 
-{
-    package StateContext;
+package StateContext {
     use Moose;
+    
+    use common::sense;
+    
     use namespace::autoclean;
     
     has '_state' => (
@@ -81,9 +83,11 @@ use feature 'say';
     __PACKAGE__->meta->make_immutable;
 }
 
-{
-    package Application;
+package Application {
     use Moose;
+    
+    use common::sense;
+    
     use SDL;
     use SDLx::App;
     use SDL::Event;
@@ -119,5 +123,6 @@ use feature 'say';
     __PACKAGE__->meta->make_immutable;
 }
 
-my $app = Application->new;
-$app->main;
+my $app = Application->new->main unless caller;
+
+1;

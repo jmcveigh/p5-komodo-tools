@@ -1,13 +1,12 @@
-#/bin/perl
-
 package AppStatelike {
-    use Moose::Role;
-
+    use Moose::Role;    
+    use common::sense;    
     requires qw(event_loop);
 }
 
 package AppState_Active {
-    use Moose;
+    use Moose;    
+    use common::sense;    
     use SDL;
     use SDLx::App;
     use SDL::Event;
@@ -97,6 +96,9 @@ package AppState_Active {
 
 package AppStateContext {
     use Moose;
+    
+    use common::sense;
+    
     use SDL;
     use SDLx::App;
     use SDL::Event;
@@ -134,6 +136,9 @@ package AppStateContext {
 
 package OpenGLApplication {
     use Moose;
+    
+    use common::sense;
+
     use SDL;
     use SDLx::App;
     use SDL::Event;

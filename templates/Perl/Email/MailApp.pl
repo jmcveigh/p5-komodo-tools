@@ -1,9 +1,10 @@
-#!/bin/perl -w
+use common::sense;
 
-{
-    package Application;
-
+package Application {
     use Moose;
+    
+    use common::sense;
+    
     use Mail::Mailer;
 
     use feature 'say';
@@ -32,5 +33,6 @@
     __PACKAGE__->meta->make_immutable;
 }
 
-my $app = Application->get_instance;
-$app->main;
+my $app = Application->get_instance->main unless caller;
+
+1;
