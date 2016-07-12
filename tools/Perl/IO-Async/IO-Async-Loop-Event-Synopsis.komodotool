@@ -1,0 +1,19 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "IO-Async-Loop-Event-Synopsis", 
+  "value": [
+    "use IO::Async::Loop::Event;", 
+    " ", 
+    "my $loop = IO::Async::Loop::Event->new();", 
+    " ", 
+    "$loop->add( ... );", 
+    " ", 
+    "$loop->run;!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

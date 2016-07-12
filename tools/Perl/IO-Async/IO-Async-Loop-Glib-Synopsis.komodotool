@@ -1,0 +1,32 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "IO-Async-Loop-Glib-Synopsis", 
+  "value": [
+    "use IO::Async::Loop::Glib;", 
+    " ", 
+    "my $loop = IO::Async::Loop::Glib->new();", 
+    " ", 
+    "$loop->add( ... );", 
+    " ", 
+    "...", 
+    "# Rest of GLib/Gtk program that uses GLib", 
+    " ", 
+    "Glib::MainLoop->new->run();", 
+    "", 
+    "## Or", 
+    "", 
+    "$loop->loop_forever();", 
+    "", 
+    "## Or", 
+    "", 
+    "while(1) {", 
+    "   $loop->loop_once();", 
+    "}!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}

@@ -1,0 +1,24 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "IO-Async-Loop-AnyEvent-Synopsis", 
+  "value": [
+    "use IO::Async::Loop::AnyEvent;", 
+    " ", 
+    "my $loop = IO::Async::Loop::AnyEvent->new();", 
+    " ", 
+    "$loop->add( ... );", 
+    " ", 
+    "$loop->add( IO::Async::Signal->new(", 
+    "      name => 'HUP',", 
+    "      on_receipt => sub { ... },", 
+    ") );", 
+    " ", 
+    "$loop->loop_forever();!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "false", 
+  "version": "1.0.12", 
+  "treat_as_ejs": "false", 
+  "type": "snippet", 
+  "indent_relative": "false", 
+  "auto_abbreviation": "false"
+}
